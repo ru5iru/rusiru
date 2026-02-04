@@ -1,0 +1,92 @@
+import { 
+  Linkedin, 
+  Github, 
+  Facebook, 
+  Twitter,
+  MessageCircle,
+} from 'lucide-react';
+
+const socialLinks = [
+  { href: 'https://www.linkedin.com/in/ru5iru', icon: Linkedin, label: 'LinkedIn', color: 'hover:text-[#0077B5]' },
+  { href: 'https://github.com/ru5iru', icon: Github, label: 'GitHub', color: 'hover:text-foreground' },
+  { href: 'https://www.discordapp.com/users/Rusiru#4036', icon: MessageCircle, label: 'Discord', color: 'hover:text-[#5865F2]' },
+  { href: 'https://web.facebook.com/ru5iru', icon: Facebook, label: 'Facebook', color: 'hover:text-[#1877F2]' },
+  { href: 'https://twitter.com/ru5iru', icon: Twitter, label: 'Twitter', color: 'hover:text-foreground' },
+];
+
+export function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="py-12 border-t border-border bg-card/50">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col items-center gap-8">
+          {/* Social Links */}
+          <div className="flex items-center gap-6">
+            {socialLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`text-muted-foreground ${link.color} transition-all duration-300 hover:scale-125`}
+                  aria-label={link.label}
+                >
+                  <Icon className="w-6 h-6" />
+                </a>
+              );
+            })}
+            {/* Reddit */}
+            <a
+              href="https://www.reddit.com/u/ru5iru/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-[#FF4500] transition-all duration-300 hover:scale-125"
+              aria-label="Reddit"
+            >
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+              </svg>
+            </a>
+            {/* Blogger */}
+            <a
+              href="https://iamrusiru.blogspot.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-[#FF5722] transition-all duration-300 hover:scale-125"
+              aria-label="Blogger"
+            >
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21.976 24H2.026C.9 24 0 23.1 0 21.976V2.026C0 .9.9 0 2.025 0H22.05C23.1 0 24 .9 24 2.025v19.95C24 23.1 23.1 24 21.976 24zM12.006 5.4c-3.32 0-6 2.68-6 6v1.2c0 .33.27.6.6.6h1.8c.33 0 .6-.27.6-.6v-1.2c0-1.66 1.34-3 3-3h1.8c1.66 0 3 1.34 3 3v1.2c0 .33.27.6.6.6h.6c.33 0 .6.27.6.6v.6c0 .33-.27.6-.6.6h-.6c-.33 0-.6.27-.6.6v1.2c0 1.66-1.34 3-3 3h-3.6c-1.66 0-3-1.34-3-3v-.6c0-.33-.27-.6-.6-.6h-1.8c-.33 0-.6.27-.6.6v.6c0 3.32 2.68 6 6 6h3.6c3.32 0 6-2.68 6-6v-4.8c0-3.32-2.68-6-6-6h-1.8z"/>
+              </svg>
+            </a>
+            {/* Spotify */}
+            <a
+              href="https://open.spotify.com/user/31ihlph5wpwcdblzhklpoc3evmy4"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-[#1DB954] transition-all duration-300 hover:scale-125"
+              aria-label="Spotify"
+            >
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+              </svg>
+            </a>
+          </div>
+
+          {/* Logo */}
+          <a href="#" className="text-3xl font-display font-bold gradient-text">
+            RR.
+          </a>
+
+          {/* Copyright */}
+          <p className="text-sm text-muted-foreground">
+            © {currentYear} Rusiru Rathmina. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
