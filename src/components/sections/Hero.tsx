@@ -59,29 +59,29 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <div
-              className="flex flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center opacity-0 animate-fade-in"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center opacity-0 animate-fade-in mb-16 sm:mb-0"
               style={{ animationDelay: '0.8s' }}
             >
               <Button
                 onClick={handleScrollToProjects}
                 size="lg"
-                className="gradient-bg text-white px-4 sm:px-6 py-5 sm:py-6 text-sm sm:text-base font-semibold rounded-full hover:opacity-90 transition-all duration-300 hover:scale-105 glow group"
+                className="gradient-bg text-white px-6 py-5 sm:py-6 text-sm sm:text-base font-semibold rounded-full hover:opacity-90 transition-all duration-300 hover:scale-105 glow group w-full sm:w-auto"
               >
                 View Work
-                <ArrowRight className="ml-1 sm:ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
                 asChild
                 variant="outline"
                 size="lg"
-                className="px-4 sm:px-6 py-5 sm:py-6 text-sm sm:text-base font-semibold rounded-full border-2 hover:bg-primary/5 transition-all duration-300 hover:scale-105"
+                className="px-6 py-5 sm:py-6 text-sm sm:text-base font-semibold rounded-full border-2 hover:bg-primary/5 transition-all duration-300 hover:scale-105 w-full sm:w-auto"
               >
                 <a
                   href="https://drive.google.com/uc?export=download&id=1Rl9tFni6vHsP7K2XW_zeamOr7HMKMabO"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Download className="mr-1 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                  <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                   Resume
                 </a>
               </Button>
@@ -139,7 +139,7 @@ export function Hero() {
 
       {/* Scroll Indicator */}
       <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in"
+        className="absolute bottom-4 sm:bottom-8 left-0 right-0 flex justify-center opacity-0 animate-fade-in"
         style={{ animationDelay: '1.2s' }}
       >
         <a
