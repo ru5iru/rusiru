@@ -95,26 +95,29 @@ export function Skills() {
                 </h3>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div
-                      key={skill.name}
-                      className="group bg-card rounded-xl border border-border p-4 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:scale-105 cursor-default"
-                      style={{
-                        transitionDelay: `${categoryIndex * 100 + skillIndex * 50}ms`,
-                      }}
-                    >
-                      <div className="w-10 h-10 mb-2 group-hover:scale-110 transition-transform duration-300">
-                        <img 
-                          src={skill.icon} 
-                          alt={skill.name} 
-                          className="w-full h-full object-contain"
-                        />
+                  {category.skills.map((skill, skillIndex) => {
+                    const isWideIcon = skill.name === 'SonarQube' || skill.name === 'Laravel';
+                    return (
+                      <div
+                        key={skill.name}
+                        className="group bg-card rounded-xl border border-border p-4 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:scale-105 cursor-default"
+                        style={{
+                          transitionDelay: `${categoryIndex * 100 + skillIndex * 50}ms`,
+                        }}
+                      >
+                        <div className={`${isWideIcon ? 'w-16' : 'w-10'} h-10 mb-2 group-hover:scale-110 transition-transform duration-300`}>
+                          <img 
+                            src={skill.icon} 
+                            alt={skill.name} 
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                        <div className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+                          {skill.name}
+                        </div>
                       </div>
-                      <div className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
-                        {skill.name}
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             ))}
