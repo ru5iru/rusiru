@@ -59,7 +59,7 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <div
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center opacity-0 animate-fade-in mb-16 sm:mb-0"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center opacity-0 animate-fade-in pb-20 lg:pb-0"
               style={{ animationDelay: '0.8s' }}
             >
               <Button
