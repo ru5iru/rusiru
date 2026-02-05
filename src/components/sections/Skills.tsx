@@ -97,6 +97,7 @@ export function Skills() {
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                   {category.skills.map((skill, skillIndex) => {
                     const isWideIcon = skill.name === 'SonarQube' || skill.name === 'Laravel';
+                    const isDarkIcon = ['Kafka', 'Symfony', 'Yii'].includes(skill.name);
                     return (
                       <div
                         key={skill.name}
@@ -105,11 +106,11 @@ export function Skills() {
                           transitionDelay: `${categoryIndex * 100 + skillIndex * 50}ms`,
                         }}
                       >
-                        <div className={`${isWideIcon ? 'w-16' : 'w-10'} h-10 mb-2 group-hover:scale-110 transition-transform duration-300`}>
+                        <div className={`${isWideIcon ? 'w-20' : 'w-10'} h-10 mb-2 group-hover:scale-110 transition-transform duration-300`}>
                           <img 
                             src={skill.icon} 
                             alt={skill.name} 
-                            className="w-full h-full object-contain"
+                            className={`w-full h-full object-contain ${isDarkIcon ? 'dark:invert dark:brightness-200' : ''}`}
                           />
                         </div>
                         <div className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">

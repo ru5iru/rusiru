@@ -1,5 +1,7 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { GraduationCap, Award, Calendar } from 'lucide-react';
+import ucscLogo from '@/assets/logos/ucsc-logo.png';
+import mcgLogo from '@/assets/logos/mcg-logo.png';
 
 const education = [
   {
@@ -7,7 +9,7 @@ const education = [
     degree: 'Bachelor of Science in Computer Science',
     period: 'May 2021 - October 2024',
     gpa: 'GPA: 3.01',
-    logo: '🎓',
+    logo: ucscLogo,
   },
   {
     institution: 'Mahinda College, Galle',
@@ -17,7 +19,7 @@ const education = [
       { title: 'A/L Results', value: 'A B C | Z-Score: 1.3084' },
       { title: 'O/L Results', value: '8A 1B' },
     ],
-    logo: '🏫',
+    logo: mcgLogo,
   },
 ];
 
@@ -54,7 +56,9 @@ export function Education() {
                   <div className="absolute top-0 right-0 w-32 h-32 gradient-bg opacity-5 rounded-full blur-2xl group-hover:opacity-10 transition-opacity" />
 
                   {/* Logo */}
-                  <div className="text-5xl mb-6">{edu.logo}</div>
+                  <div className="w-12 h-12 mb-6">
+                    <img src={edu.logo} alt={edu.institution} className="w-full h-full object-contain" />
+                  </div>
 
                   {/* Institution */}
                   <h3 className="text-xl font-display font-bold text-foreground mb-2">
