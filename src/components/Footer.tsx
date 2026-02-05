@@ -2,7 +2,6 @@ import {
   Linkedin, 
   Github, 
   Facebook, 
-  Twitter,
 } from 'lucide-react';
 
 const DiscordIcon = ({ className }: { className?: string }) => (
@@ -11,12 +10,18 @@ const DiscordIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const XIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+  </svg>
+);
+
 const socialLinks = [
   { href: 'https://www.linkedin.com/in/ru5iru', icon: Linkedin, label: 'LinkedIn', color: 'hover:text-[#0077B5]' },
   { href: 'https://github.com/ru5iru', icon: Github, label: 'GitHub', color: 'hover:text-foreground' },
   { href: 'https://www.discordapp.com/users/Rusiru#4036', icon: DiscordIcon, label: 'Discord', color: 'hover:text-[#5865F2]' },
   { href: 'https://web.facebook.com/ru5iru', icon: Facebook, label: 'Facebook', color: 'hover:text-[#1877F2]' },
-  { href: 'https://twitter.com/ru5iru', icon: Twitter, label: 'Twitter', color: 'hover:text-foreground' },
+  { href: 'https://twitter.com/ru5iru', icon: XIcon, label: 'X', color: 'hover:text-foreground' },
 ];
 
 export function Footer() {
