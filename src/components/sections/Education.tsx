@@ -27,7 +27,7 @@ export function Education() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="education" className="py-24 md:py-32 relative overflow-hidden">
+    <section id="education" className="py-24 md:py-32 relative overflow-hidden" aria-label="Education of Rusiru Rathmina">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />

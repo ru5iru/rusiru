@@ -33,7 +33,7 @@ export function Experience() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="experience" className="py-24 md:py-32 bg-muted/30 relative overflow-hidden">
+    <section id="experience" className="py-24 md:py-32 bg-muted/30 relative overflow-hidden" aria-label="Work Experience of Rusiru Rathmina">
       {/* Background decoration */}
       <div className="absolute top-1/2 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -translate-y-1/2" />
 

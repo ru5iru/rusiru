@@ -12,7 +12,7 @@ export function About() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="about" className="py-24 md:py-32 relative overflow-hidden">
+    <section id="about" className="py-24 md:py-32 relative overflow-hidden" aria-label="About Rusiru Rathmina" itemScope itemType="https://schema.org/AboutPage">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />

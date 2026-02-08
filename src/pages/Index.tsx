@@ -11,16 +11,20 @@ import { Footer } from '@/components/Footer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" itemScope itemType="https://schema.org/ProfilePage">
+      <meta itemProp="dateCreated" content="2024-01-01" />
+      <meta itemProp="dateModified" content="2026-02-08" />
       <Navbar />
-      <Hero />
-      <About />
-      <Experience />
-      <Education />
-      <Projects />
-      <Skills />
-      <Blog />
-      <Contact />
+      <main>
+        <Hero />
+        <About />
+        <Experience />
+        <Education />
+        <Projects />
+        <Skills />
+        <Blog />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );
