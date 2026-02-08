@@ -30,7 +30,7 @@ export function Blog() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="blog" className="py-24 md:py-32 bg-muted/30 relative overflow-hidden">
+    <section id="blog" className="py-24 md:py-32 bg-muted/30 relative overflow-hidden" aria-label="Blog posts by Rusiru Rathmina">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
 
@@ -46,15 +46,18 @@ export function Blog() {
 
           <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
             {blogPosts.map((post, index) => (
-              <a
+              <article
                 key={post.title}
-                href={post.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`group bg-card rounded-2xl border border-border p-6 hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-2 ${
+                className={`group bg-card rounded-2xl border border-border hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-2 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
+              >
+              <a
+                href={post.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-6"
               >
                 {/* Date & Read Time */}
                 <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
@@ -83,7 +86,8 @@ export function Blog() {
                   Read More
                   <ExternalLink className="w-4 h-4" />
                 </div>
-              </a>
+                </a>
+              </article>
             ))}
           </div>
 

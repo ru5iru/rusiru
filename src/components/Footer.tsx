@@ -74,9 +74,9 @@ export function Footer() {
                   key={link.label}
                   href={link.href}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer me"
                   className={`text-muted-foreground ${link.color} transition-all duration-300 hover:scale-125`}
-                  aria-label={link.label}
+                  aria-label={`Visit Rusiru's ${link.label} profile`}
                 >
                   <Icon className="w-6 h-6" />
                 </a>
