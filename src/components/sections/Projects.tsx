@@ -78,7 +78,7 @@ export function Projects() {
   const displayedProjects = showAll ? projects : projects.filter((p) => p.featured);
 
   return (
-    <section id="projects" className="py-24 md:py-32 bg-muted/30 relative overflow-hidden">
+    <section id="projects" className="py-24 md:py-32 bg-muted/30 relative overflow-hidden" aria-label="Projects by Rusiru Rathmina">
       {/* Background decoration */}
       <div className="absolute top-1/4 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 left-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
@@ -95,7 +95,7 @@ export function Projects() {
 
           <div className="max-w-5xl mx-auto space-y-8">
             {displayedProjects.map((project, index) => (
-              <div
+              <article
                 key={project.title}
                 className={`group bg-card rounded-2xl border border-border p-8 hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -152,7 +152,7 @@ export function Projects() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </article>
             ))}
           </div>
 

@@ -11,7 +11,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" aria-label="Introduction to Rusiru Rathmina, Full-Stack Software Engineer">
       {/* Animated Background */}
       <div className="absolute inset-0 mesh-gradient" />
       <div className="blob blob-1" />
