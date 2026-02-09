@@ -109,7 +109,10 @@ export function Skills() {
                         <div className={`${isWideIcon ? 'w-20' : 'w-10'} h-10 mb-2 group-hover:scale-110 transition-transform duration-300`}>
                           <img 
                             src={skill.icon} 
-                            alt={skill.name} 
+                            alt={`${skill.name} - ${category.title} skill used by Rusiru Rathmina`}
+                            loading="lazy"
+                            width="40"
+                            height="40"
                             className={`w-full h-full object-contain ${isDarkIcon ? 'dark:invert dark:brightness-200' : ''}`}
                           />
                         </div>

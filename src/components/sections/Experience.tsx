@@ -94,7 +94,7 @@ export function Experience() {
 
                     <div className={`flex items-center gap-2 text-sm text-muted-foreground mb-4 ${index % 2 === 0 ? 'md:justify-end' : ''}`}>
                       <Calendar className="w-4 h-4" />
-                      <span>{exp.period}</span>
+                      <time dateTime={exp.isCurrent ? '2024-05' : '2023-11'}>{exp.period}</time>
                       {exp.isCurrent && (
                         <span className="px-2 py-0.5 rounded-full text-xs font-medium gradient-bg text-white">
                           Current
