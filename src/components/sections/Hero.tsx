@@ -123,7 +123,8 @@ export function Hero() {
                 <div className="w-full h-full rounded-full overflow-hidden bg-background">
                   <img
                     src={profilePhoto}
-                    alt="Rusiru Rathmina"
+                    alt="Rusiru Rathmina - Full-Stack Software Engineer based in Colombo, Sri Lanka"
+                    loading="eager"
                     className="w-full h-full object-cover object-center"
                   />
                 </div>

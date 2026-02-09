@@ -57,7 +57,7 @@ export function Education() {
 
                   {/* Logo */}
                   <div className="w-12 h-12 mb-6">
-                    <img src={edu.logo} alt={edu.institution} className="w-full h-full object-contain" />
+                    <img src={edu.logo} alt={`${edu.institution} logo - ${edu.degree}`} className="w-full h-full object-contain" loading="lazy" />
                   </div>
 
                   {/* Institution */}
@@ -74,7 +74,7 @@ export function Education() {
                   {/* Period */}
                   <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
                     <Calendar className="w-4 h-4" />
-                    <span>{edu.period}</span>
+                    <time dateTime={index === 0 ? '2021/2024' : '2010/2019'}>{edu.period}</time>
                   </div>
 
                   {/* GPA or Achievements */}

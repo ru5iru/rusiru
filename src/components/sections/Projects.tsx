@@ -113,6 +113,7 @@ export function Projects() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`View ${project.title} source code on GitHub`}
                         className="text-muted-foreground hover:text-foreground transition-colors"
                       >
                         <Github className="w-5 h-5" />
@@ -123,6 +124,7 @@ export function Projects() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`Visit ${project.title} live website`}
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
                         <ExternalLink className="w-5 h-5" />
