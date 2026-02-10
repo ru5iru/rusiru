@@ -1,4 +1,4 @@
-import { ArrowDown, Download, ArrowRight } from 'lucide-react';
+import { ArrowDown, ArrowRight, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import profilePhoto from '@/assets/profile/profile-photo.jpg';
 
@@ -11,7 +11,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" aria-label="Introduction to Rusiru Rathmina, Full-Stack Software Engineer">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20" aria-label="Introduction to Rusiru Rathmina, Full-Stack Software Engineer">
       {/* Animated Background */}
       <div className="absolute inset-0 mesh-gradient" />
       <div className="blob blob-1" />
@@ -30,37 +30,71 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
-          {/* Left side - Text Content */}
-          <div className="text-center lg:text-left max-w-xl order-2 lg:order-1">
-            {/* Greeting */}
-            <p
-              className="text-base md:text-lg text-muted-foreground mb-3 opacity-0 animate-fade-in"
-              style={{ animationDelay: '0.2s' }}
-            >
-              Hi, I'm
-            </p>
+        <div className="flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
+          
+          {/* Left - Profile Card */}
+          <div
+            className="opacity-0 animate-fade-in flex flex-row lg:flex-col items-center lg:items-start gap-4 lg:gap-5 lg:pt-4"
+            style={{ animationDelay: '0.3s' }}
+          >
+            {/* Profile Image */}
+            <div className="relative shrink-0">
+              <div className="absolute inset-0 rounded-full gradient-bg opacity-20 blur-xl scale-125" />
+              <div className="relative w-28 h-28 sm:w-32 sm:h-32 lg:w-44 lg:h-44 rounded-full overflow-hidden border-2 border-primary/30 shadow-xl">
+                <img
+                  src={profilePhoto}
+                  alt="Rusiru Rathmina - Full-Stack Software Engineer based in Colombo, Sri Lanka"
+                  loading="eager"
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+            </div>
 
-            {/* Name */}
+            {/* Name & Short Bio */}
+            <div className="lg:mt-1">
+              <h2
+                className="text-lg sm:text-xl font-bold text-foreground opacity-0 animate-fade-in"
+                style={{ animationDelay: '0.5s' }}
+              >
+                Rusiru Rathmina
+              </h2>
+              <p
+                className="text-sm text-muted-foreground max-w-[220px] mt-1 opacity-0 animate-fade-in"
+                style={{ animationDelay: '0.6s' }}
+              >
+                Full-Stack Software Engineer with a passion for building scalable, user-centric applications.
+              </p>
+            </div>
+          </div>
+
+          {/* Right - Headline & Description */}
+          <div className="flex-1 lg:pt-4">
+            {/* Large Headline */}
             <h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-extrabold mb-3 opacity-0 animate-fade-in-up"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold leading-[1.1] mb-6 opacity-0 animate-fade-in-up"
               style={{ animationDelay: '0.4s' }}
             >
-              <span className="gradient-text">Rusiru Rathmina</span>
+              <span className="gradient-text">Building Robust</span>
+              <br />
+              <span className="gradient-text">Full-Stack Solutions</span>
+              <br />
+              <span className="text-foreground/80">for Modern Web</span>
             </h1>
 
-            {/* Title */}
-            <h2
-              className="text-base sm:text-lg md:text-xl text-muted-foreground font-medium mb-6 opacity-0 animate-fade-in"
-              style={{ animationDelay: '0.6s' }}
+            {/* Description */}
+            <p
+              className="text-base sm:text-lg text-muted-foreground max-w-xl mb-8 leading-relaxed opacity-0 animate-fade-in"
+              style={{ animationDelay: '0.7s' }}
             >
-              Full-Stack Software Engineer
-            </h2>
+              As a software engineer and problem solver, I specialize in developing
+              high-performance web applications, RESTful APIs, and enterprise solutions
+              that help businesses scale and succeed.
+            </p>
 
             {/* CTA Buttons */}
             <div
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center opacity-0 animate-fade-in pb-20 lg:pb-0"
-              style={{ animationDelay: '0.8s' }}
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start opacity-0 animate-fade-in"
+              style={{ animationDelay: '0.9s' }}
             >
               <Button
                 onClick={handleScrollToProjects}
@@ -86,54 +120,6 @@ export function Hero() {
                 </a>
               </Button>
             </div>
-          </div>
-
-          {/* Right side - Profile Image with Orbital Rings */}
-          <div
-            className="relative order-1 lg:order-2 opacity-0 animate-fade-in"
-            style={{ animationDelay: '0.5s' }}
-          >
-            {/* Outer orbital ring */}
-            <div className="absolute inset-0 -m-6 md:-m-8 rounded-full border border-primary/20 animate-spin-slow" />
-            
-            {/* Middle orbital ring */}
-            <div 
-              className="absolute inset-0 -m-3 md:-m-4 rounded-full border border-accent/30 animate-spin-slow"
-              style={{ animationDirection: 'reverse', animationDuration: '25s' }}
-            />
-            
-            {/* Orbital dots */}
-            <div className="absolute inset-0 -m-6 md:-m-8 animate-spin-slow">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 md:w-3 md:h-3 rounded-full gradient-bg" />
-            </div>
-            <div 
-              className="absolute inset-0 -m-3 md:-m-4 animate-spin-slow"
-              style={{ animationDirection: 'reverse', animationDuration: '25s' }}
-            >
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-accent" />
-            </div>
-
-            {/* Gradient glow behind image */}
-            <div className="absolute inset-0 rounded-full gradient-bg opacity-20 blur-2xl scale-110" />
-            
-            {/* Profile Image Container - Smaller sizes */}
-            <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-4 border-background shadow-2xl">
-              {/* Inner gradient border */}
-              <div className="absolute inset-0 rounded-full p-1 gradient-bg">
-                <div className="w-full h-full rounded-full overflow-hidden bg-background">
-                  <img
-                    src={profilePhoto}
-                    alt="Rusiru Rathmina - Full-Stack Software Engineer based in Colombo, Sri Lanka"
-                    loading="eager"
-                    className="w-full h-full object-cover object-center"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Decorative accent */}
-            <div className="absolute -bottom-2 -right-2 w-12 h-12 md:w-16 md:h-16 rounded-full gradient-bg opacity-60 blur-xl" />
-            <div className="absolute -top-2 -left-2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-accent opacity-40 blur-xl" />
           </div>
         </div>
       </div>
