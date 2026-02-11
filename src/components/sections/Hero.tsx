@@ -40,7 +40,7 @@ export function Hero() {
             {/* Profile Image */}
             <div className="relative shrink-0">
               <div className="absolute inset-0 rounded-full gradient-bg opacity-20 blur-xl scale-125" />
-              <div className="relative w-28 h-28 sm:w-32 sm:h-32 lg:w-44 lg:h-44 rounded-full overflow-hidden border-2 border-primary/30 shadow-xl">
+              <div className="relative w-28 h-28 sm:w-32 sm:h-32 lg:w-56 lg:h-56 rounded-full overflow-hidden border-2 border-primary/30 shadow-xl">
                 <img
                   src={profilePhoto}
                   alt="Rusiru Rathmina - Full-Stack Software Engineer based in Colombo, Sri Lanka"
