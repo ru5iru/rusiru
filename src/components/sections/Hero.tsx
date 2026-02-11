@@ -30,7 +30,7 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-16">
           
           {/* Left - Profile Card */}
           <div
