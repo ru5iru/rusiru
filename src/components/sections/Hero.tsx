@@ -11,7 +11,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative flex items-center overflow-hidden pt-28 pb-20 lg:pt-32 lg:pb-28" aria-label="Introduction to Rusiru Rathmina, Full-Stack Software Engineer">
+    <section className="relative overflow-hidden py-24 md:py-32 pt-32 md:pt-40" aria-label="Introduction to Rusiru Rathmina, Full-Stack Software Engineer">
       {/* Animated Background */}
       <div className="absolute inset-0 mesh-gradient" />
       <div className="blob blob-1" />
@@ -30,8 +30,8 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-16">
-          
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+
           {/* Left - Profile Card */}
           <div
             className="opacity-0 animate-fade-in flex flex-row lg:flex-col items-center lg:items-start gap-4 lg:gap-5 lg:pt-4"
