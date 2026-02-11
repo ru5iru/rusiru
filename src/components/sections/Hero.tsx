@@ -29,12 +29,12 @@ export function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+      <div className="relative z-10 container mx-auto px-6 flex flex-col items-center">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 max-w-5xl w-full">
 
           {/* Left - Profile Card */}
           <div
-            className="opacity-0 animate-fade-in flex flex-row lg:flex-col items-center lg:items-start gap-4 lg:gap-5 lg:pt-4"
+            className="opacity-0 animate-fade-in flex flex-row lg:flex-col items-center lg:items-start gap-4 lg:gap-5"
             style={{ animationDelay: '0.3s' }}
           >
             {/* Profile Image */}
@@ -68,7 +68,7 @@ export function Hero() {
           </div>
 
           {/* Right - Headline & Description */}
-          <div className="flex-1 lg:pt-4">
+          <div className="flex-1">
             {/* Large Headline */}
             <h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold leading-[1.1] mb-6 opacity-0 animate-fade-in-up"
@@ -122,24 +122,24 @@ export function Hero() {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Scroll Indicator */}
-      <div
-        className="absolute bottom-4 sm:bottom-8 left-0 right-0 flex justify-center opacity-0 animate-fade-in"
-        style={{ animationDelay: '1.2s' }}
-      >
-        <a
-          href="#about"
-          onClick={(e) => {
-            e.preventDefault();
-            document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
-          }}
-          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
+        {/* Scroll Indicator */}
+        <div
+          className="mt-16 flex justify-center opacity-0 animate-fade-in"
+          style={{ animationDelay: '1.2s' }}
         >
-          <span className="text-sm font-medium">Scroll</span>
-          <ArrowDown className="h-5 w-5 animate-bounce-subtle" />
-        </a>
+          <a
+            href="#about"
+            onClick={(e) => {
+              e.preventDefault();
+              document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
+          >
+            <span className="text-sm font-medium">Scroll</span>
+            <ArrowDown className="h-5 w-5 animate-bounce-subtle" />
+          </a>
+        </div>
       </div>
     </section>
   );
