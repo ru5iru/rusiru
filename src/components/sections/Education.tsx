@@ -68,9 +68,9 @@ export function Education() {
                   className="w-full py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-0 text-left group cursor-pointer"
                 >
                   {/* Degree badge */}
-                  <div className="md:w-1/3 shrink-0 flex items-center gap-3">
-                    <img src={edu.logo} alt={`${edu.institution} logo`} className="w-8 h-8 object-contain" loading="lazy" />
-                    <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-primary/15 text-primary border border-primary/25">
+                  <div className="md:w-1/3 shrink-0 flex items-center gap-3 min-w-0">
+                    <img src={edu.logo} alt={`${edu.institution} logo`} className="w-8 h-8 object-contain shrink-0" loading="lazy" />
+                    <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-primary/15 text-primary border border-primary/25 break-words whitespace-normal leading-snug">
                       {edu.degree}
                     </span>
                   </div>
