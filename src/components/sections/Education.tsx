@@ -67,12 +67,20 @@ export function Education() {
                   onClick={() => toggle(index)}
                   className="w-full py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-0 text-left group cursor-pointer"
                 >
-                  {/* Degree badge */}
+                  {/* Degree badge + mobile toggle row */}
                   <div className="md:w-1/3 shrink-0 flex items-center gap-3 min-w-0">
                     <img src={edu.logo} alt={`${edu.institution} logo`} className="w-8 h-8 object-contain shrink-0" loading="lazy" />
-                    <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-primary/15 text-primary border border-primary/25 break-words whitespace-normal leading-snug">
+                    <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-primary/15 text-primary border border-primary/25 leading-snug mr-auto">
                       {edu.degree}
                     </span>
+                    {/* Mobile toggle */}
+                    <div className="md:hidden flex items-center justify-center w-8 h-8 rounded-full border border-border shrink-0">
+                      {isOpen ? (
+                        <Minus className="w-3.5 h-3.5 text-muted-foreground" />
+                      ) : (
+                        <Plus className="w-3.5 h-3.5 text-muted-foreground" />
+                      )}
+                    </div>
                   </div>
 
                   {/* Period & Institution */}
@@ -83,24 +91,13 @@ export function Education() {
                     </h3>
                   </div>
 
-                  {/* Toggle icon */}
+                  {/* Desktop toggle icon */}
                   <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full border border-border group-hover:border-primary/50 transition-colors shrink-0 ml-4">
                     {isOpen ? (
                       <Minus className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                     ) : (
                       <Plus className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                     )}
-                  </div>
-
-                  {/* Mobile toggle */}
-                  <div className="md:hidden absolute right-6 top-6">
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full border border-border">
-                      {isOpen ? (
-                        <Minus className="w-3.5 h-3.5 text-muted-foreground" />
-                      ) : (
-                        <Plus className="w-3.5 h-3.5 text-muted-foreground" />
-                      )}
-                    </div>
                   </div>
                 </button>
 
