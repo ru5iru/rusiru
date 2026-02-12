@@ -65,7 +65,7 @@ export function Education() {
               >
                 <button
                   onClick={() => toggle(index)}
-                  className="w-full py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-0 text-left group cursor-pointer"
+                  className="w-full py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-6 text-left group cursor-pointer"
                 >
                   {/* Degree badge + mobile toggle row */}
                   <div className="md:w-1/3 shrink-0 flex items-center gap-3 min-w-0">
