@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowRight, Download } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import profilePhoto from '@/assets/profile/profile-photo.jpg';
 
@@ -123,23 +123,6 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div
-          className="mt-16 flex justify-center opacity-0 animate-fade-in"
-          style={{ animationDelay: '1.2s' }}
-        >
-          <a
-            href="#about"
-            onClick={(e) => {
-              e.preventDefault();
-              document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
-          >
-            <span className="text-sm font-medium">Scroll</span>
-            <ArrowDown className="h-5 w-5 animate-bounce-subtle" />
-          </a>
-        </div>
       </div>
     </section>
   );
