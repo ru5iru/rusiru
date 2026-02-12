@@ -11,7 +11,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden py-24 md:py-32 pt-32 md:pt-40" aria-label="Introduction to Rusiru Rathmina, Full-Stack Software Engineer">
+    <section className="relative overflow-hidden min-h-screen flex items-center pt-20 md:pt-24" aria-label="Introduction to Rusiru Rathmina, Full-Stack Software Engineer">
       {/* Animated Background */}
       <div className="absolute inset-0 mesh-gradient" />
       <div className="blob blob-1" />
