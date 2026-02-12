@@ -8,16 +8,25 @@ const experiences = [
     role: 'Associate Software Engineer',
     period: 'May 2024 — Present',
     isCurrent: true,
-    description:
-      'Contributing to refactoring the Dialog.lk legacy codebase to meet OWASP Top 10 security guidelines and SonarQube quality standards. Implementing secure APIs, caching mechanisms, and performance optimizations within cloud-based environments. Collaborating within agile teams, adhering to CI/CD pipelines and secure software development lifecycle best practices.',
+    description: [
+      'Contributed to refactoring the Dialog.lk legacy codebase to meet OWASP Top 10 security guidelines and SonarQube quality standards.',
+      'Implemented secure APIs, caching mechanisms, and performance optimizations within cloud-based environments.',
+      'Successfully delivered critical change requests under tight timelines while ensuring system stability and code quality.',
+      'Collaborated closely within agile teams, adhering to CI/CD pipelines and secure software development lifecycle best practices.',
+      'Conducted peer code reviews and supported onboarding of new team members to maintain engineering standards.',
+    ],
   },
   {
     company: 'Omobio (Pvt) Ltd',
     role: 'Trainee Full-Stack Developer',
     period: 'November 2023 – May 2024',
     isCurrent: false,
-    description:
-      'Developed a strong foundation in full-stack development while supporting live production systems, including Dialog BizCare and Dialog.lk. Assisted in resolving production issues and bugs to minimize service disruptions by analyzing logs and coordinating with cross-functional teams.',
+    description: [
+      'Developed a strong foundation in full-stack development while supporting live production systems, including Dialog BizCare and Dialog.lk.',
+      'Assisted in resolving production issues and bugs to minimize service disruptions by analyzing logs and coordinating with cross-functional teams.',
+      'Worked under the guidance of senior engineers, following agile practices and established coding standards.',
+      'Participated in requirement analysis, planning, and design of a production automation system for tea factories.',
+    ],
   },
 ];
 
@@ -110,12 +119,17 @@ export function Experience() {
                 {/* Expandable content */}
                 <div
                   className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                    isOpen ? 'max-h-96 opacity-100 pb-6 md:pb-8' : 'max-h-0 opacity-0'
+                    isOpen ? 'max-h-[600px] opacity-100 pb-6 md:pb-8' : 'max-h-0 opacity-0'
                   }`}
                 >
-                  <p className="text-muted-foreground leading-relaxed md:pl-[33.333%] md:pr-14 text-sm md:text-base">
-                    {exp.description}
-                  </p>
+                  <ul className="space-y-2 md:pl-[33.333%] md:pr-14">
+                    {exp.description.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3 text-muted-foreground text-sm md:text-base">
+                        <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-primary mt-2" />
+                        <span className="leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             );
