@@ -3,7 +3,6 @@ import { Code2, Cloud, Shield, Rocket } from 'lucide-react';
 
 const stats = [
   { value: '2+', label: 'Years Experience', icon: Rocket },
-  { value: '10+', label: 'Technologies Integrated', icon: Code2 },
   { value: '25+', label: 'Technologies', icon: Cloud },
   { value: '100%', label: 'Code Quality', icon: Shield },
 ];
