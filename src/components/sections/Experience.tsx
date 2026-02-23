@@ -68,9 +68,9 @@ export function Experience() {
           {experiences.map((exp, index) => {
             const isOpen = openIndex === index;
             return (
-              <div
+              <article
                 key={`${exp.company}-${exp.role}`}
-                className={`border-b border-border transition-all duration-700 ${
+                className={`border-b border-border transition-all duration-700 relative ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${(index + 1) * 150}ms` }}
@@ -89,7 +89,9 @@ export function Experience() {
 
                   {/* Date & Company */}
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-muted-foreground mb-1">{exp.period}</p>
+                    <p className="text-sm text-muted-foreground mb-1">
+                      <time dateTime={exp.isCurrent ? '2024-05' : '2023-11'}>{exp.period}</time>
+                    </p>
                     <h3 className="text-xl md:text-2xl font-display font-bold text-foreground">
                       {exp.company}
                     </h3>
@@ -105,7 +107,7 @@ export function Experience() {
                   </div>
 
                   {/* Mobile toggle */}
-                  <div className="md:hidden absolute right-6 top-6">
+                  <div className="md:hidden absolute right-0 top-6">
                     <div className="flex items-center justify-center w-8 h-8 rounded-full border border-border">
                       {isOpen ? (
                         <Minus className="w-3.5 h-3.5 text-muted-foreground" />
@@ -131,7 +133,7 @@ export function Experience() {
                     ))}
                   </ul>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>

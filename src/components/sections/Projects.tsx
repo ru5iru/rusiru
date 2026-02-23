@@ -107,9 +107,9 @@ export function Projects() {
           {featuredProjects.map((project, index) => {
             const isOpen = openIndex === index;
             return (
-              <div
+              <article
                 key={project.title}
-                className={`border-b border-border transition-all duration-700 ${
+                className={`border-b border-border transition-all duration-700 relative ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${(index + 1) * 150}ms` }}
@@ -143,7 +143,7 @@ export function Projects() {
                   <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full border border-border group-hover:border-primary/50 transition-colors shrink-0 ml-4">
                     {isOpen ? <Minus className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" /> : <Plus className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />}
                   </div>
-                  <div className="md:hidden absolute right-6 top-6">
+                  <div className="md:hidden absolute right-0 top-6">
                     <div className="flex items-center justify-center w-8 h-8 rounded-full border border-border">
                       {isOpen ? <Minus className="w-3.5 h-3.5 text-muted-foreground" /> : <Plus className="w-3.5 h-3.5 text-muted-foreground" />}
                     </div>
@@ -159,7 +159,7 @@ export function Projects() {
                     ))}
                   </ul>
                 </div>
-              </div>
+              </article>
             );
           })}
 
@@ -173,9 +173,9 @@ export function Projects() {
               const globalIndex = featuredProjects.length + i;
               const isOpen = openIndex === globalIndex;
               return (
-                <div
+                <article
                   key={project.title}
-                  className={`border-b border-border transition-all duration-500 ${
+                  className={`border-b border-border transition-all duration-500 relative ${
                     showAll ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                   }`}
                   style={{ transitionDelay: showAll ? `${i * 100}ms` : '0ms' }}
@@ -209,7 +209,7 @@ export function Projects() {
                     <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full border border-border group-hover:border-primary/50 transition-colors shrink-0 ml-4">
                       {isOpen ? <Minus className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" /> : <Plus className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />}
                     </div>
-                    <div className="md:hidden absolute right-6 top-6">
+                    <div className="md:hidden absolute right-0 top-6">
                       <div className="flex items-center justify-center w-8 h-8 rounded-full border border-border">
                         {isOpen ? <Minus className="w-3.5 h-3.5 text-muted-foreground" /> : <Plus className="w-3.5 h-3.5 text-muted-foreground" />}
                       </div>
@@ -225,7 +225,7 @@ export function Projects() {
                       ))}
                     </ul>
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>
