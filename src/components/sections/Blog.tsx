@@ -6,21 +6,24 @@ const blogPosts = [
   {
     title: 'Getting Started with Docker and Kubernetes',
     excerpt: 'A comprehensive guide to containerization and orchestration for beginners.',
-    date: '2024',
+    date: '2024-06-15',
+    dateLabel: 'Jun 2024',
     readTime: '8 min read',
     link: 'https://iamrusiru.blogspot.com/',
   },
   {
     title: 'Building Scalable APIs with Spring Boot',
     excerpt: 'Best practices for designing and implementing RESTful APIs that scale.',
-    date: '2024',
+    date: '2024-04-20',
+    dateLabel: 'Apr 2024',
     readTime: '10 min read',
     link: 'https://iamrusiru.blogspot.com/',
   },
   {
     title: 'Modern React Patterns and Best Practices',
     excerpt: 'Exploring the latest patterns in React development for cleaner code.',
-    date: '2024',
+    date: '2024-03-10',
+    dateLabel: 'Mar 2024',
     readTime: '6 min read',
     link: 'https://iamrusiru.blogspot.com/',
   },
@@ -61,9 +64,9 @@ export function Blog() {
               >
                 {/* Date & Read Time */}
                 <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
-                  <time dateTime="2024" className="flex items-center gap-1">
+                  <time dateTime={post.date} className="flex items-center gap-1">
                     <Calendar className="w-3 h-3" />
-                    {post.date}
+                    {post.dateLabel}
                   </time>
                   <span className="flex items-center gap-1">
                     <Clock className="w-3 h-3" />
