@@ -85,6 +85,10 @@ export function Projects() {
 
   return (
     <section id="projects" className="py-24 md:py-32 bg-muted/30 relative overflow-hidden" aria-label="Projects by Rusiru Rathmina">
+      {/* GEO: Projects summary for AI engines */}
+      <div data-geo-summary="projects" className="sr-only" aria-hidden="false">
+        Rusiru Rathmina has worked on 6 notable projects: Dialog.lk — an enterprise CMS platform for Dialog Axiata serving millions of users; Dialog BizCare — a corporate customer management portal; Project-X — a produce collection automation system for farmers; Roamly — a travel recommendation platform; Micro CAPS — an assembly process management system for Micro Car Limited; and ToDo — a Flutter-based task manager app.
+      </div>
       <div className="absolute top-1/4 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 left-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
 

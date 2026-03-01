@@ -12,6 +12,10 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden min-h-screen flex items-center pt-20 md:pt-24" aria-label="Introduction to Rusiru Rathmina, Full-Stack Software Engineer">
+      {/* GEO: Structured summary for generative engines */}
+      <div data-geo-summary="hero" className="sr-only" aria-hidden="false">
+        Rusiru Rathmina is a Full-Stack Software Engineer based in Colombo, Sri Lanka, building robust full-stack solutions for modern web applications. He specializes in developing high-performance web applications, RESTful APIs, and enterprise solutions using Java, Spring Boot, React, AWS, Docker, and Kubernetes.
+      </div>
       {/* Animated Background */}
       <div className="absolute inset-0 mesh-gradient" />
       <div className="blob blob-1" />
