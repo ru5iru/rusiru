@@ -84,7 +84,7 @@ export function Skills() {
             Technical <span className="gradient-text">Skills</span>
           </h2>
 
-          <div className="max-w-5xl mx-auto space-y-10">
+          <div className="max-w-4xl mx-auto space-y-6">
             {skillCategories.map((category, categoryIndex) => (
               <div
                 key={category.title}
@@ -93,36 +93,28 @@ export function Skills() {
                 }`}
                 style={{ transitionDelay: `${categoryIndex * 100}ms` }}
               >
-                <h3 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-3">
-                  <span className="w-8 h-0.5 gradient-bg rounded-full" />
-                  {category.title}
-                </h3>
-
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {category.skills.map((skill, skillIndex) => {
-                    const isWideIcon = skill.name === 'SonarQube' || skill.name === 'Laravel';
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mr-2 min-w-[100px]">
+                    {category.title}
+                  </span>
+                  {category.skills.map((skill) => {
                     const isDarkIcon = ['Kafka', 'Symfony', 'Yii'].includes(skill.name);
                     return (
                       <div
                         key={skill.name}
-                        className="group bg-card rounded-xl border border-border p-4 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:scale-105 cursor-default"
-                        style={{
-                          transitionDelay: `${categoryIndex * 100 + skillIndex * 50}ms`,
-                        }}
+                        className="group inline-flex items-center gap-2 bg-card border border-border rounded-full px-3 py-1.5 hover:border-primary/50 hover:bg-accent/50 transition-all duration-300 cursor-default"
                       >
-                        <div className={`${isWideIcon ? 'w-20' : 'w-10'} h-10 mb-2 group-hover:scale-110 transition-transform duration-300`}>
-                          <img 
-                            src={skill.icon} 
-                            alt={`${skill.name} - ${category.title} skill used by Rusiru Rathmina`}
-                            loading="lazy"
-                            width="40"
-                            height="40"
-                            className={`w-full h-full object-contain ${isDarkIcon ? 'dark:invert dark:brightness-200' : ''}`}
-                          />
-                        </div>
-                        <div className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+                        <img
+                          src={skill.icon}
+                          alt={`${skill.name}`}
+                          loading="lazy"
+                          width="18"
+                          height="18"
+                          className={`w-[18px] h-[18px] object-contain ${isDarkIcon ? 'dark:invert dark:brightness-200' : ''}`}
+                        />
+                        <span className="text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors whitespace-nowrap">
                           {skill.name}
-                        </div>
+                        </span>
                       </div>
                     );
                   })}
