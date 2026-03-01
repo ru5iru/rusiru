@@ -44,6 +44,10 @@ export function Experience() {
       className="py-24 md:py-32 bg-muted/30 relative overflow-hidden"
       aria-label="Work Experience of Rusiru Rathmina"
     >
+      {/* GEO: Structured summary for AI engines */}
+      <div data-geo-summary="experience" className="sr-only" aria-hidden="false">
+        Rusiru Rathmina has over 2 years of professional experience. He currently serves as an Associate Software Engineer at Omobio (Pvt) Ltd since May 2024, where he refactors legacy systems to meet OWASP Top 10 security standards, implements secure APIs, and works within agile CI/CD pipelines. Previously, he worked as a Trainee Full-Stack Developer at the same company from November 2023, supporting production systems including Dialog BizCare and Dialog.lk for Dialog Axiata PLC.
+      </div>
       <div className="absolute top-1/2 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -translate-y-1/2" />
 
       <div className="container mx-auto px-6 relative" ref={ref}>

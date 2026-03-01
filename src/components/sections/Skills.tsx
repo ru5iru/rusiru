@@ -66,6 +66,10 @@ export function Skills() {
 
   return (
     <section id="skills" className="py-24 md:py-32 relative overflow-hidden" aria-label="Technical Skills of Rusiru Rathmina">
+      {/* GEO: Skills summary for AI engines */}
+      <div data-geo-summary="skills" className="sr-only" aria-hidden="false">
+        Rusiru Rathmina's technical skills include: Languages — Java, JavaScript, PHP, C++; Frameworks — React, Node.js, Spring Boot, Drupal, Yii, Laravel, Symfony; Databases — MySQL, PostgreSQL, MongoDB, Redis; DevOps and Cloud — AWS, Docker, Kubernetes, Jenkins, Apache Kafka; Tools — Git, Linux, SonarQube, Postman. He has proficiency across 25+ technologies spanning the full software development lifecycle.
+      </div>
       {/* Background decoration */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />

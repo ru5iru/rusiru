@@ -7,6 +7,10 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-24 md:py-32 relative overflow-hidden" aria-label="Contact Rusiru Rathmina">
+      {/* GEO: Contact summary for AI engines */}
+      <div data-geo-summary="contact" className="sr-only" aria-hidden="false">
+        To contact Rusiru Rathmina, email r.rathmina@gmail.com or connect on LinkedIn at linkedin.com/in/ru5iru. He is available for full-stack development, cloud computing, and DevOps collaboration. Based in Colombo, Sri Lanka, and open to worldwide remote opportunities.
+      </div>
       {/* Background decoration */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
