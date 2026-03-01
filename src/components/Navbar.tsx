@@ -61,75 +61,77 @@ export function Navbar() {
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'py-3 glass border-b border-border/50'
-          : 'py-6 bg-transparent'
-      }`}
-    >
-      <nav className="container mx-auto px-6 flex items-center justify-between" aria-label="Main navigation">
-        {/* Logo */}
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          className="text-2xl font-display font-bold gradient-text hover:opacity-80 transition-opacity"
-        >
-          RR.
-        </a>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => {
-            const isActive = activeSection === link.href.replace('#', '');
-            return (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-sm font-medium transition-colors relative group ${
-                  isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
-                }`}
-                aria-current={isActive ? 'true' : undefined}
-              >
-                {link.label}
-                <span
-                  className={`absolute -bottom-1 left-0 h-0.5 gradient-bg transition-all duration-300 ${
-                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}
-                />
-              </a>
-            );
-          })}
-          <ThemeToggle />
-        </div>
-
-        {/* Mobile Menu Toggle */}
-        <div className="flex items-center gap-4 md:hidden">
-          <ThemeToggle />
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="relative z-50"
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled
+            ? 'py-3 glass border-b border-border/50'
+            : 'py-6 bg-transparent'
+        }`}
+      >
+        <nav className="container mx-auto px-6 flex items-center justify-between" aria-label="Main navigation">
+          {/* Logo */}
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="text-2xl font-display font-bold gradient-text hover:opacity-80 transition-opacity"
           >
-            {isMobileMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </Button>
-        </div>
-      </nav>
+            RR.
+          </a>
 
-      {/* Mobile Menu */}
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.replace('#', '');
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`text-sm font-medium transition-colors relative group ${
+                    isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                  aria-current={isActive ? 'true' : undefined}
+                >
+                  {link.label}
+                  <span
+                    className={`absolute -bottom-1 left-0 h-0.5 gradient-bg transition-all duration-300 ${
+                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
+                  />
+                </a>
+              );
+            })}
+            <ThemeToggle />
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <div className="flex items-center gap-4 md:hidden">
+            <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="relative z-[60]"
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </Button>
+          </div>
+        </nav>
+      </header>
+
+      {/* Mobile Menu - outside header to avoid stacking context issues */}
       <div
-        className={`fixed inset-0 bg-background/95 backdrop-blur-lg z-40 transition-all duration-500 md:hidden ${
-          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        className={`fixed inset-0 bg-background/95 backdrop-blur-lg z-[55] transition-all duration-500 md:hidden ${
+          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
         }`}
       >
         <div className="flex flex-col items-center justify-center h-full gap-8">
@@ -156,6 +158,6 @@ export function Navbar() {
           })}
         </div>
       </div>
-    </header>
+    </>
   );
 }
