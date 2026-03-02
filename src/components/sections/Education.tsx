@@ -73,7 +73,7 @@ export function Education() {
                 >
                   {/* Degree badge + mobile toggle row */}
                   <div className="md:w-1/3 shrink-0 flex items-center gap-3 min-w-0">
-                    <img src={edu.logo} alt={`${edu.institution} logo`} className="w-8 h-8 object-contain shrink-0" loading="lazy" />
+                    <img src={edu.logo} alt={`${edu.institution} logo`} className="w-8 h-8 object-contain shrink-0" loading="lazy" width={32} height={32} />
                     <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-primary/15 text-primary border border-primary/25 leading-snug mr-auto">
                       {edu.degree}
                     </span>
