@@ -1,6 +1,6 @@
 import { ArrowRight, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import profilePhoto from '@/assets/profile/profile-photo.jpg';
+import profilePhoto from '@/assets/profile/profile-photo.webp';
 
 export function Hero() {
   const handleScrollToProjects = () => {
@@ -49,6 +49,8 @@ export function Hero() {
                   src={profilePhoto}
                   alt="Rusiru Rathmina - Full-Stack Software Engineer based in Colombo, Sri Lanka"
                   loading="eager"
+                  width={224}
+                  height={224}
                   className="w-full h-full object-cover object-center"
                 />
               </div>
