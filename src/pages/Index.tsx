@@ -1,14 +1,16 @@
+import { lazy, Suspense } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/sections/Hero';
-import { About } from '@/components/sections/About';
-import { Experience } from '@/components/sections/Experience';
-import { Education } from '@/components/sections/Education';
-import { Projects } from '@/components/sections/Projects';
-import { Skills } from '@/components/sections/Skills';
-import { Blog } from '@/components/sections/Blog';
-import { Contact } from '@/components/sections/Contact';
 import { Footer } from '@/components/Footer';
 import { BackToTop } from '@/components/BackToTop';
+
+const About = lazy(() => import('@/components/sections/About').then(m => ({ default: m.About })));
+const Experience = lazy(() => import('@/components/sections/Experience').then(m => ({ default: m.Experience })));
+const Education = lazy(() => import('@/components/sections/Education').then(m => ({ default: m.Education })));
+const Projects = lazy(() => import('@/components/sections/Projects').then(m => ({ default: m.Projects })));
+const Skills = lazy(() => import('@/components/sections/Skills').then(m => ({ default: m.Skills })));
+const Blog = lazy(() => import('@/components/sections/Blog').then(m => ({ default: m.Blog })));
+const Contact = lazy(() => import('@/components/sections/Contact').then(m => ({ default: m.Contact })));
 
 const Index = () => {
   return (
@@ -32,13 +34,15 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Experience />
-        <Education />
-        <Projects />
-        <Skills />
-        <Blog />
-        <Contact />
+        <Suspense fallback={null}>
+          <About />
+          <Experience />
+          <Education />
+          <Projects />
+          <Skills />
+          <Blog />
+          <Contact />
+        </Suspense>
       </main>
       <Footer />
       <BackToTop />
