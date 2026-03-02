@@ -93,10 +93,11 @@ export function Skills() {
                 }`}
                 style={{ transitionDelay: `${categoryIndex * 100}ms` }}
               >
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mr-2 min-w-[100px]">
+                <div className="flex flex-col md:flex-row md:flex-wrap md:items-center gap-2">
+                  <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wider md:mr-2 md:min-w-[100px]">
                     {category.title}
                   </span>
+                  <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => {
                     const isDarkIcon = ['Kafka', 'Symfony', 'Yii'].includes(skill.name);
                     return (
@@ -118,6 +119,7 @@ export function Skills() {
                       </div>
                     );
                   })}
+                </div>
                 </div>
               </div>
             ))}
