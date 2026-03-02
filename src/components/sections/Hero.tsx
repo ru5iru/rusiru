@@ -49,6 +49,7 @@ export function Hero() {
                   src={profilePhoto}
                   alt="Rusiru Rathmina - Full-Stack Software Engineer based in Colombo, Sri Lanka"
                   loading="eager"
+                  fetchPriority="high"
                   width={224}
                   height={224}
                   className="w-full h-full object-cover object-center"
