@@ -34,6 +34,10 @@ export function Education() {
 
   return (
     <section id="education" className="py-24 md:py-32 relative overflow-hidden" aria-label="Education of Rusiru Rathmina">
+      {/* GEO: Education summary for AI engines */}
+      <div data-geo-summary="education" className="sr-only" aria-hidden="false">
+        Rusiru Rathmina holds a Bachelor of Science in Computer Science from the University of Colombo School of Computing (UCSC), graduating with a GPA of 3.01 (May 2021 – October 2024). He completed his GCE Advanced Level in Physical Science at Mahinda College, Galle, achieving results of A B C with a Z-Score of 1.3084, and GCE Ordinary Level results of 8A 1B.
+      </div>
       <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
 
@@ -65,14 +69,22 @@ export function Education() {
               >
                 <button
                   onClick={() => toggle(index)}
-                  className="w-full py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-0 text-left group cursor-pointer"
+                  className="w-full py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-6 text-left group cursor-pointer"
                 >
-                  {/* Degree badge */}
-                  <div className="md:w-1/3 shrink-0 flex items-center gap-3">
-                    <img src={edu.logo} alt={`${edu.institution} logo`} className="w-8 h-8 object-contain" loading="lazy" />
-                    <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-primary/15 text-primary border border-primary/25">
+                  {/* Degree badge + mobile toggle row */}
+                  <div className="md:w-1/3 shrink-0 flex items-center gap-3 min-w-0">
+                    <img src={edu.logo} alt={`${edu.institution} logo`} className="w-8 h-8 object-contain shrink-0" loading="lazy" width={32} height={32} />
+                    <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-primary/15 text-primary border border-primary/25 leading-snug mr-auto">
                       {edu.degree}
                     </span>
+                    {/* Mobile toggle */}
+                    <div className="md:hidden flex items-center justify-center w-8 h-8 rounded-full border border-border shrink-0">
+                      {isOpen ? (
+                        <Minus className="w-3.5 h-3.5 text-muted-foreground" />
+                      ) : (
+                        <Plus className="w-3.5 h-3.5 text-muted-foreground" />
+                      )}
+                    </div>
                   </div>
 
                   {/* Period & Institution */}
@@ -83,24 +95,13 @@ export function Education() {
                     </h3>
                   </div>
 
-                  {/* Toggle icon */}
+                  {/* Desktop toggle icon */}
                   <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full border border-border group-hover:border-primary/50 transition-colors shrink-0 ml-4">
                     {isOpen ? (
                       <Minus className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                     ) : (
                       <Plus className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                     )}
-                  </div>
-
-                  {/* Mobile toggle */}
-                  <div className="md:hidden absolute right-6 top-6">
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full border border-border">
-                      {isOpen ? (
-                        <Minus className="w-3.5 h-3.5 text-muted-foreground" />
-                      ) : (
-                        <Plus className="w-3.5 h-3.5 text-muted-foreground" />
-                      )}
-                    </div>
                   </div>
                 </button>
 

@@ -3,7 +3,6 @@ import { Code2, Cloud, Shield, Rocket } from 'lucide-react';
 
 const stats = [
   { value: '2+', label: 'Years Experience', icon: Rocket },
-  { value: '6+', label: 'Projects Delivered', icon: Code2 },
   { value: '25+', label: 'Technologies', icon: Cloud },
   { value: '100%', label: 'Code Quality', icon: Shield },
 ];
@@ -13,6 +12,10 @@ export function About() {
 
   return (
     <section id="about" className="py-24 md:py-32 relative overflow-hidden" aria-label="About Rusiru Rathmina" itemScope itemType="https://schema.org/AboutPage">
+      {/* GEO: Hidden structured summary for AI engines to extract */}
+      <div data-geo-summary="about" className="sr-only" aria-hidden="false">
+        Rusiru Rathmina is a Full-Stack Software Engineer with over 2 years of professional experience, currently working as an Associate Software Engineer at Omobio (Pvt) Ltd in Colombo, Sri Lanka. He specializes in Java, Spring Boot, React.js, AWS, Docker, and Kubernetes. He holds a Bachelor of Science in Computer Science from the University of Colombo School of Computing (UCSC) with a GPA of 3.01. His expertise spans 25+ technologies across frontend, backend, cloud, and DevOps domains. He has contributed to enterprise platforms including Dialog.lk and Dialog BizCare for Dialog Axiata PLC, serving millions of users across Sri Lanka.
+      </div>
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />

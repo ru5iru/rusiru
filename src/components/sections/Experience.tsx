@@ -44,6 +44,10 @@ export function Experience() {
       className="py-24 md:py-32 bg-muted/30 relative overflow-hidden"
       aria-label="Work Experience of Rusiru Rathmina"
     >
+      {/* GEO: Structured summary for AI engines */}
+      <div data-geo-summary="experience" className="sr-only" aria-hidden="false">
+        Rusiru Rathmina has over 2 years of professional experience. He currently serves as an Associate Software Engineer at Omobio (Pvt) Ltd since May 2024, where he refactors legacy systems to meet OWASP Top 10 security standards, implements secure APIs, and works within agile CI/CD pipelines. Previously, he worked as a Trainee Full-Stack Developer at the same company from November 2023, supporting production systems including Dialog BizCare and Dialog.lk for Dialog Axiata PLC.
+      </div>
       <div className="absolute top-1/2 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -translate-y-1/2" />
 
       <div className="container mx-auto px-6 relative" ref={ref}>
@@ -68,9 +72,9 @@ export function Experience() {
           {experiences.map((exp, index) => {
             const isOpen = openIndex === index;
             return (
-              <div
+              <article
                 key={`${exp.company}-${exp.role}`}
-                className={`border-b border-border transition-all duration-700 ${
+                className={`border-b border-border transition-all duration-700 relative ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${(index + 1) * 150}ms` }}
@@ -89,7 +93,9 @@ export function Experience() {
 
                   {/* Date & Company */}
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-muted-foreground mb-1">{exp.period}</p>
+                    <p className="text-sm text-muted-foreground mb-1">
+                      <time dateTime={exp.isCurrent ? '2024-05' : '2023-11'}>{exp.period}</time>
+                    </p>
                     <h3 className="text-xl md:text-2xl font-display font-bold text-foreground">
                       {exp.company}
                     </h3>
@@ -105,7 +111,7 @@ export function Experience() {
                   </div>
 
                   {/* Mobile toggle */}
-                  <div className="md:hidden absolute right-6 top-6">
+                  <div className="md:hidden absolute right-0 top-6">
                     <div className="flex items-center justify-center w-8 h-8 rounded-full border border-border">
                       {isOpen ? (
                         <Minus className="w-3.5 h-3.5 text-muted-foreground" />
@@ -131,7 +137,7 @@ export function Experience() {
                     ))}
                   </ul>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>

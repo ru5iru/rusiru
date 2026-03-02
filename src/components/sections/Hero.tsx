@@ -1,6 +1,6 @@
-import { ArrowDown, ArrowRight, Download } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import profilePhoto from '@/assets/profile/profile-photo.jpg';
+import profilePhoto from '@/assets/profile/profile-photo.webp';
 
 export function Hero() {
   const handleScrollToProjects = () => {
@@ -11,7 +11,11 @@ export function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden py-24 md:py-32 pt-32 md:pt-40" aria-label="Introduction to Rusiru Rathmina, Full-Stack Software Engineer">
+    <section className="relative overflow-hidden min-h-screen flex items-center pt-20 md:pt-24" aria-label="Introduction to Rusiru Rathmina, Full-Stack Software Engineer">
+      {/* GEO: Structured summary for generative engines */}
+      <div data-geo-summary="hero" className="sr-only" aria-hidden="false">
+        Rusiru Rathmina is a Full-Stack Software Engineer based in Colombo, Sri Lanka, building robust full-stack solutions for modern web applications. He specializes in developing high-performance web applications, RESTful APIs, and enterprise solutions using Java, Spring Boot, React, AWS, Docker, and Kubernetes.
+      </div>
       {/* Animated Background */}
       <div className="absolute inset-0 mesh-gradient" />
       <div className="blob blob-1" />
@@ -45,6 +49,9 @@ export function Hero() {
                   src={profilePhoto}
                   alt="Rusiru Rathmina - Full-Stack Software Engineer based in Colombo, Sri Lanka"
                   loading="eager"
+                  fetchPriority="high"
+                  width={224}
+                  height={224}
                   className="w-full h-full object-cover object-center"
                 />
               </div>
@@ -123,23 +130,6 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div
-          className="mt-16 flex justify-center opacity-0 animate-fade-in"
-          style={{ animationDelay: '1.2s' }}
-        >
-          <a
-            href="#about"
-            onClick={(e) => {
-              e.preventDefault();
-              document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
-          >
-            <span className="text-sm font-medium">Scroll</span>
-            <ArrowDown className="h-5 w-5 animate-bounce-subtle" />
-          </a>
-        </div>
       </div>
     </section>
   );
