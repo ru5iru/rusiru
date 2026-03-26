@@ -54,7 +54,7 @@ const socialLinks = [
   { href: 'https://web.facebook.com/ru5iru', icon: FacebookIcon, label: 'Facebook', color: 'hover:text-[#1877F2]' },
   { href: 'https://twitter.com/ru5iru', icon: XTwitterIcon, label: 'X', color: 'hover:text-foreground' },
   { href: 'https://www.reddit.com/u/ru5iru/', icon: RedditIcon, label: 'Reddit', color: 'hover:text-[#FF4500]' },
-  { href: 'https://iamrusiru.blogspot.com/', icon: BloggerIcon, label: 'Blogger', color: 'hover:text-[#FF5722]' },
+  { href: 'https://iamrusiru.lovable.app/', icon: BloggerIcon, label: 'Blog', color: 'hover:text-[#FF5722]' },
   { href: 'https://open.spotify.com/user/31ihlph5wpwcdblzhklpoc3evmy4', icon: SpotifyIcon, label: 'Spotify', color: 'hover:text-[#1DB954]' },
 ];
 

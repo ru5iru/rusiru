@@ -9,7 +9,7 @@ const blogPosts = [
     date: '2024-06-15',
     dateLabel: 'Jun 2024',
     readTime: '8 min read',
-    link: 'https://iamrusiru.blogspot.com/',
+    link: 'https://iamrusiru.lovable.app/',
   },
   {
     title: 'Building Scalable APIs with Spring Boot',
@@ -17,7 +17,7 @@ const blogPosts = [
     date: '2024-04-20',
     dateLabel: 'Apr 2024',
     readTime: '10 min read',
-    link: 'https://iamrusiru.blogspot.com/',
+    link: 'https://iamrusiru.lovable.app/',
   },
   {
     title: 'Modern React Patterns and Best Practices',
@@ -25,7 +25,7 @@ const blogPosts = [
     date: '2024-03-10',
     dateLabel: 'Mar 2024',
     readTime: '6 min read',
-    link: 'https://iamrusiru.blogspot.com/',
+    link: 'https://iamrusiru.lovable.app/',
   },
 ];
 
@@ -103,7 +103,7 @@ export function Blog() {
               className="rounded-full px-8 border-2 hover:bg-primary/5 transition-all duration-300"
             >
               <a
-                href="https://iamrusiru.blogspot.com/"
+                href="https://iamrusiru.lovable.app/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
