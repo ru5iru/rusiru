@@ -103,7 +103,7 @@ export function Blog() {
               className="rounded-full px-8 border-2 hover:bg-primary/5 transition-all duration-300"
             >
               <a
-                href="https://iamrusiru.blogspot.com/"
+                href="https://iamrusiru.lovable.app/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
