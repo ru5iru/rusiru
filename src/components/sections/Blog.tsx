@@ -25,7 +25,7 @@ const blogPosts = [
     date: '2024-03-10',
     dateLabel: 'Mar 2024',
     readTime: '6 min read',
-    link: 'https://iamrusiru.blogspot.com/',
+    link: 'https://iamrusiru.lovable.app/',
   },
 ];
 
