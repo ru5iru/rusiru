@@ -17,7 +17,7 @@ const blogPosts = [
     date: '2024-04-20',
     dateLabel: 'Apr 2024',
     readTime: '10 min read',
-    link: 'https://iamrusiru.blogspot.com/',
+    link: 'https://iamrusiru.lovable.app/',
   },
   {
     title: 'Modern React Patterns and Best Practices',
