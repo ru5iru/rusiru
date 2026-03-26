@@ -9,7 +9,7 @@ const blogPosts = [
     date: '2024-06-15',
     dateLabel: 'Jun 2024',
     readTime: '8 min read',
-    link: 'https://iamrusiru.blogspot.com/',
+    link: 'https://iamrusiru.lovable.app/',
   },
   {
     title: 'Building Scalable APIs with Spring Boot',
