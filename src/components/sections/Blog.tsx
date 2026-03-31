@@ -4,28 +4,28 @@ import { Button } from '@/components/ui/button';
 
 const blogPosts = [
   {
-    title: 'Getting Started with Docker and Kubernetes',
-    excerpt: 'A comprehensive guide to containerization and orchestration for beginners.',
-    date: '2024-06-15',
-    dateLabel: 'Jun 2024',
-    readTime: '8 min read',
-    link: 'https://iamrusiru.blogspot.com/',
-  },
-  {
-    title: 'Building Scalable APIs with Spring Boot',
-    excerpt: 'Best practices for designing and implementing RESTful APIs that scale.',
-    date: '2024-04-20',
-    dateLabel: 'Apr 2024',
+    title: 'OWASP Top 10: A Developer\'s Practical Guide',
+    excerpt: 'Security isn\'t just for the infosec team. Every developer should understand these ten vulnerabilities and how to prevent them in their own code.',
+    date: '2026-03-22',
+    dateLabel: 'Mar 2026',
     readTime: '10 min read',
-    link: 'https://iamrusiru.blogspot.com/',
+    link: 'https://iamrusiru.lovable.app/post/owasp-top-ten',
   },
   {
-    title: 'Modern React Patterns and Best Practices',
-    excerpt: 'Exploring the latest patterns in React development for cleaner code.',
-    date: '2024-03-10',
-    dateLabel: 'Mar 2024',
+    title: 'Clean Code Principles Every Developer Should Know',
+    excerpt: 'Writing code that works is easy. Writing code that others can read, maintain, and extend is the real challenge. Here are the principles I follow.',
+    date: '2026-03-20',
+    dateLabel: 'Mar 2026',
+    readTime: '8 min read',
+    link: 'https://iamrusiru.lovable.app/post/clean-code-principles',
+  },
+  {
+    title: 'Code Review Etiquette: Being Kind and Thorough',
+    excerpt: 'Good code reviews build trust. Bad ones build resentment. Here are the habits I\'ve adopted to make reviews productive for everyone.',
+    date: '2025-12-08',
+    dateLabel: 'Dec 2025',
     readTime: '6 min read',
-    link: 'https://iamrusiru.blogspot.com/',
+    link: 'https://iamrusiru.lovable.app/post/code-review-etiquette',
   },
 ];
 
@@ -103,7 +103,7 @@ export function Blog() {
               className="rounded-full px-8 border-2 hover:bg-primary/5 transition-all duration-300"
             >
               <a
-                href="https://iamrusiru.blogspot.com/"
+                href="https://iamrusiru.lovable.app/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
