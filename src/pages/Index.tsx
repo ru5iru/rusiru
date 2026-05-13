@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/sections/Hero';
 import { Footer } from '@/components/Footer';
@@ -14,6 +15,15 @@ const Contact = lazy(() => import('@/components/sections/Contact').then(m => ({ 
 
 const Index = () => {
   return (
+    <>
+      <Helmet>
+        <title>Rusiru Rathmina | Full-Stack Software Engineer</title>
+        <meta name="description" content="Rusiru Rathmina is a Software Engineer focused on full-stack development and cloud solutions, delivering scalable applications with attention to quality." />
+        <link rel="canonical" href="https://rusiru.lovable.app/" />
+        <meta property="og:title" content="Rusiru Rathmina | Full-Stack Software Engineer" />
+        <meta property="og:description" content="Portfolio of Rusiru Rathmina — Full-Stack Software Engineer in Colombo, Sri Lanka, building scalable apps with Java, Spring Boot, React, and AWS." />
+        <meta property="og:url" content="https://rusiru.lovable.app/" />
+      </Helmet>
     <div className="min-h-screen bg-background" itemScope itemType="https://schema.org/ProfilePage">
       <meta itemProp="dateCreated" content="2024-01-01" />
       <meta itemProp="dateModified" content="2026-02-23" />
@@ -47,6 +57,7 @@ const Index = () => {
       <Footer />
       <BackToTop />
     </div>
+    </>
   );
 };
 
