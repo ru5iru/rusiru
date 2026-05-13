@@ -1,0 +1,28 @@
+# Rusiru Rathmina
+
+> Portfolio of Rusiru Rathmina, a Full-Stack Software Engineer based in Colombo, Sri Lanka, specializing in Java, Spring Boot, React, AWS, Docker, and Kubernetes.
+
+Rusiru Rathmina is an Associate Software Engineer at Omobio (Pvt) Ltd with experience building enterprise platforms including Dialog.lk and Dialog BizCare. He focuses on full-stack development, cloud-native applications, secure API design, and DevOps practices. Available for worldwide remote collaboration.
+
+## Pages
+
+- [Home](/): Overview of Rusiru Rathmina, featured work, skills, and contact.
+- [About](/#about): Background, experience summary, and professional focus.
+- [Experience](/#experience): Work history at Omobio (Pvt) Ltd and prior roles.
+- [Education](/#education): BSc in Computer Science from University of Colombo School of Computing.
+- [Skills](/#skills): Java, JavaScript, PHP, React, Node.js, Spring Boot, Drupal, Laravel, Symfony, AWS, Docker, Kubernetes, Jenkins, Apache Kafka, MySQL, PostgreSQL, MongoDB, Redis.
+- [Projects](/#projects): Dialog.lk, Dialog BizCare, Project-X, Roamly, Micro CAPS, ToDo.
+- [Blog](https://iamrusiru.lovable.app/): Articles on engineering, security, and clean code.
+- [Contact](/#contact): Email and professional inquiry channels.
+
+## Blog
+
+- [OWASP Top 10: A Developer's Practical Guide](https://iamrusiru.lovable.app/post/owasp-top-ten): Ten vulnerabilities every developer should understand and prevent.
+- [Clean Code Principles Every Developer Should Know](https://iamrusiru.lovable.app/post/clean-code-principles): Principles for writing readable, maintainable code.
+- [Code Review Etiquette: Being Kind and Thorough](https://iamrusiru.lovable.app/post/code-review-etiquette): Habits for productive, respectful code reviews.
+
+## Optional
+
+- [GitHub](https://github.com/ru5iru): Open-source projects and code.
+- [LinkedIn](https://www.linkedin.com/in/ru5iru): Professional profile.
+- [Sitemap](/sitemap.xml): Full XML sitemap.
