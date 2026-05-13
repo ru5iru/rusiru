@@ -59,12 +59,12 @@ export function Hero() {
 
             {/* Name & Short Bio */}
             <div className="lg:mt-1">
-              <h2
+              <h1
                 className="text-lg sm:text-xl font-bold text-foreground opacity-0 animate-fade-in"
                 style={{ animationDelay: '0.5s' }}
               >
                 Rusiru Rathmina
-              </h2>
+              </h1>
               <p
                 className="text-sm text-muted-foreground max-w-[220px] mt-1 opacity-0 animate-fade-in"
                 style={{ animationDelay: '0.6s' }}
@@ -77,7 +77,7 @@ export function Hero() {
           {/* Right - Headline & Description */}
           <div className="flex-1">
             {/* Large Headline */}
-            <h1
+            <p
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold leading-[1.1] mb-6 opacity-0 animate-fade-in-up"
               style={{ animationDelay: '0.4s' }}
             >
@@ -86,7 +86,7 @@ export function Hero() {
               <span className="gradient-text">Full-Stack Solutions</span>
               <br />
               <span className="text-foreground/80">for Modern Web</span>
-            </h1>
+            </p>
 
             {/* Description */}
             <p

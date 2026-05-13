@@ -107,7 +107,7 @@ export function Skills() {
                       >
                         <img
                           src={skill.icon}
-                          alt={`${skill.name}`}
+                          alt=""
                           loading="lazy"
                           width="18"
                           height="18"
