@@ -3,31 +3,34 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Plus, Minus } from 'lucide-react';
 
 const experiences = [
-  {
-    company: 'Omobio (Pvt) Ltd',
-    role: 'Associate Software Engineer',
-    period: 'May 2024 — Present',
-    isCurrent: true,
-    description: [
-      'Contributed to refactoring the Dialog.lk legacy codebase to meet OWASP Top 10 security guidelines and SonarQube quality standards.',
-      'Implemented secure APIs, caching mechanisms, and performance optimizations within cloud-based environments.',
-      'Successfully delivered critical change requests under tight timelines while ensuring system stability and code quality.',
-      'Collaborated closely within agile teams, adhering to CI/CD pipelines and secure software development lifecycle best practices.',
-      'Conducted peer code reviews and supported onboarding of new team members to maintain engineering standards.',
-    ],
-  },
-  {
-    company: 'Omobio (Pvt) Ltd',
-    role: 'Trainee Full-Stack Developer',
-    period: 'November 2023 – May 2024',
-    isCurrent: false,
-    description: [
-      'Developed a strong foundation in full-stack development while supporting live production systems, including Dialog BizCare and Dialog.lk.',
-      'Assisted in resolving production issues and bugs to minimize service disruptions by analyzing logs and coordinating with cross-functional teams.',
-      'Worked under the guidance of senior engineers, following agile practices and established coding standards.',
-      'Participated in requirement analysis, planning, and design of a production automation system for tea factories.',
-    ],
-  },
+	{
+		company: "Omobio (Pvt) Ltd",
+		role: "Associate Software Engineer",
+		period: "May 2024 - Present",
+		isCurrent: true,
+		description: [
+			"Served as a key software engineer for the Dialog.lk platform while also functioning as the L3 support engineer for the application.",
+			"Developed and maintained API integrations, backend services, and microservice-based solutions using Kafka and RESTful APIs.",
+			"Managed and supported cloud infrastructure, containerized deployments, and orchestration workflows using AWS, Docker, and Kubernetes (K8s).",
+			"Implemented secure coding standards and contributed to application security initiatives aligned with OWASP best practices and ISO 27001 compliance requirements.",
+			"Troubleshot and resolved production issues, optimized application performance, and improved overall system reliability and availability.",
+			"Collaborated with cross-functional teams in agile environments to deliver scalable, high-quality, and enterprise-grade software solutions.",
+			"Contributed to CI/CD pipeline management, release processes, and DevOps initiatives to streamline development and deployment workflows.",
+		],
+	},
+	{
+		company: "Omobio (Pvt) Ltd",
+		role: "Trainee Full-Stack Developer",
+		period: "November 2023 - May 2024",
+		isCurrent: false,
+		description: [
+			"Gained hands-on experience in full-stack development using React.js, Node.js, and PHP while contributing to enterprise-level applications.",
+			"Served as the L3 support engineer for the Dialog.lk and Dialog BizCare platforms.",
+			"Supported bug fixing, production issue handling, and live application support for Dialog BizCare and Dialog.lk, ensuring minimal service downtime and operational continuity.",
+			"Analyzed and resolved application and system issues by reviewing server logs, debugging services, and collaborating with cross-functional teams.",
+			"Participated in requirement gathering, solution planning, and system design activities for a production automation system developed for tea factories.",
+		],
+	},
 ];
 
 export function Experience() {
