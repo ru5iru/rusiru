@@ -1,0 +1,40 @@
+{
+  "language": {
+    "name": "English",
+    "code": "EN"
+  },
+  "nav": {
+    "brand": "Rusiru Rathmina",
+    "links": {
+      "about": "About",
+      "experience": "Experience",
+      "education": "Education",
+      "projects": "Projects",
+      "skills": "Skills",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+    "darkMode": "Dark Mode",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "toggleTheme": "Toggle theme",
+    "mainNavigation": "Main navigation",
+    "selectLanguage": "Select language"
+  },
+  "hero": {
+    "ariaLabel": "Introduction to Rusiru Rathmina, Full-Stack Software Engineer",
+    "srHeading": "Rusiru Rathmina — Full-Stack Software Engineer",
+    "geoSummary": "Rusiru Rathmina is a Full-Stack Software Engineer based in Colombo, Sri Lanka, building robust full-stack solutions for modern web applications. He specializes in developing high-performance web applications, RESTful APIs, and enterprise solutions using Java, Spring Boot, React, AWS, Docker, and Kubernetes.",
+    "headlineBefore": "Full-Stack S",
+    "headlineAfter": "lutions",
+    "headlineLine2": "for Modern Web",
+    "description": "Building Robust, Scalable, and User-Centric Applications as a Full-Stack Software Engineer & Problem Solver. Specializing in high-performance web apps, RESTful APIs, and enterprise solutions that help businesses scale.",
+    "viewWork": "View Work",
+    "resume": "Resume",
+    "resumeUrl": "https://drive.google.com/file/d/1tUyCB3WXgbWiAI3igodwczXYXYnpMpwM/view?usp=sharing",
+    "profileAlt": "Rusiru Rathmina - Full-Stack Software Engineer based in Colombo, Sri Lanka",
+    "scrollPrev": "Previous technologies",
+    "scrollNext": "Next technologies",
+    "techStackLabel": "Technologies"
+  }
+}
