@@ -118,7 +118,7 @@ export function Hero() {
                 className="px-6 py-5 sm:py-6 text-sm sm:text-base font-semibold rounded-full border-2 hover:bg-primary/5 transition-all duration-300 hover:scale-105 w-full sm:w-auto"
               >
                 <a
-                  href="https://drive.google.com/uc?export=download&id=1Rl9tFni6vHsP7K2XW_zeamOr7HMKMabO"
+                  href="https://drive.google.com/file/d/1tUyCB3WXgbWiAI3igodwczXYXYnpMpwM/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
