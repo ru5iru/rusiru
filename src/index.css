@@ -156,6 +156,13 @@
     animation: glow-pulse 2s ease-in-out infinite;
   }
 
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+
+
   /* Hero: deep navy honeycomb background (matches design, fixed dark) */
   .hero-hex {
     background-color: #08152e;
