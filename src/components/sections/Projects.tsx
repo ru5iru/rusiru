@@ -33,7 +33,8 @@ const projects = [
 	},
 	{
 		title: "Jira Worklog Manager",
-		link: "https://github.com/ru5iru/jira-time-tracker",
+		github: "https://github.com/ru5iru/jira-time-tracker",
+		link: "https://timelogs.lovable.app",
 		isExternal: true,
 		description: [
 			"Built a browser-based personal productivity tool for logging and managing Jira Cloud worklogs, eliminating the friction of Jira's native time-tracking UI with a fast, keyboard-first single-page experience.",
