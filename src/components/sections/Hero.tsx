@@ -16,31 +16,31 @@ const cdn = (path: string) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icon
 // All technologies mirrored from the Technical Skills section
 const techStack = [
   // Languages
-  { name: 'Java', icon: cdn('java/java-original.svg'), dark: false },
-  { name: 'JavaScript', icon: cdn('javascript/javascript-original.svg'), dark: false },
-  { name: 'PHP', icon: cdn('php/php-original.svg'), dark: false },
-  { name: 'C++', icon: cdn('cplusplus/cplusplus-original.svg'), dark: false },
+  { name: 'Java', icon: cdn('java/java-plain.svg'), dark: false },
+  { name: 'JavaScript', icon: cdn('javascript/javascript-plain.svg'), dark: false },
+  { name: 'PHP', icon: cdn('php/php-plain.svg'), dark: false },
+  { name: 'C++', icon: cdn('cplusplus/cplusplus-plain.svg'), dark: false },
   // Frameworks
   { name: 'React', icon: cdn('react/react-original.svg'), dark: false },
-  { name: 'Node.js', icon: cdn('nodejs/nodejs-original.svg'), dark: false },
-  { name: 'Spring Boot', icon: cdn('spring/spring-original.svg'), dark: false },
+  { name: 'Node.js', icon: cdn('nodejs/nodejs-plain.svg'), dark: false },
+  { name: 'Spring Boot', icon: cdn('spring/spring-plain.svg'), dark: false },
   { name: 'Drupal', icon: drupalIcon, dark: false },
   { name: 'Yii', icon: yiiIcon, dark: true },
   { name: 'Laravel', icon: laravelIcon, dark: false },
   { name: 'Symfony', icon: symfonyIcon, dark: true },
   // Databases
-  { name: 'MySQL', icon: cdn('mysql/mysql-original.svg'), dark: false },
-  { name: 'PostgreSQL', icon: cdn('postgresql/postgresql-original.svg'), dark: false },
-  { name: 'MongoDB', icon: cdn('mongodb/mongodb-original.svg'), dark: false },
-  { name: 'Redis', icon: cdn('redis/redis-original.svg'), dark: false },
+  { name: 'MySQL', icon: cdn('mysql/mysql-plain.svg'), dark: false },
+  { name: 'PostgreSQL', icon: cdn('postgresql/postgresql-plain.svg'), dark: false },
+  { name: 'MongoDB', icon: cdn('mongodb/mongodb-plain.svg'), dark: false },
+  { name: 'Redis', icon: cdn('redis/redis-plain.svg'), dark: false },
   // DevOps & Cloud
   { name: 'AWS', icon: awsIcon, dark: false },
-  { name: 'Docker', icon: cdn('docker/docker-original.svg'), dark: false },
+  { name: 'Docker', icon: cdn('docker/docker-plain.svg'), dark: false },
   { name: 'Kubernetes', icon: cdn('kubernetes/kubernetes-plain.svg'), dark: false },
   { name: 'Jenkins', icon: cdn('jenkins/jenkins-original.svg'), dark: false },
   { name: 'Kafka', icon: cdn('apachekafka/apachekafka-original.svg'), dark: true },
   // Tools
-  { name: 'Git', icon: cdn('git/git-original.svg'), dark: false },
+  { name: 'Git', icon: cdn('git/git-plain.svg'), dark: false },
   { name: 'Linux', icon: cdn('linux/linux-original.svg'), dark: false },
   { name: 'SonarQube', icon: sonarqubeIcon, dark: false },
   { name: 'Postman', icon: postmanIcon, dark: false },
