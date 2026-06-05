@@ -1,5 +1,4 @@
-import { useRef } from 'react';
-import { ArrowRight, Download, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/i18n/i18n';
 import profilePhoto from '@/assets/profile/profile-photo.webp';
