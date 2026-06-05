@@ -48,15 +48,11 @@ const techStack = [
 
 export function Hero() {
   const { t } = useTranslation();
-  const trackRef = useRef<HTMLDivElement>(null);
 
   const handleScrollToProjects = () => {
     document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const scrollTrack = (direction: 1 | -1) => {
-    trackRef.current?.scrollBy({ left: direction * 200, behavior: 'smooth' });
-  };
 
   // Split "Full-Stack S" so the "S" stays attached to the profile image + "lutions"
   const headlineBefore = t('hero.headlineBefore');
