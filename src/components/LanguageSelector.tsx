@@ -15,7 +15,7 @@ export function LanguageSelector() {
   // Only show the selector when more than one language is available.
   if (languages.length < 2) {
     return (
-      <span className="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground px-2">
+      <span className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground px-2">
         <Globe className="h-4 w-4" />
         {current?.label}
       </span>
