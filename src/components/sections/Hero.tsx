@@ -81,7 +81,7 @@ export function Hero() {
 
         {/* Large Headline with profile photo as the "O" */}
         <p
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold leading-[1.05] mb-8 text-slate-100 opacity-0 animate-fade-in-up"
+          className="uppercase text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-light tracking-wide leading-[1.05] mb-8 text-slate-100 opacity-0 animate-fade-in-up"
           style={{ animationDelay: '0.2s' }}
         >
           <span className="inline-flex items-center justify-center flex-wrap gap-x-3 gap-y-2">
@@ -169,7 +169,7 @@ export function Hero() {
                 loading="lazy"
                 width={28}
                 height={28}
-                className="h-7 w-7 shrink-0 object-contain opacity-50 hover:opacity-90 transition-opacity [filter:brightness(0)_invert(1)]"
+                className="h-7 w-7 shrink-0 object-contain opacity-70 hover:opacity-100 transition-opacity"
               />
             ))}
           </div>
