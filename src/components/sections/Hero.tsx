@@ -81,7 +81,7 @@ export function Hero() {
 
         {/* Large Headline with profile photo as the "O" */}
         <p
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold leading-[1.05] mb-8 text-slate-100 opacity-0 animate-fade-in-up"
+          className="uppercase text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-light tracking-wide leading-[1.05] mb-8 text-slate-100 opacity-0 animate-fade-in-up"
           style={{ animationDelay: '0.2s' }}
         >
           <span className="inline-flex items-center justify-center flex-wrap gap-x-3 gap-y-2">
