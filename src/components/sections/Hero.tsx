@@ -23,13 +23,13 @@ const techStack = [
   // Frameworks
   { name: 'React', icon: cdn('react/react-original.svg'), dark: false },
   { name: 'Node.js', icon: cdn('nodejs/nodejs-plain.svg'), dark: false },
-  { name: 'Spring Boot', icon: cdn('spring/spring-plain.svg'), dark: false },
+  { name: 'Spring Boot', icon: cdn('spring/spring-original.svg'), dark: false },
   { name: 'Drupal', icon: drupalIcon, dark: false },
   { name: 'Yii', icon: yiiIcon, dark: true },
   { name: 'Laravel', icon: laravelIcon, dark: false },
   { name: 'Symfony', icon: symfonyIcon, dark: true },
   // Databases
-  { name: 'MySQL', icon: cdn('mysql/mysql-plain.svg'), dark: false },
+  { name: 'MySQL', icon: cdn('mysql/mysql-original.svg'), dark: false },
   { name: 'PostgreSQL', icon: cdn('postgresql/postgresql-plain.svg'), dark: false },
   { name: 'MongoDB', icon: cdn('mongodb/mongodb-plain.svg'), dark: false },
   { name: 'Redis', icon: cdn('redis/redis-plain.svg'), dark: false },
