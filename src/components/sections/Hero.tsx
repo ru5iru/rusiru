@@ -137,48 +137,29 @@ export function Hero() {
           </Button>
         </div>
 
-        {/* Tech Stack Carousel */}
+        {/* Tech Stack Marquee (infinite auto-scroll loop) */}
         <div
-          className="mt-14 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-2 py-1.5 opacity-0 animate-fade-in"
+          className="marquee mt-14 max-w-[280px] sm:max-w-md md:max-w-lg rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-3 py-2 opacity-0 animate-fade-in"
           style={{ animationDelay: '0.9s' }}
           aria-label={t('hero.techStackLabel')}
         >
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => scrollTrack(-1)}
-            className="shrink-0 rounded-full h-9 w-9 text-slate-300 hover:text-white hover:bg-white/10"
-            aria-label={t('hero.scrollPrev')}
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </Button>
-          <div
-            ref={trackRef}
-            className="flex items-center gap-5 sm:gap-7 overflow-x-auto scrollbar-none px-2 max-w-[260px] sm:max-w-md scroll-smooth"
-          >
-            {techStack.map((tech) => (
+          <div className="marquee-track flex items-center gap-6 sm:gap-7">
+            {[...techStack, ...techStack].map((tech, i) => (
               <img
-                key={tech.name}
+                key={`${tech.name}-${i}`}
                 src={tech.icon}
                 alt={tech.name}
                 title={tech.name}
                 loading="lazy"
                 width={28}
                 height={28}
+                aria-hidden={i >= techStack.length}
                 className="h-7 w-7 shrink-0 object-contain opacity-70 hover:opacity-100 transition-opacity"
               />
             ))}
           </div>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => scrollTrack(1)}
-            className="shrink-0 rounded-full h-9 w-9 text-slate-300 hover:text-white hover:bg-white/10"
-            aria-label={t('hero.scrollNext')}
-          >
-            <ChevronRight className="h-5 w-5" />
-          </Button>
         </div>
+
       </div>
     </section>
   );
