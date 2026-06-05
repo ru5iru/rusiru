@@ -16,31 +16,31 @@ const cdn = (path: string) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icon
 // All technologies mirrored from the Technical Skills section
 const techStack = [
   // Languages
-  { name: 'Java', icon: cdn('java/java-original.svg'), dark: false },
-  { name: 'JavaScript', icon: cdn('javascript/javascript-original.svg'), dark: false },
-  { name: 'PHP', icon: cdn('php/php-original.svg'), dark: false },
-  { name: 'C++', icon: cdn('cplusplus/cplusplus-original.svg'), dark: false },
+  { name: 'Java', icon: cdn('java/java-plain.svg'), dark: false },
+  { name: 'JavaScript', icon: cdn('javascript/javascript-plain.svg'), dark: false },
+  { name: 'PHP', icon: cdn('php/php-plain.svg'), dark: false },
+  { name: 'C++', icon: cdn('cplusplus/cplusplus-plain.svg'), dark: false },
   // Frameworks
   { name: 'React', icon: cdn('react/react-original.svg'), dark: false },
-  { name: 'Node.js', icon: cdn('nodejs/nodejs-original.svg'), dark: false },
-  { name: 'Spring Boot', icon: cdn('spring/spring-original.svg'), dark: false },
+  { name: 'Node.js', icon: cdn('nodejs/nodejs-plain.svg'), dark: false },
+  { name: 'Spring Boot', icon: cdn('spring/spring-plain.svg'), dark: false },
   { name: 'Drupal', icon: drupalIcon, dark: false },
   { name: 'Yii', icon: yiiIcon, dark: true },
   { name: 'Laravel', icon: laravelIcon, dark: false },
   { name: 'Symfony', icon: symfonyIcon, dark: true },
   // Databases
-  { name: 'MySQL', icon: cdn('mysql/mysql-original.svg'), dark: false },
-  { name: 'PostgreSQL', icon: cdn('postgresql/postgresql-original.svg'), dark: false },
-  { name: 'MongoDB', icon: cdn('mongodb/mongodb-original.svg'), dark: false },
-  { name: 'Redis', icon: cdn('redis/redis-original.svg'), dark: false },
+  { name: 'MySQL', icon: cdn('mysql/mysql-plain.svg'), dark: false },
+  { name: 'PostgreSQL', icon: cdn('postgresql/postgresql-plain.svg'), dark: false },
+  { name: 'MongoDB', icon: cdn('mongodb/mongodb-plain.svg'), dark: false },
+  { name: 'Redis', icon: cdn('redis/redis-plain.svg'), dark: false },
   // DevOps & Cloud
   { name: 'AWS', icon: awsIcon, dark: false },
-  { name: 'Docker', icon: cdn('docker/docker-original.svg'), dark: false },
+  { name: 'Docker', icon: cdn('docker/docker-plain.svg'), dark: false },
   { name: 'Kubernetes', icon: cdn('kubernetes/kubernetes-plain.svg'), dark: false },
   { name: 'Jenkins', icon: cdn('jenkins/jenkins-original.svg'), dark: false },
   { name: 'Kafka', icon: cdn('apachekafka/apachekafka-original.svg'), dark: true },
   // Tools
-  { name: 'Git', icon: cdn('git/git-original.svg'), dark: false },
+  { name: 'Git', icon: cdn('git/git-plain.svg'), dark: false },
   { name: 'Linux', icon: cdn('linux/linux-original.svg'), dark: false },
   { name: 'SonarQube', icon: sonarqubeIcon, dark: false },
   { name: 'Postman', icon: postmanIcon, dark: false },
@@ -57,6 +57,12 @@ export function Hero() {
   const scrollTrack = (direction: 1 | -1) => {
     trackRef.current?.scrollBy({ left: direction * 200, behavior: 'smooth' });
   };
+
+  // Split "Full-Stack S" so the "S" stays attached to the profile image + "lutions"
+  const headlineBefore = t('hero.headlineBefore');
+  const lastSpace = headlineBefore.lastIndexOf(' ');
+  const headlineLead = lastSpace >= 0 ? headlineBefore.slice(0, lastSpace) : '';
+  const headlineSChar = lastSpace >= 0 ? headlineBefore.slice(lastSpace + 1) : headlineBefore;
 
   return (
     <section
@@ -75,24 +81,27 @@ export function Hero() {
 
         {/* Large Headline with profile photo as the "O" */}
         <p
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold leading-[1.05] mb-8 text-white opacity-0 animate-fade-in-up"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold leading-[1.05] mb-8 text-slate-100 opacity-0 animate-fade-in-up"
           style={{ animationDelay: '0.2s' }}
         >
-          <span className="inline-flex items-center justify-center flex-wrap gap-x-1 gap-y-2">
-            <span>{t('hero.headlineBefore')}</span>
-            <span className="relative inline-flex shrink-0 items-center justify-center align-middle mx-0.5 sm:mx-1">
-              <span className="absolute inset-0 rounded-full bg-primary/40 opacity-60 blur-xl scale-110" />
-              <img
-                src={profilePhoto}
-                alt={t('hero.profileAlt')}
-                loading="eager"
-                fetchPriority="high"
-                width={224}
-                height={224}
-                className="relative w-[0.95em] h-[0.95em] rounded-full object-cover object-center border-2 border-white/40 shadow-xl"
-              />
+          <span className="inline-flex items-center justify-center flex-wrap gap-x-3 gap-y-2">
+            <span>{headlineLead}</span>
+            <span className="inline-flex items-center whitespace-nowrap">
+              <span>{headlineSChar}</span>
+              <span className="relative inline-flex shrink-0 items-center justify-center align-middle mx-0.5">
+                <span className="absolute inset-0 rounded-full bg-primary/40 opacity-60 blur-xl scale-110" />
+                <img
+                  src={profilePhoto}
+                  alt={t('hero.profileAlt')}
+                  loading="eager"
+                  fetchPriority="high"
+                  width={224}
+                  height={224}
+                  className="relative w-[0.95em] h-[0.95em] rounded-full object-cover object-center border-2 border-white/40 shadow-xl"
+                />
+              </span>
+              <span>{t('hero.headlineAfter')}</span>
             </span>
-            <span>{t('hero.headlineAfter')}</span>
           </span>
           <br />
           <span>{t('hero.headlineLine2')}</span>
@@ -160,9 +169,7 @@ export function Hero() {
                 loading="lazy"
                 width={28}
                 height={28}
-                className={`h-7 w-7 shrink-0 object-contain opacity-70 hover:opacity-100 transition-opacity ${
-                  tech.dark ? 'invert brightness-200' : ''
-                }`}
+                className="h-7 w-7 shrink-0 object-contain opacity-50 hover:opacity-90 transition-opacity [filter:brightness(0)_invert(1)]"
               />
             ))}
           </div>
