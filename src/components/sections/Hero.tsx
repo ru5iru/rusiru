@@ -169,7 +169,7 @@ export function Hero() {
                 loading="lazy"
                 width={28}
                 height={28}
-                className="h-7 w-7 shrink-0 object-contain opacity-50 hover:opacity-90 transition-opacity [filter:brightness(0)_invert(1)]"
+                className="h-7 w-7 shrink-0 object-contain opacity-70 hover:opacity-100 transition-opacity"
               />
             ))}
           </div>
