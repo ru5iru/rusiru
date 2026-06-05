@@ -75,24 +75,27 @@ export function Hero() {
 
         {/* Large Headline with profile photo as the "O" */}
         <p
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold leading-[1.05] mb-8 text-white opacity-0 animate-fade-in-up"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold leading-[1.05] mb-8 text-slate-100 opacity-0 animate-fade-in-up"
           style={{ animationDelay: '0.2s' }}
         >
-          <span className="inline-flex items-center justify-center flex-wrap gap-x-1 gap-y-2">
-            <span>{t('hero.headlineBefore')}</span>
-            <span className="relative inline-flex shrink-0 items-center justify-center align-middle mx-0.5 sm:mx-1">
-              <span className="absolute inset-0 rounded-full bg-primary/40 opacity-60 blur-xl scale-110" />
-              <img
-                src={profilePhoto}
-                alt={t('hero.profileAlt')}
-                loading="eager"
-                fetchPriority="high"
-                width={224}
-                height={224}
-                className="relative w-[0.95em] h-[0.95em] rounded-full object-cover object-center border-2 border-white/40 shadow-xl"
-              />
+          <span className="inline-flex items-center justify-center flex-wrap gap-x-3 gap-y-2">
+            <span>{headlineLead}</span>
+            <span className="inline-flex items-center whitespace-nowrap">
+              <span>{headlineSChar}</span>
+              <span className="relative inline-flex shrink-0 items-center justify-center align-middle mx-0.5">
+                <span className="absolute inset-0 rounded-full bg-primary/40 opacity-60 blur-xl scale-110" />
+                <img
+                  src={profilePhoto}
+                  alt={t('hero.profileAlt')}
+                  loading="eager"
+                  fetchPriority="high"
+                  width={224}
+                  height={224}
+                  className="relative w-[0.95em] h-[0.95em] rounded-full object-cover object-center border-2 border-white/40 shadow-xl"
+                />
+              </span>
+              <span>{t('hero.headlineAfter')}</span>
             </span>
-            <span>{t('hero.headlineAfter')}</span>
           </span>
           <br />
           <span>{t('hero.headlineLine2')}</span>
