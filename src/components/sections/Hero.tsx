@@ -58,6 +58,12 @@ export function Hero() {
     trackRef.current?.scrollBy({ left: direction * 200, behavior: 'smooth' });
   };
 
+  // Split "Full-Stack S" so the "S" stays attached to the profile image + "lutions"
+  const headlineBefore = t('hero.headlineBefore');
+  const lastSpace = headlineBefore.lastIndexOf(' ');
+  const headlineLead = lastSpace >= 0 ? headlineBefore.slice(0, lastSpace) : '';
+  const headlineSChar = lastSpace >= 0 ? headlineBefore.slice(lastSpace + 1) : headlineBefore;
+
   return (
     <section
       className="hero-hex relative overflow-hidden min-h-screen flex items-center pt-24 pb-16"
