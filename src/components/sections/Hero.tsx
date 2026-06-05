@@ -1,5 +1,4 @@
-import { useRef } from 'react';
-import { ArrowRight, Download, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/i18n/i18n';
 import profilePhoto from '@/assets/profile/profile-photo.webp';
@@ -23,13 +22,13 @@ const techStack = [
   // Frameworks
   { name: 'React', icon: cdn('react/react-original.svg'), dark: false },
   { name: 'Node.js', icon: cdn('nodejs/nodejs-plain.svg'), dark: false },
-  { name: 'Spring Boot', icon: cdn('spring/spring-plain.svg'), dark: false },
+  { name: 'Spring Boot', icon: cdn('spring/spring-original.svg'), dark: false },
   { name: 'Drupal', icon: drupalIcon, dark: false },
   { name: 'Yii', icon: yiiIcon, dark: true },
   { name: 'Laravel', icon: laravelIcon, dark: false },
   { name: 'Symfony', icon: symfonyIcon, dark: true },
   // Databases
-  { name: 'MySQL', icon: cdn('mysql/mysql-plain.svg'), dark: false },
+  { name: 'MySQL', icon: cdn('mysql/mysql-original.svg'), dark: false },
   { name: 'PostgreSQL', icon: cdn('postgresql/postgresql-plain.svg'), dark: false },
   { name: 'MongoDB', icon: cdn('mongodb/mongodb-plain.svg'), dark: false },
   { name: 'Redis', icon: cdn('redis/redis-plain.svg'), dark: false },
@@ -48,15 +47,11 @@ const techStack = [
 
 export function Hero() {
   const { t } = useTranslation();
-  const trackRef = useRef<HTMLDivElement>(null);
 
   const handleScrollToProjects = () => {
     document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const scrollTrack = (direction: 1 | -1) => {
-    trackRef.current?.scrollBy({ left: direction * 200, behavior: 'smooth' });
-  };
 
   // Split "Full-Stack S" so the "S" stays attached to the profile image + "lutions"
   const headlineBefore = t('hero.headlineBefore');
@@ -141,48 +136,29 @@ export function Hero() {
           </Button>
         </div>
 
-        {/* Tech Stack Carousel */}
+        {/* Tech Stack Marquee (infinite auto-scroll loop) */}
         <div
-          className="mt-14 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-2 py-1.5 opacity-0 animate-fade-in"
+          className="marquee mt-14 max-w-[280px] sm:max-w-md md:max-w-lg rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-3 py-2 opacity-0 animate-fade-in"
           style={{ animationDelay: '0.9s' }}
           aria-label={t('hero.techStackLabel')}
         >
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => scrollTrack(-1)}
-            className="shrink-0 rounded-full h-9 w-9 text-slate-300 hover:text-white hover:bg-white/10"
-            aria-label={t('hero.scrollPrev')}
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </Button>
-          <div
-            ref={trackRef}
-            className="flex items-center gap-5 sm:gap-7 overflow-x-auto scrollbar-none px-2 max-w-[260px] sm:max-w-md scroll-smooth"
-          >
-            {techStack.map((tech) => (
+          <div className="marquee-track flex items-center gap-6 sm:gap-7">
+            {[...techStack, ...techStack].map((tech, i) => (
               <img
-                key={tech.name}
+                key={`${tech.name}-${i}`}
                 src={tech.icon}
                 alt={tech.name}
                 title={tech.name}
                 loading="lazy"
                 width={28}
                 height={28}
+                aria-hidden={i >= techStack.length}
                 className="h-7 w-7 shrink-0 object-contain opacity-70 hover:opacity-100 transition-opacity"
               />
             ))}
           </div>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => scrollTrack(1)}
-            className="shrink-0 rounded-full h-9 w-9 text-slate-300 hover:text-white hover:bg-white/10"
-            aria-label={t('hero.scrollNext')}
-          >
-            <ChevronRight className="h-5 w-5" />
-          </Button>
         </div>
+
       </div>
     </section>
   );
