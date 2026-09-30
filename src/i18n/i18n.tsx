@@ -27,17 +27,22 @@ export interface LanguageOption {
 interface I18nContextValue {
   lang: string;
   setLang: (lang: string) => void;
-  t: (key: string) => string;
+  t: (key: string, vars?: Record<string, string | number>) => string;
+  tr: <T = unknown>(key: string) => T;
   languages: LanguageOption[];
 }
 
 const I18nContext = createContext<I18nContextValue | undefined>(undefined);
 
-function resolve(dict: Dict, key: string): string {
-  const value = key.split('.').reduce<unknown>((acc, part) => {
+function resolveRaw(dict: Dict, key: string): unknown {
+  return key.split('.').reduce<unknown>((acc, part) => {
     if (acc && typeof acc === 'object') return (acc as Dict)[part];
     return undefined;
   }, dict);
+}
+
+function resolve(dict: Dict, key: string): string {
+  const value = resolveRaw(dict, key);
   return typeof value === 'string' ? value : key;
 }
 
@@ -62,7 +67,12 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   }, [lang]);
 
   const dict = translations[lang] ?? translations[DEFAULT_LANG] ?? {};
-  const t = (key: string) => resolve(dict, key);
+  const t = (key: string, vars?: Record<string, string | number>) => {
+    let s = resolve(dict, key);
+    if (vars) for (const k in vars) s = s.split(`{${k}}`).join(String(vars[k]));
+    return s;
+  };
+  const tr = <T,>(key: string) => resolveRaw(dict, key) as T;
 
   const languages: LanguageOption[] = Object.keys(translations).map((code) => {
     const meta = (translations[code].language ?? {}) as { name?: string; code?: string };
@@ -74,7 +84,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   });
 
   return (
-    <I18nContext.Provider value={{ lang, setLang, t, languages }}>
+    <I18nContext.Provider value={{ lang, setLang, t, tr, languages }}>
       {children}
     </I18nContext.Provider>
   );

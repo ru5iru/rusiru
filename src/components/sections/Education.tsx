@@ -1,31 +1,24 @@
 import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Plus, Minus } from 'lucide-react';
+import { useTranslation } from '@/i18n/i18n';
 import ucscLogo from '@/assets/logos/ucsc-logo.png';
 import mcgLogo from '@/assets/logos/mcg-logo.png';
 
-const education = [
-  {
-    institution: 'University of Colombo School of Computing',
-    degree: 'Bachelor of Science in Computer Science',
-    period: 'May 2021 - October 2024',
-    details: ['GPA: 3.01'],
-    logo: ucscLogo,
-  },
-  {
-    institution: 'Mahinda College, Galle',
-    degree: 'GCE Advanced Level (Physical Science)',
-    period: 'Feb 2010 - Aug 2019',
-    details: [
-      'A/L Results: A B C | Z-Score: 1.3084',
-      'O/L Results: 8A 1B',
-    ],
-    logo: mcgLogo,
-  },
-];
+const logos: Record<string, string> = { ucsc: ucscLogo, mcg: mcgLogo };
+
+interface EducationItem {
+  id: string;
+  institution: string;
+  degree: string;
+  period: string;
+  details: string[];
+}
 
 export function Education() {
   const { ref, isVisible } = useScrollAnimation();
+  const { t, tr } = useTranslation();
+  const education = tr<EducationItem[]>('education.items') ?? [];
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggle = (index: number) => {
@@ -33,10 +26,10 @@ export function Education() {
   };
 
   return (
-    <section id="education" className="py-24 md:py-32 relative overflow-hidden" aria-label="Education of Rusiru Rathmina">
+    <section id="education" className="py-24 md:py-32 relative overflow-hidden" aria-label={t('education.ariaLabel')}>
       {/* GEO: Education summary for AI engines */}
       <div data-geo-summary="education" className="sr-only" aria-hidden="false">
-        Rusiru Rathmina holds a Bachelor of Science in Computer Science from the University of Colombo School of Computing (UCSC), graduating with a GPA of 3.01 (May 2021 – October 2024). He completed his GCE Advanced Level in Physical Science at Mahinda College, Galle, achieving results of A B C with a Z-Score of 1.3084, and GCE Ordinary Level results of 8A 1B.
+        {t('education.geoSummary')}
       </div>
       <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
@@ -47,7 +40,7 @@ export function Education() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          Education
+          {t('education.title')}
         </h2>
 
         <div
@@ -73,7 +66,7 @@ export function Education() {
                 >
                   {/* Degree badge + mobile toggle row */}
                   <div className="md:w-1/3 shrink-0 flex items-center gap-3 min-w-0">
-                    <img src={edu.logo} alt={`${edu.institution} logo`} className="w-8 h-8 object-contain shrink-0" loading="lazy" width={32} height={32} />
+                    <img src={logos[edu.id]} alt={`${edu.institution} ${t('education.logoAltSuffix')}`} className="w-8 h-8 object-contain shrink-0" loading="lazy" width={32} height={32} />
                     <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-primary/15 text-primary border border-primary/25 leading-snug mr-auto">
                       {edu.degree}
                     </span>

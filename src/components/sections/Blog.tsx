@@ -1,39 +1,24 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { ExternalLink, Calendar, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/i18n/i18n';
 
-const blogPosts = [
-  {
-    title: 'OWASP Top 10: A Developer\'s Practical Guide',
-    excerpt: 'Security isn\'t just for the infosec team. Every developer should understand these ten vulnerabilities and how to prevent them in their own code.',
-    date: '2026-03-22',
-    dateLabel: 'Mar 2026',
-    readTime: '10 min read',
-    link: 'https://iamrusiru.lovable.app/post/owasp-top-ten',
-  },
-  {
-    title: 'Clean Code Principles Every Developer Should Know',
-    excerpt: 'Writing code that works is easy. Writing code that others can read, maintain, and extend is the real challenge. Here are the principles I follow.',
-    date: '2026-03-20',
-    dateLabel: 'Mar 2026',
-    readTime: '8 min read',
-    link: 'https://iamrusiru.lovable.app/post/clean-code-principles',
-  },
-  {
-    title: 'Code Review Etiquette: Being Kind and Thorough',
-    excerpt: 'Good code reviews build trust. Bad ones build resentment. Here are the habits I\'ve adopted to make reviews productive for everyone.',
-    date: '2025-12-08',
-    dateLabel: 'Dec 2025',
-    readTime: '6 min read',
-    link: 'https://iamrusiru.lovable.app/post/code-review-etiquette',
-  },
-];
+interface BlogPost {
+  title: string;
+  excerpt: string;
+  date: string;
+  dateLabel: string;
+  readTime: string;
+  link: string;
+}
 
 export function Blog() {
   const { ref, isVisible } = useScrollAnimation();
+  const { t, tr } = useTranslation();
+  const blogPosts = tr<BlogPost[]>('blog.posts') ?? [];
 
   return (
-    <section id="blog" className="py-24 md:py-32 bg-muted/30 relative overflow-hidden" aria-label="Blog posts by Rusiru Rathmina">
+    <section id="blog" className="py-24 md:py-32 bg-muted/30 relative overflow-hidden" aria-label={t('blog.ariaLabel')}>
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
 
@@ -44,7 +29,7 @@ export function Blog() {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            Latest <span className="gradient-text">Blog Posts</span>
+            {t('blog.titleBefore')} <span className="gradient-text">{t('blog.titleHighlight')}</span>
           </h2>
 
           <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
@@ -86,7 +71,7 @@ export function Blog() {
 
                 {/* Read More */}
                 <div className="flex items-center gap-2 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                  Read More
+                  {t('blog.readMore')}
                   <ExternalLink className="w-4 h-4" />
                 </div>
                 </a>
@@ -103,11 +88,11 @@ export function Blog() {
               className="rounded-full px-8 border-2 hover:bg-primary/5 transition-all duration-300"
             >
               <a
-                href="https://iamrusiru.lovable.app/"
+                href={t('blog.blogUrl')}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Visit My Blog
+                {t('blog.visitBlog')}
                 <ExternalLink className="ml-2 w-4 h-4" />
               </a>
             </Button>
