@@ -1,4 +1,5 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useTranslation } from '@/i18n/i18n';
 
 // Import local icons
 import awsIcon from '@/assets/icons/aws.svg';
@@ -11,7 +12,7 @@ import sonarqubeIcon from '@/assets/icons/sonarqube.svg';
 
 const skillCategories = [
   {
-    title: 'Languages',
+    id: 'languages',
     skills: [
       { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
       { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
@@ -20,7 +21,7 @@ const skillCategories = [
     ],
   },
   {
-    title: 'Frameworks',
+    id: 'frameworks',
     skills: [
       { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
       { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
@@ -32,7 +33,7 @@ const skillCategories = [
     ],
   },
   {
-    title: 'Databases',
+    id: 'databases',
     skills: [
       { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
       { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
@@ -41,7 +42,7 @@ const skillCategories = [
     ],
   },
   {
-    title: 'DevOps & Cloud',
+    id: 'devops',
     skills: [
       { name: 'AWS', icon: awsIcon },
       { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
@@ -51,7 +52,7 @@ const skillCategories = [
     ],
   },
   {
-    title: 'Tools',
+    id: 'tools',
     skills: [
       { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
       { name: 'Linux', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg' },
@@ -63,12 +64,13 @@ const skillCategories = [
 
 export function Skills() {
   const { ref, isVisible } = useScrollAnimation();
+  const { t } = useTranslation();
 
   return (
-    <section id="skills" className="py-24 md:py-32 relative overflow-hidden" aria-label="Technical Skills of Rusiru Rathmina">
+    <section id="skills" className="py-24 md:py-32 relative overflow-hidden" aria-label={t('skills.ariaLabel')}>
       {/* GEO: Skills summary for AI engines */}
       <div data-geo-summary="skills" className="sr-only" aria-hidden="false">
-        Rusiru Rathmina's technical skills include: Languages — Java, JavaScript, PHP, C++; Frameworks — React, Node.js, Spring Boot, Drupal, Yii, Laravel, Symfony; Databases — MySQL, PostgreSQL, MongoDB, Redis; DevOps and Cloud — AWS, Docker, Kubernetes, Jenkins, Apache Kafka; Tools — Git, Linux, SonarQube, Postman. He has proficiency across 25+ technologies spanning the full software development lifecycle.
+        {t('skills.geoSummary')}
       </div>
       {/* Background decoration */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -81,13 +83,13 @@ export function Skills() {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            Technical <span className="gradient-text">Skills</span>
+            {t('skills.titleBefore')} <span className="gradient-text">{t('skills.titleHighlight')}</span>
           </h2>
 
           <div className="max-w-4xl mx-auto space-y-6">
             {skillCategories.map((category, categoryIndex) => (
               <div
-                key={category.title}
+                key={category.id}
                 className={`transition-all duration-700 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
@@ -95,7 +97,7 @@ export function Skills() {
               >
                 <div className="flex flex-col md:flex-row md:flex-wrap md:items-center gap-2">
                   <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wider md:mr-2 md:min-w-[100px]">
-                    {category.title}
+                    {t(`skills.categories.${category.id}`)}
                   </span>
                   <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => {

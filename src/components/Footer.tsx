@@ -1,3 +1,4 @@
+import { useTranslation } from '@/i18n/i18n';
 // Custom SVG Icons matching Font Awesome brand icons
 const LinkedInIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 448 512" fill="currentColor">
@@ -48,18 +49,19 @@ const SpotifyIcon = ({ className }: { className?: string }) => (
 );
 
 const socialLinks = [
-  { href: 'https://www.linkedin.com/in/ru5iru', icon: LinkedInIcon, label: 'LinkedIn', color: 'hover:text-[#0077B5]' },
-  { href: 'https://github.com/ru5iru', icon: GitHubIcon, label: 'GitHub', color: 'hover:text-foreground' },
-  { href: 'https://www.discordapp.com/users/Rusiru#4036', icon: DiscordIcon, label: 'Discord', color: 'hover:text-[#5865F2]' },
-  { href: 'https://web.facebook.com/ru5iru', icon: FacebookIcon, label: 'Facebook', color: 'hover:text-[#1877F2]' },
-  { href: 'https://twitter.com/ru5iru', icon: XTwitterIcon, label: 'X', color: 'hover:text-foreground' },
-  { href: 'https://www.reddit.com/u/ru5iru/', icon: RedditIcon, label: 'Reddit', color: 'hover:text-[#FF4500]' },
-  { href: 'https://iamrusiru.lovable.app/', icon: BloggerIcon, label: 'Blog', color: 'hover:text-[#FF5722]' },
-  { href: 'https://open.spotify.com/user/31ihlph5wpwcdblzhklpoc3evmy4', icon: SpotifyIcon, label: 'Spotify', color: 'hover:text-[#1DB954]' },
+  { href: 'https://www.linkedin.com/in/ru5iru', icon: LinkedInIcon, id: 'linkedin', color: 'hover:text-[#0077B5]' },
+  { href: 'https://github.com/ru5iru', icon: GitHubIcon, id: 'github', color: 'hover:text-foreground' },
+  { href: 'https://www.discordapp.com/users/Rusiru#4036', icon: DiscordIcon, id: 'discord', color: 'hover:text-[#5865F2]' },
+  { href: 'https://web.facebook.com/ru5iru', icon: FacebookIcon, id: 'facebook', color: 'hover:text-[#1877F2]' },
+  { href: 'https://twitter.com/ru5iru', icon: XTwitterIcon, id: 'x', color: 'hover:text-foreground' },
+  { href: 'https://www.reddit.com/u/ru5iru/', icon: RedditIcon, id: 'reddit', color: 'hover:text-[#FF4500]' },
+  { href: 'https://iamrusiru.lovable.app/', icon: BloggerIcon, id: 'blog', color: 'hover:text-[#FF5722]' },
+  { href: 'https://open.spotify.com/user/31ihlph5wpwcdblzhklpoc3evmy4', icon: SpotifyIcon, id: 'spotify', color: 'hover:text-[#1DB954]' },
 ];
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
 
   return (
     <footer className="py-12 border-t border-border bg-card/50">
@@ -69,14 +71,15 @@ export function Footer() {
           <div className="flex items-center gap-6 flex-wrap justify-center">
             {socialLinks.map((link) => {
               const Icon = link.icon;
+              const label = t(`footer.social.${link.id}`);
               return (
                 <a
-                  key={link.label}
+                  key={link.id}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer me"
                   className={`text-muted-foreground ${link.color} transition-all duration-300 hover:scale-125`}
-                  aria-label={`Visit Rusiru's ${link.label} profile`}
+                  aria-label={t('footer.socialAria', { label })}
                 >
                   <Icon className="w-6 h-6" />
                 </a>
@@ -86,12 +89,12 @@ export function Footer() {
 
           {/* Logo */}
           <a href="#" className="text-3xl font-display font-bold gradient-text">
-            RR.
+            {t('footer.brand')}
           </a>
 
           {/* Copyright */}
           <p className="text-sm text-muted-foreground">
-            © {currentYear} Rusiru Rathmina. All rights reserved.
+            {t('footer.copyright', { year: currentYear })}
           </p>
         </div>
       </div>

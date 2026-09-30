@@ -4,6 +4,7 @@ import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/sections/Hero';
 import { Footer } from '@/components/Footer';
 import { BackToTop } from '@/components/BackToTop';
+import { useTranslation } from '@/i18n/i18n';
 
 const About = lazy(() => import('@/components/sections/About').then(m => ({ default: m.About })));
 const Experience = lazy(() => import('@/components/sections/Experience').then(m => ({ default: m.Experience })));
@@ -14,6 +15,7 @@ const Blog = lazy(() => import('@/components/sections/Blog').then(m => ({ defaul
 const Contact = lazy(() => import('@/components/sections/Contact').then(m => ({ default: m.Contact })));
 
 const Index = () => {
+  const { t } = useTranslation();
   return (
     <>
       <Helmet>
@@ -38,7 +40,7 @@ const Index = () => {
         href="#about"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg focus:text-sm focus:font-semibold"
       >
-        Skip to main content
+        {t('common.skipToContent')}
       </a>
 
       <Navbar />
