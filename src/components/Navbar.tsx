@@ -1,19 +1,22 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
+import { LanguageSelector } from './LanguageSelector';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/i18n/i18n';
 
-const navLinks = [
-  { href: '#about', label: 'About' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#education', label: 'Education' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#blog', label: 'Blog' },
-  { href: '#contact', label: 'Contact' },
+const navItems = [
+  { href: '#about', key: 'about' },
+  { href: '#experience', key: 'experience' },
+  { href: '#education', key: 'education' },
+  { href: '#projects', key: 'projects' },
+  { href: '#skills', key: 'skills' },
+  { href: '#blog', key: 'blog' },
+  { href: '#contact', key: 'contact' },
 ];
 
 export function Navbar() {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
@@ -29,7 +32,7 @@ export function Navbar() {
 
   // Intersection Observer for active section highlighting
   useEffect(() => {
-    const sectionIds = navLinks.map((link) => link.href.replace('#', ''));
+    const sectionIds = navItems.map((link) => link.href.replace('#', ''));
     const observers: IntersectionObserver[] = [];
 
     sectionIds.forEach((id) => {
@@ -69,7 +72,7 @@ export function Navbar() {
             : 'py-6 bg-transparent'
         }`}
       >
-        <nav className="container mx-auto px-6 flex items-center justify-between" aria-label="Main navigation">
+        <nav className="container mx-auto px-6 flex items-center justify-between" aria-label={t('nav.mainNavigation')}>
           {/* Logo */}
           <a
             href="#"
@@ -77,14 +80,14 @@ export function Navbar() {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="text-2xl font-display font-bold gradient-text hover:opacity-80 transition-opacity"
+            className="text-xl sm:text-2xl font-display font-bold gradient-text hover:opacity-80 transition-opacity tracking-wide"
           >
-            RR.
+            {t('nav.brand')}
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => {
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+            {navItems.map((link) => {
               const isActive = activeSection === link.href.replace('#', '');
               return (
                 <a
@@ -96,7 +99,7 @@ export function Navbar() {
                   }`}
                   aria-current={isActive ? 'true' : undefined}
                 >
-                  {link.label}
+                  {t(`nav.links.${link.key}`)}
                   <span
                     className={`absolute -bottom-1 left-0 h-0.5 gradient-bg transition-all duration-300 ${
                       isActive ? 'w-full' : 'w-0 group-hover:w-full'
@@ -105,18 +108,22 @@ export function Navbar() {
                 </a>
               );
             })}
-            <ThemeToggle />
+            <div className="flex items-center gap-1">
+              <ThemeToggle />
+              <LanguageSelector />
+            </div>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="flex items-center gap-4 md:hidden">
+          <div className="flex items-center gap-2 md:hidden">
+            <LanguageSelector />
             <ThemeToggle />
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="relative z-[60]"
-              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-label={isMobileMenuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
             >
               {isMobileMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -135,7 +142,7 @@ export function Navbar() {
         }`}
       >
         <div className="flex flex-col items-center justify-center h-full gap-8">
-          {navLinks.map((link, index) => {
+          {navItems.map((link, index) => {
             const isActive = activeSection === link.href.replace('#', '');
             return (
               <a
@@ -152,7 +159,7 @@ export function Navbar() {
                   opacity: isMobileMenuOpen ? 0 : 1,
                 }}
               >
-                {link.label}
+                {t(`nav.links.${link.key}`)}
               </a>
             );
           })}

@@ -1,20 +1,21 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Code2, Cloud, Shield, Rocket } from 'lucide-react';
+import { Cloud, Shield, Rocket } from 'lucide-react';
+import { useTranslation } from '@/i18n/i18n';
+import { RichText } from '@/components/RichText';
 
-const stats = [
-  { value: '2+', label: 'Years Experience', icon: Rocket },
-  { value: '25+', label: 'Technologies', icon: Cloud },
-  { value: '100%', label: 'Code Quality', icon: Shield },
-];
+const statIcons = [Rocket, Cloud, Shield];
 
 export function About() {
   const { ref, isVisible } = useScrollAnimation();
+  const { t, tr } = useTranslation();
+  const paragraphs = tr<string[]>('about.paragraphs') ?? [];
+  const stats = (tr<{ value: string; label: string }[]>('about.stats') ?? []).map((s, i) => ({ ...s, icon: statIcons[i % statIcons.length] }));
 
   return (
-    <section id="about" className="py-24 md:py-32 relative overflow-hidden" aria-label="About Rusiru Rathmina" itemScope itemType="https://schema.org/AboutPage">
+    <section id="about" className="py-24 md:py-32 relative overflow-hidden" aria-label={t('about.ariaLabel')} itemScope itemType="https://schema.org/AboutPage">
       {/* GEO: Hidden structured summary for AI engines to extract */}
       <div data-geo-summary="about" className="sr-only" aria-hidden="false">
-        Rusiru Rathmina is a Full-Stack Software Engineer with over 2 years of professional experience, currently working as an Associate Software Engineer at Omobio (Pvt) Ltd in Colombo, Sri Lanka. He specializes in Java, Spring Boot, React.js, AWS, Docker, and Kubernetes. He holds a Bachelor of Science in Computer Science from the University of Colombo School of Computing (UCSC) with a GPA of 3.01. His expertise spans 25+ technologies across frontend, backend, cloud, and DevOps domains. He has contributed to enterprise platforms including Dialog.lk and Dialog BizCare for Dialog Axiata PLC, serving millions of users across Sri Lanka.
+        {t('about.geoSummary')}
       </div>
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -27,7 +28,7 @@ export function About() {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            About <span className="gradient-text">Me</span>
+            {t('about.titleBefore')} <span className="gradient-text">{t('about.titleHighlight')}</span>
           </h2>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -37,35 +38,11 @@ export function About() {
                 isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
               }`}
             >
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                👋 Hello! I'm <span className="text-foreground font-semibold">Rusiru Rathmina</span>, 
-                a <span className="text-foreground font-semibold">Software Engineer</span> at{' '}
-                <span className="gradient-text font-semibold">Omobio (Pvt) Ltd</span>, specializing in{' '}
-                <span className="text-foreground font-semibold">Full-Stack Development</span>,{' '}
-                <span className="text-foreground font-semibold">Cloud Computing</span>, and{' '}
-                <span className="text-foreground font-semibold">DevOps</span>.
-              </p>
-
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                My journey began as a trainee, and I have since grown into designing scalable solutions 
-                using <span className="text-foreground font-semibold">Java, Spring Boot, React, and AWS</span>. 
-                I have extensive hands-on experience refactoring legacy systems and building secure, 
-                reliable applications.
-              </p>
-
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                My expertise covers the full lifecycle—from frontend design with{' '}
-                <span className="text-foreground font-semibold">React.js</span> to backend logic in{' '}
-                <span className="text-foreground font-semibold">PHP/Drupal</span> and infrastructure 
-                management using <span className="text-foreground font-semibold">Docker</span> and{' '}
-                <span className="text-foreground font-semibold">Kubernetes</span>.
-              </p>
-
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                🚀 I am always open to collaborating on <span className="gradient-text font-semibold">Full-Stack</span> or{' '}
-                <span className="gradient-text font-semibold">DevOps</span> projects. Let's connect and shape 
-                the future of technology together!
-              </p>
+              {paragraphs.map((p, i) => (
+                <p key={i} className="text-lg text-muted-foreground leading-relaxed">
+                  <RichText text={p} />
+                </p>
+              ))}
             </div>
 
             {/* Stats Grid */}

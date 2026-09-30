@@ -2,97 +2,22 @@ import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { ExternalLink, Github, Plus, Minus, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/i18n/i18n';
 
-const projects = [
-	{
-		title: "Dialog.lk",
-		link: "https://dialog.lk/",
-		isExternal: true,
-		description: [
-			"Troubleshot and resolved production issues, optimized application performance, and improved overall system reliability and availability while adhering to SLAs and critical deadlines.",
-			"Led efforts to refactor the legacy codebase to align with OWASP Top 10 and SonarQube standards.",
-			"Developed custom Drupal modules to send emails via Amazon SES, replacing SMTP to improve security and deliverability, and implemented user consent management to comply with Sri Lanka’s Personal Data Protection Act.",
-			"Played a key role in guiding the team to improve coding standards, development practices, and secure coding initiatives, including the implementation of SonarQube.",
-			"Remediated security hotspots and vulnerabilities identified across the application, significantly reducing security risks throughout the codebase.",
-			"Optimized application performance and scalability using AWS services such as S3, SES, and CloudWatch, along with caching mechanisms.",
-			"Performed peer code reviews and mentored new team members, fostering engineering best practices and improving team productivity.",
-		],
-		tech: ["Drupal", "Yii", "React", "Kafka", "Redis", "AWS", "Kubernetes"],
-		featured: true,
-	},
-	{
-		title: "Dialog BizCare",
-		description: [
-			"Acted as a Level 3 (L3) support engineer, fixing bugs and handling live production issues within defined SLAs.",
-			"Investigated production issues by analyzing server logs and implemented effective solutions to ensure system stability.",
-			"Collaborated directly with clients and end-users to identify, troubleshoot, and resolve issues efficiently.",
-			"Worked closely with senior engineers while following agile development methodologies, coding standards, and software engineering best practices.",
-		],
-		tech: ["Yii", "Keycloak"],
-		featured: true,
-	},
-	{
-		title: "Jira Worklog Manager",
-		link: "https://github.com/ru5iru/jira-time-tracker",
-		isExternal: true,
-		description: [
-			"Built a browser-based personal productivity tool for logging and managing Jira Cloud worklogs, eliminating the friction of Jira's native time-tracking UI with a fast, keyboard-first single-page experience.",
-			"Designed and implemented a proxy-free React + Vite architecture with a custom month-bucket worklog cache, enabling on-demand data fetching per view instead of a single upfront bulk load — reducing initial API calls significantly.",
-			"Engineered a real-time work timer that persists across page reloads and browser restarts using localStorage, with a floating chip that survives client-side navigation and pre-fills the log work modal on stop.",
-			"Implemented advanced worklog operations including bulk logging across multiple issues, worklog splitting with live sum validation, duplicate entry, and a 5-second undo-delete flow with optimistic UI updates.",
-			"Built a multi-tab summary dashboard featuring a Clockwork-style weekly timesheet grid, GitHub-style heatmap calendar, per-project breakdown chart, logged vs. estimated variance report, and CSV export.",
-			"Developed a per-issue work notes system backed by the File System Access API for auto-save to a user-chosen file on disk, with graceful fallback to manual export/import on unsupported browsers.",
-			"Implemented a global command palette with fuzzy issue search, keyboard navigation, and direct Jira key lookup, along with Jira workflow status transitions directly from the issue list.",
-		],
-		tech: ["Lovable","React", "Vite", "TypeScript", "Jira REST API", "Node.js", "dayjs", "localStorage"],
-		featured: true,
-	},
-	{
-		title: "Project-X",
-		github: "https://github.com/ru5iru/Project-X",
-		description: [
-			"Produce collection and production automation system designed for farmers.",
-			"Implemented storage, customer, and supplier management modules using an MVC-based architecture.",
-			"Built a modern frontend using React and integrated a CMS-based backend.",
-		],
-		tech: ["Directus", "React", "PostgreSQL", "Docker"],
-		featured: true,
-	},
-	{
-		title: "Roamly",
-		github: "https://github.com/ru5iru/Roamly",
-		description: [
-			"Travel recommendation and experience-sharing platform for travel enthusiasts.",
-			"Recommends places, hotels, travel guides, taxi rides, and shops.",
-			"Includes an experience-sharing platform where travelers can connect and share their stories.",
-		],
-		tech: ["React", "Node.js", "Express", "PostgreSQL", "Sass"],
-		featured: false,
-	},
-	{
-		title: "Micro CAPS",
-		github: "https://github.com/BhanukaRajk/MicroCAPS",
-		description: [
-			"Assembly process management system for Micro Car Limited.",
-			"Manages vehicle assembly process from chassis delivery to dispatching.",
-		],
-		tech: ["PHP", "AJAX", "MySQL", "JavaScript"],
-		featured: false,
-	},
-	{
-		title: "ToDo",
-		github: "https://github.com/ru5iru/ToDo",
-		description: [
-			"Task manager app built with Flutter.",
-			"Capable of managing tasks, adding reminders, and setting priorities.",
-		],
-		tech: ["Flutter"],
-		featured: false,
-	},
-];
+interface ProjectItem {
+  title: string;
+  link?: string;
+  github?: string;
+  isExternal?: boolean;
+  description: string[];
+  tech: string[];
+  featured: boolean;
+}
 
 export function Projects() {
   const { ref, isVisible } = useScrollAnimation();
+  const { t, tr } = useTranslation();
+  const projects = tr<ProjectItem[]>('projects.items') ?? [];
   const [showAll, setShowAll] = useState(false);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -104,10 +29,10 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" className="py-24 md:py-32 bg-muted/30 relative overflow-hidden" aria-label="Projects by Rusiru Rathmina">
+    <section id="projects" className="py-24 md:py-32 bg-muted/30 relative overflow-hidden" aria-label={t('projects.ariaLabel')}>
       {/* GEO: Projects summary for AI engines */}
       <div data-geo-summary="projects" className="sr-only" aria-hidden="false">
-        Rusiru Rathmina has worked on 6 notable projects: Dialog.lk — an enterprise CMS platform for Dialog Axiata serving millions of users; Dialog BizCare — a corporate customer management portal; Project-X — a produce collection automation system for farmers; Roamly — a travel recommendation platform; Micro CAPS — an assembly process management system for Micro Car Limited; and ToDo — a Flutter-based task manager app.
+        {t('projects.geoSummary')}
       </div>
       <div className="absolute top-1/4 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 left-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
@@ -118,7 +43,7 @@ export function Projects() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          Featured Projects
+          {t('projects.title')}
         </h2>
 
         <div
@@ -147,12 +72,12 @@ export function Projects() {
                       {project.title}
                     </span>
                     {project.link && (
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title}`} className="text-muted-foreground hover:text-primary transition-colors" onClick={(e) => e.stopPropagation()}>
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={t('projects.visit', { title: project.title })} className="text-muted-foreground hover:text-primary transition-colors" onClick={(e) => e.stopPropagation()}>
                         <ExternalLink className="w-4 h-4" />
                       </a>
                     )}
                     {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} on GitHub`} className="text-muted-foreground hover:text-foreground transition-colors" onClick={(e) => e.stopPropagation()}>
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={t('projects.viewOnGithub', { title: project.title })} className="text-muted-foreground hover:text-foreground transition-colors" onClick={(e) => e.stopPropagation()}>
                         <Github className="w-4 h-4" />
                       </a>
                     )}
@@ -213,12 +138,12 @@ export function Projects() {
                         {project.title}
                       </span>
                       {project.link && (
-                        <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title}`} className="text-muted-foreground hover:text-primary transition-colors" onClick={(e) => e.stopPropagation()}>
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={t('projects.visit', { title: project.title })} className="text-muted-foreground hover:text-primary transition-colors" onClick={(e) => e.stopPropagation()}>
                           <ExternalLink className="w-4 h-4" />
                         </a>
                       )}
                       {project.github && (
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} on GitHub`} className="text-muted-foreground hover:text-foreground transition-colors" onClick={(e) => e.stopPropagation()}>
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={t('projects.viewOnGithub', { title: project.title })} className="text-muted-foreground hover:text-foreground transition-colors" onClick={(e) => e.stopPropagation()}>
                           <Github className="w-4 h-4" />
                         </a>
                       )}
@@ -268,12 +193,12 @@ export function Projects() {
           >
             {showAll ? (
               <>
-                Show Less
+                {t('projects.showLess')}
                 <ChevronUp className="ml-2 w-5 h-5 group-hover:-translate-y-1 transition-transform" />
               </>
             ) : (
               <>
-                View More Projects
+                {t('projects.viewMore')}
                 <ChevronDown className="ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform" />
               </>
             )}
