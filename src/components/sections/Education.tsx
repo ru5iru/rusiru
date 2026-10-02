@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Plus, Minus } from 'lucide-react';
 import { useTranslation } from '@/i18n/i18n';
-import ucscLogo from '@/assets/logos/ucsc-logo.png';
-import mcgLogo from '@/assets/logos/mcg-logo.png';
+import { siteConfig, resolveIcon, allSkills } from '@/config';
 
-const logos: Record<string, string> = { ucsc: ucscLogo, mcg: mcgLogo };
+const logos: Record<string, string> = siteConfig.educationLogos;
 
 interface EducationItem {
   id: string;

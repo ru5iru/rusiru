@@ -1,49 +1,9 @@
 import { ArrowRight, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/i18n/i18n';
-import profilePhoto from '@/assets/profile/profile-photo.webp';
-import awsIcon from '@/assets/icons/aws.svg';
-import drupalIcon from '@/assets/icons/drupal.svg';
-import laravelIcon from '@/assets/icons/laravel.svg';
-import symfonyIcon from '@/assets/icons/symfony.svg';
-import yiiIcon from '@/assets/icons/yii.svg';
-import postmanIcon from '@/assets/icons/postman.svg';
-import sonarqubeIcon from '@/assets/icons/sonarqube.svg';
+import { siteConfig, resolveIcon, allSkills } from '@/config';
 
-const cdn = (path: string) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}`;
-
-// All technologies mirrored from the Technical Skills section
-const techStack = [
-  // Languages
-  { name: 'Java', icon: cdn('java/java-plain.svg'), dark: false },
-  { name: 'JavaScript', icon: cdn('javascript/javascript-plain.svg'), dark: false },
-  { name: 'PHP', icon: cdn('php/php-plain.svg'), dark: false },
-  { name: 'C++', icon: cdn('cplusplus/cplusplus-plain.svg'), dark: false },
-  // Frameworks
-  { name: 'React', icon: cdn('react/react-original.svg'), dark: false },
-  { name: 'Node.js', icon: cdn('nodejs/nodejs-plain.svg'), dark: false },
-  { name: 'Spring Boot', icon: cdn('spring/spring-original.svg'), dark: false },
-  { name: 'Drupal', icon: drupalIcon, dark: false },
-  { name: 'Yii', icon: yiiIcon, dark: true },
-  { name: 'Laravel', icon: laravelIcon, dark: false },
-  { name: 'Symfony', icon: symfonyIcon, dark: true },
-  // Databases
-  { name: 'MySQL', icon: cdn('mysql/mysql-original.svg'), dark: false },
-  { name: 'PostgreSQL', icon: cdn('postgresql/postgresql-plain.svg'), dark: false },
-  { name: 'MongoDB', icon: cdn('mongodb/mongodb-plain.svg'), dark: false },
-  { name: 'Redis', icon: cdn('redis/redis-plain.svg'), dark: false },
-  // DevOps & Cloud
-  { name: 'AWS', icon: awsIcon, dark: false },
-  { name: 'Docker', icon: cdn('docker/docker-plain.svg'), dark: false },
-  { name: 'Kubernetes', icon: cdn('kubernetes/kubernetes-plain.svg'), dark: false },
-  { name: 'Jenkins', icon: cdn('jenkins/jenkins-original.svg'), dark: false },
-  { name: 'Kafka', icon: cdn('apachekafka/apachekafka-original.svg'), dark: true },
-  // Tools
-  { name: 'Git', icon: cdn('git/git-plain.svg'), dark: false },
-  { name: 'Linux', icon: cdn('linux/linux-original.svg'), dark: false },
-  { name: 'SonarQube', icon: sonarqubeIcon, dark: false },
-  { name: 'Postman', icon: postmanIcon, dark: false },
-];
+const techStack = allSkills();
 
 export function Hero() {
   const { t } = useTranslation();
@@ -86,7 +46,7 @@ export function Hero() {
               <span className="relative inline-flex shrink-0 items-center justify-center align-middle mx-0.5">
                 <span className="absolute inset-0 rounded-full bg-primary/40 opacity-60 blur-xl scale-110" />
                 <img
-                  src={profilePhoto}
+                  src={siteConfig.person.profileImage}
                   alt={t('hero.profileAlt')}
                   loading="eager"
                   fetchPriority="high"
@@ -129,7 +89,7 @@ export function Hero() {
             size="lg"
             className="px-7 py-5 sm:py-6 text-sm sm:text-base font-semibold rounded-full text-slate-200 hover:bg-white/10 hover:text-white transition-all duration-300 hover:scale-105 w-full sm:w-auto"
           >
-            <a href={t('hero.resumeUrl')} target="_blank" rel="noopener noreferrer">
+            <a href={siteConfig.person.resumeUrl} target="_blank" rel="noopener noreferrer">
               <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               {t('hero.resume')}
             </a>
@@ -146,7 +106,7 @@ export function Hero() {
             {[...techStack, ...techStack].map((tech, i) => (
               <img
                 key={`${tech.name}-${i}`}
-                src={tech.icon}
+                src={resolveIcon(tech.icon)}
                 alt={tech.name}
                 title={tech.name}
                 loading="lazy"

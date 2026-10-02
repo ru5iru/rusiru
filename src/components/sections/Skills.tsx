@@ -1,66 +1,9 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useTranslation } from '@/i18n/i18n';
 
-// Import local icons
-import awsIcon from '@/assets/icons/aws.svg';
-import drupalIcon from '@/assets/icons/drupal.svg';
-import laravelIcon from '@/assets/icons/laravel.svg';
-import symfonyIcon from '@/assets/icons/symfony.svg';
-import yiiIcon from '@/assets/icons/yii.svg';
-import postmanIcon from '@/assets/icons/postman.svg';
-import sonarqubeIcon from '@/assets/icons/sonarqube.svg';
+import { siteConfig, resolveIcon, allSkills } from '@/config';
 
-const skillCategories = [
-  {
-    id: 'languages',
-    skills: [
-      { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
-      { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-      { name: 'PHP', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
-      { name: 'C++', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
-    ],
-  },
-  {
-    id: 'frameworks',
-    skills: [
-      { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-      { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-      { name: 'Spring Boot', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg' },
-      { name: 'Drupal', icon: drupalIcon },
-      { name: 'Yii', icon: yiiIcon },
-      { name: 'Laravel', icon: laravelIcon },
-      { name: 'Symfony', icon: symfonyIcon },
-    ],
-  },
-  {
-    id: 'databases',
-    skills: [
-      { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
-      { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
-      { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-      { name: 'Redis', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
-    ],
-  },
-  {
-    id: 'devops',
-    skills: [
-      { name: 'AWS', icon: awsIcon },
-      { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-      { name: 'Kubernetes', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg' },
-      { name: 'Jenkins', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg' },
-      { name: 'Kafka', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg' },
-    ],
-  },
-  {
-    id: 'tools',
-    skills: [
-      { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-      { name: 'Linux', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg' },
-      { name: 'SonarQube', icon: sonarqubeIcon },
-      { name: 'Postman', icon: postmanIcon },
-    ],
-  },
-];
+const skillCategories = siteConfig.skills;
 
 export function Skills() {
   const { ref, isVisible } = useScrollAnimation();
@@ -100,15 +43,15 @@ export function Skills() {
                     {t(`skills.categories.${category.id}`)}
                   </span>
                   <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => {
-                    const isDarkIcon = ['Kafka', 'Symfony', 'Yii'].includes(skill.name);
+                  {category.items.map((skill) => {
+                    const isDarkIcon = !!skill.invertInDark;
                     return (
                       <div
                         key={skill.name}
                         className="group inline-flex items-center gap-2 bg-card border border-border rounded-full px-3 py-1.5 hover:border-primary/50 hover:bg-accent/50 transition-all duration-300 cursor-default"
                       >
                         <img
-                          src={skill.icon}
+                          src={resolveIcon(skill.icon)}
                           alt=""
                           loading="lazy"
                           width="18"

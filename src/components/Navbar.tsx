@@ -4,16 +4,10 @@ import { ThemeToggle } from './ThemeToggle';
 import { LanguageSelector } from './LanguageSelector';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/i18n/i18n';
+import { siteConfig, resolveIcon, allSkills } from '@/config';
 
-const navItems = [
-  { href: '#about', key: 'about' },
-  { href: '#experience', key: 'experience' },
-  { href: '#education', key: 'education' },
-  { href: '#projects', key: 'projects' },
-  { href: '#skills', key: 'skills' },
-  { href: '#blog', key: 'blog' },
-  { href: '#contact', key: 'contact' },
-];
+
+const navItems = siteConfig.sections.map((key) => ({ href: `#${key}`, key }));
 
 export function Navbar() {
   const { t } = useTranslation();
