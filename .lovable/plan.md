@@ -1,71 +1,39 @@
+# Make the portfolio a fully configurable template
 
-# Portfolio Website for Rusiru Rathmina
+Goal: anyone can copy the project, edit a few config files, and get their own portfolio — no code changes needed. Then polish quality across the board.
 
-A bold, creative, and animated portfolio website showcasing your expertise as a Full-Stack Software Engineer.
+## 1. Config structure
 
----
+```text
+src/config/
+  site.json        identity: name, initials, email, site URL, location, social links, SEO keywords, theme default
+  content.json     language-neutral data: experience, education, projects, skills (with icon refs), blog posts (urls, dates)
+  theme.json       brand colors (light/dark), fonts, radius — mapped into CSS variables at startup
+src/locales/
+  en.json          all wording only (headings, labels, descriptions, bullets) keyed to IDs in content.json
+public/media/      profile photo, logos, skill icons, favicons, og image — referenced by path from config
+```
 
-## Design Direction
-- **Bold & Creative Style**: Eye-catching design with gradient accents, unique layouts, and strong visual hierarchy
-- **Dark/Light Mode**: Toggle between themes with smooth transitions
-- **Rich Animations**: Parallax effects, scroll-triggered reveals, hover interactions, and animated backgrounds
-- **Modern Typography**: Clean, professional fonts with dynamic sizing
+- Wording lives in locale files; facts (URLs, dates, image paths, tech names) live in `site.json`/`content.json`. Adding `si.json` translates everything.
+- Images: move all imported assets to `public/media/` and reference them by path in config, so swapping a photo = replacing a file or changing a path.
+- Sections can be toggled and reordered from `site.json` (`sections: ["about","experience",...]`).
+- Social links: list of `{ platform, url }`; icons resolved from a built-in brand icon set, with optional custom icon path.
+- Skill icons: either local path or remote URL in config.
 
----
+## 2. Generated SEO files
+A build-time script reads `site.json` + `content.json` + `en.json` and generates: `index.html` meta/JSON-LD/static fallback content, `sitemap.xml`, `robots.txt`, `llms.txt`, `site.webmanifest`. Removes the 30 KB of hand-written duplicated content in `index.html` and fixes the incomplete prerender issue by rendering the actual section HTML into the page at build time.
 
-## Sections
+## 3. Quality improvements
+- Performance: profile photo and logos converted to WebP at correct sizes; keep lazy loading.
+- Type-safe config with validation (clear error if a field is missing).
+- Accessibility: consistent alt text from config, contrast check on hero/light mode, focus states.
+- Remove unused UI components and dead code; small tests for config loading and locale fallback (missing key falls back to English).
+- `README.md` "Use this template" guide: which file to edit for what, how to add a language, how to change photo/colors.
 
-### 1. Hero Section
-- Full-screen intro with your name and title
-- Animated background (gradient mesh or particles)
-- "View Work" and "Download Resume" buttons
-- Smooth scroll indicator
+## 4. Verification
+Build check, browser screenshots desktop/mobile in light/dark, confirm no hardcoded personal data remains (search for name/email/URLs outside config).
 
-### 2. About Me
-- Your introduction and story
-- Key highlights with animated stats/counters (years of experience, projects, technologies)
-- Creative layout with visual elements
-
-### 3. Experience Timeline
-- Interactive vertical timeline
-- Omobio positions with expandable details
-- Animated markers and content reveals on scroll
-
-### 4. Education
-- Modern card-based design for UCSC and Mahinda College
-- Institution logos and achievement highlights
-
-### 5. Featured Projects
-- Dynamic project cards with hover effects
-- Technology stack icons for each project
-- All 6 projects: Dialog.lk, Dialog BizCare, Project-X, Roamly, Micro CAPS, ToDo
-- "View More/Less" toggle functionality
-
-### 6. Technical Skills
-- Animated skills grid with categorized sections
-- Skill icons with hover tooltips
-- Visual grouping (Languages, Frameworks, Databases, DevOps/Cloud, Tools)
-
-### 7. Blog Preview
-- Static cards showcasing featured blog posts
-- Link to your Blogger site
-- Clean, minimal design
-
-### 8. Contact Section
-- Visual contact form (name, email, message fields)
-- Your social media links (LinkedIn, GitHub, Discord, Facebook, Twitter, Reddit, Blogger, Spotify)
-- Styled icons with hover animations
-
-### 9. Navigation & Footer
-- Fixed navbar with smooth scroll navigation
-- Mobile hamburger menu
-- Footer with social links and copyright
-
----
-
-## Technical Features
-- Fully responsive (mobile, tablet, desktop)
-- Dark/Light theme toggle with system preference detection
-- Smooth scroll animations using CSS and intersection observers
-- SEO-optimized meta tags (keeping your existing Open Graph and Twitter cards)
-- Performance optimized with lazy loading images
+## Technical notes
+- Theme tokens injected as CSS variables from `theme.json`; Tailwind keeps using semantic tokens.
+- Prerender via a Vite plugin using `react-dom/server` on the home page at build time.
+- Your current content and look stay identical; only where it's stored changes.
