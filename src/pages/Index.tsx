@@ -34,7 +34,7 @@ const Index = () => {
       </Helmet>
     <div className="min-h-screen bg-background" itemScope itemType="https://schema.org/ProfilePage">
       <meta itemProp="dateCreated" content={seo.dateCreated} />
-      <meta itemProp="dateModified" content={__BUILD_DATE__} />
+      <meta itemProp="dateModified" content={new Date().toISOString().slice(0, 10)} />
       <div itemProp="mainEntity" itemScope itemType="https://schema.org/Person">
         <meta itemProp="name" content={person.name} />
         <meta itemProp="jobTitle" content={person.jobTitle} />

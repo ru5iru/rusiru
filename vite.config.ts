@@ -13,7 +13,6 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
-  define: { __BUILD_DATE__: JSON.stringify(new Date().toISOString().slice(0, 10)) },
   plugins: [siteFilesPlugin(), react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
