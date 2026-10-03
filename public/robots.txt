@@ -1,4 +1,3 @@
-# Search Engine Crawlers
 User-agent: Googlebot
 Allow: /
 
@@ -11,7 +10,6 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-# AI / Generative Engine Crawlers
 User-agent: GPTBot
 Allow: /
 
@@ -42,7 +40,6 @@ Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
-# Default
 User-agent: *
 Allow: /
 
