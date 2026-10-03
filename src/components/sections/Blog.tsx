@@ -73,7 +73,7 @@ export function Blog() {
 
                 {/* Read More */}
                 <div className="flex items-center gap-2 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                  {t('blog.readMore')}
+                  {t('blog.readMore')}<span className="sr-only">: {post.title}</span>
                   <ExternalLink className="w-4 h-4" />
                 </div>
                 </a>
