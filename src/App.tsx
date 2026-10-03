@@ -1,3 +1,4 @@
+import { siteConfig } from '@/config';
 import { lazy, Suspense } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -13,7 +14,7 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+    <ThemeProvider attribute="class" defaultTheme={siteConfig.theme.default} enableSystem>
       <TooltipProvider>
         <Suspense fallback={null}>
           <Toaster />
