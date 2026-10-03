@@ -5,7 +5,7 @@ export interface SkillItem { name: string; icon: string; invertInDark?: boolean 
 export interface SkillCategory { id: string; items: SkillItem[] }
 export interface SocialLink { platform: string; url: string; icon?: string }
 
-export const siteConfig = site as typeof site & { skills: SkillCategory[]; social: SocialLink[] };
+export const siteConfig = site as unknown as Omit<typeof site, "skills" | "social"> & { skills: SkillCategory[]; social: SocialLink[] };
 export const themeConfig = theme as { light: Record<string, string>; dark: Record<string, string> };
 
 /** Resolve icon refs: "devicon:<path>" uses the Devicon CDN; anything else is used as-is. */
