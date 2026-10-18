@@ -2,6 +2,7 @@ import { ArrowRight, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/i18n/i18n';
 import { siteConfig, resolveIcon, allSkills } from '@/config';
+import { navigateToSection } from '@/lib/navigation';
 
 const techStack = allSkills();
 
@@ -9,7 +10,7 @@ export function Hero() {
   const { t } = useTranslation();
 
   const handleScrollToProjects = () => {
-    document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
+    navigateToSection('projects');
   };
 
 
@@ -77,6 +78,7 @@ export function Hero() {
         >
           <Button
             onClick={handleScrollToProjects}
+            hidden={!siteConfig.sections.includes('projects')}
             size="lg"
             className="bg-white/10 backdrop-blur-md border border-white/25 text-white px-7 py-5 sm:py-6 text-sm sm:text-base font-semibold rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-105 group w-full sm:w-auto"
           >

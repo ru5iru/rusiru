@@ -107,6 +107,11 @@
     overflow: hidden;
   }
 
+  .disclosure-content[data-state='open'] { animation: disclosure-down 250ms ease-out; }
+  .disclosure-content[data-state='closed'] { animation: disclosure-up 250ms ease-out; }
+  @keyframes disclosure-down { from { height: 0; } to { height: var(--radix-collapsible-content-height); } }
+  @keyframes disclosure-up { from { height: var(--radix-collapsible-content-height); } to { height: 0; } }
+
   .marquee-track {
     width: max-content;
     animation: marquee-scroll 30s linear infinite;
@@ -394,4 +399,12 @@ html {
   width: 0;
   height: 0;
   display: none;
+}
+
+section[id], main[id] { scroll-margin-top: 6rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0ms !important; transition-duration: 0.01ms !important; transition-delay: 0ms !important; animation-iteration-count: 1 !important; }
+  .animate-on-scroll { opacity: 1; transform: none; }
 }
