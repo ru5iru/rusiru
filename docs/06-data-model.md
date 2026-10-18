@@ -2,13 +2,13 @@
 
 Purpose: describe authored records and browser state. Intended reader: content editors and developers.
 
-Last verified against commit `0d6ea67e368badc5e2d52b7c601ea167c6be6208` on 2026-10-17.
+Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-10-18.
 
 ## Storage model
 
-**[Verified]** There is no database schema, ORM, migration framework, or application-server persistence in this checkout. Content is source-controlled JSON plus TSX constants and static HTML. Locale files are eagerly imported into the JavaScript bundle by [i18n:6](../src/i18n/i18n.tsx#L6). Runtime visitors do not edit these records.
+**[Verified]** There is no database, ORM, migration framework, or application-server persistence. Identity/settings/skills live in site JSON, theme overrides in theme JSON, and section wording/record arrays in locale JSON. Static HTML and llms content remain separate. Config and locales are bundled into the browser; public media paths are served as files. Visitors cannot edit these records. Sources: [config](../src/config/index.ts), [site](../src/config/site.json), [theme](../src/config/theme.json), [i18n:6](../src/i18n/i18n.tsx#L6).
 
-**[Verified]** [en.json](../src/locales/en.json) has top-level `language`, `nav`, `hero`, `about`, `experience`, `education`, `projects`, `skills`, `blog`, `contact`, `footer`, and `common` objects. Nested field names are the lookup API; changing them requires corresponding consumer changes.
+**[Verified]** [en.json](../src/locales/en.json) has top-level `language`, `nav`, `hero`, `about`, `experience`, `education`, `projects`, `skills`, `blog`, `contact`, `footer`, `common`, and `notFound` objects. Nested field names are the lookup API. There is no `src/config/content.json`; experience/education/project/article arrays still live in locales, including factual fields and per-record links.
 
 | Logical record | Fields / constraints in current code | Consumer |
 | --- | --- | --- |
@@ -18,9 +18,11 @@ Last verified against commit `0d6ea67e368badc5e2d52b7c601ea167c6be6208` on 2026-
 | Education item | `id`, `institution`, `degree`, `period`, `details: string[]`; ID maps to local logo | [Education](../src/components/sections/Education.tsx) |
 | Project item | `title`, optional `link`, `github`, `isExternal`; `description: string[]`, `tech: string[]`, `featured: boolean` | [Projects](../src/components/sections/Projects.tsx) |
 | Blog post | `title`, `excerpt`, `date`, `dateLabel`, `readTime`, `link`; date label is authored separately | [Blog](../src/components/sections/Blog.tsx) |
-| Contact | `email`, `linkedinUrl`, button/heading text, `geoSummary` | [Contact](../src/components/sections/Contact.tsx) |
-| Skill category | Static `id` and `skills[{name,icon}]`; locale holds category labels | [Skills](../src/components/sections/Skills.tsx) |
-| Social link | Static `href`, icon component, ID, hover color; locale holds labels | [Footer](../src/components/Footer.tsx) |
+| Contact | Site `person.email` and `contact.secondaryButton.{platform,url}`; locale button/heading text and summary | [Contact](../src/components/sections/Contact.tsx) |
+| Skill category | Site `skills[{id,items:[{name,icon,invertInDark?}]}]`; locale category labels | [Skills](../src/components/sections/Skills.tsx), [config types](../src/config/index.ts) |
+| Social link | Site `social[{platform,url,icon?}]`; locale labels, platform-to-icon/hover lookup in code | [Footer](../src/components/Footer.tsx), [BrandIcons](../src/components/icons/BrandIcons.tsx) |
+
+**[Verified]** Additional site config groups are `siteUrl`; `person` (name, job title, email, location, profile image, resume URL); `seo` (title, descriptions, creation date, theme color); `theme.default`; `sections`; `blogUrl`; and `educationLogos`. Theme JSON contains `light` and `dark` dictionaries of CSS variable names to values. `$`-prefixed keys are comments excluded from theme injection. `siteConfig`/`themeConfig` use TypeScript assertions, not schema validation. Only four missing site fields are logged: site URL, name, email, and SEO title ([config:31](../src/config/index.ts#L31)).
 
 **[Verified]** Interfaces are local TypeScript interfaces, not JSON validators. A cast through `tr<T>()` does not enforce field presence or element types. Some missing arrays default to empty, but a non-array value can still break `.map`/`.filter`. `isExternal` is currently unused by the project renderer. No uniqueness/index constraints are enforced; titles and company/role combinations serve as React keys.
 
@@ -28,6 +30,10 @@ Last verified against commit `0d6ea67e368badc5e2d52b7c601ea167c6be6208` on 2026-
 
 ```mermaid
 erDiagram
+    SITE_CONFIG ||--o{ SKILL_CATEGORY : contains
+    SKILL_CATEGORY ||--o{ SKILL : contains
+    SITE_CONFIG ||--o{ SOCIAL_LINK : contains
+    SITE_CONFIG ||--o{ LOGO_ASSET : maps
     LOCALE ||--o{ PROJECT : contains
     LOCALE ||--o{ EXPERIENCE : contains
     LOCALE ||--o{ EDUCATION : contains
@@ -38,6 +44,26 @@ erDiagram
         string filenameCode
         string languageName
         string displayCode
+    }
+    SITE_CONFIG {
+        string siteUrl
+        object person
+        object seo
+        string_array sections
+        string themeDefault
+    }
+    SKILL_CATEGORY {
+        string id
+    }
+    SKILL {
+        string name
+        string iconRef
+        boolean invertInDark_optional
+    }
+    SOCIAL_LINK {
+        string platform
+        string url
+        string icon_optional
     }
     PROJECT {
         string title
@@ -70,18 +96,18 @@ erDiagram
     }
     LOGO_ASSET {
         string lookupId
-        string importedPath
+        string publicPath
     }
 ```
 
-Caption: these are conceptual JSON containment and code-lookup relationships, not SQL tables or foreign keys. How to read: arrays create many contained records; the education logo lookup must be maintained manually. Evidence: [locale](../src/locales/en.json), [Education:8](../src/components/sections/Education.tsx#L8).
+Caption: these are JSON containment and lookup relationships, not SQL tables or foreign keys. How to read: locales own portfolio record arrays, config owns skill/social/logo records, and education IDs select configured public logo paths. Theme token dictionaries are described above, outside this diagram. Evidence: [locale](../src/locales/en.json), [site](../src/config/site.json), [Education:7](../src/components/sections/Education.tsx#L7).
 
 ## Runtime state and persistence
 
 | State | Location / lifetime | Behavior |
 | --- | --- | --- |
 | Selected language | React context and localStorage `lang` | Restore only codes present in bundled translations; otherwise default English |
-| Theme | next-themes provider | System default; persistence implementation delegated to dependency |
+| Theme | next-themes provider plus injected token CSS | `siteConfig.theme.default` currently system; persistence delegated to dependency |
 | Project visibility/open row | Projects component state | `false`/`0` initial values; reset on remount |
 | Experience/education open row | Each section's state | Initially index zero; current click can set null |
 | Menu, active section, scrolled header | Navbar state | Browser session/component lifetime only |
@@ -92,8 +118,8 @@ Caption: these are conceptual JSON containment and code-lookup relationships, no
 
 ## Lifecycle and edits
 
-**[Verified]** Authored content follows commit → dependency install/build → static artifact → browser bundle. Changes require a rebuild/deploy. There are no data migration commands, retention jobs, user uploads, or record deletion endpoints. Browser language preference remains until overwritten/cleared by the user/browser; unsupported saved codes are ignored at initialization. Access checks use `typeof localStorage`, but there is no exception handler for denied storage.
+**[Verified]** Authored config/content follows commit → dependency install → dev/build generator → static artifact → browser. The generator overwrites changed sitemap/robots/manifest outputs and uses the UTC build day for sitemap `lastmod`. No SQL migrations, retention jobs, uploads, or record-deletion endpoints exist. Public media is copied into the artifact; config-only replacement needs no source import but still needs deployment. Browser language preferences remain until cleared/overwritten; unsupported codes are ignored. Storage denial has no exception handler. Sources: [generator](../scripts/site-files.ts), [i18n](../src/i18n/i18n.tsx).
 
-**[Recommendation]** When changing a record, review all copies: locale visible content, locale `geoSummary`, static HTML, JSON-LD, and `llms.txt`. Reset a stale language preference from the browser console with `localStorage.removeItem('lang')`, then reload. This affects only that origin's language key; it does not change source content.
+**[Recommendation]** Change facts/settings in config and revise locale prose/arrays, locale `geoSummary`, static HTML/JSON-LD, and `llms.txt` where duplicated. Run dev/build for generated outputs; do not hand-edit them. Reset a stale language preference from the browser console with `localStorage.removeItem('lang')`, then reload. This affects only that origin's language key, not source content.
 
 Next: [API and integrations](07-api-and-integrations.md).

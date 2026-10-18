@@ -2,11 +2,11 @@
 
 Purpose: explain what this repository contains. Intended reader: any new contributor.
 
-Last verified against commit `0d6ea67e368badc5e2d52b7c601ea167c6be6208` on 2026-10-17.
+Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-10-18.
 
 ## Purpose and audience
 
-**[Verified]** The website introduces Rusiru Rathmina and links to his work, resume, articles, and professional profiles. Visitors can read expandable employment, education, and project entries, reveal additional projects, change color theme, and follow email or social links. See [Index](../src/pages/Index.tsx), [sections](../src/components/sections/Projects.tsx), and [Contact](../src/components/sections/Contact.tsx).
+**[Verified]** The website is a reusable portfolio template currently introducing Rusiru Rathmina and linking to his work, resume, articles, and professional profiles. Visitors can read expandable entries, reveal additional projects, change theme, and follow contact links. Authors configure identity, section order, shared skill data, links, and media in [site.json](../src/config/site.json), with colors in [theme.json](../src/config/theme.json). See [Index](../src/pages/Index.tsx), [Projects](../src/components/sections/Projects.tsx), and [Contact](../src/components/sections/Contact.tsx).
 
 **[Inferred]** Likely readers include recruiters, prospective collaborators, and engineers evaluating prior work, based on the resume, project, and contact calls to action. These are audiences, not authenticated roles. **[Verified]** No login or access-control implementation is present in [App](../src/App.tsx).
 
@@ -23,6 +23,8 @@ Last verified against commit `0d6ea67e368badc5e2d52b7c601ea167c6be6208` on 2026-
 | Theme | next-themes `^0.3.0` | [theme wrapper](../src/components/ThemeProvider.tsx) |
 | Metadata | react-helmet-async `^3.0.0`, static HTML/JSON-LD | [main](../src/main.tsx), [HTML](../index.html) |
 | Content/language | Custom React context, eager JSON discovery | [i18n](../src/i18n/i18n.tsx) |
+| Template configuration | JSON imports, config helpers, injected CSS variables | [config module](../src/config/index.ts) |
+| Public-file generation | Vite `buildStart` plugin; writes sitemap, robots, manifest | [site-files.ts](../scripts/site-files.ts) |
 | Tests | Vitest `^3.2.4`, jsdom, Testing Library | [test config](../vitest.config.ts) |
 | Query infrastructure | TanStack Query provider, no active query consumers found | [App](../src/App.tsx) |
 
@@ -34,25 +36,29 @@ Last verified against commit `0d6ea67e368badc5e2d52b7c601ea167c6be6208` on 2026-
 
 ```text
 rusiru/
-├── .lovable/plan.md             Original design intent; not current behavior
+├── AGENTS.md                    Architecture rules for contributors
+├── .lovable/plan/               Current template roadmap; partly implemented
+├── scripts/site-files.ts        Dev/build generator for three public files
 ├── public/                     Files copied to the built site's root
 │   ├── llms.txt                Public portfolio summary for automated readers
-│   ├── robots.txt              Crawler rules and sitemap location
-│   ├── sitemap.xml             One canonical page URL
-│   ├── site.webmanifest        Icon manifest; empty name fields
+│   ├── robots.txt              Generated crawler rules and sitemap location
+│   ├── sitemap.xml             Generated canonical URL and UTC build date
+│   ├── site.webmanifest        Generated names, colors, and icon references
+│   ├── media/                  Config-referenced profile, logos, and icons
 │   └── favicon*, *icon*, *.png  Icons and site verification material
 ├── src/
-│   ├── main.tsx                Clear static root; mount React/providers
+│   ├── main.tsx                Apply theme; clear static root; mount providers
 │   ├── App.tsx                 Providers and / plus catch-all routes
 │   ├── pages/                  Index and NotFound
 │   ├── components/
 │   │   ├── sections/           Eight portfolio sections
 │   │   ├── ui/                 Reusable shadcn/Radix-oriented primitives
+│   │   ├── icons/              Config-keyed brand SVG map
 │   │   └── *.tsx               Navigation, theme, language, footer, helpers
 │   ├── i18n/i18n.tsx           Locale discovery, lookup, persistence
 │   ├── locales/en.json         English content and content arrays
 │   ├── hooks/                  Scroll reveal, mobile detection, toast state
-│   ├── assets/                 Profile images, institution logos, local icons
+│   ├── config/                 site.json, theme.json, helpers and exported types
 │   ├── lib/utils.ts            cn: merge conditional Tailwind classes
 │   ├── test/                  jsdom setup and placeholder test
 │   ├── index.css               Imported theme and animation stylesheet
@@ -70,6 +76,6 @@ rusiru/
 
 ## History that affects onboarding
 
-**[Verified]** `2bec1dc` ("Expanded i18n to all sections") moved section content into locale JSON and added `RichText`; `a672181` changed fonts, headers, icons, and the marquee; `396df29` and `1af50bb` added or revised static SEO content. These commits were inspected with `git log` and `git show --stat`. The root README was last changed on 2025-01-01 and does not describe these changes. **[Unknown]** Most commit subjects say only "Changes", so the rationale is not recoverable from the subjects alone.
+**[Verified]** `2bec1dc` ("Expanded i18n to all sections") moved section content into locale JSON and added `RichText`; `a672181` changed fonts, headers, icons, and the marquee; `396df29` and `1af50bb` added or revised static SEO content. The template work merged through `57ada4b` and `e7f9569` introduces config, shared skills, public media, and the generator. The README now includes a template guide. See [current architecture rules](../AGENTS.md) and [documentation audit](CHANGELOG.md). **[Unknown]** Many commit subjects say only "Changes", limiting recoverable rationale.
 
 Next: [Getting started](02-getting-started.md).

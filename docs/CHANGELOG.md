@@ -2,9 +2,71 @@
 
 Purpose: preserve the documentation inventory, drift evidence, and verification history. Intended reader: reviewers and future maintainers.
 
-Last verified against commit `0d6ea67e368badc5e2d52b7c601ea167c6be6208` on 2026-10-17.
+Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-10-18.
 
-## 2026-10-17 — onboarding baseline
+## 2026-10-18 — template configuration update
+
+**[Verified]** Mode: **Update**, against `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76`. The previous guides described `0d6ea67`, before the template work merged through `57ada4b`/`e7f9569`. The audit used `git diff 0a5fd15..HEAD`, source/config reads, tracked Markdown inventory, and each document's `git log -1 --format=%cs`. Commit ranges matter here: some incoming code commits predate the documentation commit but entered this branch afterward.
+
+Updated all 12 guide pages in place. Added config/theme/icon API coverage, public-media ownership, section settings and limitations, generator behavior, a fourth end-to-end sequence, current data relationships, roadmap gaps, and refreshed source citations. Preserved the historical audit below and restored the deleted original plan as an archived snapshot. No source, generated public files, manifests, or lockfiles were edited.
+
+### Current inventory and path actions
+
+**[Verified]** Dates below are Git modification dates before this uncommitted documentation update. Existing structure works; there are no moves or deletions in this update. The action column is the complete migration map; no separate `MIGRATION.md` is needed.
+
+| Path | Topic | Audience | Last Git modification | Audit verdict | Action |
+| --- | --- | --- | --- | --- | --- |
+| [Root README](../README.md) | Template guide plus legacy Lovable workflow | Contributor | 2026-10-18 | Mostly accurate template paths; placeholder project links and broad config-only wording need qualification | Keep; qualify limits in guides |
+| [AGENTS.md](../AGENTS.md) | Config/media/generator ownership rules | Developer | 2026-10-03 | Applicable architecture rules; wording/fact separation is not fully achieved | Keep; link and document implementation exceptions |
+| [Template plan](../.lovable/plan/make-the-portfolio-a-fully-configurable-template-2026-10-02.md) | Template and quality roadmap | Author/product | 2026-10-02 | Partly implemented; content.json, full generation, pre-rendering and validation/tests remain planned | Keep as intent; audit each gap below |
+| [docs/README.md](README.md) | Reading order and status | All roles | 2026-10-18 | Stale ownership summary and deleted plan link | Update index, scope and archive link |
+| [01-overview.md](01-overview.md) | Stack/tree/history | New developer | 2026-10-18 | Stale media tree; missing config/scripts | Update in place |
+| [02-getting-started.md](02-getting-started.md) | Setup/config/checks | Developer | 2026-10-18 | Stale settings ownership and logo recipe | Update config table, generator caveats and current check evidence |
+| [03-architecture.md](03-architecture.md) | Boundaries and flows | Architect/developer | 2026-10-18 | Missing config/theme/generator; fixed section description | Update component/initial-flow diagrams; add generator sequence |
+| [04-code-guide.md](04-code-guide.md) | Modules and change recipes | Developer | 2026-10-18 | Stale media/icon/skills/404 conventions | Update modules, customization steps and remaining debt |
+| [05-product-guide.md](05-product-guide.md) | Features/journeys/gaps | Product/editor | 2026-10-18 | Missing template-author capabilities and roadmap status | Add template inventory and implementation limits |
+| [06-data-model.md](06-data-model.md) | Records and lifecycle | Developer/editor | 2026-10-18 | Contact/social/skill shapes moved; missing site/theme ownership | Update fields, ER diagram and lifecycle |
+| [07-api-and-integrations.md](07-api-and-integrations.md) | Routes/local APIs/handoffs | Developer/operator | 2026-10-18 | Missing config/plugin APIs; generated files called manual | Update APIs, public media and file contracts |
+| [08-operations.md](08-operations.md) | Build/release/diagnosis | Operator | 2026-10-18 | Missing generator; origin/logging claims stale | Update generator diagram, ownership and triage |
+| [09-risks-and-recommendations.md](09-risks-and-recommendations.md) | Follow-up priorities | Maintainer/product | 2026-10-18 | Some risks partly resolved; new config/generator edge cases | Retain IDs, distinguish resolved portions, add R21–R24 |
+| [10-glossary.md](10-glossary.md) | Terms | All roles | 2026-10-18 | Missing config and generator terminology | Update in place |
+| [CHANGELOG.md](CHANGELOG.md) | Audit/change evidence | Reviewer | 2026-10-18 | Historical baseline needs separation from current behavior | Append this update before retained history; repair deleted links |
+| [public/llms.txt](../public/llms.txt) | Public automated-reader summary | Automated readers | 2026-05-13 | Still manually authored and omits one project | Keep runtime asset unchanged; retain risk |
+| Original `.lovable/plan.md` | Historical portfolio intent | Product/maintainer | Deleted by incoming template history | Prior docs pointed to an absent file | Restore `0d6ea67` snapshot as [docs/_archive/original-portfolio-plan.md](_archive/original-portfolio-plan.md); link from index |
+
+**[Verified]** No CONTRIBUTING, ADR/wiki directory, OpenAPI document, CI workflow, or alternative guide set was found. The archive is a restored source snapshot, not a replacement for the new template roadmap. It preserves original rationale and planned features without treating them as current requirements.
+
+### Corrected drift and roadmap disagreements
+
+| Previous claim / plan promise | Source evidence at this commit | Correction |
+| --- | --- | --- |
+| Resume/contact/blog-home URLs, skills and logos belong to locales/TSX | [site.json](../src/config/site.json), [config](../src/config/index.ts) | Distinguish language-neutral settings from locale record arrays and per-record URLs |
+| Hero and Skills maintain duplicate lists | Both use config skills; Hero calls `allSkills()` | Mark data duplication resolved; rendering duplication remains |
+| Personal media must be imported from src/assets | Config uses public/media paths | Repair links/tree and document config-only media swaps |
+| Lower sections and Navbar are fixed | Both consume `sections`; Index skips unknown keys | Explain visibility/order plus invalid/empty/removed-target limits |
+| Canonical metadata and 404 copy are hardcoded | Index/NotFound use config; NotFound uses locale keys | Correct metadata/404 descriptions; English theme/back-to-top labels remain |
+| Sitemap is manual and manifest has blank names | [site-files.ts](../scripts/site-files.ts) derives three files from config | Document generated ownership, fixed icon paths, UTC date and dev/build lifecycle |
+| Only NotFound logs errors | Config logs missing siteUrl/name/email/title | Explain logging checks do not stop execution or validate a schema |
+| New plan's content.json separates all facts from wording | File absent; locale arrays/prose retain facts/URLs/dates | Mark planned, not implemented |
+| New plan generates HTML/JSON-LD/llms and pre-renders via react-dom/server | Generator writes sitemap/robots/manifest only; main still clears root and calls createRoot | Keep static SEO copy/replacement explanation and remaining generation risk |
+| New plan guarantees full locale fallback, validation and tests | i18n still returns missing string keys; only placeholder test exists | Keep missing-key/schema/coverage risks; no claimed full localization |
+| New plan optimizes media and removes unused UI | Profile remains 1,115,145 bytes; broad UI kit remains | Separate file relocation from optimization/removal |
+| Old original-plan links are valid | `.lovable/plan.md` deleted upstream | Point to restored historical archive and distinguish newer roadmap |
+| Prior lint baseline is current | Rerun reports three errors and sixteen warnings, including eight new BrandIcons warnings | Refresh current status; retain earlier eight-warning record as history |
+
+### Verification for this update
+
+**[Verified]** The production build, existing one-test suite, and both TypeScript checks passed on the merged source during the preceding merge verification in this same session. Source has not changed since; those checks were not repeated for documentation-only edits. The imported generator is covered through `vite.config.ts`'s dependency even though the tooling config explicitly includes only that config file. The npm manifest/lockfiles are unchanged, and direct entries for react-helmet-async, Testing Library, jsdom and Vitest remain missing from the lockfile; the earlier clean-install blocker remains.
+
+**[Verified]** A fresh `npm run lint` reports **3 errors and 16 warnings**: the same two empty interfaces and Tailwind require-style import errors; seven UI Fast Refresh warnings, one ref-cleanup warning, and eight Fast Refresh warnings in [BrandIcons](../src/components/icons/BrandIcons.tsx). No source fixes were made. The merged build reported main JavaScript at 380.02 kB (125.98 kB gzip); public media is no longer an imported hashed asset, so its absence from that asset summary does not mean the profile image was optimized.
+
+**[Verified]** Final checks cover 13 documentation files (12 guides plus the restored archive): 449 local links/source paths resolve, cited source lines are in bounds, every guide/archive is indexed, and required metadata/Next links are present. All ten Mermaid diagrams parse with Mermaid 11.17.2; `git diff --check` passes. The historical plan text matches the Git snapshot verbatim. Only `/docs` files changed.
+
+Browser usability, deployed hosting/account settings, live external URL availability, and actual page-speed measurements remain **[Unknown]**. The external links in the retained root README were not represented as verified workflows. Server/database guides and infrastructure-specific deployment diagrams remain inapplicable to the checked-in static application; no guide was removed or reorganized.
+
+## 2026-10-17 — onboarding baseline (historical)
+
+The record below describes source `0d6ea67` and the initial documentation commit `0a5fd15`, before the template merge. Its inventory dates, findings and execution counts are historical; the current inventory above supersedes them. Deleted plan links now lead to the preserved snapshot.
 
 **[Verified]** Mode: **Update**. Existing documentation was limited to a structured Lovable starter README and a portfolio design plan. This change adds missing guides rather than reorganizing either. Source code, configs, dependency manifests, lockfiles, and published site content are outside the edit scope.
 
@@ -17,7 +79,7 @@ Added `docs/README.md`, `01-overview.md` through `10-glossary.md`, and this chan
 | Original path | Topic | Audience | Last modified in Git | Verdict and evidence | Action / migration map |
 | --- | --- | --- | --- | --- | --- |
 | [README.md](../README.md) | Lovable editing, local setup, stack, publishing/domain instructions | Contributor | 2025-01-01 | Stale/incomplete: stack/scripts match; project links are placeholders; external account/workflow claims unverified; no architecture/tests | Keep human guidance in place; add docs link; onboarding details now in docs |
-| [.lovable/plan.md](../.lovable/plan.md) | Original visual/feature plan | Product/designer | 2026-02-04 | Stale as behavior reference, useful historical intent; planned form/counters/effects differ from code; not linked from old README | Keep unchanged, link from index, qualify in audit/product guide |
+| [.lovable/plan.md](_archive/original-portfolio-plan.md) | Original visual/feature plan | Product/designer | 2026-02-04 | Stale as behavior reference, useful historical intent; planned form/counters/effects differ from code; not linked from old README | Keep unchanged, link from index, qualify in audit/product guide |
 | [public/llms.txt](../public/llms.txt) | Published portfolio summary and navigation | Automated readers | 2026-05-13 | Overlaps site copy; stale project list omits Jira Worklog Manager | Keep unchanged as runtime asset; record drift and proposed repair |
 
 **[Verified]** No old document was deleted, moved, merged, split, or archived. The preceding table is the complete old-path action map. An archive and separate migration file are not needed in Update mode without moves. Runtime files such as [HTML](../index.html), [robots](../public/robots.txt), and [sitemap](../public/sitemap.xml) were audited as evidence, not relocated into onboarding documentation.

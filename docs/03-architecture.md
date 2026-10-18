@@ -2,7 +2,7 @@
 
 Purpose: explain runtime boundaries and data movement. Intended reader: developers and architecture reviewers.
 
-Last verified against commit `0d6ea67e368badc5e2d52b7c601ea167c6be6208` on 2026-10-17.
+Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-10-18.
 
 ## System context
 
@@ -22,7 +22,7 @@ Caption: the portfolio serves content and hands off outbound actions. How to rea
 
 ## Containers and component boundaries
 
-**[Verified]** Vite bundles the browser app; it is not a production backend. `main.tsx:9` clears `#root` and calls `createRoot`, so the static HTML is replaced rather than hydrated. The comment mentioning hydration does not describe a `hydrateRoot` implementation. [main](../src/main.tsx), [HTML](../index.html), [App](../src/App.tsx).
+**[Verified]** Vite bundles the browser app; it is not a production backend. [main.tsx:8](../src/main.tsx#L8) calls `applyTheme()`, then clears `#root` at line 12 and calls `createRoot`. Static HTML is replaced rather than hydrated, despite the source comment. Config imports supply identity/URLs, theme defaults, section order, media paths, and skill data. [Config](../src/config/index.ts), [HTML](../index.html), [App](../src/App.tsx).
 
 ```mermaid
 flowchart TD
@@ -32,7 +32,11 @@ flowchart TD
     Router -->|root path| Index[Index page]
     Router -->|other paths lazy import| Missing[NotFound page]
     Index -->|eager imports| Shell[Navbar Hero Footer BackToTop]
-    Index -->|lazy imports under Suspense| Sections[Seven lower sections]
+    Index -->|configured order under Suspense| Sections[Lower section components]
+    Config[site.json and config helpers] -->|identity links skills section order| Index
+    Config -->|profile skills social links| Shell
+    Config -->|skills contact education data| Sections
+    Theme[theme.json overrides] -->|applyTheme injects CSS variables| Main
     Locale[Locale JSON files] -->|eager glob import| I18n[I18n context]
     I18n -->|t and tr| Shell
     I18n -->|t and tr| Sections
@@ -43,11 +47,11 @@ flowchart TD
 
 Caption: provider, routing, content, and presentation responsibilities are separate files. How to read: arrows label runtime composition/data dependencies; `App` also wraps theme, query, tooltip, and two lazy toast providers.
 
-**[Verified]** Section components depend on `useTranslation`, UI primitives, and scroll hooks. i18n discovers JSON without importing section components; `cn()` depends on `clsx` and `tailwind-merge`. No circular import was found in the inspected application path; this was not a formal whole-repository cycle analysis. See [i18n](../src/i18n/i18n.tsx), [utils](../src/lib/utils.ts), [Projects](../src/components/sections/Projects.tsx).
+**[Verified]** Section components depend on i18n, UI primitives, scroll hooks, and (where needed) config. Config imports JSON without importing components; Footer resolves platform IDs through [BrandIcons](../src/components/icons/BrandIcons.tsx). Hero and Skills share `siteConfig.skills` via `allSkills()`/`resolveIcon()`. i18n remains independent of section components. No circular import was found in the inspected runtime path; this was not a formal whole-repository cycle analysis. [Config](../src/config/index.ts), [i18n](../src/i18n/i18n.tsx), [utils](../src/lib/utils.ts).
 
 ## Flow 1: initial visit to rendered content
 
-**[Verified]** The HTML contains metadata, JSON-LD, and portfolio markup. React clears the static root, restores a valid saved language or chooses English, mounts the root route, reads locale strings/arrays, and schedules lower-section chunks. The seven lower sections share a null Suspense fallback. Scroll observers change their reveal state. Evidence: [main:8](../src/main.tsx#L8), [i18n:50](../src/i18n/i18n.tsx#L50), [Index:10](../src/pages/Index.tsx#L10), [scroll hook](../src/hooks/useScrollAnimation.ts).
+**[Verified]** The HTML contains metadata, JSON-LD, and portfolio markup. Startup injects theme overrides, clears the static root, restores a valid language or chooses English, mounts the root route, and renders known lower sections in config order under one null Suspense boundary. Unknown section IDs are skipped by Index but still become navbar links. Hero/Footer remain outside this section list. Evidence: [main:8](../src/main.tsx#L8), [i18n:50](../src/i18n/i18n.tsx#L50), [Index:19](../src/pages/Index.tsx#L19), [Navbar:10](../src/components/Navbar.tsx#L10).
 
 ```mermaid
 sequenceDiagram
@@ -55,24 +59,27 @@ sequenceDiagram
     participant Host as Static host
     participant Browser
     participant React as main and App
+    participant Config as Site and theme config
     participant I18n
     participant Data as Bundled locale JSON
     participant Page as Index and sections
     Visitor->>Host: GET root page
     Host-->>Browser: Static HTML and asset references
     Browser->>React: Execute entry module
+    React->>Config: applyTheme and read site settings
+    Config-->>Browser: Inject light and dark CSS variable overrides
     React->>Browser: Clear static root
     React->>I18n: Initialize provider
     I18n->>Browser: Read localStorage lang
     I18n->>Data: Select saved valid locale or default
     Data-->>I18n: Dictionary
-    React->>Page: Mount root route
+    React->>Page: Mount root route with configured sections
     Page->>I18n: t strings and tr arrays
     I18n-->>Page: Content values
     Page-->>Visitor: Hero then lazy sections and scroll reveals
 ```
 
-Caption: content is read from the built bundle, not fetched from a database. How to read: storage restores only preferences; section chunk requests are asynchronous and failures have no custom error boundary in this code.
+Caption: config and locale content are bundled; local media is served by public paths. How to read: storage restores only preferences; section chunks load asynchronously, and failures have no custom error boundary.
 
 ## Flow 2: reveal projects and inspect an entry
 
@@ -155,22 +162,49 @@ Caption: language is the app-owned persistent preference flow. How to read: stor
 
 ## State, async behavior, reliability, and security
 
-**[Verified]** UI state is local React state; locale state is context plus localStorage. Theme behavior is delegated to next-themes. The query client is instantiated once but no portfolio component calls `useQuery` or `useMutation`. There are no queues, database queries, server transactions, or N+1 query patterns here. Lazy imports, observers, CSS animations, and toast timers are the relevant asynchronous mechanisms ([App](../src/App.tsx), [scroll hook](../src/hooks/useScrollAnimation.ts), [toast hook](../src/hooks/use-toast.ts)).
+**[Verified]** UI state is local React state; language uses context/localStorage. Theme behavior is delegated to next-themes with `siteConfig.theme.default`; `applyTheme()` adds authored token overrides. The query client has no portfolio `useQuery`/`useMutation` consumers. There are no queues, database transactions, or N+1 queries. Lazy imports, observers, animations, and toast timers are the relevant asynchronous mechanisms ([App](../src/App.tsx), [config](../src/config/index.ts), [scroll hook](../src/hooks/useScrollAnimation.ts), [toast hook](../src/hooks/use-toast.ts)).
 
 **[Inferred]** Static assets can be distributed through a cache/CDN without per-user server computation because all content is bundled. Main reliability concerns are failed JavaScript/chunk loads, missing third-party resources, and content drift across JSON/HTML. All locales are eagerly bundled, so adding large dictionaries increases client payload. No explicit asset caching policy, service worker, runtime error reporting, or custom React error boundary is checked in.
 
-**[Verified]** The portfolio is public. No authentication, authorization, contact-input submission, or server secrets are required by the inspected app. `RichText` renders React nodes rather than arbitrary HTML. URLs are trusted authored JSON/TSX, with no general scheme validator; most new-tab links use `noopener noreferrer`. See [RichText](../src/components/RichText.tsx), [Contact](../src/components/sections/Contact.tsx), [Projects](../src/components/sections/Projects.tsx). Host TLS and security headers are **[Unknown]**.
+**[Verified]** The portfolio is public. There is no authentication, authorization, contact-input submission, or server-secret requirement. `RichText` renders React nodes. Config and locale URLs/CSS token values are trusted authored input without general URL/CSS/schema validation. Config's four required-field checks only log to the browser console; they do not throw or stop startup, despite the "Fail fast" comment. See [config:31](../src/config/index.ts#L31), [RichText](../src/components/RichText.tsx), [Contact](../src/components/sections/Contact.tsx). Host TLS/security headers remain **[Unknown]**.
+
+## Flow 4: config to generated public files
+
+**[Verified]** [Vite](../vite.config.ts) registers `siteFilesPlugin()` in every mode. Its `buildStart` hook reads site JSON from the current working directory and writes changed sitemap, robots, and manifest content into `public/`. The sitemap uses the current UTC day, not a source-content modification timestamp. The plugin has no custom config-file watch hook or error recovery; run a new dev/build cycle to regenerate after config changes. It does not generate `index.html`, JSON-LD, or `llms.txt` ([site-files.ts:10](../scripts/site-files.ts#L10)).
+
+```mermaid
+sequenceDiagram
+    actor Author
+    participant Vite
+    participant Plugin as siteFilesPlugin
+    participant Config as site.json on disk
+    participant Public as Public output files
+    participant Artifact as Static artifact
+    Author->>Config: Edit identity origin or SEO settings
+    Author->>Vite: Start dev server or build
+    Vite->>Plugin: buildStart
+    Plugin->>Config: Read and parse JSON
+    Config-->>Plugin: siteUrl person and seo
+    Plugin->>Plugin: Compute sitemap date and file contents
+    Plugin->>Public: Write changed sitemap robots manifest
+    Vite->>Artifact: Include public files in production build
+    Artifact-->>Author: Ready-to-publish files
+```
+
+Caption: the generator runs in Node during dev/build, separately from browser rendering. How to read: malformed JSON/filesystem errors fail this path; there is no backend write by a visitor, and preview does not perform a new build.
 
 ## Decisions and trade-offs
 
 | Observation | Likely rationale and consequence |
 | --- | --- |
 | [Verified] Static JSON instead of CMS | [Inferred] Simple publishing and no service credentials; editing content requires rebuilding |
+| [Verified] Site/theme config separated from locales | [Inferred] Easier reuse of identity/media/style settings; record arrays, prose facts, static HTML and llms content still need coordinated editing |
+| [Verified] Three files generated by a Vite plugin | [Inferred] Reduces drift for crawler/manifest fields; writes tracked outputs and uses build date, while the larger SEO surfaces remain manual |
 | [Verified] Custom i18n context and eager glob | [Inferred] Adding files is simple; schema validation and per-key fallback must be supplied separately |
 | [Verified] Static root plus React replacement | [Inferred] Provides initial machine-readable content; duplicates maintenance and is not SSR hydration |
 | [Verified] Lazy lower sections with null fallback | [Inferred] Reduces initial module work; offers no loading feedback and can delay navigation targets |
 | [Verified] Broad UI kit, Query provider, two toaster systems | [Unknown] Intended future consumers; assess usage before removing |
 
-Evidence: [i18n](../src/i18n/i18n.tsx), [main](../src/main.tsx), [Index](../src/pages/Index.tsx), [App](../src/App.tsx). **[Verified]** No ADR directory or documented architectural rationale was found; preserve the [original plan](../.lovable/plan.md) as intent, not an ADR.
+Evidence: [i18n](../src/i18n/i18n.tsx), [config](../src/config/index.ts), [generator](../scripts/site-files.ts), [Index](../src/pages/Index.tsx). **[Verified]** No ADR directory was found. [AGENTS.md](../AGENTS.md) records architecture rules and the [template plan](../.lovable/plan/make-the-portfolio-a-fully-configurable-template-2026-10-02.md) records goals; neither establishes that every planned feature shipped. The [original portfolio plan](_archive/original-portfolio-plan.md) remains historical intent.
 
 Next: [Code guide](04-code-guide.md).

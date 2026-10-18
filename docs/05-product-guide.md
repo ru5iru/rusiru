@@ -2,7 +2,7 @@
 
 Purpose: separate delivered user behavior from design intent. Intended reader: product owners, content editors, and frontend reviewers.
 
-Last verified against commit `0d6ea67e368badc5e2d52b7c601ea167c6be6208` on 2026-10-17.
+Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-10-18.
 
 ## Audiences and feature inventory
 
@@ -20,12 +20,15 @@ Last verified against commit `0d6ea67e368badc5e2d52b7c601ea167c6be6208` on 2026-
 | Skills | All visitors | `/#skills` | Implemented; 24 entries across five groups | [Skills](../src/components/sections/Skills.tsx) |
 | Article previews | All visitors | `/#blog` | Implemented static list of three; no feed synchronization | [Blog](../src/components/sections/Blog.tsx) |
 | Contact | All visitors | `/#contact` | Implemented mailto and LinkedIn links | [Contact](../src/components/sections/Contact.tsx) |
-| Contact form | All visitors | Original design plan only | Planned, not implemented | [plan](../.lovable/plan.md), [Contact](../src/components/sections/Contact.tsx) |
+| Contact form | All visitors | Original design plan only | Planned, not implemented | [plan](_archive/original-portfolio-plan.md), [Contact](../src/components/sections/Contact.tsx) |
 | Theme | All visitors | Navbar | Implemented system default and dark/light toggle | [App](../src/App.tsx), [toggle](../src/components/ThemeToggle.tsx) |
 | Language | All visitors | Navbar | Partial: multi-locale machinery, English content only | [selector](../src/components/LanguageSelector.tsx), [locale](../src/locales/en.json) |
 | Navigation/mobile menu | All visitors | Fixed header | Implemented scroll/menu; active observation timing risk | [Navbar](../src/components/Navbar.tsx) |
 | Error page | All visitors | Unmatched pathname | Implemented noindex view and home link; host status unknown | [NotFound](../src/pages/NotFound.tsx) |
 | Social/footer/back-to-top | All visitors | Bottom of page / after scroll | Implemented; eight social links | [Footer](../src/components/Footer.tsx), [BackToTop](../src/components/BackToTop.tsx) |
+| Configurable identity/media/theme | Template author | Site/theme JSON, public media | Implemented; authoring requires source-file edits and rebuild, no admin UI | [config](../src/config/index.ts), [site](../src/config/site.json) |
+| Section order/visibility | Template author | `site.json.sections` | Implemented for seven known lower sections; Hero/Footer remain fixed | [Index](../src/pages/Index.tsx), [Navbar](../src/components/Navbar.tsx) |
+| Generated crawler/manifest files | Template author | Dev/build command | Implemented for three files only; HTML/llms generation still planned | [generator](../scripts/site-files.ts) |
 
 ## Key journeys and edge paths
 
@@ -60,7 +63,9 @@ Caption: the site supports discovery and outbound handoffs. How to read: mountin
 
 ## Content intent and measurement
 
-**[Verified]** SEO is spread across static metadata/JSON-LD/fallback HTML, React Helmet, microdata, hidden `data-geo-summary` text, and `llms.txt`. Seven project records exist but the project summary and JSON-LD still describe six. No checked-in analytics client, experiment assignment, runtime feature flag system, or A/B event hooks were found. `featured` is a content grouping field, not a rollout flag. Sources: [HTML](../index.html), [Index](../src/pages/Index.tsx), [content](../src/locales/en.json), [llms.txt](../public/llms.txt).
+**[Verified]** Runtime SEO metadata uses site config, and the generator derives sitemap/robots/manifest from it. Static metadata/JSON-LD/fallback HTML, hidden locale summaries, and `llms.txt` remain independent authored copies. Seven project records exist but some summaries/JSON-LD still describe six. No analytics client, experiment assignment, or A/B hooks were found. `featured` groups project records; `sections` is build-time configuration, not an experiment/rollout service. Sources: [HTML](../index.html), [Index](../src/pages/Index.tsx), [content](../src/locales/en.json), [llms.txt](../public/llms.txt), [generator](../scripts/site-files.ts).
+
+**[Verified]** The [template roadmap](../.lovable/plan/make-the-portfolio-a-fully-configurable-template-2026-10-02.md) proposes a separate `content.json`, generated HTML/JSON-LD/llms content, server-side pre-rendering, schema validation, image optimization, and config/fallback tests. Those are not implemented in the inspected checkout. Existing locale arrays still contain dates, names, project URLs, and facts; identity changes therefore need an editorial review beyond `site.json`. `AGENTS.md` states the desired ownership rules, while [ThemeToggle](../src/components/ThemeToggle.tsx) and [BackToTop](../src/components/BackToTop.tsx) still contain English labels. The contact secondary URL is configurable, but its icon and label remain LinkedIn-specific ([Contact](../src/components/sections/Contact.tsx)).
 
 Questions for the product/content owner: should contact remain a mail handoff or become a real form; which languages are intended; which project list should crawlers see; should "25+ technologies" reflect the 24 rendered entries; and is a resume viewer sufficient for a download-labeled fallback link? These are **[Unknown]** decisions, not implied implementation requirements.
 

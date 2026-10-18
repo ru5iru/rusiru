@@ -2,7 +2,7 @@
 
 Purpose: run and check the website locally. Intended reader: a developer with a fresh checkout.
 
-Last verified against commit `0d6ea67e368badc5e2d52b7c601ea167c6be6208` on 2026-10-17.
+Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-10-18.
 
 ## Prerequisites and installation
 
@@ -27,14 +27,18 @@ npm run dev
 | --- | --- | --- |
 | Required environment variables | None found | Static content needs no service credentials |
 | Dev port/host | [vite.config.ts](../vite.config.ts) | `8080`, `::` |
-| Content and outbound URLs | [en.json](../src/locales/en.json) | Most visible copy, resume, project/blog/contact links |
-| Canonical origin | [index.html](../index.html), [Index](../src/pages/Index.tsx), [NotFound](../src/pages/NotFound.tsx), [robots](../public/robots.txt), [sitemap](../public/sitemap.xml) | Hardcoded public origin; not an env switch |
+| Identity, common URLs, media, skills, section order | [site.json](../src/config/site.json) | Language-neutral config, including resume, contact and blog home |
+| Wording and section arrays | [en.json](../src/locales/en.json) | Copy, experience, education, project records and article records/links |
+| Canonical origin | [site.json](../src/config/site.json), consumed by [Index](../src/pages/Index.tsx), [NotFound](../src/pages/NotFound.tsx) and [generator](../scripts/site-files.ts) | Runtime metadata and generated files; static HTML/llms text remain separate |
+| Color overrides | [theme.json](../src/config/theme.json) | Injected CSS variables for light and dark classes |
 | Language persistence | [i18n](../src/i18n/i18n.tsx):52 | Browser storage key `lang` |
-| Theme default | [App](../src/App.tsx):16 | System theme, class-based styling |
+| Theme default | [site.json](../src/config/site.json) → `theme.default` | Currently system theme; class-based styling |
+
+**[Verified]** `npm run dev` and both build modes run [siteFilesPlugin](../scripts/site-files.ts), which rewrites `public/sitemap.xml`, `public/robots.txt`, and `public/site.webmanifest` from config. Do not hand-edit those outputs ([AGENTS.md](../AGENTS.md)); change config or the generator. `index.html` and `public/llms.txt` are not generated. Profile/logo/icon replacements go in `public/media/`, referenced by path from config.
 
 ## Commands and checks
 
-**[Verified]** Scripts below exist in [package.json](../package.json). Run each separately from the repo root. Build, the single placeholder test, and both TypeScript checks passed after the unlocked local install; lint has three existing errors and eight warnings. Details and limitations are recorded in the [changelog](CHANGELOG.md).
+**[Verified]** Scripts below exist in [package.json](../package.json). Run each separately from the repo root. Build, the single placeholder test, and both TypeScript checks passed on the merged `e7f9569` tree in this session. Lint's previous baseline and any current rerun are distinguished in the [changelog](CHANGELOG.md); local dependencies were installed without updating the stale lockfile.
 
 | Command | Purpose / limit |
 | --- | --- |
@@ -48,13 +52,13 @@ npm run dev
 | `npx --no-install tsc -p tsconfig.app.json` | Check browser source types with installed TypeScript |
 | `npx --no-install tsc -p tsconfig.node.json` | Check Vite tooling types |
 
-**[Verified]** `tsconfig.node.json` includes only `vite.config.ts`, not `vitest.config.ts`. The browser config has `strict: false`; tooling has `strict: true`. The root config uses project references ([root](../tsconfig.json), [app](../tsconfig.app.json), [tooling](../tsconfig.node.json)). No coverage, end-to-end, or deployment script is declared. The only checked-in test asserts `true` ([example test](../src/test/example.test.ts)).
+**[Verified]** `tsconfig.node.json` explicitly includes only `vite.config.ts`; its imported `scripts/site-files.ts` is also checked through that dependency. `vitest.config.ts` is not included. Browser source has `strict: false`; tooling has `strict: true`. The root uses project references ([root](../tsconfig.json), [app](../tsconfig.app.json), [tooling](../tsconfig.node.json)). No coverage, end-to-end, or deployment script is declared. The only checked-in test asserts `true` ([example test](../src/test/example.test.ts)).
 
 ## Debug and smoke-check
 
 Recommended manual procedure, derived from the [page](../src/pages/Index.tsx) and section handlers:
 
-1. Load `/`; confirm the hero, then all seven lower sections appear as you scroll.
+1. Load `/`; confirm Hero and the configured lower sections appear in `siteConfig.sections` order (currently all seven).
 2. Use View Work, navbar links, and Back to top. Repeat in a narrow viewport with the mobile menu.
 3. Expand/collapse experience, education, and projects. Show additional projects, then hide them.
 4. Toggle theme and reload. Current content includes only English, so the language control displays EN rather than a language menu.
@@ -74,7 +78,10 @@ Recommended manual procedure, derived from the [page](../src/pages/Index.tsx) an
 | A translated list disappears | `tr()` returns an unchecked value; consumers often use `?? []` | Compare new locale against English, including arrays |
 | Lower content appears blank | Null Suspense fallback or scroll-reveal opacity | Check failed chunk requests, IntersectionObserver support, and console errors |
 | Deep URL works locally but fails after deployment | Client routing needs host fallback | Configure host to serve the app shell for app paths |
-| New education entry has no logo | Logo lookup is a fixed map | Add the matching ID/import to Education as part of the feature |
+| New education entry has no logo | Locale item ID must match `educationLogos` config | Add the ID/path to `site.json` and the file under `public/media/` |
+| Config warning appears, followed by rendering failures | Required-field checks only log; JSON casts do not validate runtime shape | Compare config against current fields before use; do not rely on the "fail fast" comment |
+| Removed section still has a navigation/skip target | Invalid/empty section config, or Hero's fixed projects target | Use supported section IDs; check all anchors after changing the list |
+| Manual sitemap/manifest change disappears | Dev/build generator owns these files | Edit `site.json` or generator behavior instead |
 
 Sources: [i18n](../src/i18n/i18n.tsx), [Education](../src/components/sections/Education.tsx), [scroll hook](../src/hooks/useScrollAnimation.ts), [App](../src/App.tsx).
 
