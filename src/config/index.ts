@@ -1,12 +1,13 @@
 import site from './site.json';
 import theme from './theme.json';
+import { siteSchema, themeSchema } from './schema';
 
 export interface SkillItem { name: string; icon: string; invertInDark?: boolean }
 export interface SkillCategory { id: string; items: SkillItem[] }
 export interface SocialLink { platform: string; url: string; icon?: string }
 
-export const siteConfig = site as unknown as Omit<typeof site, "skills" | "social"> & { skills: SkillCategory[]; social: SocialLink[] };
-export const themeConfig = theme as { light: Record<string, string>; dark: Record<string, string> };
+export const siteConfig = siteSchema.parse(site);
+export const themeConfig = themeSchema.parse(theme);
 
 /** Resolve icon refs: "devicon:<path>" uses the Devicon CDN; anything else is used as-is. */
 export function resolveIcon(ref: string): string {
@@ -21,19 +22,9 @@ export const allSkills = (): SkillItem[] => siteConfig.skills.flatMap((c) => c.i
 export function applyTheme() {
   const css = (vars: Record<string, string>) =>
     Object.entries(vars).filter(([k]) => !k.startsWith('$')).map(([k, v]) => `--${k}:${v};`).join('');
-  const style = document.createElement('style');
+  const style = document.getElementById('theme-config') ?? document.createElement('style');
   style.id = 'theme-config';
   style.textContent = `:root{${css(themeConfig.light)}}.dark{${css(themeConfig.dark)}}`;
   document.head.appendChild(style);
 }
 
-// Fail fast with a clear message if required config is missing.
-const required: [string, unknown][] = [
-  ['siteUrl', siteConfig.siteUrl],
-  ['person.name', siteConfig.person?.name],
-  ['person.email', siteConfig.person?.email],
-  ['seo.title', siteConfig.seo?.title],
-];
-for (const [k, v] of required) {
-  if (!v) console.error(`[config] Missing required field "${k}" in src/config/site.json`);
-}
