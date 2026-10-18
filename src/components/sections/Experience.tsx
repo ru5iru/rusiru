@@ -1,130 +1,20 @@
 import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Plus, Minus } from 'lucide-react';
 import { useTranslation } from '@/i18n/i18n';
+import { DisclosureRow, DetailList } from '@/components/DisclosureRow';
 
-interface ExperienceItem {
-  company: string;
-  role: string;
-  period: string;
-  dateTime: string;
-  description: string[];
-}
-
+interface Item { company: string; role: string; period: string; dateTime: string; description: string[]; }
 export function Experience() {
   const { ref, isVisible } = useScrollAnimation();
   const { t, tr } = useTranslation();
-  const experiences = tr<ExperienceItem[]>('experience.items') ?? [];
+  const items = tr<Item[]>('experience.items') ?? [];
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const toggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  return (
-    <section
-      id="experience"
-      className="py-24 md:py-32 bg-muted/30 relative overflow-hidden"
-      aria-label={t('experience.ariaLabel')}
-    >
-      {/* GEO: Structured summary for AI engines */}
-      <div data-geo-summary="experience" className="sr-only" aria-hidden="false">
-        {t('experience.geoSummary')}
-      </div>
-      <div className="absolute top-1/2 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -translate-y-1/2" />
-
-      <div className="container mx-auto px-6 relative" ref={ref}>
-        {/* Heading */}
-        <h2
-          className={`text-sm font-bold tracking-[0.2em] uppercase text-primary mb-6 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          {t('experience.title')}
-        </h2>
-
-        {/* Top divider */}
-        <div
-          className={`h-px bg-border mb-8 transition-all duration-700 delay-100 ${
-            isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
-          } origin-left`}
-        />
-
-        {/* Experience items */}
-        <div className="space-y-0">
-          {experiences.map((exp, index) => {
-            const isOpen = openIndex === index;
-            return (
-              <article
-                key={`${exp.company}-${exp.role}`}
-                className={`border-b border-border transition-all duration-700 relative ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
-                style={{ transitionDelay: `${(index + 1) * 150}ms` }}
-              >
-                {/* Row */}
-                <button
-                  onClick={() => toggle(index)}
-                  className="w-full py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-0 text-left group cursor-pointer"
-                >
-                  {/* Role badge */}
-                  <div className="md:w-1/3 shrink-0">
-                    <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-primary/15 text-primary border border-primary/25">
-                      {exp.role}
-                    </span>
-                  </div>
-
-                  {/* Date & Company */}
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm text-muted-foreground mb-1">
-                      <time dateTime={exp.dateTime}>{exp.period}</time>
-                    </p>
-                    <h3 className="text-xl md:text-2xl font-display font-bold text-foreground">
-                      {exp.company}
-                    </h3>
-                  </div>
-
-                  {/* Toggle icon */}
-                  <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full border border-border group-hover:border-primary/50 transition-colors shrink-0 ml-4">
-                    {isOpen ? (
-                      <Minus className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                    ) : (
-                      <Plus className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                    )}
-                  </div>
-
-                  {/* Mobile toggle */}
-                  <div className="md:hidden absolute right-0 top-6">
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full border border-border">
-                      {isOpen ? (
-                        <Minus className="w-3.5 h-3.5 text-muted-foreground" />
-                      ) : (
-                        <Plus className="w-3.5 h-3.5 text-muted-foreground" />
-                      )}
-                    </div>
-                  </div>
-                </button>
-
-                {/* Expandable content */}
-                <div
-                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                    isOpen ? 'max-h-[600px] opacity-100 pb-6 md:pb-8' : 'max-h-0 opacity-0'
-                  }`}
-                >
-                  <ul className="space-y-2 md:pl-[33.333%] md:pr-14">
-                    {exp.description.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-muted-foreground text-sm md:text-base">
-                        <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-primary mt-2" />
-                        <span className="leading-relaxed">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
+  return <section id="experience" aria-label={t('experience.ariaLabel')} className="py-24 md:py-32 bg-muted/30 relative overflow-hidden">
+    <div data-geo-summary="experience" className="sr-only">{t('experience.geoSummary')}</div>
+    <div ref={ref} className={`container mx-auto px-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <h2 className="mb-6 text-sm font-bold tracking-[0.2em] uppercase text-primary">{t('experience.title')}</h2>
+      <div className="mb-8 h-px bg-border" />
+      {items.map((item, index) => <DisclosureRow key={index} id={`experience-${index}`} label={item.role} open={openIndex === index} onToggle={() => setOpenIndex(openIndex === index ? null : index)} badge={<span className="inline-block rounded-full border border-primary/25 bg-primary/15 px-4 py-1.5 text-sm font-medium leading-snug text-primary">{item.role}</span>} summary={<><span className="mb-1 block text-sm text-muted-foreground"><time dateTime={item.dateTime}>{item.period}</time></span><span className="block text-xl font-display font-bold md:text-2xl">{item.company}</span></>}><DetailList items={item.description} /></DisclosureRow>)}
+    </div>
+  </section>;
 }
