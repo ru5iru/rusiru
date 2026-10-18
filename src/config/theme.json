@@ -1,0 +1,11 @@
+{
+  "$comment": "Optional color overrides as HSL values ('H S% L%'). Any CSS variable from src/index.css can be set here; leave empty to use defaults.",
+  "light": {
+    "primary": "221 83% 53%",
+    "accent": "199 89% 48%"
+  },
+  "dark": {
+    "primary": "217 91% 60%",
+    "accent": "199 89% 55%"
+  }
+}

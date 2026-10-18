@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Plus, Minus } from 'lucide-react';
 import { useTranslation } from '@/i18n/i18n';
-import ucscLogo from '@/assets/logos/ucsc-logo.png';
-import mcgLogo from '@/assets/logos/mcg-logo.png';
+import { siteConfig, resolveIcon, allSkills } from '@/config';
 
-const logos: Record<string, string> = { ucsc: ucscLogo, mcg: mcgLogo };
+const logos: Record<string, string> = siteConfig.educationLogos;
 
 interface EducationItem {
   id: string;
@@ -66,7 +65,7 @@ export function Education() {
                 >
                   {/* Degree badge + mobile toggle row */}
                   <div className="md:w-1/3 shrink-0 flex items-center gap-3 min-w-0">
-                    <img src={logos[edu.id]} alt={`${edu.institution} ${t('education.logoAltSuffix')}`} className="w-8 h-8 object-contain shrink-0" loading="lazy" width={32} height={32} />
+                    <img src={logos[edu.id]} alt={edu.institution} className="w-8 h-8 object-contain shrink-0" loading="lazy" width={32} height={32} />
                     <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-primary/15 text-primary border border-primary/25 leading-snug mr-auto">
                       {edu.degree}
                     </span>

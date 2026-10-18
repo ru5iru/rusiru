@@ -2,6 +2,8 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Mail, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/i18n/i18n';
+import { siteConfig, resolveIcon, allSkills } from '@/config';
+
 
 export function Contact() {
   const { ref, isVisible } = useScrollAnimation();
@@ -45,7 +47,7 @@ export function Contact() {
               size="lg"
               className="gradient-bg text-white px-8 py-6 text-lg font-semibold rounded-xl hover:opacity-90 transition-all duration-300 hover:scale-[1.02] glow"
             >
-              <a href={`mailto:${t('contact.email')}`}>
+              <a href={`mailto:${siteConfig.person.email}`}>
                 <Mail className="mr-2 w-5 h-5" />
                 {t('contact.getInTouch')}
               </a>
@@ -57,7 +59,7 @@ export function Contact() {
               size="lg"
               className="border-2 border-primary text-primary px-8 py-6 text-lg font-semibold rounded-xl hover:bg-primary/10 transition-all duration-300 hover:scale-[1.02]"
             >
-              <a href={t('contact.linkedinUrl')} target="_blank" rel="noopener noreferrer">
+              <a href={siteConfig.contact.secondaryButton.url} target="_blank" rel="noopener noreferrer">
                 <Linkedin className="mr-2 w-5 h-5" />
                 {t('contact.linkedin')}
               </a>
