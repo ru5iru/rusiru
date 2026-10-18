@@ -3,6 +3,9 @@ import { HelmetProvider } from "react-helmet-async";
 import App from "./App.tsx";
 import { I18nProvider } from "./i18n/i18n";
 import "./index.css";
+import { applyTheme } from "./config";
+
+applyTheme();
 
 // Clear pre-rendered SEO content inside #root before React hydrates
 const root = document.getElementById("root")!;

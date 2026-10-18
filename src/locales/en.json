@@ -31,7 +31,6 @@
     "description": "Building Robust, Scalable, and User-Centric Applications as a Full-Stack Software Engineer & Problem Solver. Specializing in high-performance web apps, RESTful APIs, and enterprise solutions that help businesses scale.",
     "viewWork": "View Work",
     "resume": "Resume",
-    "resumeUrl": "https://drive.google.com/file/d/1tUyCB3WXgbWiAI3igodwczXYXYnpMpwM/view?usp=sharing",
     "profileAlt": "Rusiru Rathmina - Full-Stack Software Engineer based in Colombo, Sri Lanka",
     "scrollPrev": "Previous technologies",
     "scrollNext": "Next technologies",
@@ -103,7 +102,6 @@
     "ariaLabel": "Education of Rusiru Rathmina",
     "geoSummary": "Rusiru Rathmina holds a Bachelor of Science in Computer Science from the University of Colombo School of Computing (UCSC), graduating with a GPA of 3.01 (May 2021 – October 2024). He completed his GCE Advanced Level in Physical Science at Mahinda College, Galle, achieving results of A B C with a Z-Score of 1.3084, and GCE Ordinary Level results of 8A 1B.",
     "title": "Education",
-    "logoAltSuffix": "logo",
     "items": [
       {
         "id": "ucsc",
@@ -278,9 +276,8 @@
     "ariaLabel": "Blog posts by Rusiru Rathmina",
     "titleBefore": "Latest",
     "titleHighlight": "Blog Posts",
-    "readMore": "Read More",
+    "readMore": "Read full post",
     "visitBlog": "Visit My Blog",
-    "blogUrl": "https://iamrusiru.lovable.app/",
     "posts": [
       {
         "title": "OWASP Top 10: A Developer's Practical Guide",
@@ -315,9 +312,7 @@
     "titleHighlight": "together",
     "description": "Ready to create amazing developer experiences? I'm always excited to collaborate on innovative projects.",
     "getInTouch": "Get in Touch",
-    "linkedin": "Connect on LinkedIn",
-    "email": "r.rathmina@gmail.com",
-    "linkedinUrl": "https://www.linkedin.com/in/ru5iru"
+    "linkedin": "Connect on LinkedIn"
   },
   "footer": {
     "brand": "RR.",
@@ -336,5 +331,11 @@
   },
   "common": {
     "skipToContent": "Skip to main content"
+  },
+  "notFound": {
+    "title": "Page Not Found (404)",
+    "description": "The page you're looking for doesn't exist. Return to the homepage to explore projects, experience, and contact details.",
+    "message": "Oops! Page not found",
+    "backHome": "Return to Home"
   }
 }

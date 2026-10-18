@@ -1,0 +1,75 @@
+{
+  "$comment": "Language-neutral settings. Wording lives in src/locales/<lang>.json. Images live in public/media and are referenced by path.",
+  "siteUrl": "https://rusiru.lovable.app",
+  "person": {
+    "name": "Rusiru Rathmina",
+    "jobTitle": "Associate Software Engineer",
+    "email": "r.rathmina@gmail.com",
+    "location": { "city": "Colombo", "country": "Sri Lanka", "countryCode": "LK", "lat": 6.9271, "lng": 79.8612 },
+    "profileImage": "/media/profile/profile-photo.webp",
+    "resumeUrl": "https://drive.google.com/file/d/1tUyCB3WXgbWiAI3igodwczXYXYnpMpwM/view?usp=sharing"
+  },
+  "seo": {
+    "title": "Rusiru Rathmina | Full-Stack Software Engineer",
+    "description": "Rusiru Rathmina is a Software Engineer focused on full-stack development and cloud solutions, delivering scalable applications with attention to quality.",
+    "ogDescription": "Portfolio of Rusiru Rathmina — Full-Stack Software Engineer in Colombo, Sri Lanka, building scalable apps with Java, Spring Boot, React, and AWS.",
+    "dateCreated": "2024-01-01",
+    "themeColor": "#0f172a"
+  },
+  "theme": { "default": "system" },
+  "sections": ["about", "experience", "education", "projects", "skills", "blog", "contact"],
+  "contact": {
+    "secondaryButton": { "platform": "linkedin", "url": "https://www.linkedin.com/in/ru5iru" }
+  },
+  "blogUrl": "https://iamrusiru.lovable.app/",
+  "social": [
+    { "platform": "linkedin", "url": "https://www.linkedin.com/in/ru5iru" },
+    { "platform": "github", "url": "https://github.com/ru5iru" },
+    { "platform": "discord", "url": "https://www.discordapp.com/users/Rusiru#4036" },
+    { "platform": "facebook", "url": "https://web.facebook.com/ru5iru" },
+    { "platform": "x", "url": "https://twitter.com/ru5iru" },
+    { "platform": "reddit", "url": "https://www.reddit.com/u/ru5iru/" },
+    { "platform": "blog", "url": "https://iamrusiru.lovable.app/" },
+    { "platform": "spotify", "url": "https://open.spotify.com/user/31ihlph5wpwcdblzhklpoc3evmy4" }
+  ],
+  "educationLogos": {
+    "ucsc": "/media/logos/ucsc-logo.png",
+    "mcg": "/media/logos/mcg-logo.png"
+  },
+  "skills": [
+    { "id": "languages", "items": [
+      { "name": "Java", "icon": "devicon:java/java-original.svg" },
+      { "name": "JavaScript", "icon": "devicon:javascript/javascript-original.svg" },
+      { "name": "PHP", "icon": "devicon:php/php-original.svg" },
+      { "name": "C++", "icon": "devicon:cplusplus/cplusplus-original.svg" }
+    ]},
+    { "id": "frameworks", "items": [
+      { "name": "React", "icon": "devicon:react/react-original.svg" },
+      { "name": "Node.js", "icon": "devicon:nodejs/nodejs-original.svg" },
+      { "name": "Spring Boot", "icon": "devicon:spring/spring-original.svg" },
+      { "name": "Drupal", "icon": "/media/icons/drupal.svg" },
+      { "name": "Yii", "icon": "/media/icons/yii.svg", "invertInDark": true },
+      { "name": "Laravel", "icon": "/media/icons/laravel.svg" },
+      { "name": "Symfony", "icon": "/media/icons/symfony.svg", "invertInDark": true }
+    ]},
+    { "id": "databases", "items": [
+      { "name": "MySQL", "icon": "devicon:mysql/mysql-original.svg" },
+      { "name": "PostgreSQL", "icon": "devicon:postgresql/postgresql-original.svg" },
+      { "name": "MongoDB", "icon": "devicon:mongodb/mongodb-original.svg" },
+      { "name": "Redis", "icon": "devicon:redis/redis-original.svg" }
+    ]},
+    { "id": "devops", "items": [
+      { "name": "AWS", "icon": "/media/icons/aws.svg" },
+      { "name": "Docker", "icon": "devicon:docker/docker-original.svg" },
+      { "name": "Kubernetes", "icon": "devicon:kubernetes/kubernetes-plain.svg" },
+      { "name": "Jenkins", "icon": "devicon:jenkins/jenkins-original.svg" },
+      { "name": "Kafka", "icon": "devicon:apachekafka/apachekafka-original.svg", "invertInDark": true }
+    ]},
+    { "id": "tools", "items": [
+      { "name": "Git", "icon": "devicon:git/git-original.svg" },
+      { "name": "Linux", "icon": "devicon:linux/linux-original.svg" },
+      { "name": "SonarQube", "icon": "/media/icons/sonarqube.svg" },
+      { "name": "Postman", "icon": "/media/icons/postman.svg" }
+    ]}
+  ]
+}

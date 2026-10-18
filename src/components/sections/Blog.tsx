@@ -2,6 +2,8 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { ExternalLink, Calendar, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/i18n/i18n';
+import { siteConfig, resolveIcon, allSkills } from '@/config';
+
 
 interface BlogPost {
   title: string;
@@ -71,7 +73,7 @@ export function Blog() {
 
                 {/* Read More */}
                 <div className="flex items-center gap-2 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                  {t('blog.readMore')}
+                  {t('blog.readMore')}<span className="sr-only">: {post.title}</span>
                   <ExternalLink className="w-4 h-4" />
                 </div>
                 </a>
@@ -88,7 +90,7 @@ export function Blog() {
               className="rounded-full px-8 border-2 hover:bg-primary/5 transition-all duration-300"
             >
               <a
-                href={t('blog.blogUrl')}
+                href={siteConfig.blogUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >

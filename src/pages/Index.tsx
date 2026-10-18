@@ -5,6 +5,8 @@ import { Hero } from '@/components/sections/Hero';
 import { Footer } from '@/components/Footer';
 import { BackToTop } from '@/components/BackToTop';
 import { useTranslation } from '@/i18n/i18n';
+import { siteConfig, resolveIcon, allSkills } from '@/config';
+
 
 const About = lazy(() => import('@/components/sections/About').then(m => ({ default: m.About })));
 const Experience = lazy(() => import('@/components/sections/Experience').then(m => ({ default: m.Experience })));
@@ -14,30 +16,34 @@ const Skills = lazy(() => import('@/components/sections/Skills').then(m => ({ de
 const Blog = lazy(() => import('@/components/sections/Blog').then(m => ({ default: m.Blog })));
 const Contact = lazy(() => import('@/components/sections/Contact').then(m => ({ default: m.Contact })));
 
+const sectionMap: Record<string, React.ComponentType> = { about: About, experience: Experience, education: Education, projects: Projects, skills: Skills, blog: Blog, contact: Contact };
+const { seo, siteUrl, person } = siteConfig;
+const url = `${siteUrl}/`;
+
 const Index = () => {
   const { t } = useTranslation();
   return (
     <>
       <Helmet>
-        <title>Rusiru Rathmina | Full-Stack Software Engineer</title>
-        <meta name="description" content="Rusiru Rathmina is a Software Engineer focused on full-stack development and cloud solutions, delivering scalable applications with attention to quality." />
-        <link rel="canonical" href="https://rusiru.lovable.app/" />
-        <meta property="og:title" content="Rusiru Rathmina | Full-Stack Software Engineer" />
-        <meta property="og:description" content="Portfolio of Rusiru Rathmina — Full-Stack Software Engineer in Colombo, Sri Lanka, building scalable apps with Java, Spring Boot, React, and AWS." />
-        <meta property="og:url" content="https://rusiru.lovable.app/" />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <link rel="canonical" href={url} />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.ogDescription} />
+        <meta property="og:url" content={url} />
       </Helmet>
     <div className="min-h-screen bg-background" itemScope itemType="https://schema.org/ProfilePage">
-      <meta itemProp="dateCreated" content="2024-01-01" />
-      <meta itemProp="dateModified" content="2026-02-23" />
+      <meta itemProp="dateCreated" content={seo.dateCreated} />
+      <meta itemProp="dateModified" content={new Date().toISOString().slice(0, 10)} />
       <div itemProp="mainEntity" itemScope itemType="https://schema.org/Person">
-        <meta itemProp="name" content="Rusiru Rathmina" />
-        <meta itemProp="jobTitle" content="Associate Software Engineer" />
-        <meta itemProp="url" content="https://rusiru.lovable.app" />
+        <meta itemProp="name" content={person.name} />
+        <meta itemProp="jobTitle" content={person.jobTitle} />
+        <meta itemProp="url" content={siteUrl} />
       </div>
 
       {/* Skip to content link */}
       <a
-        href="#about"
+        href={`#${siteConfig.sections[0] ?? "main"}`}
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg focus:text-sm focus:font-semibold"
       >
         {t('common.skipToContent')}
@@ -47,13 +53,7 @@ const Index = () => {
       <main>
         <Hero />
         <Suspense fallback={null}>
-          <About />
-          <Experience />
-          <Education />
-          <Projects />
-          <Skills />
-          <Blog />
-          <Contact />
+          {siteConfig.sections.map((key) => { const S = sectionMap[key]; return S ? <S key={key} /> : null; })}
         </Suspense>
       </main>
       <Footer />

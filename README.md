@@ -1,73 +1,21 @@
-# Welcome to your Lovable project
+# Portfolio template
 
-## Project info
+Make it yours by editing config files only — no code changes needed.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+| What | Where |
+|------|-------|
+| Name, email, site URL, location, resume link, page title/description | `src/config/site.json` |
+| Social links (`platform`: linkedin, github, discord, facebook, x, reddit, blog, spotify — or add `icon` path for others) | `site.json` → `social` |
+| Which sections show and in what order | `site.json` → `sections` |
+| Skills + icons (`devicon:<path>` or `/media/...` or any URL; `invertInDark` for dark logos) | `site.json` → `skills` |
+| Education logos (keyed by education item `id`) | `site.json` → `educationLogos` |
+| Brand colors (HSL) for light/dark | `src/config/theme.json` |
+| All wording: hero, about, experience, education, projects, blog posts, contact, footer, 404 | `src/locales/en.json` |
+| Images (profile photo, logos, icons) | `public/media/` |
+| Favicons | `public/*.png`, `public/favicon.ico` |
 
-## How can I edit this code?
+## Add a language
+Copy `src/locales/en.json` to e.g. `si.json`, translate the values, and set `language.name`/`language.code`. It appears in the language menu automatically. In About paragraphs, `**text**` is bold and `==text==` is highlighted.
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Generated files
+`public/sitemap.xml`, `public/robots.txt` and `public/site.webmanifest` are regenerated from `site.json` on every start/build. Also review the static SEO text in `index.html` and `public/llms.txt`.
