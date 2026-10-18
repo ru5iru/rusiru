@@ -1,5 +1,7 @@
 # Welcome to your Lovable project
 
+Repository documentation: [setup, architecture, code guide, and operations](docs/README.md).
+
 ## Project info
 
 **URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
