@@ -1,13 +1,16 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Mail, Linkedin } from 'lucide-react';
+import { Mail, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/i18n/i18n';
-import { siteConfig, resolveIcon, allSkills } from '@/config';
+import { siteConfig } from '@/config';
+import { brandIcons } from '@/components/icons/BrandIcons';
 
 
 export function Contact() {
   const { ref, isVisible } = useScrollAnimation();
   const { t } = useTranslation();
+  const platform = siteConfig.contact.secondaryButton.platform;
+  const Icon = brandIcons[platform]?.icon ?? ExternalLink;
 
   return (
     <section id="contact" className="py-24 md:py-32 relative overflow-hidden" aria-label={t('contact.ariaLabel')}>
@@ -60,8 +63,8 @@ export function Contact() {
               className="border-2 border-primary text-primary px-8 py-6 text-lg font-semibold rounded-xl hover:bg-primary/10 transition-all duration-300 hover:scale-[1.02]"
             >
               <a href={siteConfig.contact.secondaryButton.url} target="_blank" rel="noopener noreferrer">
-                <Linkedin className="mr-2 w-5 h-5" />
-                {t('contact.linkedin')}
+                <Icon className="mr-2 w-5 h-5" />
+                {platform === 'linkedin' ? t('contact.linkedin') : t(`footer.social.${platform}`)}
               </a>
             </Button>
           </div>
