@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 export const sectionIds = ['about', 'experience', 'education', 'projects', 'skills', 'blog', 'contact'] as const;
 const text = z.string().trim().min(1);
-const webUrl = text.url().refine((value) => /^https?:\/\//.test(value), 'Use an HTTP or HTTPS URL');
+export const webUrl = text.url().refine((value) => /^https?:\/\//.test(value), 'Use an HTTP or HTTPS URL');
 const media = text.refine((value) => /^\/(?!\/)/.test(value) || /^https?:\/\//.test(value), 'Use a local /media path or HTTP(S) URL');
 const icon = text.refine((value) => value.startsWith('devicon:') || /^\/(?!\/)/.test(value) || /^https?:\/\//.test(value), 'Invalid icon reference');
 export const siteSchema = z.object({
@@ -14,11 +14,14 @@ export const siteSchema = z.object({
   seo: z.object({ title: text, description: text, ogDescription: text, dateCreated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), themeColor: z.string().regex(/^#[\da-f]{6}$/i) }),
   theme: z.object({ default: z.enum(['system', 'light', 'dark']) }),
   sections: z.array(z.enum(sectionIds)).refine((items) => new Set(items).size === items.length, 'Section IDs must be unique'),
-  contact: z.object({ secondaryButton: z.object({ platform: text, url: webUrl }) }),
+  contact: z.object({ secondaryButton: z.object({ platform: z.enum(['linkedin', 'github', 'discord', 'facebook', 'x', 'twitter', 'reddit', 'blog', 'spotify']), url: webUrl }) }),
   blogUrl: webUrl,
   social: z.array(z.object({ platform: text, url: webUrl, icon: media.optional() })),
   educationLogos: z.record(media),
   skills: z.array(z.object({ id: text, items: z.array(z.object({ name: text, icon, invertInDark: z.boolean().optional() })) })),
+}).superRefine((site, ctx) => {
+  const ids = site.skills.map(category => category.id);
+  if (new Set(ids).size !== ids.length) ctx.addIssue({ code: 'custom', path: ['skills'], message: 'Skill category IDs must be unique' });
 });
 
 const hsl = z.string().regex(/^\d+(?:\.\d+)?\s+\d+(?:\.\d+)?%\s+\d+(?:\.\d+)?%$/).refine((value) => {

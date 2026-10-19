@@ -2,7 +2,15 @@
 
 Purpose: preserve the documentation inventory, drift evidence, and verification history. Intended reader: reviewers and future maintainers.
 
-Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-10-18.
+Historical baseline: commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76`, 2026-10-18. Latest remediation evidence: working tree, 2026-10-19 UTC.
+
+## 2026-10-19 — audit remediation
+
+Implemented the actionable risks: canonical Bun lock/frozen install; shared accessible content-height disclosure rows; delayed section observation/navigation; resolved system-theme toggle; guarded language storage and per-key locale fallback; setting/theme/English schemas; lazy loading/error recovery; full generated static HTML metadata/content/JSON-LD plus llms; reliable sitemap timestamp policy and watcher; optimized profile asset; reduced motion and timer cleanup; CI and regression coverage. Removed unused mounted query/toast scaffolding, retaining reusable UI-kit files.
+
+Updated README and AGENTS to describe actual ownership and limits. [Risk remediation status](09-risks-and-recommendations.md#remediation-status--2026-10-19) supersedes the earlier audit tables and source-line citations below. Original audit/history is preserved, not silently rewritten as current evidence.
+
+Verified clean frozen installation, passing regression tests, clean lint, automatic preview compilation, desktop/mobile flows, raw generated search content and local HTTP 200 search files. No production publish, actual hosted rollback, production Core Web Vitals measurement or external ownership/settings verification was performed. Editorial facts, operating ownership and remaining historical product requirements remain owner decisions.
 
 ## 2026-10-18 — template configuration update
 
