@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { webUrl } from '@/config/schema';
+import { webUrl } from '../config/schema';
 const text = z.string().trim().min(1);
 const copy = z.object({ ariaLabel: text }).passthrough();
 export const localeSchema = z.object({
