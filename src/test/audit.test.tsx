@@ -11,6 +11,7 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { navigateToSection } from '@/lib/navigation';
 import { createSearchContent } from '../../scripts/search-content';
+import { localeSchema } from '@/i18n/schema';
 
 const setTheme = vi.fn();
 vi.mock('next-themes', () => ({ useTheme: () => ({ theme: 'system', resolvedTheme: 'dark', setTheme }) }));
@@ -27,6 +28,7 @@ describe('settings', () => {
   it('rejects malformed theme values', () => { expect(themeSchema.safeParse({ light: { primary: '0 999% 50%' }, dark: {} }).success).toBe(false); });
 });
 describe('locales', () => {
+  it('accepts English and rejects unsafe project links', () => { expect(localeSchema.safeParse(en).success).toBe(true); expect(localeSchema.safeParse({ ...en, projects: { ...en.projects, items: [{ ...en.projects.items[0], link: 'javascript:alert(1)' }] } }).success).toBe(false); });
   it('falls back by key and array position', () => { expect(mergeLocale({ title: 'Title', items: [{ title: 'First', description: ['One', 'Two'] }] }, { items: [{ title: 'Translated', description: ['Uno'] }] })).toEqual({ title: 'Title', items: [{ title: 'Translated', description: ['Uno', 'Two'] }] }); });
   it('rejects a lost placeholder', () => { expect(mergeLocale('Visit {title}', 'Visit')).toBe('Visit {title}'); });
   it('rejects a malformed array', () => { expect(mergeLocale(['One'], 'wrong')).toEqual(['One']); });

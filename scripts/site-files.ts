@@ -3,6 +3,7 @@ import path from 'path';
 import type { Plugin } from 'vite';
 import { siteSchema, themeSchema } from '../src/config/schema';
 import { createSearchContent, type SearchSite, type SearchLocale } from './search-content';
+import { localeSchema } from '../src/i18n/schema';
 
 export function siteFilesPlugin(): Plugin {
   const root = process.cwd();
@@ -11,6 +12,9 @@ export function siteFilesPlugin(): Plugin {
     const site = load('src/config/site.json');
     siteSchema.parse(site); themeSchema.parse(load('src/config/theme.json'));
     const en = load('src/locales/en.json');
+    localeSchema.parse(en);
+    for (const item of en.education.items) if (!site.educationLogos[item.id]) throw new Error(`Missing education logo for ${item.id}`);
+    for (const category of site.skills) if (!en.skills.categories[category.id]) throw new Error(`Missing skill category wording for ${category.id}`);
     return { site: site as SearchSite, en: en as SearchLocale, ...createSearchContent(site, en) };
   };
   const generate = () => {

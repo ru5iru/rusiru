@@ -15,7 +15,10 @@ export function mergeLocale(base: unknown, translated: unknown): unknown {
     if (!translated.trim()) return base;
     const placeholders = base.match(/\{\w+\}/g) ?? [];
     if (placeholders.some((key) => !translated.includes(key))) return base;
-    if (/^https?:\/\//.test(base) && !/^https?:\/\//.test(translated)) return base;
+    if (/^https?:\/\//.test(base)) {
+      try { if (!['http:', 'https:'].includes(new URL(translated).protocol)) return base; }
+      catch { return base; }
+    }
   }
   return translated;
 }

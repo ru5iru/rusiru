@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { mergeLocale, resolveRaw, readLanguage, storeLanguage, type Dict } from './locale';
+import { localeSchema } from './schema';
 
 // Auto-discover every locale file in src/locales. To add a new language,
 // drop a JSON file named with its language prefix (e.g. si.json, ta.json)
@@ -19,6 +20,7 @@ for (const path in modules) {
 
 const DEFAULT_LANG = 'en';
 if (!translations.en) throw new Error('The English fallback locale is required');
+localeSchema.parse(translations.en);
 for (const code of Object.keys(translations)) translations[code] = mergeLocale(translations.en, translations[code]) as Dict;
 
 export interface LanguageOption {
