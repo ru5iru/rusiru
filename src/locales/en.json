@@ -38,7 +38,7 @@
   },
   "about": {
     "ariaLabel": "About Rusiru Rathmina",
-    "geoSummary": "Rusiru Rathmina is a Full-Stack Software Engineer with over 2 years of professional experience, currently working as an Associate Software Engineer at Omobio (Pvt) Ltd in Colombo, Sri Lanka. He specializes in Java, Spring Boot, React.js, AWS, Docker, and Kubernetes. He holds a Bachelor of Science in Computer Science from the University of Colombo School of Computing (UCSC) with a GPA of 3.01. His expertise spans 25+ technologies across frontend, backend, cloud, and DevOps domains. He has contributed to enterprise platforms including Dialog.lk and Dialog BizCare for Dialog Axiata PLC, serving millions of users across Sri Lanka.",
+    "geoSummary": "Rusiru Rathmina is a Full-Stack Software Engineer with over 2 years of professional experience, currently working as an Associate Software Engineer at Omobio (Pvt) Ltd in Colombo, Sri Lanka. He specializes in Java, Spring Boot, React.js, AWS, Docker, and Kubernetes. He holds a Bachelor of Science in Computer Science from the University of Colombo School of Computing (UCSC) with a GPA of 3.01. His expertise spans 24 technologies across frontend, backend, cloud, and DevOps domains. He has contributed to enterprise platforms including Dialog.lk and Dialog BizCare for Dialog Axiata PLC, serving millions of users across Sri Lanka.",
     "titleBefore": "About",
     "titleHighlight": "Me",
     "_formatHint": "Use **text** for bold and ==text== for gradient highlight",
@@ -54,7 +54,7 @@
         "label": "Years Experience"
       },
       {
-        "value": "25+",
+        "value": "24",
         "label": "Technologies"
       },
       {
@@ -126,7 +126,7 @@
   },
   "projects": {
     "ariaLabel": "Projects by Rusiru Rathmina",
-    "geoSummary": "Rusiru Rathmina has worked on 6 notable projects: Dialog.lk — an enterprise CMS platform for Dialog Axiata serving millions of users; Dialog BizCare — a corporate customer management portal; Project-X — a produce collection automation system for farmers; Roamly — a travel recommendation platform; Micro CAPS — an assembly process management system for Micro Car Limited; and ToDo — a Flutter-based task manager app.",
+    "geoSummary": "Rusiru Rathmina has worked on 7 notable projects: Dialog.lk — an enterprise CMS platform for Dialog Axiata serving millions of users; Dialog BizCare — a corporate customer management portal; Jira Worklog Manager — a personal productivity tool for Jira Cloud worklogs; Project-X — a produce collection automation system for farmers; Roamly — a travel recommendation platform; Micro CAPS — an assembly process management system for Micro Car Limited; and ToDo — a Flutter-based task manager app.",
     "title": "Featured Projects",
     "visit": "Visit {title}",
     "viewOnGithub": "View {title} on GitHub",
@@ -261,7 +261,7 @@
   },
   "skills": {
     "ariaLabel": "Technical Skills of Rusiru Rathmina",
-    "geoSummary": "Rusiru Rathmina's technical skills include: Languages — Java, JavaScript, PHP, C++; Frameworks — React, Node.js, Spring Boot, Drupal, Yii, Laravel, Symfony; Databases — MySQL, PostgreSQL, MongoDB, Redis; DevOps and Cloud — AWS, Docker, Kubernetes, Jenkins, Apache Kafka; Tools — Git, Linux, SonarQube, Postman. He has proficiency across 25+ technologies spanning the full software development lifecycle.",
+    "geoSummary": "Rusiru Rathmina's technical skills include: Languages — Java, JavaScript, PHP, C++; Frameworks — React, Node.js, Spring Boot, Drupal, Yii, Laravel, Symfony; Databases — MySQL, PostgreSQL, MongoDB, Redis; DevOps and Cloud — AWS, Docker, Kubernetes, Jenkins, Apache Kafka; Tools — Git, Linux, SonarQube, Postman. He has proficiency across 24 technologies spanning the full software development lifecycle.",
     "titleBefore": "Technical",
     "titleHighlight": "Skills",
     "categories": {
@@ -330,7 +330,11 @@
     }
   },
   "common": {
-    "skipToContent": "Skip to main content"
+    "skipToContent": "Skip to main content",
+    "backToTop": "Back to top",
+    "loading": "Loading…",
+    "loadError": "This content could not be loaded.",
+    "reload": "Reload page"
   },
   "notFound": {
     "title": "Page Not Found (404)",
