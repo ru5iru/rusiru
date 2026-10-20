@@ -38,7 +38,7 @@ Original baseline: commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76`, 2026-10-18
 ### Verification evidence
 
 - Frozen installation succeeded both in the project and a fresh temporary directory.
-- Regression suite passed; lint passed without errors or warnings. Preview's latest automatic compilation reported `build OK`.
+- Regression suite passed (23 tests); lint passed without errors or warnings. Preview's latest automatic compilation reported `build OK`.
 - Browser checks at 1280×1800 desktop and 390×844 mobile: seven project rows, independent accordion/link controls, early navigation, current-section highlighting, theme switching, mobile Escape/focus, reduced motion and 404.
 - No runtime page errors, broken loaded images or nested interactive controls in the desktop run. Mobile had no horizontal overflow; longest expanded panel was not clipped.
 - Raw served HTML contains Jira and seven-item structured data. Sitemap, robots, manifest and llms returned HTTP 200 locally.
