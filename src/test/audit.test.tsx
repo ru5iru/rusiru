@@ -12,6 +12,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { navigateToSection } from '@/lib/navigation';
 import { createSearchContent } from '../../scripts/search-content';
 import { localeSchema } from '@/i18n/schema';
+import { LoadBoundary } from '@/components/LoadState';
 
 const setTheme = vi.fn();
 vi.mock('next-themes', () => ({ useTheme: () => ({ theme: 'system', resolvedTheme: 'dark', setTheme }) }));
@@ -36,6 +37,13 @@ describe('locales', () => {
   it('survives denied storage writes', () => { vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('Denied'); }); expect(() => storeLanguage('en')).not.toThrow(); });
 });
 describe('interactions', () => {
+  it('recovers a failed section without removing surrounding content', () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    function Broken(): JSX.Element { throw new Error('Chunk unavailable'); }
+    render(<I18nProvider><p>Surviving section</p><LoadBoundary><Broken /></LoadBoundary></I18nProvider>);
+    expect(screen.getByText('Surviving section')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: en.common.reload })).toBeEnabled();
+  });
   it('switches system-dark appearance to light on first click', () => { render(<I18nProvider><ThemeToggle /></I18nProvider>); fireEvent.click(screen.getByRole('button', { name: en.nav.toggleTheme })); expect(setTheme).toHaveBeenCalledWith('light'); });
   it('reveals additional projects and expands Jira independently', () => {
     render(<I18nProvider><Projects /></I18nProvider>);
