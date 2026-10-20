@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/sections/Hero';
@@ -6,6 +6,8 @@ import { Footer } from '@/components/Footer';
 import { BackToTop } from '@/components/BackToTop';
 import { useTranslation } from '@/i18n/i18n';
 import { siteConfig, resolveIcon, allSkills } from '@/config';
+import { LoadingState, LoadBoundary } from '@/components/LoadState';
+import { navigateToSection } from '@/lib/navigation';
 
 
 const About = lazy(() => import('@/components/sections/About').then(m => ({ default: m.About })));
@@ -22,6 +24,10 @@ const url = `${siteUrl}/`;
 
 const Index = () => {
   const { t } = useTranslation();
+  useEffect(() => {
+    const id = window.location.hash.slice(1);
+    if (id && siteConfig.sections.includes(id)) return navigateToSection(id);
+  }, []);
   return (
     <>
       <Helmet>
@@ -34,7 +40,6 @@ const Index = () => {
       </Helmet>
     <div className="min-h-screen bg-background" itemScope itemType="https://schema.org/ProfilePage">
       <meta itemProp="dateCreated" content={seo.dateCreated} />
-      <meta itemProp="dateModified" content={new Date().toISOString().slice(0, 10)} />
       <div itemProp="mainEntity" itemScope itemType="https://schema.org/Person">
         <meta itemProp="name" content={person.name} />
         <meta itemProp="jobTitle" content={person.jobTitle} />
@@ -43,18 +48,16 @@ const Index = () => {
 
       {/* Skip to content link */}
       <a
-        href={`#${siteConfig.sections[0] ?? "main"}`}
+        href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg focus:text-sm focus:font-semibold"
       >
         {t('common.skipToContent')}
       </a>
 
       <Navbar />
-      <main>
+      <main id="main" tabIndex={-1}>
         <Hero />
-        <Suspense fallback={null}>
-          {siteConfig.sections.map((key) => { const S = sectionMap[key]; return S ? <S key={key} /> : null; })}
-        </Suspense>
+        {siteConfig.sections.map(key => { const S = sectionMap[key]; return S ? <LoadBoundary key={key}><Suspense fallback={<LoadingState />}><S /></Suspense></LoadBoundary> : null; })}
       </main>
       <Footer />
       <BackToTop />

@@ -2,9 +2,55 @@
 
 Purpose: prioritize evidence-backed follow-up work. Intended reader: maintainers, product owners, and operators.
 
-Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-10-18.
+Original baseline: commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76`, 2026-10-18. Remediation verification: working tree, 2026-10-19 UTC.
 
-**[Verified]** Findings below identify inspected code or observed command behavior. Impacts and effort are **[Inferred]** estimates for this small frontend; H/M/L mean high/medium/low. Recommendations are not implemented by this docs-only change. Browser/production failures are not claimed unless explicitly observed.
+**[Verified]** The original findings below are retained as historical evidence. The remediation table supersedes their current status; old line citations refer to the baseline, not the edited files. Production failures or deployment changes are not claimed.
+
+## Remediation status — 2026-10-19
+
+| IDs | Status | Implemented correction / remaining limitation |
+| --- | --- | --- |
+| R1 | Fixed | Bun 1.3.3 and text `bun.lock` are authoritative; removed stale npm/binary Bun locks. Frozen install passed in a clean temporary directory. |
+| R2 | Fixed | Seven projects, including Jira Worklog Manager, feed generated HTML, JSON-LD and llms from current locale data. |
+| R3 | Fixed | Removed starter placeholder URLs and duplicate README onboarding; documented actual workflow and template limits. |
+| R4 | Fixed | Navbar observes late-inserted lazy targets; early navigation waits for targets. Cold-load Projects click verified. |
+| R5 | Fixed | Denied language storage reads/writes retain in-memory operation and English fallback; tested both failure paths. |
+| R6 | Fixed | Theme toggle uses resolved system appearance; first click under system dark visibly switched to light. |
+| R7 | Partially resolved; editorial decision needed | Corrected technology count to 24 configured entries. Job title/role prose, claimed experience, authored dates, and “100% Code Quality” require content-owner confirmation; no new career facts invented. |
+| R8 | Fixed | Shared Radix collapsible rows expose expanded/control relationships and remove hidden panels from interaction. Project outbound links are separate controls. Mobile modal traps focus, closes on Escape and restores focus. |
+| R9 | Fixed | Content-aware panel heights replace fixed caps. Jira mobile panel measured 823px with equal scroll/client height; no clipping or horizontal overflow. |
+| R10 | Fixed within documented locale contract | English schema validates required shapes, URLs and arrays; recursive per-key/array-position fallback handles missing/malformed translations and lost placeholders. New locales must retain English array order; real translated-language editorial QA remains unavailable because only English is supplied. |
+| R11 | Fixed | Added regression tests for settings, storage failure, locale fallback, project visibility, first theme click, lazy targets and search generation. |
+| R12 | Fixed | Vite injects generated metadata, JSON-LD and full readable static section HTML; llms is generated from the same settings/copy. It is not React SSR/hydration. |
+| R13 | Fixed | Independent lazy-section loading states and error boundaries provide a reload action; 404 chunk also has recovery. |
+| R14 | Fixed | Experience, Education and both project groups use one shared disclosure rendering boundary. |
+| R15 | Fixed | Scroll behavior, reveals, marquee and transitions honor reduced motion; missing observer fallback shows content and stagger timers clean up. |
+| R16 | Partially resolved; external decisions needed | Added frozen-install/lint/test/build CI and a release/rollback checklist. Actual account/DNS ownership, production rollback, caching/security headers and monitoring contacts are not available from repository evidence. |
+| R17 | Scope reconciled; product decisions needed | README explicitly distinguishes static generation from SSR and notes remaining font configuration, neutral content.json separation and record links in locales. No contact form or additional languages added without product content/decision. |
+| R18 | Partially resolved; owner needed | README, architecture rules and this audit now document remediation. Older guides/changelog preserve the baseline; assign documentation ownership and refresh those wider guides after release policies are chosen. |
+| R19 | Fixed asset size; performance measurement open | Existing profile reduced from 1,115,145 bytes to 10,282 bytes, 448×448 WebP. Browser confirmed it renders. Production LCP before/after is not measured. |
+| R20 | Fixed | Lint has zero errors/warnings. Empty-interface/require errors corrected, ref cleanup repaired, intentional shared helper exports documented. Brand icon components exported explicitly. |
+| R21 | Fixed | Settings reject duplicate/unsupported section IDs; skip link targets real main; View Work is hidden if projects is disabled. Empty section configuration tested. |
+| R22 | Fixed | Secondary contact button resolves configured brand icon and locale label; unsupported platforms fail validation. LinkedIn retains its existing action wording. |
+| R23 | Fixed | Site/theme/English schemas fail early on missing nested fields, unsafe URLs, malformed HSL and invalid references. Generator validates education logo and skill-label references. |
+| R24 | Fixed | Sitemap no longer falsely uses build day as lastmod. Content-compared output and input watcher regenerate after config/English changes. |
+
+### Verification evidence
+
+- Frozen installation succeeded both in the project and a fresh temporary directory.
+- Regression suite passed (23 tests); lint passed without errors or warnings. Preview's latest automatic compilation reported `build OK`.
+- Browser checks at 1280×1800 desktop and 390×844 mobile: seven project rows, independent accordion/link controls, early navigation, current-section highlighting, theme switching, mobile Escape/focus, reduced motion and 404.
+- No runtime page errors, broken loaded images or nested interactive controls in the desktop run. Mobile had no horizontal overflow; longest expanded panel was not clipped.
+- Raw served HTML contains Jira and seven-item structured data. Sitemap, robots, manifest and llms returned HTTP 200 locally.
+- No publishing, production settings change, actual hosted rollback or production page-speed audit was performed.
+
+### Remaining owner decisions
+
+1. Confirm canonical job title, experience/statistics and authored dates (R7).
+2. Identify release/DNS/security/monitoring contacts and approve production runbooks (R16/R18).
+3. Decide whether remaining historical template promises, a contact form or translated content are required (R17).
+
+## Historical baseline findings
 
 ## Quick wins
 

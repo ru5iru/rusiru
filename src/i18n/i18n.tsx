@@ -1,4 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { mergeLocale, resolveRaw, readLanguage, storeLanguage, type Dict } from './locale';
+import { localeSchema } from './schema';
 
 // Auto-discover every locale file in src/locales. To add a new language,
 // drop a JSON file named with its language prefix (e.g. si.json, ta.json)
@@ -8,15 +10,18 @@ const modules = import.meta.glob('../locales/*.json', { eager: true }) as Record
   { default: Record<string, unknown> }
 >;
 
-type Dict = Record<string, unknown>;
-
 const translations: Record<string, Dict> = {};
 for (const path in modules) {
-  const code = path.split('/').pop()!.replace('.json', '');
+  const filename = path.split('/').pop();
+  if (!filename) continue;
+  const code = filename.replace('.json', '');
   translations[code] = modules[path].default;
 }
 
-const DEFAULT_LANG = translations.en ? 'en' : Object.keys(translations)[0];
+const DEFAULT_LANG = 'en';
+if (!translations.en) throw new Error('The English fallback locale is required');
+localeSchema.parse(translations.en);
+for (const code of Object.keys(translations)) translations[code] = mergeLocale(translations.en, translations[code]) as Dict;
 
 export interface LanguageOption {
   code: string;
@@ -34,31 +39,18 @@ interface I18nContextValue {
 
 const I18nContext = createContext<I18nContextValue | undefined>(undefined);
 
-function resolveRaw(dict: Dict, key: string): unknown {
-  return key.split('.').reduce<unknown>((acc, part) => {
-    if (acc && typeof acc === 'object') return (acc as Dict)[part];
-    return undefined;
-  }, dict);
-}
-
 function resolve(dict: Dict, key: string): string {
   const value = resolveRaw(dict, key);
   return typeof value === 'string' ? value : key;
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<string>(() => {
-    if (typeof localStorage !== 'undefined') {
-      const stored = localStorage.getItem('lang');
-      if (stored && translations[stored]) return stored;
-    }
-    return DEFAULT_LANG;
-  });
+  const [lang, setLangState] = useState<string>(() => readLanguage(DEFAULT_LANG, translations));
 
   const setLang = (next: string) => {
     if (translations[next]) {
       setLangState(next);
-      if (typeof localStorage !== 'undefined') localStorage.setItem('lang', next);
+      storeLanguage(next);
     }
   };
 
