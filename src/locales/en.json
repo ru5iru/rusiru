@@ -38,7 +38,7 @@
   },
   "about": {
     "ariaLabel": "About Rusiru Rathmina",
-    "geoSummary": "Rusiru Rathmina is a Full-Stack Software Engineer with over 2 years of professional experience, currently working as an Associate Software Engineer at Omobio (Pvt) Ltd in Colombo, Sri Lanka. He specializes in Java, Spring Boot, React.js, AWS, Docker, and Kubernetes. He holds a Bachelor of Science in Computer Science from the University of Colombo School of Computing (UCSC) with a GPA of 3.01. His expertise spans 24 technologies across frontend, backend, cloud, and DevOps domains. He has contributed to enterprise platforms including Dialog.lk and Dialog BizCare for Dialog Axiata PLC, serving millions of users across Sri Lanka.",
+    "geoSummary": "Rusiru Rathmina is a Software Engineer with professional experience spanning full-stack development, cloud infrastructure, application security, and DevOps. He works at Omobio (Pvt) Ltd in Colombo, Sri Lanka, and has contributed to enterprise platforms including Dialog.lk and Dialog BizCare for Dialog Axiata PLC. His expertise includes Java, Spring Boot, React.js, PHP, AWS, Docker, and Kubernetes. He holds a Bachelor of Science in Computer Science from the University of Colombo School of Computing (UCSC) with a GPA of 3.01.",
     "titleBefore": "About",
     "titleHighlight": "Me",
     "_formatHint": "Use **text** for bold and ==text== for gradient highlight",
@@ -65,22 +65,33 @@
   },
   "experience": {
     "ariaLabel": "Work Experience of Rusiru Rathmina",
-    "geoSummary": "Rusiru Rathmina has over 2 years of professional experience. He currently serves as an Associate Software Engineer at Omobio (Pvt) Ltd since May 2024, where he refactors legacy systems to meet OWASP Top 10 security standards, implements secure APIs, and works within agile CI/CD pipelines. Previously, he worked as a Trainee Full-Stack Developer at the same company from November 2023, supporting production systems including Dialog BizCare and Dialog.lk for Dialog Axiata PLC.",
+    "geoSummary": "Rusiru Rathmina is a Software Engineer at Omobio (Pvt) Ltd in Colombo, Sri Lanka. Since January 2026, he has managed AWS, Docker, and Kubernetes infrastructure, migrated Dialog.lk container images from end-of-life Debian to Alpine Linux, reducing image sizes by 60% and deployment time by 75%, and contributed to ISO 27001 compliance and secure coding initiatives. Previously, he served as an Associate Software Engineer from May 2024 to December 2025 and a Trainee Full-Stack Developer from November 2023 to May 2024, supporting enterprise platforms including Dialog.lk and Dialog BizCare.",
     "title": "Work Experience",
     "items": [
       {
         "company": "Omobio (Pvt) Ltd",
+        "role": "Software Engineer",
+        "period": "January 2026 - Present",
+        "dateTime": "2026-01",
+        "description": [
+          "Managed and supported cloud infrastructure, containerized applications, and orchestration workflows using AWS, Docker, and Kubernetes (K8s).",
+          "Successfully migrated Dialog.lk application images from end-of-life (EOL) Debian to Alpine Linux, reducing container image sizes by 60% and deployment time by 75%. Modernized legacy image build processes by implementing multi-stage builds to improve build efficiency, reduce image footprint, and strengthen security.",
+          "Implemented secure coding practices and contributed to application security initiatives aligned with OWASP best practices and ISO 27001 requirements.",
+          "Strengthened container and base image security by identifying and remediating CVE vulnerabilities, improving the overall security posture of applications and infrastructure.",
+          "Represented the development team in ISO 27001 compliance activities, security audits, and related processes, supporting adherence to organizational security standards.",
+          "Conducted peer code reviews and mentored new team members, promoting engineering best practices, code quality, and team productivity."
+        ]
+      },
+      {
+        "company": "Omobio (Pvt) Ltd",
         "role": "Associate Software Engineer",
-        "period": "May 2024 - Present",
+        "period": "May 2024 - December 2025",
         "dateTime": "2024-05",
         "description": [
-          "Served as a key software engineer for the Dialog.lk platform while also functioning as the L3 support engineer for the application.",
-          "Developed and maintained API integrations, backend services, and microservice-based solutions using Kafka and RESTful APIs.",
-          "Managed and supported cloud infrastructure, containerized deployments, and orchestration workflows using AWS, Docker, and Kubernetes (K8s).",
-          "Implemented secure coding standards and contributed to application security initiatives aligned with OWASP best practices and ISO 27001 compliance requirements.",
-          "Troubleshot and resolved production issues, optimized application performance, and improved overall system reliability and availability.",
-          "Collaborated with cross-functional teams in agile environments to deliver scalable, high-quality, and enterprise-grade software solutions.",
-          "Contributed to CI/CD pipeline management, release processes, and DevOps initiatives to streamline development and deployment workflows."
+          "Served as a key software engineer for the Dialog.lk platform, while independently managing Level 3 (L3) production support, ensuring application stability, service continuity, and timely incident resolution.",
+          "Investigated and resolved complex production issues, performed root cause analysis, and optimized application performance to improve system reliability and availability.",
+          "Collaborated with cross-functional teams in Agile environments to develop, maintain, and deliver scalable, high-quality, enterprise-grade software solutions.",
+          "Contributed to CI/CD pipeline management, release coordination, and DevOps initiatives, streamlining development workflows and improving deployment efficiency."
         ]
       },
       {
@@ -89,11 +100,11 @@
         "period": "November 2023 - May 2024",
         "dateTime": "2023-11",
         "description": [
-          "Gained hands-on experience in full-stack development using React.js, Node.js, and PHP while contributing to enterprise-level applications.",
-          "Served as the L3 support engineer for the Dialog.lk and Dialog BizCare platforms.",
-          "Supported bug fixing, production issue handling, and live application support for Dialog BizCare and Dialog.lk, ensuring minimal service downtime and operational continuity.",
-          "Analyzed and resolved application and system issues by reviewing server logs, debugging services, and collaborating with cross-functional teams.",
-          "Participated in requirement gathering, solution planning, and system design activities for a production automation system developed for tea factories."
+          "Gained hands-on experience in full-stack development using React.js, Node.js, and PHP, contributing to the development and maintenance of enterprise-level applications.",
+          "Provided Level 3 (L3) production support for the Dialog.lk and Dialog BizCare platforms, troubleshooting technical issues and supporting application stability.",
+          "Investigated and resolved software defects and production incidents across Dialog.lk and Dialog BizCare, helping minimize service disruptions and maintain operational continuity.",
+          "Analyzed application and system issues through server log analysis, service debugging, and collaboration with cross-functional teams to identify root causes and implement effective solutions.",
+          "Participated in requirements gathering, solution planning, and system design for a tea factory production automation system, contributing to the development of solutions aimed at improving operational efficiency."
         ]
       }
     ]
@@ -126,7 +137,7 @@
   },
   "projects": {
     "ariaLabel": "Projects by Rusiru Rathmina",
-    "geoSummary": "Rusiru Rathmina has worked on 7 notable projects: Dialog.lk — an enterprise CMS platform for Dialog Axiata serving millions of users; Dialog BizCare — a corporate customer management portal; Jira Worklog Manager — a personal productivity tool for Jira Cloud worklogs; Project-X — a produce collection automation system for farmers; Roamly — a travel recommendation platform; Micro CAPS — an assembly process management system for Micro Car Limited; and ToDo — a Flutter-based task manager app.",
+    "geoSummary": "Rusiru Rathmina has worked on 8 notable projects: Dialog.lk, an enterprise CMS platform for Dialog Axiata; Dialog BizCare, a corporate customer management portal; MockDeck, an API mocking and integration testing platform; Jira Worklog Manager, a productivity tool for Jira Cloud worklogs; Project-X, a produce collection automation system; Roamly, a travel recommendation platform; Micro CAPS, an assembly process management system; and ToDo, a Flutter-based task manager.",
     "title": "Featured Projects",
     "visit": "Visit {title}",
     "viewOnGithub": "View {title} on GitHub",
@@ -137,23 +148,28 @@
         "title": "Dialog.lk",
         "link": "https://dialog.lk/",
         "isExternal": true,
+        "period": "December 2024 - Present",
         "description": [
-          "Troubleshot and resolved production issues, optimized application performance, and improved overall system reliability and availability while adhering to SLAs and critical deadlines.",
-          "Led efforts to refactor the legacy codebase to align with OWASP Top 10 and SonarQube standards.",
-          "Developed custom Drupal modules to send emails via Amazon SES, replacing SMTP to improve security and deliverability, and implemented user consent management to comply with Sri Lanka’s Personal Data Protection Act.",
-          "Played a key role in guiding the team to improve coding standards, development practices, and secure coding initiatives, including the implementation of SonarQube.",
-          "Remediated security hotspots and vulnerabilities identified across the application, significantly reducing security risks throughout the codebase.",
-          "Optimized application performance and scalability using AWS services such as S3, SES, and CloudWatch, along with caching mechanisms.",
-          "Performed peer code reviews and mentored new team members, fostering engineering best practices and improving team productivity."
+          "Played a key role in the development, maintenance, and production support of the Dialog.lk platform, handling complex L3 incidents, root cause analysis, and performance optimization while ensuring SLA compliance and meeting critical deadlines.",
+          "Led efforts to refactor the legacy codebase in alignment with OWASP Top 10 security best practices, integrating SonarQube to improve code quality, identify vulnerabilities, and strengthen secure development practices.",
+          "Developed custom Drupal modules integrating Amazon SES to replace SMTP-based email delivery, improving security and deliverability, and implemented user consent management capabilities to support compliance with Sri Lanka’s Personal Data Protection Act (PDPA).",
+          "Identified and remediated security hotspots, code vulnerabilities, and CVE-related issues across the application and container images, strengthening the overall security posture and supporting ISO 27001 compliance activities.",
+          "Migrated Dialog.lk application container images from end-of-life Debian to Alpine Linux, achieving a 60% reduction in image size and a 75% improvement in deployment time. Modernized legacy image build processes using multi-stage builds to improve efficiency and security.",
+          "Optimized application performance and scalability using AWS services, including S3, SES, and CloudWatch, alongside caching mechanisms to improve operational efficiency and reliability.",
+          "Contributed to CI/CD pipeline management, release coordination, and DevOps initiatives, supporting reliable deployments and streamlined development workflows."
         ],
         "tech": [
           "Drupal",
+          "PHP",
           "Yii",
           "React",
           "Kafka",
           "Redis",
           "AWS",
-          "Kubernetes"
+          "Docker",
+          "Kubernetes",
+          "SonarQube",
+          "Amazon SES"
         ],
         "featured": true
       },
@@ -163,11 +179,38 @@
           "Acted as a Level 3 (L3) support engineer, fixing bugs and handling live production issues within defined SLAs.",
           "Investigated production issues by analyzing server logs and implemented effective solutions to ensure system stability.",
           "Collaborated directly with clients and end-users to identify, troubleshoot, and resolve issues efficiently.",
-          "Worked closely with senior engineers while following agile development methodologies, coding standards, and software engineering best practices."
+          "Worked closely with senior engineers while following Agile development methodologies, coding standards, and software engineering best practices."
         ],
         "tech": [
           "Yii",
           "Keycloak"
+        ],
+        "featured": true
+      },
+      {
+        "title": "MockDeck — API Mocking & Integration Testing Platform",
+        "period": "September 2026 - Present",
+        "description": [
+          "Designed and developed MockDeck, an API mocking platform that helps developers and QA teams simulate API behavior, test integrations, and reproduce failure scenarios without depending on live backend services.",
+          "The platform supports exact-request matching, configurable responses, dynamic JSON templates, callback simulation, environment variables, and Postman collection imports.",
+          "Designed the application architecture and developed the backend, dashboard, and API mocking workflows.",
+          "Implemented configurable request matching, weighted responses, sequential responses, rule-based selection, and fault simulation.",
+          "Built dynamic response templates, callback configuration, request/callback logs, and version history with comparison and restoration.",
+          "Developed import/export workflows with previews, variable mapping, credential detection, and sensitive-data masking.",
+          "Added Model Context Protocol (MCP) tools for automated mock management and Postman imports, including isolated test runs and safe retries.",
+          "Created automated backend and frontend regression tests, CI checks, and technical documentation."
+        ],
+        "tech": [
+          "Laravel",
+          "Livewire",
+          "PostgreSQL",
+          "JavaScript",
+          "HTML",
+          "CSS",
+          "Docker",
+          "PHPUnit",
+          "GitHub Actions",
+          "MCP"
         ],
         "featured": true
       },
