@@ -1,0 +1,345 @@
+{
+  "language": {
+    "name": "English",
+    "code": "EN"
+  },
+  "nav": {
+    "brand": "RR.",
+    "links": {
+      "about": "About",
+      "experience": "Experience",
+      "education": "Education",
+      "projects": "Projects",
+      "skills": "Skills",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+    "darkMode": "Dark Mode",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "toggleTheme": "Toggle theme",
+    "mainNavigation": "Main navigation",
+    "selectLanguage": "Select language"
+  },
+  "hero": {
+    "ariaLabel": "Introduction to Rusiru Rathmina, Full-Stack Software Engineer",
+    "srHeading": "Rusiru Rathmina — Full-Stack Software Engineer",
+    "geoSummary": "Rusiru Rathmina is a Full-Stack Software Engineer based in Colombo, Sri Lanka, building robust full-stack solutions for modern web applications. He specializes in developing high-performance web applications, RESTful APIs, and enterprise solutions using Java, Spring Boot, React, AWS, Docker, and Kubernetes.",
+    "headlineBefore": "Full-Stack S",
+    "headlineAfter": "lutions",
+    "headlineLine2": "for Modern Web",
+    "description": "Building Robust, Scalable, and User-Centric Applications as a Full-Stack Software Engineer & Problem Solver. Specializing in high-performance web apps, RESTful APIs, and enterprise solutions that help businesses scale.",
+    "viewWork": "View Work",
+    "resume": "Resume",
+    "profileAlt": "Rusiru Rathmina - Full-Stack Software Engineer based in Colombo, Sri Lanka",
+    "scrollPrev": "Previous technologies",
+    "scrollNext": "Next technologies",
+    "techStackLabel": "Technologies"
+  },
+  "about": {
+    "ariaLabel": "About Rusiru Rathmina",
+    "geoSummary": "Rusiru Rathmina is a Full-Stack Software Engineer with over 2 years of professional experience, currently working as an Associate Software Engineer at Omobio (Pvt) Ltd in Colombo, Sri Lanka. He specializes in Java, Spring Boot, React.js, AWS, Docker, and Kubernetes. He holds a Bachelor of Science in Computer Science from the University of Colombo School of Computing (UCSC) with a GPA of 3.01. His expertise spans 24 technologies across frontend, backend, cloud, and DevOps domains. He has contributed to enterprise platforms including Dialog.lk and Dialog BizCare for Dialog Axiata PLC, serving millions of users across Sri Lanka.",
+    "titleBefore": "About",
+    "titleHighlight": "Me",
+    "_formatHint": "Use **text** for bold and ==text== for gradient highlight",
+    "paragraphs": [
+      "👋 Hello! I'm **Rusiru Rathmina**, a **Software Engineer** at ==Omobio (Pvt) Ltd==, specializing in **Full-Stack Development**, **Cloud Computing**, and **DevOps**.",
+      "My journey began as a trainee, and I have since grown into designing scalable solutions using **Java, Spring Boot, React, and AWS**. I have extensive hands-on experience refactoring legacy systems and building secure, reliable applications.",
+      "My expertise covers the full lifecycle—from frontend design with **React.js** to backend logic in **PHP/Drupal** and infrastructure management using **Docker** and **Kubernetes**.",
+      "🚀 I am always open to collaborating on ==Full-Stack== or ==DevOps== projects. Let's connect and shape the future of technology together!"
+    ],
+    "stats": [
+      {
+        "value": "2+",
+        "label": "Years Experience"
+      },
+      {
+        "value": "24",
+        "label": "Technologies"
+      },
+      {
+        "value": "100%",
+        "label": "Code Quality"
+      }
+    ]
+  },
+  "experience": {
+    "ariaLabel": "Work Experience of Rusiru Rathmina",
+    "geoSummary": "Rusiru Rathmina has over 2 years of professional experience. He currently serves as an Associate Software Engineer at Omobio (Pvt) Ltd since May 2024, where he refactors legacy systems to meet OWASP Top 10 security standards, implements secure APIs, and works within agile CI/CD pipelines. Previously, he worked as a Trainee Full-Stack Developer at the same company from November 2023, supporting production systems including Dialog BizCare and Dialog.lk for Dialog Axiata PLC.",
+    "title": "Work Experience",
+    "items": [
+      {
+        "company": "Omobio (Pvt) Ltd",
+        "role": "Associate Software Engineer",
+        "period": "May 2024 - Present",
+        "dateTime": "2024-05",
+        "description": [
+          "Served as a key software engineer for the Dialog.lk platform while also functioning as the L3 support engineer for the application.",
+          "Developed and maintained API integrations, backend services, and microservice-based solutions using Kafka and RESTful APIs.",
+          "Managed and supported cloud infrastructure, containerized deployments, and orchestration workflows using AWS, Docker, and Kubernetes (K8s).",
+          "Implemented secure coding standards and contributed to application security initiatives aligned with OWASP best practices and ISO 27001 compliance requirements.",
+          "Troubleshot and resolved production issues, optimized application performance, and improved overall system reliability and availability.",
+          "Collaborated with cross-functional teams in agile environments to deliver scalable, high-quality, and enterprise-grade software solutions.",
+          "Contributed to CI/CD pipeline management, release processes, and DevOps initiatives to streamline development and deployment workflows."
+        ]
+      },
+      {
+        "company": "Omobio (Pvt) Ltd",
+        "role": "Trainee Full-Stack Developer",
+        "period": "November 2023 - May 2024",
+        "dateTime": "2023-11",
+        "description": [
+          "Gained hands-on experience in full-stack development using React.js, Node.js, and PHP while contributing to enterprise-level applications.",
+          "Served as the L3 support engineer for the Dialog.lk and Dialog BizCare platforms.",
+          "Supported bug fixing, production issue handling, and live application support for Dialog BizCare and Dialog.lk, ensuring minimal service downtime and operational continuity.",
+          "Analyzed and resolved application and system issues by reviewing server logs, debugging services, and collaborating with cross-functional teams.",
+          "Participated in requirement gathering, solution planning, and system design activities for a production automation system developed for tea factories."
+        ]
+      }
+    ]
+  },
+  "education": {
+    "ariaLabel": "Education of Rusiru Rathmina",
+    "geoSummary": "Rusiru Rathmina holds a Bachelor of Science in Computer Science from the University of Colombo School of Computing (UCSC), graduating with a GPA of 3.01 (May 2021 – October 2024). He completed his GCE Advanced Level in Physical Science at Mahinda College, Galle, achieving results of A B C with a Z-Score of 1.3084, and GCE Ordinary Level results of 8A 1B.",
+    "title": "Education",
+    "items": [
+      {
+        "id": "ucsc",
+        "institution": "University of Colombo School of Computing",
+        "degree": "Bachelor of Science in Computer Science",
+        "period": "May 2021 - October 2024",
+        "details": [
+          "GPA: 3.01"
+        ]
+      },
+      {
+        "id": "mcg",
+        "institution": "Mahinda College, Galle",
+        "degree": "GCE Advanced Level (Physical Science)",
+        "period": "Feb 2010 - Aug 2019",
+        "details": [
+          "A/L Results: A B C | Z-Score: 1.3084",
+          "O/L Results: 8A 1B"
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "ariaLabel": "Projects by Rusiru Rathmina",
+    "geoSummary": "Rusiru Rathmina has worked on 7 notable projects: Dialog.lk — an enterprise CMS platform for Dialog Axiata serving millions of users; Dialog BizCare — a corporate customer management portal; Jira Worklog Manager — a personal productivity tool for Jira Cloud worklogs; Project-X — a produce collection automation system for farmers; Roamly — a travel recommendation platform; Micro CAPS — an assembly process management system for Micro Car Limited; and ToDo — a Flutter-based task manager app.",
+    "title": "Featured Projects",
+    "visit": "Visit {title}",
+    "viewOnGithub": "View {title} on GitHub",
+    "showLess": "Show Less",
+    "viewMore": "View More Projects",
+    "items": [
+      {
+        "title": "Dialog.lk",
+        "link": "https://dialog.lk/",
+        "isExternal": true,
+        "description": [
+          "Troubleshot and resolved production issues, optimized application performance, and improved overall system reliability and availability while adhering to SLAs and critical deadlines.",
+          "Led efforts to refactor the legacy codebase to align with OWASP Top 10 and SonarQube standards.",
+          "Developed custom Drupal modules to send emails via Amazon SES, replacing SMTP to improve security and deliverability, and implemented user consent management to comply with Sri Lanka’s Personal Data Protection Act.",
+          "Played a key role in guiding the team to improve coding standards, development practices, and secure coding initiatives, including the implementation of SonarQube.",
+          "Remediated security hotspots and vulnerabilities identified across the application, significantly reducing security risks throughout the codebase.",
+          "Optimized application performance and scalability using AWS services such as S3, SES, and CloudWatch, along with caching mechanisms.",
+          "Performed peer code reviews and mentored new team members, fostering engineering best practices and improving team productivity."
+        ],
+        "tech": [
+          "Drupal",
+          "Yii",
+          "React",
+          "Kafka",
+          "Redis",
+          "AWS",
+          "Kubernetes"
+        ],
+        "featured": true
+      },
+      {
+        "title": "Dialog BizCare",
+        "description": [
+          "Acted as a Level 3 (L3) support engineer, fixing bugs and handling live production issues within defined SLAs.",
+          "Investigated production issues by analyzing server logs and implemented effective solutions to ensure system stability.",
+          "Collaborated directly with clients and end-users to identify, troubleshoot, and resolve issues efficiently.",
+          "Worked closely with senior engineers while following agile development methodologies, coding standards, and software engineering best practices."
+        ],
+        "tech": [
+          "Yii",
+          "Keycloak"
+        ],
+        "featured": true
+      },
+      {
+        "title": "Jira Worklog Manager",
+        "github": "https://github.com/ru5iru/jira-time-tracker",
+        "link": "https://timelogs.lovable.app",
+        "isExternal": true,
+        "description": [
+          "Built a browser-based personal productivity tool for logging and managing Jira Cloud worklogs, eliminating the friction of Jira's native time-tracking UI with a fast, keyboard-first single-page experience.",
+          "Designed and implemented a proxy-free React + Vite architecture with a custom month-bucket worklog cache, enabling on-demand data fetching per view instead of a single upfront bulk load — reducing initial API calls significantly.",
+          "Engineered a real-time work timer that persists across page reloads and browser restarts using localStorage, with a floating chip that survives client-side navigation and pre-fills the log work modal on stop.",
+          "Implemented advanced worklog operations including bulk logging across multiple issues, worklog splitting with live sum validation, duplicate entry, and a 5-second undo-delete flow with optimistic UI updates.",
+          "Built a multi-tab summary dashboard featuring a Clockwork-style weekly timesheet grid, GitHub-style heatmap calendar, per-project breakdown chart, logged vs. estimated variance report, and CSV export.",
+          "Developed a per-issue work notes system backed by the File System Access API for auto-save to a user-chosen file on disk, with graceful fallback to manual export/import on unsupported browsers.",
+          "Implemented a global command palette with fuzzy issue search, keyboard navigation, and direct Jira key lookup, along with Jira workflow status transitions directly from the issue list."
+        ],
+        "tech": [
+          "Lovable",
+          "React",
+          "Vite",
+          "TypeScript",
+          "Jira REST API",
+          "Node.js",
+          "dayjs",
+          "localStorage"
+        ],
+        "featured": true
+      },
+      {
+        "title": "Project-X",
+        "github": "https://github.com/ru5iru/Project-X",
+        "description": [
+          "Produce collection and production automation system designed for farmers.",
+          "Implemented storage, customer, and supplier management modules using an MVC-based architecture.",
+          "Built a modern frontend using React and integrated a CMS-based backend."
+        ],
+        "tech": [
+          "Directus",
+          "React",
+          "PostgreSQL",
+          "Docker"
+        ],
+        "featured": true
+      },
+      {
+        "title": "Roamly",
+        "github": "https://github.com/ru5iru/Roamly",
+        "description": [
+          "Travel recommendation and experience-sharing platform for travel enthusiasts.",
+          "Recommends places, hotels, travel guides, taxi rides, and shops.",
+          "Includes an experience-sharing platform where travelers can connect and share their stories."
+        ],
+        "tech": [
+          "React",
+          "Node.js",
+          "Express",
+          "PostgreSQL",
+          "Sass"
+        ],
+        "featured": false
+      },
+      {
+        "title": "Micro CAPS",
+        "github": "https://github.com/BhanukaRajk/MicroCAPS",
+        "description": [
+          "Assembly process management system for Micro Car Limited.",
+          "Manages vehicle assembly process from chassis delivery to dispatching."
+        ],
+        "tech": [
+          "PHP",
+          "AJAX",
+          "MySQL",
+          "JavaScript"
+        ],
+        "featured": false
+      },
+      {
+        "title": "ToDo",
+        "github": "https://github.com/ru5iru/ToDo",
+        "description": [
+          "Task manager app built with Flutter.",
+          "Capable of managing tasks, adding reminders, and setting priorities."
+        ],
+        "tech": [
+          "Flutter"
+        ],
+        "featured": false
+      }
+    ]
+  },
+  "skills": {
+    "ariaLabel": "Technical Skills of Rusiru Rathmina",
+    "geoSummary": "Rusiru Rathmina's technical skills include: Languages — Java, JavaScript, PHP, C++; Frameworks — React, Node.js, Spring Boot, Drupal, Yii, Laravel, Symfony; Databases — MySQL, PostgreSQL, MongoDB, Redis; DevOps and Cloud — AWS, Docker, Kubernetes, Jenkins, Apache Kafka; Tools — Git, Linux, SonarQube, Postman. He has proficiency across 24 technologies spanning the full software development lifecycle.",
+    "titleBefore": "Technical",
+    "titleHighlight": "Skills",
+    "categories": {
+      "languages": "Languages",
+      "frameworks": "Frameworks",
+      "databases": "Databases",
+      "devops": "DevOps & Cloud",
+      "tools": "Tools"
+    }
+  },
+  "blog": {
+    "ariaLabel": "Blog posts by Rusiru Rathmina",
+    "titleBefore": "Latest",
+    "titleHighlight": "Blog Posts",
+    "readMore": "Read full post",
+    "visitBlog": "Visit My Blog",
+    "posts": [
+      {
+        "title": "OWASP Top 10: A Developer's Practical Guide",
+        "excerpt": "Security isn't just for the infosec team. Every developer should understand these ten vulnerabilities and how to prevent them in their own code.",
+        "date": "2026-03-22",
+        "dateLabel": "Mar 2026",
+        "readTime": "10 min read",
+        "link": "https://iamrusiru.lovable.app/post/owasp-top-ten"
+      },
+      {
+        "title": "Clean Code Principles Every Developer Should Know",
+        "excerpt": "Writing code that works is easy. Writing code that others can read, maintain, and extend is the real challenge. Here are the principles I follow.",
+        "date": "2026-03-20",
+        "dateLabel": "Mar 2026",
+        "readTime": "8 min read",
+        "link": "https://iamrusiru.lovable.app/post/clean-code-principles"
+      },
+      {
+        "title": "Code Review Etiquette: Being Kind and Thorough",
+        "excerpt": "Good code reviews build trust. Bad ones build resentment. Here are the habits I've adopted to make reviews productive for everyone.",
+        "date": "2025-12-08",
+        "dateLabel": "Dec 2025",
+        "readTime": "6 min read",
+        "link": "https://iamrusiru.lovable.app/post/code-review-etiquette"
+      }
+    ]
+  },
+  "contact": {
+    "ariaLabel": "Contact Rusiru Rathmina",
+    "geoSummary": "To contact Rusiru Rathmina, email r.rathmina@gmail.com or connect on LinkedIn at linkedin.com/in/ru5iru. He is available for full-stack development, cloud computing, and DevOps collaboration. Based in Colombo, Sri Lanka, and open to worldwide remote opportunities.",
+    "titleBefore": "Let's build something",
+    "titleHighlight": "together",
+    "description": "Ready to create amazing developer experiences? I'm always excited to collaborate on innovative projects.",
+    "getInTouch": "Get in Touch",
+    "linkedin": "Connect on LinkedIn"
+  },
+  "footer": {
+    "brand": "RR.",
+    "copyright": "© {year} Rusiru Rathmina. All rights reserved.",
+    "socialAria": "Visit Rusiru's {label} profile",
+    "social": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "discord": "Discord",
+      "facebook": "Facebook",
+      "x": "X",
+      "reddit": "Reddit",
+      "blog": "Blog",
+      "spotify": "Spotify"
+    }
+  },
+  "common": {
+    "skipToContent": "Skip to main content",
+    "backToTop": "Back to top",
+    "loading": "Loading…",
+    "loadError": "This content could not be loaded.",
+    "reload": "Reload page"
+  },
+  "notFound": {
+    "title": "Page Not Found (404)",
+    "description": "The page you're looking for doesn't exist. Return to the homepage to explore projects, experience, and contact details.",
+    "message": "Oops! Page not found",
+    "backHome": "Return to Home"
+  }
+}

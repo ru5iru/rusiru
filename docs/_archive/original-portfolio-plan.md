@@ -1,3 +1,14 @@
+# Original portfolio design plan (historical snapshot)
+
+Purpose: preserve the original design intent and references after its upstream deletion. Intended reader: maintainers researching product history.
+
+Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-10-18.
+
+Archived on 2026-10-18 from `.lovable/plan.md` at commit `0d6ea67`. The template merge deleted that source file and introduced the [new template plan](../../.lovable/plan/make-the-portfolio-a-fully-configurable-template-2026-10-02.md). This snapshot preserves the original text below; it is design intent, not a current feature specification. See the [audit](../CHANGELOG.md) for implementation differences.
+
+**[Unverified, from original doc]** The following historical plan is reproduced unchanged. Current behavior is documented in the [product guide](../05-product-guide.md).
+
+---
 
 # Portfolio Website for Rusiru Rathmina
 
@@ -69,3 +80,5 @@ A bold, creative, and animated portfolio website showcasing your expertise as a 
 - Smooth scroll animations using CSS and intersection observers
 - SEO-optimized meta tags (keeping your existing Open Graph and Twitter cards)
 - Performance optimized with lazy loading images
+
+Next: [Documentation index](../README.md).
