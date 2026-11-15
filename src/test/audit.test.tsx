@@ -68,7 +68,15 @@ describe('interactions', () => {
   });
 });
 describe('search data', () => {
-  it('includes all seven projects including Jira from current data', () => { const content = createSearchContent(site, en); const schema = JSON.parse(content.metadata.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1] ?? '{}'); const projects = schema['@graph'].find((item: Record<string, unknown>) => item['@type'] === 'ItemList'); expect(projects.numberOfItems).toBe(7); expect(projects.itemListElement.map((item: { item: { name: string } }) => item.item.name)).toContain('Jira Worklog Manager'); expect(content.llms).toContain('Jira Worklog Manager'); });
+  it('includes the configured projects in search content', () => {
+    const content = createSearchContent(site, en);
+    const schema = JSON.parse(content.metadata.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1] ?? '{}');
+    const projects = schema['@graph'].find((item: Record<string, unknown>) => item['@type'] === 'ItemList');
+    expect(projects.itemListElement.map((item: { item: { name: string } }) => item.item.name)).toEqual(en.projects.items.map(project => project.title));
+    for (const project of en.projects.items) {
+      expect(content.llms).toContain(project.title);
+    }
+  });
   it('uses configured section order and disabled sections in search data', () => { const content = createSearchContent({ ...site, sections: ['contact', 'about'] }, en); expect(content.fallback.indexOf('<section id="contact"')).toBeLessThan(content.fallback.indexOf('<section id="about"')); expect(content.fallback).not.toContain('<section id="projects"'); expect(content.metadata).not.toContain('ItemList'); });
   it('escapes injected metadata and structured data', () => { const content = createSearchContent({ ...site, seo: { ...site.seo, title: '</title><script>bad</script>' } }, en); expect(content.metadata).toContain('&lt;/title&gt;'); expect(content.metadata).not.toContain('<script>bad</script>'); });
   it('generates deterministic search content', () => { expect(createSearchContent(site, en)).toEqual(createSearchContent(site, en)); });
