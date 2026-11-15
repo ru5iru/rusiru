@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rusiru Rathmina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+
+    /* ─── TOKENS ─── */
+    :root {
+      --bg:    #FEFEFE;
+      --ink:   #0D0C0A;
+      --teal:  #1A6B63;
+      --muted: #8C8882;
+      --rule:  #EDEBE6;
+      --faint: #F6F4F0;
+
+      --serif: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg:    #0A0A09;
+        --ink:   #EDEBE7;
+        --teal:  #4DC4B8;
+        --muted: #6E6C69;
+        --rule:  #1E1E1C;
+        --faint: #111110;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg:    #0A0A09;
+      --ink:   #EDEBE7;
+      --teal:  #4DC4B8;
+      --muted: #6E6C69;
+      --rule:  #1E1E1C;
+      --faint: #111110;
+    }
+
+    :root[data-theme="light"] {
+      --bg:    #FEFEFE;
+      --ink:   #0D0C0A;
+      --teal:  #1A6B63;
+      --muted: #8C8882;
+      --rule:  #EDEBE6;
+      --faint: #F6F4F0;
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 0 24px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    /* ─── PAGE CONTAINER ─── */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 0 128px;
+    }
+
+    /* ═══════════════════════════════
+       MASTHEAD
+    ═══════════════════════════════ */
+    .masthead {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .masthead-left { flex: 1; }
+
+    .masthead-name {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4.5vw, 44px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 10px;
+    }
+
+    .masthead-meta {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 20px;
+      row-gap: 4px;
+    }
+
+    .masthead-meta-item {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .masthead-meta-sep {
+      color: var(--rule);
+    }
+
+    .masthead-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      padding-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--teal);
+      letter-spacing: 0.03em;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+    }
+
+    @keyframes breathe {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.35; }
+    }
+
+    .status-dot { animation: breathe 2.8s ease-in-out infinite; }
+
+    .theme-btn {
+      background: none;
+      border: 1px solid var(--rule);
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 400;
+      padding: 4px 11px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+      letter-spacing: 0.01em;
+    }
+
+    .theme-btn:hover {
+      color: var(--ink);
+      border-color: var(--muted);
+    }
+
+    /* ═══════════════════════════════
+       CURRENTLY STRIP
+    ═══════════════════════════════ */
+    .currently {
+      padding: 14px 0 13px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .currently-label {
+      font-family: var(--sans);
+      font-size: 10.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      color: var(--teal);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .currently-text {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ═══════════════════════════════
+       OPENING STATEMENT
+    ═══════════════════════════════ */
+    .statement {
+      padding: 44px 0 44px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .statement p {
+      font-family: var(--serif);
+      font-size: clamp(17px, 2.4vw, 20px);
+      font-style: italic;
+      line-height: 1.72;
+      color: var(--ink);
+      max-width: 660px;
+    }
+
+    /* ═══════════════════════════════
+       SECTIONS
+    ═══════════════════════════════ */
+    .section {
+      padding: 44px 0 40px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 10.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--teal);
+      margin-bottom: 30px;
+    }
+
+    /* ═══════════════════════════════
+       TIMELINE GRID (work + projects)
+    ═══════════════════════════════ */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 38px;
+    }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      column-gap: 22px;
+    }
+
+    .entry-stamp {
+      font-family: var(--sans);
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--teal);
+      text-align: right;
+      padding-top: 3px;
+      letter-spacing: 0.01em;
+      line-height: 1.4;
+    }
+
+    .entry-body {}
+
+    .entry-title {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 3px;
+    }
+
+    .entry-sub {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .entry-sub a {
+      color: var(--teal);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .entry-sub a:hover { border-color: var(--teal); }
+
+    .entry-desc {
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.68;
+      color: var(--ink);
+    }
+
+    .entry-desc + .entry-desc { margin-top: 8px; }
+
+    .entry-tech {
+      margin-top: 11px;
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .entry-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: var(--sans);
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--teal);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .entry-link:hover { border-color: var(--teal); }
+
+    /* ═══════════════════════════════
+       SKILLS TABLE
+    ═══════════════════════════════ */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--sans);
+      font-size: 14px;
+    }
+
+    .skills-table tr {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .skills-table tr:first-child {
+      border-top: 1px solid var(--rule);
+    }
+
+    .skills-table td {
+      padding: 12px 0;
+      vertical-align: top;
+    }
+
+    .skills-table td:first-child {
+      font-size: 10.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      padding-right: 24px;
+      white-space: nowrap;
+      width: 108px;
+      padding-top: 14px;
+    }
+
+    .skills-table td:last-child {
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    /* ═══════════════════════════════
+       EDUCATION
+    ═══════════════════════════════ */
+    .edu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .edu-entry {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      column-gap: 22px;
+    }
+
+    .edu-stamp {
+      font-family: var(--sans);
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--teal);
+      text-align: right;
+      padding-top: 2px;
+    }
+
+    .edu-degree {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+
+    .edu-inst {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .edu-detail {
+      font-family: var(--sans);
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    /* ═══════════════════════════════
+       WRITING / BLOG
+    ═══════════════════════════════ */
+    .blog-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-entry {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.1s;
+    }
+
+    .blog-entry:first-child { border-top: 1px solid var(--rule); }
+
+    .blog-entry:hover .blog-title { color: var(--teal); }
+
+    .blog-title {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.4;
+      transition: color 0.15s;
+      flex: 1;
+    }
+
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      white-space: nowrap;
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    .blog-arrow {
+      color: var(--teal);
+      font-size: 14px;
+      display: inline-block;
+      transition: transform 0.15s;
+    }
+
+    .blog-entry:hover .blog-arrow { transform: translateX(3px); }
+
+    /* ═══════════════════════════════
+       CONTACT
+    ═══════════════════════════════ */
+    .contact-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px 32px;
+    }
+
+    .contact-email {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2.8vw, 26px);
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: color 0.15s, border-color 0.15s;
+      padding-bottom: 1px;
+    }
+
+    .contact-email:hover {
+      color: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .contact-link {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .contact-link:hover { color: var(--teal); }
+
+    /* ═══════════════════════════════
+       FOOTER
+    ═══════════════════════════════ */
+    .page-footer {
+      margin-top: 72px;
+      padding-top: 22px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer-copy {
+      font-family: var(--sans);
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+
+    .footer-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      color: var(--muted);
+      opacity: 0.5;
+    }
+
+    /* ═══════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════ */
+    @media (max-width: 580px) {
+      body { padding: 0 18px; }
+
+      .masthead {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .masthead-right {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .entry {
+        grid-template-columns: 42px 1fr;
+        column-gap: 16px;
+      }
+
+      .edu-entry {
+        grid-template-columns: 42px 1fr;
+        column-gap: 16px;
+      }
+
+      .blog-meta { display: none; }
+
+      .contact-row { flex-direction: column; gap: 12px; }
+    }
+
+    /* ═══════════════════════════════
+       REDUCED MOTION
+    ═══════════════════════════════ */
+    @media (prefers-reduced-motion: reduce) {
+      .status-dot { animation: none; }
+      * { transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+
+  </style>
+</head>
+<body>
+<main class="page">
+
+  <!-- ═══ MASTHEAD ═══ -->
+  <header class="masthead">
+    <div class="masthead-left">
+      <h1 class="masthead-name">Rusiru Rathmina</h1>
+      <div class="masthead-meta">
+        <span class="masthead-meta-item">Full-Stack Software Engineer</span>
+        <span class="masthead-meta-item masthead-meta-sep">·</span>
+        <span class="masthead-meta-item">Omobio (Pvt) Ltd</span>
+        <span class="masthead-meta-item masthead-meta-sep">·</span>
+        <span class="masthead-meta-item">Colombo, Sri Lanka</span>
+      </div>
+    </div>
+    <div class="masthead-right">
+      <span class="status">
+        <span class="status-dot"></span>
+        Available
+      </span>
+      <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle color scheme">Dark / Light</button>
+    </div>
+  </header>
+
+  <!-- ═══ CURRENTLY ═══ -->
+  <div class="currently">
+    <span class="currently-label">Currently</span>
+    <span class="currently-text">
+      Software Engineer at Omobio — maintaining Dialog.lk and building MockDeck on the side.
+    </span>
+  </div>
+
+  <!-- ═══ OPENING STATEMENT ═══ -->
+  <section class="statement" aria-label="Introduction">
+    <p>I've spent three years inside production systems — specifically Dialog.lk, Sri Lanka's largest telecom platform serving millions of subscribers. That's incident response at 2 AM, container migrations that have to go cleanly the first time, and security audits where the finding is your own code. I build full-stack. I ship things. I maintain what I ship.</p>
+  </section>
+
+  <!-- ═══ WORK ═══ -->
+  <section class="section" aria-label="Work experience">
+    <div class="section-label">Work</div>
+    <div class="timeline">
+
+      <div class="entry">
+        <div class="entry-stamp">2026</div>
+        <div class="entry-body">
+          <div class="entry-title">Software Engineer</div>
+          <div class="entry-sub">Omobio (Pvt) Ltd — Present</div>
+          <div class="entry-desc">Infrastructure and security lead for Dialog.lk. Migrated container images from Debian to Alpine Linux, cutting image size by 60% and deployment time by 75% with multi-stage builds. Led CVE remediation, OWASP-aligned secure coding, and represented the engineering team in ISO 27001 compliance and audits. Mentored new engineers and ran peer code reviews.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-stamp">2024</div>
+        <div class="entry-body">
+          <div class="entry-title">Associate Software Engineer</div>
+          <div class="entry-sub">Omobio (Pvt) Ltd — Dec 2025</div>
+          <div class="entry-desc">Full ownership of Dialog.lk L3 production support — incident response, root cause analysis, and performance optimization under SLA. Contributed to CI/CD pipeline management, release coordination, and enterprise feature delivery in Agile sprints.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-stamp">2023</div>
+        <div class="entry-body">
+          <div class="entry-title">Trainee Full-Stack Developer</div>
+          <div class="entry-sub">Omobio (Pvt) Ltd — May 2024</div>
+          <div class="entry-desc">First contact with Dialog.lk and Dialog BizCare platforms. Built React, Node.js, and PHP features, resolved production defects, and learned to read large-scale application logs under live incident pressure.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ SELECTED WORK ═══ -->
+  <section class="section" aria-label="Selected projects">
+    <div class="section-label">Selected Work</div>
+    <div class="timeline">
+
+      <div class="entry">
+        <div class="entry-stamp">2026<br>–<br>now</div>
+        <div class="entry-body">
+          <div class="entry-title">MockDeck</div>
+          <div class="entry-sub">API Mocking &amp; Integration Testing Platform</div>
+          <div class="entry-desc">An API mocking platform for developers and QA teams — exact-request matching, weighted and sequential response modes, dynamic JSON templates, callback simulation, Postman collection imports with credential detection, and Model Context Protocol (MCP) tools for automated mock management. Version history with diff and restoration. Full regression test suite and CI pipeline.</div>
+          <div class="entry-tech">Laravel · PostgreSQL · Livewire · Docker · PHPUnit · GitHub Actions · MCP</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-stamp">2024<br>–<br>now</div>
+        <div class="entry-body">
+          <div class="entry-title">Dialog.lk</div>
+          <div class="entry-sub">Enterprise CMS Platform — Dialog Axiata PLC <a href="https://dialog.lk" target="_blank" rel="noopener">dialog.lk ↗</a></div>
+          <div class="entry-desc">Key engineer across the platform's full stack. Built PDPA consent management, Amazon SES integration replacing SMTP, and custom Drupal modules. Refactored legacy code against OWASP Top 10 with SonarQube integration. AWS infrastructure: S3, SES, CloudWatch caching optimizations.</div>
+          <div class="entry-tech">Drupal · PHP · Yii · React · Kafka · Redis · AWS · Docker · Kubernetes · SonarQube</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-stamp">2024</div>
+        <div class="entry-body">
+          <div class="entry-title">Jira Worklog Manager</div>
+          <div class="entry-sub">Personal productivity tool <a href="https://timelogs.lovable.app" target="_blank" rel="noopener">timelogs.lovable.app ↗</a></div>
+          <div class="entry-desc">Browser-based Jira time-tracking with a custom month-bucket worklog cache (on-demand fetching per view), a persistent work timer that survives page reloads, bulk logging across issues, weekly timesheet grid, GitHub-style activity heatmap, and a command palette with fuzzy issue search.</div>
+          <div class="entry-tech">React · Vite · TypeScript · Jira REST API · localStorage · dayjs</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-stamp">2023</div>
+        <div class="entry-body">
+          <div class="entry-title">Project-X</div>
+          <div class="entry-sub">Produce Collection Automation</div>
+          <div class="entry-desc">Production and collection automation system for farmers — MVC architecture with storage, supplier, and customer management modules. React frontend over a Directus CMS backend, containerized with Docker.</div>
+          <div class="entry-tech">Directus · React · PostgreSQL · Docker</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ TOOLS & LANGUAGES ═══ -->
+  <section class="section" aria-label="Technical skills">
+    <div class="section-label">Tools &amp; Languages</div>
+    <table class="skills-table" aria-label="Skills by category">
+      <tbody>
+        <tr>
+          <td>Languages</td>
+          <td>Java, JavaScript, PHP, C++</td>
+        </tr>
+        <tr>
+          <td>Frameworks</td>
+          <td>React, Spring Boot, Node.js, Drupal, Laravel, Yii, Symfony</td>
+        </tr>
+        <tr>
+          <td>Databases</td>
+          <td>MySQL, PostgreSQL, MongoDB, Redis</td>
+        </tr>
+        <tr>
+          <td>Infrastructure</td>
+          <td>AWS, Docker, Kubernetes, Jenkins, Apache Kafka</td>
+        </tr>
+        <tr>
+          <td>Tools</td>
+          <td>Git, Linux, SonarQube, Postman</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ═══ FORMATION ═══ -->
+  <section class="section" aria-label="Education">
+    <div class="section-label">Formation</div>
+    <div class="edu-list">
+
+      <div class="edu-entry">
+        <div class="edu-stamp">2024</div>
+        <div>
+          <div class="edu-degree">BSc Computer Science</div>
+          <div class="edu-inst">University of Colombo School of Computing</div>
+          <div class="edu-detail">2021 – 2024 &nbsp;·&nbsp; GPA 3.01</div>
+        </div>
+      </div>
+
+      <div class="edu-entry">
+        <div class="edu-stamp">2019</div>
+        <div>
+          <div class="edu-degree">GCE Advanced Level — Physical Science</div>
+          <div class="edu-inst">Mahinda College, Galle</div>
+          <div class="edu-detail">A/L: A B C &nbsp;·&nbsp; Z-Score 1.3084 &nbsp;·&nbsp; O/L: 8A 1B</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ WRITING ═══ -->
+  <section class="section" aria-label="Writing and blog">
+    <div class="section-label">Writing</div>
+    <nav class="blog-list" aria-label="Blog posts">
+
+      <a href="https://iamrusiru.lovable.app/post/owasp-top-ten" class="blog-entry" target="_blank" rel="noopener">
+        <span class="blog-title">OWASP Top 10: A Developer's Practical Guide</span>
+        <span class="blog-meta">
+          <span>Mar 2026</span>
+          <span>10 min</span>
+          <span class="blog-arrow">→</span>
+        </span>
+      </a>
+
+      <a href="https://iamrusiru.lovable.app/post/clean-code-principles" class="blog-entry" target="_blank" rel="noopener">
+        <span class="blog-title">Clean Code Principles Every Developer Should Know</span>
+        <span class="blog-meta">
+          <span>Mar 2026</span>
+          <span>8 min</span>
+          <span class="blog-arrow">→</span>
+        </span>
+      </a>
+
+      <a href="https://iamrusiru.lovable.app/post/code-review-etiquette" class="blog-entry" target="_blank" rel="noopener">
+        <span class="blog-title">Code Review Etiquette: Being Kind and Thorough</span>
+        <span class="blog-meta">
+          <span>Dec 2025</span>
+          <span>6 min</span>
+          <span class="blog-arrow">→</span>
+        </span>
+      </a>
+
+    </nav>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section class="section" style="border-bottom: none;" aria-label="Contact">
+    <div class="section-label">Contact</div>
+    <div class="contact-row">
+      <a href="mailto:r.rathmina@gmail.com" class="contact-email">r.rathmina@gmail.com</a>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/ru5iru" class="contact-link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/ru5iru" class="contact-link" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://iamrusiru.lovable.app" class="contact-link" target="_blank" rel="noopener">Blog</a>
+        <a href="https://drive.google.com/file/d/1tUyCB3WXgbWiAI3igodwczXYXYnpMpwM/view?usp=sharing" class="contact-link" target="_blank" rel="noopener">Résumé ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="page-footer">
+    <span class="footer-copy">© 2026 Rusiru Rathmina</span>
+    <span class="footer-label">Design Mockup v3 · Field Notes</span>
+  </footer>
+
+</main>
+
+<script>
+  /* ── Theme toggle ── */
+  (function() {
+    try {
+      var saved = localStorage.getItem('theme-v3');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    } catch(e) {}
+  })();
+
+  function toggleTheme() {
+    var root = document.documentElement;
+    var current = root.getAttribute('data-theme');
+    var next;
+
+    if (!current) {
+      var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      next = systemDark ? 'light' : 'dark';
+    } else {
+      next = current === 'dark' ? 'light' : 'dark';
+    }
+
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme-v3', next); } catch(e) {}
+  }
+</script>
+</body>
+</html>
