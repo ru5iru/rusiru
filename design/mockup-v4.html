@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rusiru Rathmina</title>
+  <meta name="description" content="Software engineer in Colombo, Sri Lanka. I build production systems.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* ─── TOKENS ─── */
+    :root {
+      --bg:         #FAFAF8;
+      --ink:        #111210;
+      --green:      #1A5C40;
+      --green-mid:  #236E4E;
+      --muted:      #857F79;
+      --rule:       #E6E3DC;
+      --block-bg:   #F3F0E9;
+
+      --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg:        #0D0D0B;
+        --ink:       #E6E3DD;
+        --green:     #4DC487;
+        --green-mid: #3DAD75;
+        --muted:     #6B6762;
+        --rule:      #1E1D1A;
+        --block-bg:  #141412;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg:        #0D0D0B;
+      --ink:       #E6E3DD;
+      --green:     #4DC487;
+      --green-mid: #3DAD75;
+      --muted:     #6B6762;
+      --rule:      #1E1D1A;
+      --block-bg:  #141412;
+    }
+
+    :root[data-theme="light"] {
+      --bg:         #FAFAF8;
+      --ink:        #111210;
+      --green:      #1A5C40;
+      --green-mid:  #236E4E;
+      --muted:      #857F79;
+      --rule:       #E6E3DC;
+      --block-bg:   #F3F0E9;
+    }
+
+    /* ─── BASE ─── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.78;
+      -webkit-font-smoothing: antialiased;
+      padding: 0 24px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    /* ─── PAGE SHELL ─── */
+    .page {
+      max-width: 660px;
+      margin: 0 auto;
+    }
+
+    /* ─── TOP CHROME (minimal) ─── */
+    .chrome {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 0 0;
+    }
+
+    .chrome-locale {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .chrome-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .theme-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 15px;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+      transition: color 0.15s;
+    }
+
+    .theme-btn:hover { color: var(--ink); }
+
+    /* ─── OPENING STATEMENT ─── */
+    .opening {
+      padding: 80px 0 0;
+    }
+
+    .opening-line {
+      font-family: var(--serif);
+      font-size: clamp(36px, 7.5vw, 72px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 32px;
+    }
+
+    .opening-name {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--green);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .name-text {
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .name-role {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      margin-left: 6px;
+    }
+
+    /* ─── STATUS ─── */
+    .status-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--green);
+      letter-spacing: 0.03em;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+
+    @keyframes breathe {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    .dot { animation: breathe 2.6s ease-in-out infinite; }
+
+    /* ─── MAIN ARTICLE ─── */
+    .article {
+      padding-top: 8px;
+    }
+
+    .article p {
+      margin-bottom: 1.6em;
+      font-weight: 300;
+    }
+
+    .article p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* ─── INLINE LINKS ─── */
+    .article a,
+    a.inline {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--rule);
+      transition: text-decoration-color 0.15s, color 0.15s;
+    }
+
+    .article a:hover,
+    a.inline:hover {
+      text-decoration-color: var(--green);
+      color: var(--green-mid);
+    }
+
+    /* ─── PULL STAT ─── */
+    .pull {
+      border-left: 2px solid var(--green);
+      margin: 2.2em 0;
+      padding: 0 0 0 20px;
+    }
+
+    .pull p {
+      font-size: 22px;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.5;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    /* ─── PROJECT BLOCKS ─── */
+    .projects {
+      margin: 2.4em 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .project {
+      background: var(--block-bg);
+      padding: 20px 22px;
+    }
+
+    .project:first-child { border-radius: 4px 4px 0 0; }
+    .project:last-child  { border-radius: 0 0 4px 4px; }
+    .project:only-child  { border-radius: 4px; }
+
+    .project-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .project-name {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+
+    .project-link {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--green);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: color 0.15s;
+    }
+
+    .project-link:hover { color: var(--green-mid); }
+
+    .project-desc {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--ink);
+      margin-bottom: 10px;
+      font-weight: 300;
+    }
+
+    .project-stack {
+      font-family: var(--sans);
+      font-size: 11.5px;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.01em;
+      line-height: 1.6;
+    }
+
+    /* ─── SKILLS BLOCK ─── */
+    .skills-block {
+      background: var(--block-bg);
+      padding: 20px 22px;
+      border-radius: 4px;
+      margin: 2.4em 0;
+    }
+
+    .skills-block p {
+      font-size: 15px;
+      line-height: 1.72;
+      color: var(--ink);
+      margin-bottom: 0.6em;
+      font-weight: 300;
+    }
+
+    .skills-block p:last-child { margin-bottom: 0; }
+
+    .skills-label {
+      font-family: var(--sans);
+      font-size: 10.5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-right: 8px;
+    }
+
+    /* ─── RULED SECTIONS ─── */
+    .ruled-section {
+      margin-top: 3em;
+      padding-top: 1.4em;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ─── EDUCATION ─── */
+    .edu-line {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .edu-year {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--green);
+      flex-shrink: 0;
+      letter-spacing: 0.03em;
+    }
+
+    .edu-text {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    .edu-detail {
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ─── WRITING LIST ─── */
+    .writing-list {
+      list-style: none;
+      margin-top: 1em;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .writing-list li {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .writing-list li:first-child {
+      border-top: 1px solid var(--rule);
+    }
+
+    .writing-list a {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--ink);
+      text-decoration: none;
+      flex: 1;
+      line-height: 1.4;
+      transition: color 0.15s;
+    }
+
+    .writing-list a:hover { color: var(--green); }
+
+    .writing-meta {
+      font-family: var(--sans);
+      font-size: 11.5px;
+      font-weight: 400;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ─── CONTACT ─── */
+    .contact-block {
+      margin-top: 3em;
+      padding-top: 1.4em;
+      border-top: 1px solid var(--rule);
+    }
+
+    .contact-email {
+      display: inline-block;
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 2px;
+      margin-bottom: 20px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .contact-email:hover {
+      color: var(--green);
+      border-color: var(--green);
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .contact-link:hover { color: var(--green); }
+
+    /* ─── FOOTER ─── */
+    .page-footer {
+      margin-top: 72px;
+      padding: 20px 0 48px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer-copy {
+      font-family: var(--sans);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .footer-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      color: var(--muted);
+      opacity: 0.5;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 520px) {
+      body { padding: 0 18px; font-size: 17px; }
+      .opening { padding-top: 56px; }
+      .opening-line { font-size: clamp(32px, 9vw, 56px); }
+      .project-top { flex-direction: column; gap: 4px; }
+    }
+
+    /* ─── REDUCED MOTION ─── */
+    @media (prefers-reduced-motion: reduce) {
+      .dot { animation: none; }
+      * { transition-duration: 0.01ms !important; }
+    }
+
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ═══ TOP CHROME ═══ -->
+  <div class="chrome">
+    <span class="chrome-locale">Colombo, Sri Lanka</span>
+    <div class="chrome-actions">
+      <span class="status-line">
+        <span class="dot"></span>
+        Available
+      </span>
+      <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle theme">◐</button>
+    </div>
+  </div>
+
+  <!-- ═══ OPENING ═══ -->
+  <div class="opening">
+
+    <p class="opening-line">
+      I keep Dialog.lk<br>
+      running.
+    </p>
+
+    <div class="opening-name">
+      <span class="avatar" aria-hidden="true">
+        <img
+          src="/media/profile/profile-photo.webp"
+          alt="Rusiru Rathmina"
+          onerror="this.style.display='none'"
+        >
+        RR
+      </span>
+      <span>
+        <span class="name-text">Rusiru Rathmina</span>
+        <span class="name-role">— Software Engineer</span>
+      </span>
+    </div>
+
+  </div>
+
+  <!-- ═══ ARTICLE ═══ -->
+  <article class="article">
+
+    <p>
+      Dialog.lk is Sri Lanka's largest telecom platform — 15+ million subscribers,
+      always-on infrastructure, enterprise portals, the works. I'm a software
+      engineer at <a href="https://www.omobio.com" target="_blank" rel="noopener">Omobio</a>,
+      the company that builds and maintains it. I joined as a trainee in November 2023,
+      became an associate engineer in 2024, and have been a full engineer since January 2026.
+    </p>
+
+    <p>
+      The job is production engineering in the real sense. I do L3 incident response —
+      the kind that surfaces at 2 AM when a service stops responding and you're the person
+      with context. I've migrated the platform's container images from end-of-life Debian to
+      Alpine Linux, bringing image sizes down by 60% and deployment time down by 75%.
+      I built PDPA consent management while Sri Lanka's data protection law was still
+      being finalized. I've sat in ISO 27001 security audits representing the engineering team.
+    </p>
+
+    <div class="pull">
+      <p>
+        Good engineering is mostly care — care about what breaks, who it affects,
+        and whether the fix holds at 3 AM six months from now.
+      </p>
+    </div>
+
+    <p>
+      The stack at Dialog is a mix of old and new: Drupal and Yii for the legacy
+      platform core, React on the frontend, Kafka for event streaming, Redis for
+      caching, AWS (S3, SES, CloudWatch) for infrastructure, Docker and Kubernetes
+      for orchestration. I've written code in PHP, JavaScript, and configuration
+      in everything. SonarQube is running on every commit.
+    </p>
+
+    <p>
+      Outside of work, I've been building something of my own for the past year:
+    </p>
+
+    <div class="projects">
+      <div class="project">
+        <div class="project-top">
+          <span class="project-name">MockDeck — API Mocking Platform</span>
+          <span class="project-link">In development</span>
+        </div>
+        <p class="project-desc">
+          Every time I needed to test against a third-party API, the experience
+          was friction. MockDeck is an API mocking platform that lets developers
+          and QA teams simulate backend behavior — exact request matching, weighted
+          and sequential response modes, dynamic JSON templates, callback simulation,
+          Postman collection imports with credential detection, and an MCP integration
+          so it can be driven from an AI agent. Version history with diff and rollback.
+          Full PHPUnit regression suite with CI.
+        </p>
+        <span class="project-stack">Laravel · PostgreSQL · Livewire · Docker · PHPUnit · GitHub Actions · MCP</span>
+      </div>
+    </div>
+
+    <p>
+      Some earlier work, in roughly reverse order:
+    </p>
+
+    <div class="projects">
+
+      <div class="project">
+        <div class="project-top">
+          <span class="project-name">Jira Worklog Manager</span>
+          <a href="https://timelogs.lovable.app" class="project-link" target="_blank" rel="noopener">timelogs.lovable.app ↗</a>
+        </div>
+        <p class="project-desc">
+          A personal tool that replaced Jira's time-tracking UI with something
+          keyboard-first and fast. Persistent work timer that survives page reloads.
+          A GitHub-style activity heatmap. Command palette with fuzzy issue search.
+          Built for my own use; it's been running for over a year.
+        </p>
+        <span class="project-stack">React · Vite · TypeScript · Jira REST API · localStorage</span>
+      </div>
+
+      <div class="project">
+        <div class="project-top">
+          <span class="project-name">Project-X</span>
+          <a href="https://github.com/ru5iru/Project-X" class="project-link" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+        <p class="project-desc">
+          A produce collection and production automation system built for farmers.
+          Storage, supplier, and customer management in an MVC architecture. React
+          frontend over a Directus CMS backend, containerized with Docker.
+        </p>
+        <span class="project-stack">Directus · React · PostgreSQL · Docker</span>
+      </div>
+
+      <div class="project">
+        <div class="project-top">
+          <span class="project-name">Roamly</span>
+          <a href="https://github.com/ru5iru/Roamly" class="project-link" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+        <p class="project-desc">
+          A travel recommendation and experience-sharing platform. Travelers can
+          find places, hotels, guides, and connect with others. Built to learn
+          full-stack Node/Express in a real product context.
+        </p>
+        <span class="project-stack">React · Node.js · Express · PostgreSQL · Sass</span>
+      </div>
+
+    </div>
+
+    <p>
+      If it's useful, here's what I actually know how to use:
+    </p>
+
+    <div class="skills-block">
+      <p>
+        <span class="skills-label">Languages</span>
+        Java, JavaScript, PHP, C++
+      </p>
+      <p>
+        <span class="skills-label">Frameworks</span>
+        React, Spring Boot, Node.js, Drupal, Laravel, Yii, Symfony
+      </p>
+      <p>
+        <span class="skills-label">Databases</span>
+        MySQL, PostgreSQL, MongoDB, Redis
+      </p>
+      <p>
+        <span class="skills-label">Infrastructure</span>
+        AWS (S3, SES, CloudWatch), Docker, Kubernetes, Jenkins, Kafka
+      </p>
+      <p>
+        <span class="skills-label">Tools</span>
+        Git, Linux, SonarQube, Postman
+      </p>
+    </div>
+
+    <!-- ═══ EDUCATION ═══ -->
+    <div class="ruled-section">
+      <div class="edu-line">
+        <span class="edu-year">2024</span>
+        <span class="edu-text">
+          BSc Computer Science — University of Colombo School of Computing
+          <span class="edu-detail"> · GPA 3.01</span>
+        </span>
+      </div>
+      <div class="edu-line">
+        <span class="edu-year">2019</span>
+        <span class="edu-text">
+          GCE Advanced Level (Physical Science) — Mahinda College, Galle
+          <span class="edu-detail"> · A B C, Z-Score 1.3084</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- ═══ WRITING ═══ -->
+    <div class="ruled-section">
+      <p style="font-size: 15px; color: var(--muted); font-family: var(--sans); font-weight: 400; margin-bottom: 0.2em;">
+        I write occasionally at
+        <a href="https://iamrusiru.lovable.app" target="_blank" rel="noopener" style="color: var(--muted); text-underline-offset: 3px;">iamrusiru.lovable.app</a>:
+      </p>
+      <ul class="writing-list">
+        <li>
+          <a href="https://iamrusiru.lovable.app/post/owasp-top-ten" target="_blank" rel="noopener">
+            OWASP Top 10: A Developer's Practical Guide
+          </a>
+          <span class="writing-meta">Mar 2026 · 10 min</span>
+        </li>
+        <li>
+          <a href="https://iamrusiru.lovable.app/post/clean-code-principles" target="_blank" rel="noopener">
+            Clean Code Principles Every Developer Should Know
+          </a>
+          <span class="writing-meta">Mar 2026 · 8 min</span>
+        </li>
+        <li>
+          <a href="https://iamrusiru.lovable.app/post/code-review-etiquette" target="_blank" rel="noopener">
+            Code Review Etiquette: Being Kind and Thorough
+          </a>
+          <span class="writing-meta">Dec 2025 · 6 min</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ═══ CONTACT ═══ -->
+    <div class="contact-block">
+      <p style="font-size: 15px; color: var(--muted); font-family: var(--sans); font-weight: 400; margin-bottom: 14px;">
+        If you want to build something, work together, or just talk engineering:
+      </p>
+      <a href="mailto:r.rathmina@gmail.com" class="contact-email">r.rathmina@gmail.com</a>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/ru5iru" class="contact-link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/ru5iru" class="contact-link" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://iamrusiru.lovable.app" class="contact-link" target="_blank" rel="noopener">Blog</a>
+        <a href="https://drive.google.com/file/d/1tUyCB3WXgbWiAI3igodwczXYXYnpMpwM/view?usp=sharing" class="contact-link" target="_blank" rel="noopener">Résumé ↗</a>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="page-footer">
+    <span class="footer-copy">© 2026 Rusiru Rathmina</span>
+    <span class="footer-label">Design Mockup v4</span>
+  </footer>
+
+</div>
+
+<script>
+  /* ── Theme persistence ── */
+  (function () {
+    try {
+      var t = localStorage.getItem('rr-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+
+  function toggleTheme() {
+    var root = document.documentElement;
+    var current = root.getAttribute('data-theme');
+    var next;
+
+    if (!current) {
+      next = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark';
+    } else {
+      next = current === 'dark' ? 'light' : 'dark';
+    }
+
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('rr-theme', next); } catch (e) {}
+  }
+</script>
+</body>
+</html>
