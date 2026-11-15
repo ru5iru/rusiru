@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rusiru Rathmina — Portfolio Design Mockup v1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       DESIGN TOKENS — Indigo Monograph
+       All values derived from a single hue (indigo)
+       so accent feels native, not bolted on.
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    :root {
+      /* Light mode */
+      --bg-0:        #FAFAFE;
+      --bg-1:        #FFFFFF;
+      --bg-2:        #F3F2FC;
+      --border:      #E2E0F7;
+      --border-soft: #EDEAF9;
+      --text-0:      #0A0912;
+      --text-1:      #5F5D82;
+      --text-2:      #9290B4;
+      --accent:      #4B48E8;
+      --accent-h:    #3734D6;
+      --accent-bg:   #EDEAFD;
+      --accent-muted:#C8C6F9;
+
+      --font-display: 'Syne', system-ui, sans-serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+
+      --radius-sm:  4px;
+      --radius:     8px;
+      --radius-lg:  12px;
+      --radius-xl:  20px;
+
+      --shadow-card: 0 1px 3px rgba(60,56,180,.06), 0 4px 24px rgba(60,56,180,.08);
+      --shadow-hover: 0 4px 32px rgba(60,56,180,.16);
+
+      --transition: 180ms cubic-bezier(0.4, 0, 0.2, 1);
+
+      color-scheme: light;
+    }
+
+    .dark {
+      --bg-0:        #0A0912;
+      --bg-1:        #111022;
+      --bg-2:        #1A1935;
+      --border:      #252440;
+      --border-soft: #1E1D38;
+      --text-0:      #ECEAFE;
+      --text-1:      #9693C0;
+      --text-2:      #605E88;
+      --accent:      #7472F8;
+      --accent-h:    #9290FF;
+      --accent-bg:   #1E1C42;
+      --accent-muted:#3D3B6A;
+
+      --shadow-card: 0 1px 4px rgba(0,0,0,.4), 0 4px 24px rgba(0,0,0,.3);
+      --shadow-hover: 0 4px 40px rgba(116,114,248,.18);
+
+      color-scheme: dark;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       RESET & BASE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-0);
+      color: var(--text-0);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: var(--font-body); cursor: pointer; border: none; background: none; }
+    ul, ol { list-style: none; }
+
+    ::selection {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       LAYOUT UTILITIES
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 112px 0;
+    }
+
+    .section--alt {
+      background: var(--bg-1);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       TYPOGRAPHY
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .display {
+      font-family: var(--font-display);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-description {
+      font-size: 1.0625rem;
+      color: var(--text-1);
+      max-width: 48ch;
+      line-height: 1.65;
+    }
+
+    .section-header {
+      margin-bottom: 64px;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       NAV
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      background: var(--bg-0);
+      border-bottom: 1px solid var(--border-soft);
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.04em;
+      color: var(--text-0);
+    }
+
+    .nav-brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-1);
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-0);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-theme {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-1);
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+      background: var(--bg-1);
+    }
+
+    .btn-theme:hover {
+      color: var(--text-0);
+      border-color: var(--border);
+      background: var(--bg-2);
+    }
+
+    .btn-theme svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .sun-icon { display: none; }
+    .dark .moon-icon { display: none; }
+    .dark .sun-icon { display: block; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       BUTTONS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border-radius: var(--radius);
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-h);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(116,114,248,.35);
+    }
+
+    .btn-ghost {
+      background: var(--bg-2);
+      color: var(--text-0);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      background: var(--bg-1);
+      border-color: var(--accent-muted);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       HERO
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .hero {
+      padding-top: 128px;
+      padding-bottom: 96px;
+      background: var(--bg-0);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle background grid — adds texture without being decorative */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border-soft) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
+      background-size: 56px 56px;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .dark .hero::before {
+      opacity: 0.3;
+    }
+
+    /* Fade to bg at bottom */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 180px;
+      background: linear-gradient(to bottom, transparent, var(--bg-0));
+      pointer-events: none;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-content {}
+
+    .hero-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-muted);
+      border-radius: 100px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 36px;
+    }
+
+    .hero-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: status-pulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes status-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      margin-bottom: 28px;
+    }
+
+    .hero-name .first {
+      font-size: clamp(72px, 10vw, 128px);
+      display: block;
+      color: var(--text-0);
+    }
+
+    .hero-name .last {
+      font-size: clamp(64px, 9vw, 116px);
+      display: block;
+      color: transparent;
+      -webkit-text-stroke: 2px var(--text-2);
+    }
+
+    .dark .hero-name .last {
+      -webkit-text-stroke: 1.5px var(--text-2);
+    }
+
+    .hero-role {
+      font-size: 1.0625rem;
+      font-weight: 500;
+      color: var(--text-1);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-role-sep {
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-1);
+      max-width: 44ch;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .hero-marquee-wrap {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+    }
+
+    .hero-marquee-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-2);
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    .marquee-container {
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 32px;
+      width: max-content;
+      animation: marquee 36s linear infinite;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-2);
+      white-space: nowrap;
+    }
+
+    .marquee-item img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      opacity: 0.7;
+    }
+
+    /* Hero Photo */
+    .hero-photo {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-photo-frame {
+      position: relative;
+      width: 320px;
+      height: 380px;
+      flex-shrink: 0;
+    }
+
+    .hero-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: var(--radius-xl);
+      position: relative;
+      z-index: 1;
+      border: 1px solid var(--border);
+    }
+
+    /* Offset accent box behind photo */
+    .hero-photo-frame::before {
+      content: '';
+      position: absolute;
+      top: 16px;
+      right: -16px;
+      bottom: -16px;
+      left: 16px;
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-muted);
+      border-radius: var(--radius-xl);
+      z-index: 0;
+    }
+
+    /* Mini stat cards overlaid on photo */
+    .hero-stat-card {
+      position: absolute;
+      z-index: 2;
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 12px 16px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .hero-stat-card:first-of-type {
+      bottom: 40px;
+      left: -40px;
+    }
+
+    .hero-stat-card:last-of-type {
+      top: 40px;
+      right: -32px;
+    }
+
+    .stat-value {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -0.03em;
+      color: var(--text-0);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-1);
+      font-weight: 500;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       ABOUT
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: var(--text-1);
+      margin-bottom: 20px;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-text strong {
+      color: var(--text-0);
+      font-weight: 600;
+    }
+
+    .about-text .hl {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .about-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .about-stat {
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-stat:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .about-stat-value {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 3rem;
+      letter-spacing: -0.04em;
+      color: var(--text-0);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .about-stat-value span {
+      color: var(--accent);
+    }
+
+    .about-stat-label {
+      font-size: 0.875rem;
+      color: var(--text-1);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       EXPERIENCE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      transition: all var(--transition);
+      cursor: default;
+    }
+
+    .exp-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .exp-item:hover {
+      padding-left: 8px;
+    }
+
+    .exp-company {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .exp-role {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.025em;
+      color: var(--text-0);
+      margin-bottom: 10px;
+    }
+
+    .exp-desc {
+      font-size: 0.9375rem;
+      color: var(--text-1);
+      line-height: 1.65;
+      max-width: 68ch;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .exp-period {
+      font-size: 0.8125rem;
+      color: var(--text-2);
+      font-weight: 500;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       TAG / BADGE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      background: var(--bg-2);
+      color: var(--text-1);
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       PROJECTS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .project-featured {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bg-1);
+      margin-bottom: 32px;
+      transition: box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .project-featured:hover {
+      box-shadow: var(--shadow-hover);
+      border-color: var(--accent-muted);
+    }
+
+    .project-featured-inner {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+    }
+
+    .project-featured-body {
+      padding: 48px;
+    }
+
+    .project-featured-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .project-featured-label svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.75rem;
+      letter-spacing: -0.025em;
+      color: var(--text-0);
+      margin-bottom: 14px;
+    }
+
+    .project-desc {
+      font-size: 0.9375rem;
+      color: var(--text-1);
+      line-height: 1.65;
+      margin-bottom: 24px;
+      max-width: 56ch;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 28px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .project-featured-visual {
+      background: var(--accent-bg);
+      border-left: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-featured-visual::before {
+      content: 'dialog.lk';
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.08;
+      letter-spacing: -0.04em;
+    }
+
+    .project-visual-inner {
+      position: absolute;
+      inset: 24px;
+      border-radius: var(--radius);
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .project-visual-inner svg {
+      width: 32px;
+      height: 32px;
+      color: var(--accent);
+      opacity: 0.6;
+    }
+
+    .project-visual-label {
+      font-size: 0.8125rem;
+      color: var(--text-2);
+      font-weight: 500;
+    }
+
+    /* Project grid for smaller cards */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      background: var(--bg-1);
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent-muted);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    .project-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 12px;
+    }
+
+    .project-card-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.0625rem;
+      letter-spacing: -0.02em;
+      color: var(--text-0);
+    }
+
+    .project-card-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius);
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      color: var(--text-1);
+      flex-shrink: 0;
+      transition: all var(--transition);
+    }
+
+    .project-card-link:hover {
+      background: var(--accent-bg);
+      border-color: var(--accent-muted);
+      color: var(--accent);
+    }
+
+    .project-card-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .project-card-desc {
+      font-size: 0.875rem;
+      color: var(--text-1);
+      line-height: 1.65;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       EDUCATION
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .edu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .edu-item {
+      display: grid;
+      grid-template-columns: 64px 1fr auto;
+      gap: 24px;
+      align-items: center;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .edu-item:first-child { border-top: 1px solid var(--border); }
+
+    .edu-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius);
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .edu-logo img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .edu-logo-fallback {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--accent);
+    }
+
+    .edu-institution {
+      font-size: 0.8125rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .edu-degree {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.0625rem;
+      letter-spacing: -0.02em;
+      color: var(--text-0);
+      margin-bottom: 4px;
+    }
+
+    .edu-details {
+      font-size: 0.875rem;
+      color: var(--text-1);
+    }
+
+    .edu-period {
+      font-size: 0.8125rem;
+      color: var(--text-2);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SKILLS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .skills-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 32px;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-row:first-child { border-top: 1px solid var(--border); }
+
+    .skill-category {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text-1);
+      letter-spacing: 0.02em;
+    }
+
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: var(--radius);
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-0);
+      transition: all var(--transition);
+    }
+
+    .skill-pill:hover {
+      border-color: var(--accent-muted);
+      background: var(--accent-bg);
+      color: var(--accent);
+    }
+
+    .skill-pill img {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       BLOG
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .blog-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      background: var(--bg-1);
+      display: flex;
+      flex-direction: column;
+      transition: all var(--transition);
+    }
+
+    .blog-card:hover {
+      border-color: var(--accent-muted);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      font-size: 0.75rem;
+      color: var(--text-2);
+    }
+
+    .blog-meta-sep {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    .blog-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.0625rem;
+      letter-spacing: -0.02em;
+      color: var(--text-0);
+      margin-bottom: 10px;
+      line-height: 1.3;
+      flex: 1;
+    }
+
+    .blog-excerpt {
+      font-size: 0.875rem;
+      color: var(--text-1);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .blog-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--accent);
+      transition: gap var(--transition);
+    }
+
+    .blog-link:hover {
+      gap: 10px;
+    }
+
+    .blog-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CONTACT
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .contact-inner {
+      max-width: 640px;
+    }
+
+    .contact-heading {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      letter-spacing: -0.03em;
+      color: var(--text-0);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .contact-desc {
+      font-size: 1.0625rem;
+      color: var(--text-1);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 44ch;
+    }
+
+    .contact-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .contact-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-1);
+      background: var(--bg-1);
+      transition: all var(--transition);
+    }
+
+    .contact-social:hover {
+      border-color: var(--accent-muted);
+      color: var(--text-0);
+      background: var(--bg-2);
+    }
+
+    .contact-social svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       FOOTER
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .footer-brand span { color: var(--accent); }
+
+    .footer-copy {
+      font-size: 0.8125rem;
+      color: var(--text-2);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       RESPONSIVE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    @media (max-width: 1024px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+      }
+      .hero-photo {
+        display: none;
+      }
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .about-stats {
+        flex-direction: row;
+        gap: 24px;
+      }
+      .about-stat {
+        border-bottom: none;
+        border-right: 1px solid var(--border);
+        padding-bottom: 0;
+        padding-right: 24px;
+        flex: 1;
+      }
+      .about-stat:last-child {
+        border-right: none;
+        padding-right: 0;
+      }
+      .project-featured-inner {
+        grid-template-columns: 1fr;
+      }
+      .project-featured-visual {
+        height: 160px;
+        border-left: none;
+        border-top: 1px solid var(--border);
+      }
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 72px 0; }
+      .nav-links { display: none; }
+      .hero { padding-top: 100px; }
+      .hero-name .first { font-size: clamp(52px, 14vw, 80px); }
+      .hero-name .last { font-size: clamp(44px, 12vw, 72px); }
+      .exp-item { grid-template-columns: 1fr; }
+      .exp-period { text-align: left; }
+      .project-grid { grid-template-columns: 1fr; }
+      .skill-row { grid-template-columns: 1fr; gap: 12px; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+      .edu-item { grid-template-columns: 48px 1fr; }
+      .edu-period { display: none; }
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       REDUCED MOTION
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SCROLL INDICATOR + MISC
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .accent-line {
+      display: inline-block;
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      vertical-align: middle;
+      margin-left: 10px;
+      border-radius: 2px;
+    }
+
+    .label-note {
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      z-index: 90;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .label-note-inner {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Design mockup notice -->
+<div class="label-note">
+  <div class="label-note-inner">Design Mockup v1 — Indigo Monograph</div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━ NAV ━━━━━━━━━━━━━━━ -->
+<nav class="nav">
+  <div class="container">
+    <a href="#" class="nav-brand">RR<span>.</span></a>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="btn-theme" id="theme-toggle" aria-label="Toggle theme">
+        <!-- Moon (shown in light mode) -->
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <!-- Sun (shown in dark mode) -->
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+      <a href="https://drive.google.com/file/d/1tUyCB3WXgbWiAI3igodwczXYXYnpMpwM/view" target="_blank" class="btn btn-primary">Resume</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ━━━━━━━━━━━━━━━ HERO ━━━━━━━━━━━━━━━ -->
+<section class="hero" id="hero" aria-label="Rusiru Rathmina — Full-Stack Software Engineer">
+  <div class="container">
+    <div class="hero-layout">
+
+      <!-- Left: Content -->
+      <div class="hero-content">
+        <div class="hero-status">
+          <span class="hero-status-dot"></span>
+          Available for collaboration
+        </div>
+
+        <div class="hero-name">
+          <span class="first">RUSIRU</span>
+          <span class="last">RATHMINA</span>
+        </div>
+
+        <p class="hero-role">
+          <span class="hero-role-sep"></span>
+          Full-Stack Software Engineer, Colombo
+        </p>
+
+        <p class="hero-desc">
+          Building robust, scalable enterprise applications — from cloud infrastructure and DevOps pipelines to full-stack web platforms serving millions of users.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            View Work
+          </a>
+          <a href="https://drive.google.com/file/d/1tUyCB3WXgbWiAI3igodwczXYXYnpMpwM/view" target="_blank" class="btn btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download CV
+          </a>
+        </div>
+
+        <div class="hero-marquee-wrap">
+          <p class="hero-marquee-label">24 technologies across the full stack</p>
+          <div class="marquee-container">
+            <div class="marquee-track">
+              <!-- Set 1 -->
+              <span class="marquee-item">Java</span>
+              <span class="marquee-item">React</span>
+              <span class="marquee-item">PHP</span>
+              <span class="marquee-item">Spring Boot</span>
+              <span class="marquee-item">Drupal</span>
+              <span class="marquee-item">Node.js</span>
+              <span class="marquee-item">AWS</span>
+              <span class="marquee-item">Docker</span>
+              <span class="marquee-item">Kubernetes</span>
+              <span class="marquee-item">PostgreSQL</span>
+              <span class="marquee-item">Redis</span>
+              <span class="marquee-item">Apache Kafka</span>
+              <span class="marquee-item">Laravel</span>
+              <span class="marquee-item">Jenkins</span>
+              <span class="marquee-item">Linux</span>
+              <span class="marquee-item">SonarQube</span>
+              <!-- Set 2 (duplicate for seamless loop) -->
+              <span class="marquee-item">Java</span>
+              <span class="marquee-item">React</span>
+              <span class="marquee-item">PHP</span>
+              <span class="marquee-item">Spring Boot</span>
+              <span class="marquee-item">Drupal</span>
+              <span class="marquee-item">Node.js</span>
+              <span class="marquee-item">AWS</span>
+              <span class="marquee-item">Docker</span>
+              <span class="marquee-item">Kubernetes</span>
+              <span class="marquee-item">PostgreSQL</span>
+              <span class="marquee-item">Redis</span>
+              <span class="marquee-item">Apache Kafka</span>
+              <span class="marquee-item">Laravel</span>
+              <span class="marquee-item">Jenkins</span>
+              <span class="marquee-item">Linux</span>
+              <span class="marquee-item">SonarQube</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Photo -->
+      <div class="hero-photo">
+        <div class="hero-photo-frame">
+          <img
+            src="/media/profile/profile-photo.webp"
+            alt="Rusiru Rathmina"
+            width="320"
+            height="380"
+          />
+
+          <!-- Floating stat cards -->
+          <div class="hero-stat-card">
+            <div class="stat-value">2<span style="color:var(--accent)">+</span></div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+
+          <div class="hero-stat-card">
+            <div class="stat-value" style="color:var(--accent)">60<span style="font-size:1rem;color:var(--text-1)">%</span></div>
+            <div class="stat-label">Image size reduction</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━ ABOUT ━━━━━━━━━━━━━━━ -->
+<section class="section section--alt" id="about" aria-label="About Rusiru">
+  <div class="container">
+
+    <div class="about-layout">
+
+      <!-- Stats -->
+      <div class="about-stats">
+        <div>
+          <span class="section-eyebrow">About Me</span>
+          <h2 class="section-heading">Engineer,<br>problem solver.</h2>
+        </div>
+
+        <div class="about-stat">
+          <div class="about-stat-value">2<span>+</span></div>
+          <div class="about-stat-label">Years of professional experience</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-value">24</div>
+          <div class="about-stat-label">Technologies in my stack</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-value">3<span>×</span></div>
+          <div class="about-stat-label">Roles held at Omobio</div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="about-text" style="padding-top: 72px;">
+        <p>
+          I'm <strong>Rusiru Rathmina</strong>, a Software Engineer at <span class="hl">Omobio (Pvt) Ltd</span> in Colombo, Sri Lanka — building and maintaining enterprise-grade applications for <span class="hl">Dialog Axiata PLC</span>, one of Sri Lanka's largest telecom providers.
+        </p>
+        <p>
+          My work spans the full lifecycle: <strong>PHP/Drupal backend systems</strong>, <strong>React frontends</strong>, <strong>AWS infrastructure</strong>, and <strong>container security</strong> with Docker and Kubernetes. I've led initiatives that reduced container image sizes by 60%, contributed to ISO 27001 compliance, and built OWASP-aligned secure development practices into production workflows.
+        </p>
+        <p>
+          Outside of enterprise work, I build developer tools and side projects — including <span class="hl">MockDeck</span>, an API mocking and integration testing platform, and I write about engineering on my personal blog.
+        </p>
+        <p>
+          I'm open to collaborating on full-stack, cloud, or DevOps projects. <strong>Let's build something reliable together.</strong>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━ EXPERIENCE ━━━━━━━━━━━━━━━ -->
+<section class="section" id="experience" aria-label="Work Experience">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Career</span>
+      <h2 class="section-heading">Work Experience</h2>
+      <p class="section-description">Three progressive roles at the same company, each expanding in scope and responsibility.</p>
+    </div>
+
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-company">Omobio (Pvt) Ltd</div>
+          <div class="exp-role">Software Engineer</div>
+          <div class="exp-desc">
+            Managing cloud infrastructure and container orchestration across AWS, Docker, and Kubernetes. Led the migration of Dialog.lk container images from EOL Debian to Alpine Linux — cutting image sizes by 60% and deployment time by 75% with multi-stage builds. Contributing to ISO 27001 compliance, security audits, and CVE remediation.
+          </div>
+          <div class="exp-tags">
+            <span class="tag">AWS</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">Alpine Linux</span>
+            <span class="tag">ISO 27001</span>
+            <span class="tag">OWASP</span>
+          </div>
+        </div>
+        <div class="exp-period">Jan 2026 — Present</div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-company">Omobio (Pvt) Ltd</div>
+          <div class="exp-role">Associate Software Engineer</div>
+          <div class="exp-desc">
+            Key engineer on the Dialog.lk platform. Independently managed Level 3 production support, ensuring SLA compliance and service continuity. Drove root cause analysis on complex incidents and contributed to CI/CD pipeline improvements and release coordination.
+          </div>
+          <div class="exp-tags">
+            <span class="tag">Drupal</span>
+            <span class="tag">PHP</span>
+            <span class="tag">React</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">L3 Support</span>
+          </div>
+        </div>
+        <div class="exp-period">May 2024 — Dec 2025</div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-company">Omobio (Pvt) Ltd</div>
+          <div class="exp-role">Trainee Full-Stack Developer</div>
+          <div class="exp-desc">
+            Began hands-on engineering on Dialog.lk and Dialog BizCare — troubleshooting production issues, analyzing server logs, and contributing to full-stack features using React.js, Node.js, and PHP. Participated in requirements gathering for a tea factory production automation system.
+          </div>
+          <div class="exp-tags">
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">PHP</span>
+            <span class="tag">Yii</span>
+            <span class="tag">Keycloak</span>
+          </div>
+        </div>
+        <div class="exp-period">Nov 2023 — May 2024</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━ PROJECTS ━━━━━━━━━━━━━━━ -->
+<section class="section section--alt" id="projects" aria-label="Featured Projects">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Work</span>
+      <h2 class="section-heading">Featured Projects</h2>
+      <p class="section-description">Enterprise platforms and personal tools, built for scale and reliability.</p>
+    </div>
+
+    <!-- Featured: Dialog.lk -->
+    <div class="project-featured">
+      <div class="project-featured-inner">
+        <div class="project-featured-body">
+          <div class="project-featured-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Featured — Enterprise
+          </div>
+          <h3 class="project-title">Dialog.lk</h3>
+          <p class="project-desc">
+            Enterprise CMS platform for Dialog Axiata PLC — one of Sri Lanka's largest telcos. Led key development, L3 production support, security hardening, and a container infrastructure overhaul that reduced image sizes by 60% and deployment time by 75%.
+          </p>
+          <div class="project-tech">
+            <span class="tag">Drupal</span>
+            <span class="tag">PHP</span>
+            <span class="tag">Yii</span>
+            <span class="tag">React</span>
+            <span class="tag">Kafka</span>
+            <span class="tag">Redis</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">SonarQube</span>
+          </div>
+          <div class="project-links">
+            <a href="https://dialog.lk" target="_blank" class="btn btn-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Visit Site
+            </a>
+          </div>
+        </div>
+        <div class="project-featured-visual">
+          <div class="project-visual-inner">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+            <span class="project-visual-label">dialog.lk</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project grid -->
+    <div class="project-grid">
+
+      <div class="project-card">
+        <div class="project-card-header">
+          <h3 class="project-card-title">MockDeck</h3>
+          <span class="project-card-link" title="Personal project">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </span>
+        </div>
+        <p class="project-card-desc">API mocking and integration testing platform. Supports exact-request matching, dynamic JSON templates, weighted/sequential responses, callback simulation, Postman collection imports, and an MCP server for automated mock management.</p>
+        <div class="project-tech" style="margin-bottom:0">
+          <span class="tag">Laravel</span>
+          <span class="tag">Livewire</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Docker</span>
+          <span class="tag">MCP</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-header">
+          <h3 class="project-card-title">Jira Worklog Manager</h3>
+          <a href="https://timelogs.lovable.app" target="_blank" class="project-card-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+        <p class="project-card-desc">Browser-based productivity tool for Jira Cloud worklogs. Keyboard-first UX with a real-time work timer, bulk logging, worklog splitting, GitHub-style heatmap calendar, per-project breakdown charts, and CSV export.</p>
+        <div class="project-tech" style="margin-bottom:0">
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Vite</span>
+          <span class="tag">Jira API</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-header">
+          <h3 class="project-card-title">Dialog BizCare</h3>
+        </div>
+        <p class="project-card-desc">Corporate customer management portal for Dialog Axiata. Provided L3 production support, investigated server-level incidents, and collaborated directly with clients to resolve service-affecting issues under defined SLAs.</p>
+        <div class="project-tech" style="margin-bottom:0">
+          <span class="tag">Yii</span>
+          <span class="tag">Keycloak</span>
+          <span class="tag">PHP</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-header">
+          <h3 class="project-card-title">Project-X</h3>
+          <a href="https://github.com/ru5iru/Project-X" target="_blank" class="project-card-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+        </div>
+        <p class="project-card-desc">Produce collection and production automation system for farmers. MVC architecture with storage, customer, and supplier management modules. React frontend with a CMS-based backend.</p>
+        <div class="project-tech" style="margin-bottom:0">
+          <span class="tag">React</span>
+          <span class="tag">Directus</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Docker</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━ EDUCATION ━━━━━━━━━━━━━━━ -->
+<section class="section" id="education" aria-label="Education">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Background</span>
+      <h2 class="section-heading">Education</h2>
+    </div>
+
+    <div class="edu-list">
+
+      <div class="edu-item">
+        <div class="edu-logo">
+          <img src="/media/logos/ucsc-logo.png" alt="UCSC" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=edu-logo-fallback>UC</span>'" />
+        </div>
+        <div>
+          <div class="edu-institution">University of Colombo School of Computing</div>
+          <div class="edu-degree">BSc in Computer Science</div>
+          <div class="edu-details">GPA 3.01</div>
+        </div>
+        <div class="edu-period">May 2021 — Oct 2024</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-logo">
+          <img src="/media/logos/mcg-logo.png" alt="Mahinda College" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=edu-logo-fallback>MC</span>'" />
+        </div>
+        <div>
+          <div class="edu-institution">Mahinda College, Galle</div>
+          <div class="edu-degree">GCE Advanced Level — Physical Science</div>
+          <div class="edu-details">A/L: A B C · Z-Score: 1.3084 · O/L: 8A 1B</div>
+        </div>
+        <div class="edu-period">Feb 2010 — Aug 2019</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━ SKILLS ━━━━━━━━━━━━━━━ -->
+<section class="section section--alt" id="skills" aria-label="Technical Skills">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Toolkit</span>
+      <h2 class="section-heading">Technical Skills</h2>
+      <p class="section-description">Across the full stack — from frontend interfaces to container orchestration.</p>
+    </div>
+
+    <div class="skills-layout">
+
+      <div class="skill-row">
+        <span class="skill-category">Languages</span>
+        <div class="skill-items">
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">PHP</span>
+          <span class="skill-pill">C++</span>
+        </div>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-category">Frameworks</span>
+        <div class="skill-items">
+          <span class="skill-pill">React</span>
+          <span class="skill-pill">Node.js</span>
+          <span class="skill-pill">Spring Boot</span>
+          <span class="skill-pill">Drupal</span>
+          <span class="skill-pill">Laravel</span>
+          <span class="skill-pill">Symfony</span>
+          <span class="skill-pill">Yii</span>
+        </div>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-category">Databases</span>
+        <div class="skill-items">
+          <span class="skill-pill">MySQL</span>
+          <span class="skill-pill">PostgreSQL</span>
+          <span class="skill-pill">MongoDB</span>
+          <span class="skill-pill">Redis</span>
+        </div>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-category">DevOps &amp; Cloud</span>
+        <div class="skill-items">
+          <span class="skill-pill">AWS</span>
+          <span class="skill-pill">Docker</span>
+          <span class="skill-pill">Kubernetes</span>
+          <span class="skill-pill">Jenkins</span>
+          <span class="skill-pill">Apache Kafka</span>
+        </div>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-category">Tools</span>
+        <div class="skill-items">
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">Linux</span>
+          <span class="skill-pill">SonarQube</span>
+          <span class="skill-pill">Postman</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━ BLOG ━━━━━━━━━━━━━━━ -->
+<section class="section" id="blog" aria-label="Blog Posts">
+  <div class="container">
+    <div class="section-header" style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:48px;">
+      <div>
+        <span class="section-eyebrow">Writing</span>
+        <h2 class="section-heading" style="margin-bottom:0">Latest Posts</h2>
+      </div>
+      <a href="https://iamrusiru.lovable.app/" target="_blank" class="btn btn-ghost">
+        Visit Blog
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="blog-grid">
+
+      <a href="https://iamrusiru.lovable.app/post/owasp-top-ten" target="_blank" class="blog-card">
+        <div class="blog-meta">
+          <span>Mar 2026</span>
+          <span class="blog-meta-sep"></span>
+          <span>10 min read</span>
+        </div>
+        <h3 class="blog-title">OWASP Top 10: A Developer's Practical Guide</h3>
+        <p class="blog-excerpt">Security isn't just for the infosec team. Every developer should understand these ten vulnerabilities and how to prevent them in their own code.</p>
+        <span class="blog-link">
+          Read post
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a href="https://iamrusiru.lovable.app/post/clean-code-principles" target="_blank" class="blog-card">
+        <div class="blog-meta">
+          <span>Mar 2026</span>
+          <span class="blog-meta-sep"></span>
+          <span>8 min read</span>
+        </div>
+        <h3 class="blog-title">Clean Code Principles Every Developer Should Know</h3>
+        <p class="blog-excerpt">Writing code that works is easy. Writing code that others can read, maintain, and extend is the real challenge. Here are the principles I follow.</p>
+        <span class="blog-link">
+          Read post
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a href="https://iamrusiru.lovable.app/post/code-review-etiquette" target="_blank" class="blog-card">
+        <div class="blog-meta">
+          <span>Dec 2025</span>
+          <span class="blog-meta-sep"></span>
+          <span>6 min read</span>
+        </div>
+        <h3 class="blog-title">Code Review Etiquette: Being Kind and Thorough</h3>
+        <p class="blog-excerpt">Good code reviews build trust. Bad ones build resentment. Here are the habits I've adopted to make reviews productive for everyone.</p>
+        <span class="blog-link">
+          Read post
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━ CONTACT ━━━━━━━━━━━━━━━ -->
+<section class="section section--alt" id="contact" aria-label="Contact">
+  <div class="container">
+    <div class="contact-inner">
+      <span class="section-eyebrow">Get in Touch</span>
+      <h2 class="contact-heading">Let's build<br>something together.</h2>
+      <p class="contact-desc">
+        Open to collaborating on full-stack, cloud, and DevOps projects. Based in Colombo — available remotely worldwide.
+      </p>
+      <div class="contact-cta">
+        <a href="mailto:r.rathmina@gmail.com" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Send Email
+        </a>
+        <a href="https://www.linkedin.com/in/ru5iru" target="_blank" class="btn btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+      </div>
+
+      <div class="contact-links">
+        <a href="https://github.com/ru5iru" target="_blank" class="contact-social">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+        <a href="https://iamrusiru.lovable.app" target="_blank" class="contact-social">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Blog
+        </a>
+        <a href="https://twitter.com/ru5iru" target="_blank" class="contact-social">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          X / Twitter
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━ FOOTER ━━━━━━━━━━━━━━━ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-brand">RR<span>.</span></span>
+      <span class="footer-copy">© 2026 Rusiru Rathmina. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ━━━━━━━━━━━━━━━ SCRIPT ━━━━━━━━━━━━━━━ -->
+<script>
+  // Theme toggle
+  const html = document.documentElement;
+  const btn = document.getElementById('theme-toggle');
+
+  btn.addEventListener('click', () => {
+    html.classList.toggle('dark');
+  });
+
+  // Nav scroll effect
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      nav.style.borderBottomColor = 'var(--border)';
+    } else {
+      nav.style.borderBottomColor = 'var(--border-soft)';
+    }
+  }, { passive: true });
+</script>
+
+</body>
+</html>
