@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rusiru Rathmina — Design Mockup v2 · The Record</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       TOKENS — The Record
+       No decorative accent. Personality from type.
+       Red appears only as a functional status marker.
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    :root {
+      --bg:        #FAFAF8;
+      --surface:   #FFFFFF;
+      --ink:       #141412;
+      --muted:     #74726A;
+      --faint:     #E6E4DC;
+      --rule:      #D2CFCA;
+      --red:       #BF2B1E;      /* stamp only — nowhere else */
+      --red-bg:    #FBF0EF;
+
+      --serif: 'Cormorant Garamond', 'Georgia', serif;
+      --sans:  'Inter', system-ui, sans-serif;
+
+      --doc-width: 760px;        /* editorial column */
+      --wide:      1120px;       /* wide content */
+
+      color-scheme: light;
+    }
+
+    .dark {
+      --bg:        #121210;
+      --surface:   #1A1A18;
+      --ink:       #E6E4DA;
+      --muted:     #8A8880;
+      --faint:     #232320;
+      --rule:      #2C2C28;
+      --red:       #E03B2C;
+      --red-bg:    #1E1210;
+      color-scheme: dark;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       RESET
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: var(--sans); cursor: pointer; border: none; background: none; color: inherit; }
+    ul, ol { list-style: none; }
+    ::selection { background: var(--ink); color: var(--bg); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       LAYOUT
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .doc    { max-width: var(--doc-width); margin: 0 auto; padding: 0 24px; }
+    .wide   { max-width: var(--wide);     margin: 0 auto; padding: 0 24px; }
+    .full   { width: 100%; }
+
+    hr.rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 0;
+    }
+
+    section { padding: 80px 0; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       TYPE SCALE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .serif  { font-family: var(--serif); }
+
+    .t-xs   { font-size: 0.6875rem; }     /* 11px */
+    .t-sm   { font-size: 0.8125rem; }     /* 13px */
+    .t-base { font-size: 1rem; }          /* 16px */
+    .t-lg   { font-size: 1.125rem; }      /* 18px */
+    .t-xl   { font-size: 1.5rem; }        /* 24px */
+    .t-2xl  { font-size: 2rem; }          /* 32px */
+    .t-3xl  { font-size: 2.75rem; }       /* 44px */
+
+    .w-400  { font-weight: 400; }
+    .w-500  { font-weight: 500; }
+    .w-600  { font-weight: 600; }
+    .italic { font-style: italic; }
+
+    .color-muted { color: var(--muted); }
+    .color-ink   { color: var(--ink);   }
+
+    .leading-tight   { line-height: 1.1; }
+    .leading-snug    { line-height: 1.35; }
+    .leading-relaxed { line-height: 1.75; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       NAV — minimal top bar, no background
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .nav-inner {
+      max-width: var(--wide);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-mark {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 140ms;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-btn-theme {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+      transition: color 140ms, background 140ms;
+    }
+
+    .nav-btn-theme:hover { color: var(--ink); background: var(--faint); }
+
+    .nav-btn-theme svg { width: 15px; height: 15px; }
+
+    .sun-icon { display: none; }
+    .dark .moon-icon { display: none; }
+    .dark .sun-icon  { display: block; }
+
+    .nav-resume {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+      padding: 5px 14px;
+      border-radius: 2px;
+      transition: background 140ms, border-color 140ms;
+    }
+
+    .nav-resume:hover { background: var(--faint); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       STAMP — the only use of red
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .stamp {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--red);
+      background: var(--red-bg);
+      border: 1px solid currentColor;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+
+    .stamp-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       HERO
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .hero {
+      padding-top: 120px;
+      padding-bottom: 0;
+    }
+
+    .hero-top {
+      max-width: var(--wide);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .hero-location {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* The name — the ONE bold moment */
+    .hero-name-block {
+      max-width: var(--wide);
+      margin: 0 auto;
+      padding: 0 24px;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding-top: 24px;
+      padding-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-style: italic;
+      font-size: clamp(80px, 12vw, 160px);
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .hero-name .first { display: block; }
+    .hero-name .last  {
+      display: block;
+      /* Slight indent creates visual rhythm */
+      padding-left: clamp(40px, 6vw, 80px);
+      color: var(--muted);
+    }
+
+    /* Below the name: role + photo + statement */
+    .hero-body {
+      max-width: var(--wide);
+      margin: 0 auto;
+      padding: 48px 24px 0;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .hero-statement {
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--ink);
+      max-width: 48ch;
+      margin-bottom: 36px;
+    }
+
+    .hero-desc {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 42ch;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .btn-primary {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--bg);
+      background: var(--ink);
+      padding: 10px 22px;
+      border-radius: 2px;
+      transition: opacity 140ms;
+    }
+
+    .btn-primary:hover { opacity: 0.75; }
+
+    .btn-secondary {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      border: 1px solid var(--rule);
+      padding: 10px 22px;
+      border-radius: 2px;
+      transition: color 140ms, border-color 140ms, background 140ms;
+    }
+
+    .btn-secondary:hover {
+      color: var(--ink);
+      border-color: var(--muted);
+      background: var(--faint);
+    }
+
+    /* Stat row */
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .hero-stat-val {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .hero-stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* Profile photo */
+    .hero-photo {
+      position: relative;
+    }
+
+    .hero-photo-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      /* No border-radius — editorial, direct */
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SECTION HEADERS — consistent pattern
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .section-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       ABOUT — "On Building"
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.875rem, 3.5vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+
+    .about-body p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .about-body p:last-child { margin-bottom: 0; }
+
+    .about-body strong { color: var(--ink); font-weight: 600; }
+
+    .about-pull {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--ink);
+      border-left: 2px solid var(--rule);
+      padding-left: 20px;
+      margin: 28px 0;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       EXPERIENCE — "The Record"
+       Article-style entries, not cards
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .exp-entry {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 32px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .exp-entry:first-child { border-top: 1px solid var(--rule); }
+
+    .exp-time {
+      padding-top: 4px;
+    }
+
+    .exp-year {
+      font-family: var(--serif);
+      font-size: 0.9375rem;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .exp-company {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .exp-role {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .exp-desc {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 64ch;
+      margin-bottom: 16px;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--muted);
+      border: 1px solid var(--rule);
+      padding: 3px 9px;
+      border-radius: 2px;
+      transition: color 140ms, border-color 140ms;
+    }
+
+    .tag:hover { color: var(--ink); border-color: var(--muted); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       THE WORK — project entries
+       Article style, not grid cards
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .work-entry {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 32px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .work-entry:first-child { border-top: 1px solid var(--rule); }
+
+    .work-index {
+      font-family: var(--serif);
+      font-size: 0.875rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--muted);
+      padding-top: 6px;
+    }
+
+    .work-title {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .work-title a {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 140ms;
+    }
+
+    .work-title a:hover { color: var(--ink); }
+
+    .work-title a svg { width: 12px; height: 12px; }
+
+    .work-desc {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 64ch;
+      margin-bottom: 16px;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       EDUCATION
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .edu-entry {
+      display: grid;
+      grid-template-columns: 160px 1fr auto;
+      gap: 32px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: baseline;
+    }
+
+    .edu-entry:first-child { border-top: 1px solid var(--rule); }
+
+    .edu-year {
+      font-family: var(--serif);
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .edu-degree {
+      font-family: var(--serif);
+      font-size: 1.125rem;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .edu-institution {
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .edu-detail {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       THE STACK — skills as a document table
+       Inspired by Satyam's "Lab Report" section
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .stack-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .stack-table thead th {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      padding: 0 0 12px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .stack-table thead th:last-child { text-align: right; }
+
+    .stack-table tbody tr {
+      border-bottom: 1px solid var(--faint);
+    }
+
+    .stack-table tbody tr:last-child { border-bottom: none; }
+
+    .stack-table td {
+      padding: 14px 0;
+      font-size: 0.9375rem;
+      vertical-align: middle;
+    }
+
+    .stack-table td:first-child {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      width: 160px;
+    }
+
+    .stack-table td:last-child {
+      text-align: right;
+      color: var(--muted);
+      font-size: 0.8125rem;
+    }
+
+    .stack-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .stack-item {
+      font-size: 0.875rem;
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    .stack-sep {
+      color: var(--rule);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       NOTES (blog) — article entries
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .notes-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .notes-heading-col {
+      border-right: 1px solid var(--rule);
+      padding-right: 48px;
+    }
+
+    .notes-heading {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    .notes-subtext {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 24px;
+      max-width: 36ch;
+    }
+
+    .notes-list-col {
+      padding-left: 48px;
+    }
+
+    .note-entry {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .note-entry:first-child { border-top: 1px solid var(--rule); }
+
+    .note-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .note-title {
+      font-family: var(--serif);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .note-excerpt {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 10px;
+      max-width: 48ch;
+    }
+
+    .note-link {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 140ms;
+    }
+
+    .note-link:hover { color: var(--ink); }
+
+    .note-link svg { width: 12px; height: 12px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CONTACT — "Let's Work"
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-heading {
+      font-family: var(--serif);
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .contact-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 42ch;
+      margin-bottom: 36px;
+    }
+
+    .contact-email {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 4px;
+      transition: border-color 140ms;
+      margin-bottom: 32px;
+    }
+
+    .contact-email:hover { border-color: var(--muted); }
+
+    .contact-socials {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .contact-social-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.875rem;
+      transition: color 140ms;
+    }
+
+    .contact-social-row:hover { color: var(--muted); }
+
+    .contact-social-row span:first-child { font-weight: 500; }
+
+    .contact-social-row span:last-child {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       FOOTER
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .footer {
+      border-top: 1px solid var(--rule);
+      padding: 24px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-mark {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 0.75rem;
+      color: var(--muted);
+      transition: color 140ms;
+    }
+
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       MARQUEE — just for tech stack below hero
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .marquee-wrap {
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 16px 0;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 48px;
+      width: max-content;
+      animation: marquee 40s linear infinite;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .marquee-item {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--muted);
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       RESPONSIVE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    @media (max-width: 1024px) {
+      .hero-body          { grid-template-columns: 1fr; }
+      .hero-photo         { display: none; }
+      .about-layout       { grid-template-columns: 1fr; gap: 40px; }
+      .notes-layout       { grid-template-columns: 1fr; }
+      .notes-heading-col  { border-right: none; padding-right: 0; border-bottom: 1px solid var(--rule); padding-bottom: 40px; margin-bottom: 40px; }
+      .notes-list-col     { padding-left: 0; }
+      .contact-layout     { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 56px 0; }
+      .nav-links { display: none; }
+      .hero { padding-top: 88px; }
+      .hero-name { white-space: normal; line-height: 0.9; }
+      .hero-name .last { padding-left: 0; }
+      .exp-entry, .work-entry { grid-template-columns: 1fr; gap: 12px; }
+      .edu-entry { grid-template-columns: 1fr; gap: 4px; }
+      .edu-detail { text-align: left; }
+      .stack-table td:first-child { width: 100px; }
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+      .footer-links { justify-content: center; }
+      .hero-top { flex-direction: column; gap: 12px; }
+      .hero-stats { gap: 28px; flex-wrap: wrap; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       LABEL NOTE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .label-note {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 200;
+      background: var(--ink);
+      color: var(--bg);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 2px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="label-note">Design Mockup v2 · The Record</div>
+
+<!-- ━━━━━━━━━━━━━━━ NAV ━━━━━━━━━━━━━━━ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-mark">Rusiru Rathmina</span>
+
+    <div class="nav-links">
+      <a href="#about">On Building</a>
+      <a href="#experience">The Record</a>
+      <a href="#work">The Work</a>
+      <a href="#stack">The Stack</a>
+      <a href="#notes">Notes</a>
+      <a href="#contact">Let's Work</a>
+    </div>
+
+    <div class="nav-right">
+      <button class="nav-btn-theme" id="theme-toggle" aria-label="Toggle theme">
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <a href="https://drive.google.com/file/d/1tUyCB3WXgbWiAI3igodwczXYXYnpMpwM/view" target="_blank" class="nav-resume">CV</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ━━━━━━━━━━━━━━━ HERO ━━━━━━━━━━━━━━━ -->
+<section class="hero" aria-label="Rusiru Rathmina">
+
+  <!-- Top meta row -->
+  <div class="hero-top wide">
+    <div class="hero-meta">
+      <span class="t-sm color-muted">Rusiru Rathmina</span>
+      <span class="t-sm color-muted">Colombo, Sri Lanka · UTC+5:30</span>
+    </div>
+    <span class="stamp">
+      <span class="stamp-dot"></span>
+      Available for work
+    </span>
+  </div>
+
+  <!-- The name — the one bold visual moment -->
+  <div class="hero-name-block">
+    <div class="hero-name wide" style="max-width: var(--wide); margin: 0 auto; padding: 0 24px;">
+      <span class="first">Rusiru</span>
+      <span class="last">Rathmina.</span>
+    </div>
+  </div>
+
+  <!-- Role + photo + statement -->
+  <div class="hero-body wide">
+    <div>
+      <p class="hero-statement">
+        A software engineer in Colombo who builds the systems Sri Lanka runs on — from Dialog.lk's enterprise platform to the cloud infrastructure behind it.
+      </p>
+      <p class="hero-desc">
+        Full-stack. Cloud. Security. Two-plus years at Omobio, shipping production software for Dialog Axiata PLC. I work across the whole stack — Drupal backends, React frontends, AWS infrastructure, Docker pipelines — and I care about code that doesn't break at 3am.
+      </p>
+      <div class="hero-actions">
+        <a href="#work" class="btn-primary">View Work</a>
+        <a href="https://drive.google.com/file/d/1tUyCB3WXgbWiAI3igodwczXYXYnpMpwM/view" target="_blank" class="btn-secondary">Download CV</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-val serif">2+</div>
+          <div class="hero-stat-label">Years of professional<br>experience</div>
+        </div>
+        <div>
+          <div class="hero-stat-val serif">24</div>
+          <div class="hero-stat-label">Technologies across<br>the stack</div>
+        </div>
+        <div>
+          <div class="hero-stat-val serif">60<span style="font-size:1.1rem">%</span></div>
+          <div class="hero-stat-label">Container image size<br>reduction achieved</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <img
+        src="/media/profile/profile-photo.webp"
+        alt="Rusiru Rathmina"
+        class="hero-photo-img"
+        width="280"
+        loading="eager"
+      />
+    </div>
+  </div>
+
+</section>
+
+<!-- Tech marquee -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Java</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">React</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">PHP</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Spring Boot</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Drupal</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Node.js</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">AWS</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Docker</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Kubernetes</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">PostgreSQL</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Redis</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Apache Kafka</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Laravel</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Jenkins</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Linux</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">SonarQube</span>
+    <span class="marquee-item">·</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="marquee-item">Java</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">React</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">PHP</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Spring Boot</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Drupal</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Node.js</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">AWS</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Docker</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Kubernetes</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">PostgreSQL</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Redis</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Apache Kafka</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Laravel</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Jenkins</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Linux</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">SonarQube</span>
+    <span class="marquee-item">·</span>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━ ABOUT — "On Building" ━━━━━━━━━━━━━━━ -->
+<section id="about">
+  <div class="wide">
+    <div class="section-label">On Building</div>
+    <div class="about-layout">
+
+      <div>
+        <h2 class="about-heading serif">
+          Engineer, problem solver,<br>
+          occasionally the person who<br>
+          fixes things at midnight.
+        </h2>
+        <blockquote class="about-pull">
+          "Good engineering isn't about clever code. It's about systems that keep working when nobody's watching."
+        </blockquote>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Get in touch</a>
+          <a href="https://iamrusiru.lovable.app" target="_blank" class="btn-secondary">Read the blog</a>
+        </div>
+      </div>
+
+      <div class="about-body">
+        <p>
+          I'm <strong>Rusiru Rathmina</strong> — a Software Engineer at <strong>Omobio (Pvt) Ltd</strong> in Colombo, working on enterprise software for <strong>Dialog Axiata PLC</strong>, one of Sri Lanka's largest telecom providers.
+        </p>
+        <p>
+          My day-to-day spans Drupal and PHP backends, React frontends, AWS infrastructure, and container security. I've led efforts that cut container image sizes by 60%, contributed to ISO 27001 compliance programs, and built OWASP-aligned practices into production workflows used by millions of users.
+        </p>
+        <p>
+          Outside the enterprise work, I build developer tools — including <strong>MockDeck</strong>, an API mocking platform, and I write about engineering craft on my personal blog.
+        </p>
+        <p>
+          I'm open to collaborating on full-stack, cloud, or DevOps projects anywhere in the world.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="rule wide" style="max-width: var(--wide); margin: 0 auto;">
+
+<!-- ━━━━━━━━━━━━━━━ EXPERIENCE — "The Record" ━━━━━━━━━━━━━━━ -->
+<section id="experience">
+  <div class="wide">
+    <div class="section-label">The Record</div>
+
+    <div class="exp-entry">
+      <div class="exp-time">
+        <div class="exp-year">Jan 2026<br>Present</div>
+        <div class="exp-company">Omobio (Pvt) Ltd</div>
+      </div>
+      <div>
+        <div class="exp-role serif">
+          Software Engineer
+          <span class="stamp"><span class="stamp-dot"></span>Current</span>
+        </div>
+        <p class="exp-desc">
+          Managing cloud infrastructure and container orchestration across AWS, Docker, and Kubernetes. Led the migration of Dialog.lk container images from EOL Debian to Alpine Linux — cutting image sizes by 60% and deployment time by 75% with multi-stage builds. Contributing to ISO 27001 compliance, OWASP security initiatives, and CVE remediation across the application and infrastructure stack.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">AWS</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Alpine Linux</span>
+          <span class="tag">ISO 27001</span>
+          <span class="tag">OWASP</span>
+          <span class="tag">SonarQube</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-entry">
+      <div class="exp-time">
+        <div class="exp-year">May 2024<br>Dec 2025</div>
+        <div class="exp-company">Omobio (Pvt) Ltd</div>
+      </div>
+      <div>
+        <div class="exp-role serif">Associate Software Engineer</div>
+        <p class="exp-desc">
+          Key engineer on the Dialog.lk platform. Independently managed Level 3 production support, ensuring SLA compliance and service continuity. Led root cause analysis on complex production incidents and contributed to CI/CD pipeline improvements and release coordination in an Agile environment.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">Drupal</span>
+          <span class="tag">PHP</span>
+          <span class="tag">React</span>
+          <span class="tag">CI/CD</span>
+          <span class="tag">L3 Support</span>
+          <span class="tag">Agile</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-entry">
+      <div class="exp-time">
+        <div class="exp-year">Nov 2023<br>May 2024</div>
+        <div class="exp-company">Omobio (Pvt) Ltd</div>
+      </div>
+      <div>
+        <div class="exp-role serif">Trainee Full-Stack Developer</div>
+        <p class="exp-desc">
+          Began hands-on engineering on Dialog.lk and Dialog BizCare — troubleshooting production issues, analyzing server logs, and contributing full-stack features with React.js, Node.js, and PHP. Participated in requirements gathering for a tea factory production automation system.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">PHP</span>
+          <span class="tag">Yii</span>
+          <span class="tag">Keycloak</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="rule wide" style="max-width: var(--wide); margin: 0 auto;">
+
+<!-- ━━━━━━━━━━━━━━━ EDUCATION ━━━━━━━━━━━━━━━ -->
+<section id="education">
+  <div class="wide">
+    <div class="section-label">Education</div>
+
+    <div class="edu-entry">
+      <div class="edu-year">May 2021<br>Oct 2024</div>
+      <div>
+        <div class="edu-degree serif">BSc in Computer Science</div>
+        <div class="edu-institution">University of Colombo School of Computing (UCSC)</div>
+      </div>
+      <div class="edu-detail">GPA 3.01</div>
+    </div>
+
+    <div class="edu-entry">
+      <div class="edu-year">Feb 2010<br>Aug 2019</div>
+      <div>
+        <div class="edu-degree serif">GCE Advanced Level — Physical Science</div>
+        <div class="edu-institution">Mahinda College, Galle</div>
+      </div>
+      <div class="edu-detail">A/L: A B C · Z 1.3084<br>O/L: 8A 1B</div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="rule wide" style="max-width: var(--wide); margin: 0 auto;">
+
+<!-- ━━━━━━━━━━━━━━━ PROJECTS — "The Work" ━━━━━━━━━━━━━━━ -->
+<section id="work">
+  <div class="wide">
+    <div class="section-label">The Work</div>
+
+    <div class="work-entry">
+      <div class="work-index serif italic color-muted">Enterprise · 2024–Present</div>
+      <div>
+        <div class="work-title serif">
+          Dialog.lk
+          <span class="stamp"><span class="stamp-dot"></span>Featured</span>
+          <a href="https://dialog.lk" target="_blank">
+            dialog.lk
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+        <p class="work-desc">
+          Enterprise CMS platform for Dialog Axiata PLC — one of Sri Lanka's largest telcos. Led key development, L3 production support, security hardening aligned with OWASP and ISO 27001, and a container infrastructure overhaul using multi-stage Alpine Linux builds that reduced image sizes by 60% and deployment time by 75%. Built custom Drupal modules integrating Amazon SES and user consent management for PDPA compliance.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">Drupal</span>
+          <span class="tag">PHP</span>
+          <span class="tag">Yii</span>
+          <span class="tag">React</span>
+          <span class="tag">Kafka</span>
+          <span class="tag">Redis</span>
+          <span class="tag">AWS</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Amazon SES</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-entry">
+      <div class="work-index serif italic color-muted">Personal · 2026–Present</div>
+      <div>
+        <div class="work-title serif">MockDeck</div>
+        <p class="work-desc">
+          API mocking and integration testing platform. Developers and QA teams use it to simulate API behaviour, test integrations, and reproduce failure scenarios without depending on live backends. Supports exact-request matching, dynamic JSON templates, weighted and sequential responses, callback simulation, Postman collection imports, and an MCP server for automated mock management.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">Laravel</span>
+          <span class="tag">Livewire</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Docker</span>
+          <span class="tag">PHPUnit</span>
+          <span class="tag">GitHub Actions</span>
+          <span class="tag">MCP</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-entry">
+      <div class="work-index serif italic color-muted">Personal · 2024</div>
+      <div>
+        <div class="work-title serif">
+          Jira Worklog Manager
+          <a href="https://timelogs.lovable.app" target="_blank">
+            timelogs.lovable.app
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <a href="https://github.com/ru5iru/jira-time-tracker" target="_blank">
+            GitHub
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+        <p class="work-desc">
+          Browser-based productivity tool for Jira Cloud worklogs. Keyboard-first UX with a real-time work timer that persists across reloads, bulk logging, worklog splitting with live sum validation, 5-second undo-delete, a GitHub-style heatmap calendar, per-project breakdown charts, and CSV export.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Vite</span>
+          <span class="tag">Jira API</span>
+          <span class="tag">localStorage</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-entry">
+      <div class="work-index serif italic color-muted">Enterprise · 2023–2024</div>
+      <div>
+        <div class="work-title serif">Dialog BizCare</div>
+        <p class="work-desc">
+          Corporate customer management portal for Dialog Axiata. L3 production support — investigating server-level incidents, collaborating directly with clients, and resolving service-affecting issues within defined SLAs.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">Yii</span>
+          <span class="tag">Keycloak</span>
+          <span class="tag">PHP</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-entry">
+      <div class="work-index serif italic color-muted">Personal · 2023</div>
+      <div>
+        <div class="work-title serif">
+          Project-X
+          <a href="https://github.com/ru5iru/Project-X" target="_blank">
+            GitHub
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+        <p class="work-desc">
+          Produce collection and production automation system for farmers. MVC architecture with storage, customer, and supplier management. React frontend with a Directus CMS backend.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">React</span>
+          <span class="tag">Directus</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Docker</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="rule wide" style="max-width: var(--wide); margin: 0 auto;">
+
+<!-- ━━━━━━━━━━━━━━━ SKILLS — "The Stack" ━━━━━━━━━━━━━━━ -->
+<section id="stack">
+  <div class="wide">
+    <div class="section-label">The Stack</div>
+
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Technologies</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Languages</td>
+          <td>
+            <div class="stack-items">
+              <span class="stack-item">Java</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">JavaScript</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">PHP</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">C++</span>
+            </div>
+          </td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>Frameworks</td>
+          <td>
+            <div class="stack-items">
+              <span class="stack-item">React</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">Node.js</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">Spring Boot</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">Drupal</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">Laravel</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">Symfony</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">Yii</span>
+            </div>
+          </td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td>Databases</td>
+          <td>
+            <div class="stack-items">
+              <span class="stack-item">MySQL</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">PostgreSQL</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">MongoDB</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">Redis</span>
+            </div>
+          </td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>DevOps &amp; Cloud</td>
+          <td>
+            <div class="stack-items">
+              <span class="stack-item">AWS</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">Docker</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">Kubernetes</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">Jenkins</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">Apache Kafka</span>
+            </div>
+          </td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>Tools</td>
+          <td>
+            <div class="stack-items">
+              <span class="stack-item">Git</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">Linux</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">SonarQube</span>
+              <span class="stack-sep">·</span>
+              <span class="stack-item">Postman</span>
+            </div>
+          </td>
+          <td>4</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<hr class="rule wide" style="max-width: var(--wide); margin: 0 auto;">
+
+<!-- ━━━━━━━━━━━━━━━ BLOG — "Notes" ━━━━━━━━━━━━━━━ -->
+<section id="notes">
+  <div class="wide">
+    <div class="notes-layout">
+
+      <div class="notes-heading-col">
+        <div class="section-label">Notes</div>
+        <h2 class="notes-heading">Writing<br>on craft.</h2>
+        <p class="notes-subtext">
+          I write about engineering practices, security, and the things I wish someone had told me earlier. Published on my personal blog.
+        </p>
+        <a href="https://iamrusiru.lovable.app" target="_blank" class="btn-secondary" style="display:inline-flex; align-items:center; gap:6px;">
+          Visit the blog
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="notes-list-col">
+
+        <a href="https://iamrusiru.lovable.app/post/owasp-top-ten" target="_blank">
+          <div class="note-entry">
+            <div class="note-meta">
+              <span>Mar 2026</span>
+              <span>10 min read</span>
+            </div>
+            <h3 class="note-title serif">OWASP Top 10: A Developer's Practical Guide</h3>
+            <p class="note-excerpt">Security isn't just for the infosec team. Every developer should understand these ten vulnerabilities and how to prevent them in their own code.</p>
+            <span class="note-link">
+              Read
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <a href="https://iamrusiru.lovable.app/post/clean-code-principles" target="_blank">
+          <div class="note-entry">
+            <div class="note-meta">
+              <span>Mar 2026</span>
+              <span>8 min read</span>
+            </div>
+            <h3 class="note-title serif">Clean Code Principles Every Developer Should Know</h3>
+            <p class="note-excerpt">Writing code that works is easy. Writing code that others can read, maintain, and extend is the real challenge.</p>
+            <span class="note-link">
+              Read
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <a href="https://iamrusiru.lovable.app/post/code-review-etiquette" target="_blank">
+          <div class="note-entry">
+            <div class="note-meta">
+              <span>Dec 2025</span>
+              <span>6 min read</span>
+            </div>
+            <h3 class="note-title serif">Code Review Etiquette: Being Kind and Thorough</h3>
+            <p class="note-excerpt">Good code reviews build trust. Bad ones build resentment. Here are the habits I've adopted to make reviews productive.</p>
+            <span class="note-link">
+              Read
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule wide" style="max-width: var(--wide); margin: 0 auto;">
+
+<!-- ━━━━━━━━━━━━━━━ CONTACT — "Let's Work" ━━━━━━━━━━━━━━━ -->
+<section id="contact">
+  <div class="wide">
+    <div class="section-label">Let's Work</div>
+    <div class="contact-layout">
+
+      <div>
+        <h2 class="contact-heading serif">
+          Ready to build<br>
+          something that lasts?
+        </h2>
+        <p class="contact-desc">
+          I'm open to full-stack, cloud, and DevOps projects. Based in Colombo — available for remote collaboration worldwide.
+        </p>
+        <a href="mailto:r.rathmina@gmail.com" class="contact-email serif">
+          r.rathmina@gmail.com
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div>
+        <div class="contact-socials">
+          <a href="https://www.linkedin.com/in/ru5iru" target="_blank" class="contact-social-row">
+            <span>LinkedIn</span>
+            <span>linkedin.com/in/ru5iru</span>
+          </a>
+          <a href="https://github.com/ru5iru" target="_blank" class="contact-social-row">
+            <span>GitHub</span>
+            <span>github.com/ru5iru</span>
+          </a>
+          <a href="https://iamrusiru.lovable.app" target="_blank" class="contact-social-row">
+            <span>Blog</span>
+            <span>iamrusiru.lovable.app</span>
+          </a>
+          <a href="https://twitter.com/ru5iru" target="_blank" class="contact-social-row">
+            <span>X / Twitter</span>
+            <span>@ru5iru</span>
+          </a>
+          <a href="https://www.discordapp.com/users/Rusiru#4036" target="_blank" class="contact-social-row">
+            <span>Discord</span>
+            <span>Rusiru#4036</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━ FOOTER ━━━━━━━━━━━━━━━ -->
+<footer class="footer">
+  <div class="wide">
+    <div class="footer-inner">
+      <span class="footer-mark serif">Rusiru Rathmina</span>
+      <div class="footer-links">
+        <a href="https://github.com/ru5iru" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/ru5iru" target="_blank">LinkedIn</a>
+        <a href="https://iamrusiru.lovable.app" target="_blank">Blog</a>
+      </div>
+      <span class="footer-copy">© 2026 Rusiru Rathmina</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const html = document.documentElement;
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    html.classList.toggle('dark');
+  });
+</script>
+</body>
+</html>
