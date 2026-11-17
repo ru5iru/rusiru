@@ -16,6 +16,7 @@ export const siteSchema = z.object({
   sections: z.array(z.enum(sectionIds)).refine((items) => new Set(items).size === items.length, 'Section IDs must be unique'),
   contact: z.object({ secondaryButton: z.object({ platform: z.enum(['linkedin', 'github', 'discord', 'facebook', 'x', 'twitter', 'reddit', 'blog', 'spotify']), url: webUrl }) }),
   blogUrl: webUrl,
+  continuingEducationUrl: webUrl,
   social: z.array(z.object({ platform: text, url: webUrl, icon: media.optional() })),
   educationLogos: z.record(media),
   skills: z.array(z.object({ id: text, items: z.array(z.object({ name: text, icon, invertInDark: z.boolean().optional() })) })),

@@ -15,8 +15,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Archivo', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        display: ['Archivo', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        sans: ['Newsreader', 'Georgia', 'serif'],
+        serif: ['Newsreader', 'Georgia', 'serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
+        mono: ['IBM Plex Mono', 'ui-monospace', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -52,6 +54,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        desk: {
+          DEFAULT: "hsl(var(--desk))",
+          foreground: "hsl(var(--desk-foreground))",
+        },
+        faint: "hsl(var(--faint))",
       },
       borderRadius: {
         lg: "var(--radius)",
