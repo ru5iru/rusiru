@@ -29,6 +29,7 @@ Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-
 | [08 Operations](08-operations.md) | Build/release procedure, diagnosis, security | Source verified; hosting configuration unknown |
 | [09 Risks and recommendations](09-risks-and-recommendations.md) | Priorities, questions, onboarding checklist | Evidence linked; proposed actions |
 | [10 Glossary](10-glossary.md) | Project terminology | Source verified |
+| [11 Broadsheet redesign spec](11-broadsheet-redesign-spec.md) | Broadsheet newspaper design system, data model additions, and module implementation map | Ready for implementation; paired with [DESIGN.md](../DESIGN.md), [SKILL.md](../SKILL.md), and [broadsheet-prototype.html](prototype/broadsheet-prototype.html) |
 | [Changelog and audit](CHANGELOG.md) | Existing-doc inventory, drift, migration actions, verification | Audit baseline |
 | [Original portfolio plan](_archive/original-portfolio-plan.md) | Restored historical design intent | Historical snapshot; not current behavior |
 
