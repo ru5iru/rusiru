@@ -4,13 +4,13 @@
 
 ## About Me
 
-👋 Hello! I'm Rusiru Rathmina, a Software Engineer at Omobio (Pvt) Ltd, specializing in Full-Stack Development, Cloud Computing, and DevOps.
+Hello! I'm Rusiru Rathmina, a Software Engineer at Omobio (Pvt) Ltd, specializing in Full-Stack Development, Cloud Computing, and DevOps.
 
 My journey began as a trainee, and I have since grown into designing scalable solutions using Java, Spring Boot, React, and AWS. I have extensive hands-on experience refactoring legacy systems and building secure, reliable applications.
 
 My expertise covers the full lifecycle—from frontend design with React.js to backend logic in PHP/Drupal and infrastructure management using Docker and Kubernetes.
 
-🚀 I am always open to collaborating on Full-Stack or DevOps projects. Let's connect and shape the future of technology together!
+I am always open to collaborating on Full-Stack or DevOps projects. Let's connect and shape the future of technology together!
 
 ## Work Experience
 
@@ -35,7 +35,7 @@ Investigated and resolved software defects and production incidents across Dialo
 Analyzed application and system issues through server log analysis, service debugging, and collaboration with cross-functional teams to identify root causes and implement effective solutions.
 Participated in requirements gathering, solution planning, and system design for a tea factory production automation system, contributing to the development of solutions aimed at improving operational efficiency.
 
-## Education
+## Education & Continuing Education (CE)
 
 Bachelor of Science in Computer Science, University of Colombo School of Computing, May 2021 - October 2024
 GPA: 3.01
@@ -43,6 +43,28 @@ GPA: 3.01
 GCE Advanced Level (Physical Science), Mahinda College, Galle, Feb 2010 - Aug 2019
 A/L Results: A B C | Z-Score: 1.3084
 O/L Results: 8A 1B
+
+Microservices Foundations Professional Certificate by Kong, KONG, Issued Oct 2026
+Skills: Software Design Patterns · Software Architecture
+https://www.linkedin.com/in/ru5iru/details/certifications/
+
+NIST Cybersecurity Framework (CSF) 2.0 Primer: From Fundamentals to Implementation, PEARSON / LINKEDIN, Issued Oct 2026
+Skills: IT Security Best Practices
+https://www.linkedin.com/in/ru5iru/details/certifications/
+
+Working with the PCI DSS 4.0 Compliance Requirements, LINKEDIN, Issued Oct 2026
+Skills: Payment Card Industry Data Security Standard (PCI DSS) · Standards Compliance
+https://www.linkedin.com/in/ru5iru/details/certifications/
+
+GDPR Compliance: Essential Training, LINKEDIN, Issued Nov 2026
+Skills: Legal Compliance · General Data Protection Regulation (GDPR)
+https://www.linkedin.com/in/ru5iru/details/certifications/
+
+Negotiation Professional Certificate by American Negotiation Institute, AMERICAN NEGOTIATION INSTITUTE, Issued Nov 2026
+Skills: Strategic Negotiations · Interpersonal Skills
+https://www.linkedin.com/in/ru5iru/details/certifications/
+
+View Full License & Certification Ledger on LinkedIn: https://www.linkedin.com/in/ru5iru/details/certifications/
 
 ## Featured Projects
 
@@ -55,9 +77,15 @@ O/L Results: 8A 1B
 - Micro CAPS: Assembly process management system for Micro Car Limited. Manages vehicle assembly process from chassis delivery to dispatching.
 - ToDo: Task manager app built with Flutter. Capable of managing tasks, adding reminders, and setting priorities.
 
-## Technical Skills
+## Core Domains & Representative Stack
 
-Java, JavaScript, PHP, C++, React, Node.js, Spring Boot, Drupal, Yii, Laravel, Symfony, MySQL, PostgreSQL, MongoDB, Redis, AWS, Docker, Kubernetes, Jenkins, Kafka, Git, Linux, SonarQube, Postman
+Tools and frameworks change; engineering fundamentals endure. Grounded in computer science principles, distributed architecture, and application security, I treat languages and frameworks as interchangeable instruments—adapting rapidly to whatever stack a system requires.
+
+Languages — Object-oriented, functional & systems programming: Java, JavaScript, PHP, C++
+Frameworks & Runtimes — RESTful APIs, microservices, SPAs & enterprise CMS: React, Node.js, Spring Boot, Drupal, Yii, Laravel, Symfony
+Data & Caching — Relational modeling, document stores & in-memory caching: MySQL, PostgreSQL, MongoDB, Redis
+DevOps & Cloud — Container orchestration, CI/CD pipelines & event streaming: AWS, Docker, Kubernetes, Jenkins, Kafka
+Systems & Quality Tooling — Static analysis, security gates, Linux ops & API testing: Git, Linux, SonarQube, Postman
 
 ## Latest Blog Posts
 
@@ -67,7 +95,8 @@ Java, JavaScript, PHP, C++, React, Node.js, Spring Boot, Drupal, Yii, Laravel, S
 
 ## Let's build something together
 
-Ready to create amazing developer experiences? I'm always excited to collaborate on innovative projects.
+Open to onsite or hybrid roles in Sri Lanka as well as remote engineering opportunities and project collaborations worldwide.
+I'm always excited to collaborate on innovative projects. Reach out directly via email or LinkedIn:
 Email: r.rathmina@gmail.com
 
 ## Links

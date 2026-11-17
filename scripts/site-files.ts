@@ -14,7 +14,10 @@ export function siteFilesPlugin(): Plugin {
     const en = load('src/locales/en.json');
     localeSchema.parse(en);
     for (const item of en.education.items) if (!site.educationLogos[item.id]) throw new Error(`Missing education logo for ${item.id}`);
-    for (const category of site.skills) if (!en.skills.categories[category.id]) throw new Error(`Missing skill category wording for ${category.id}`);
+    for (const category of site.skills) {
+      if (!en.skills.categories[category.id]) throw new Error(`Missing skill category wording for ${category.id}`);
+      if (!en.skills.notes[category.id]) throw new Error(`Missing skill domain note for ${category.id}`);
+    }
     return { site: site as SearchSite, en: en as SearchLocale, ...createSearchContent(site, en) };
   };
   const generate = () => {
