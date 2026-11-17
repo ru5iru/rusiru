@@ -135,4 +135,4 @@ Before completing any implementation task:
 - [ ] Run `bun test` (or `vitest run`) and update/add behavioral tests in `src/test/` for any new interactions (e.g., Continuing Education rendering, Unfold All toggle, Front-Page jump links).
 - [ ] Run `bun run lint` and ensure zero ESLint or Fast Refresh violations.
 - [ ] Run `bun run build` so `siteFilesPlugin` validates `site.json`, `theme.json`, and `en.json` against their Zod schemas and regenerates `public/sitemap.xml`, `public/robots.txt`, `public/site.webmanifest`, `public/llms.txt`, and `index.html`.
-- [ ] Commit all changes using **Conventional Commit** messages (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`) with a `Co-authored-by: Antigravity <antigravity@google.com>` trailer.
+- [ ] Commit all changes using **Conventional Commit** messages (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`).

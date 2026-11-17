@@ -15,4 +15,4 @@
 - Bun and the text `bun.lock` are authoritative; frozen installs prevent multiple package managers from drifting.
 - Shared shadcn variant/helper exports and the brand icon registry are intentional lint Fast Refresh exemptions; keep other feature modules component-only.
 - Each lazy section has its own loading state/error boundary; unused query/toast providers are not mounted on this static portfolio.
-- Always use Conventional Commit messages (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`) and include `Co-authored-by: Antigravity <antigravity@google.com>` when committing changes.
+- Always use Conventional Commit messages (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`) when committing changes.
