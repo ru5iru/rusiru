@@ -1,79 +1,103 @@
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Cloud, Shield, Rocket } from 'lucide-react';
-import { useTranslation } from '@/i18n/i18n';
+import { ArrowDown, ExternalLink } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { RichText } from '@/components/RichText';
+import { useTranslation } from '@/i18n/i18n';
+import { siteConfig } from '@/config';
+import { jumpToBroadsheetItem, navigateToSection } from '@/lib/navigation';
 
-const statIcons = [Rocket, Cloud, Shield];
+interface ExperienceItem { company: string; role: string; period: string; summary?: string; description: string[] }
+interface ProjectItem { title: string; featured: boolean; frontPage?: boolean; frontPageKicker?: string; summary?: string; description: string[] }
 
 export function About() {
-  const { ref, isVisible } = useScrollAnimation();
   const { t, tr } = useTranslation();
   const paragraphs = tr<string[]>('about.paragraphs') ?? [];
-  const stats = (tr<{ value: string; label: string }[]>('about.stats') ?? []).map((s, i) => ({ ...s, icon: statIcons[i % statIcons.length] }));
+  const experience = tr<ExperienceItem[]>('experience.items') ?? [];
+  const projects = tr<ProjectItem[]>('projects.items') ?? [];
+  const indexedProjects = projects.map((project, index) => ({ project, index }));
+  const frontPageProjects = indexedProjects.filter(({ project }) => project.frontPage);
+  const featured = (frontPageProjects.length ? frontPageProjects : indexedProjects.filter(({ project }) => project.featured)).slice(0, 2);
+  const midpoint = Math.ceil(paragraphs.length / 2);
 
   return (
-    <section id="about" className="py-24 md:py-32 relative overflow-hidden" aria-label={t('about.ariaLabel')} itemScope itemType="https://schema.org/AboutPage">
-      {/* GEO: Hidden structured summary for AI engines to extract */}
-      <div data-geo-summary="about" className="sr-only" aria-hidden="false">
-        {t('about.geoSummary')}
-      </div>
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
+    <section id="about" className="pb-6 r-double-b" aria-label={t('about.ariaLabel')} itemScope itemType="https://schema.org/AboutPage">
+      <div data-geo-summary="about" className="sr-only">{t('about.geoSummary')}</div>
+      <div className="grid items-start gap-6 lg:grid-cols-12">
+        <aside className="space-y-4 lg:col-span-3 lg:pr-5 lg:r-r">
+          <div className="bg-secondary p-3 r-heavy-t r-heavy-b">
+            <div className="font-mono text-xs font-bold uppercase tracking-wider text-primary">{t('hero.careerTitle')}</div>
+            <h3 className="mt-0.5 font-display text-lg font-bold leading-snug">{experience[0]?.company ?? t('hero.careerSubtitle')}</h3>
+          </div>
+          <div className="space-y-3.5 text-xs">
+            {experience.map((item, index) => (
+              <article key={`${item.role}-${item.period}`} className={index < experience.length - 1 ? 'pb-3.5 r-b' : ''}>
+                <time className={`font-mono font-semibold ${index === 0 ? 'text-primary' : 'text-faint'}`}>{item.period}</time>
+                <h4 className="mt-0.5 font-display text-base font-bold">{item.role}</h4>
+                <p className="mt-1 leading-relaxed text-muted-foreground">{item.summary ?? item.description[0]}</p>
+                <button type="button" onClick={() => jumpToBroadsheetItem('experience', index)} className={`mt-1.5 text-left font-mono text-[11px] underline ${index === 0 ? 'font-semibold text-primary' : ''}`}>
+                  {t('hero.readDispatch')}
+                </button>
+              </article>
+            ))}
+          </div>
+        </aside>
 
-      <div className="container mx-auto px-6 relative">
-        <div ref={ref}>
-          <h2
-            className={`section-heading transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            {t('about.titleBefore')} <span className="gradient-text">{t('about.titleHighlight')}</span>
-          </h2>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Text Content */}
-            <div
-              className={`space-y-6 transition-all duration-700 delay-200 ${
-                isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-              }`}
-            >
-              {paragraphs.map((p, i) => (
-                <p key={i} className="text-lg text-muted-foreground leading-relaxed">
-                  <RichText text={p} />
-                </p>
-              ))}
+        <div className="space-y-5 lg:col-span-6 lg:pr-5 lg:r-r">
+          <figure className="r-box bg-secondary p-3.5">
+            <div className="grid items-center gap-4 sm:grid-cols-12">
+              <div className="sm:col-span-5">
+                <img src={siteConfig.person.profileImage} alt={t('hero.profileAlt')} loading="eager" {...{ fetchpriority: 'high' }} width={448} height={448} className="engraving-photo r-box aspect-square w-full object-cover" />
+              </div>
+              <figcaption className="space-y-2.5 text-xs sm:col-span-7">
+                <div className="font-mono font-semibold uppercase text-primary">{t('hero.profileKicker')}</div>
+                <div className="font-display text-xl font-bold leading-snug">{t('hero.profileTitle')}</div>
+                <p className="leading-relaxed text-muted-foreground">{t('hero.profileSummary')}</p>
+                <div className="flex flex-wrap gap-2 pt-1 font-mono">
+                  <Button asChild className="h-auto rounded-none bg-foreground px-3 py-1.5 font-mono text-xs font-semibold uppercase text-background hover:bg-foreground/90">
+                    <a href="#projects" onClick={event => { event.preventDefault(); navigateToSection('projects'); }}>{t('hero.viewWork')} <ArrowDown aria-hidden="true" className="ml-1.5 h-3.5 w-3.5" /></a>
+                  </Button>
+                  <Button asChild variant="outline" className="h-auto rounded-none px-3 py-1.5 font-mono text-xs font-semibold uppercase">
+                    <a href={siteConfig.person.resumeUrl} target="_blank" rel="noopener noreferrer">{t('hero.resume')} <ExternalLink aria-hidden="true" className="ml-1.5 h-3.5 w-3.5" /></a>
+                  </Button>
+                </div>
+              </figcaption>
             </div>
+          </figure>
 
-            {/* Stats Grid */}
-            <div
-              className={`grid grid-cols-2 gap-6 transition-all duration-700 delay-400 ${
-                isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-              }`}
-            >
-              {stats.map((stat, index) => {
-                const Icon = stat.icon;
-                return (
-                  <div
-                    key={stat.label}
-                    className="gradient-border p-6 rounded-2xl bg-card hover:scale-105 transition-transform duration-300 group"
-                    style={{ transitionDelay: `${index * 100}ms` }}
-                  >
-                    <div className="flex items-center gap-4 mb-3">
-                      <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-white" />
-                      </div>
-                    </div>
-                    <div className="text-4xl font-display font-bold gradient-text mb-1">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
-                  </div>
-                );
-              })}
-            </div>
+          <div className="grid gap-5 text-justify text-sm leading-[1.7] sm:grid-cols-2 sm:text-[15px]">
+            {[paragraphs.slice(0, midpoint), paragraphs.slice(midpoint)].map((column, columnIndex) => (
+              <div key={columnIndex} className="space-y-3">
+                {column.map((paragraph, index) => (
+                  <p key={index} className={`${columnIndex === 0 && index === 0 ? 'lead-dropcap ' : ''}${columnIndex === 0 && index === 0 ? '' : 'text-muted-foreground'}`}>
+                    <RichText text={paragraph} />
+                  </p>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
+
+        <aside className="space-y-4 lg:col-span-3">
+          <div className="bg-secondary p-3 r-heavy-t r-heavy-b">
+            <div className="font-mono text-xs font-bold uppercase tracking-wider text-primary">{t('hero.featuredTitle')}</div>
+            <h3 className="mt-0.5 font-display text-lg font-bold leading-snug">{t('hero.featuredSubtitle')}</h3>
+          </div>
+          <div className="space-y-3 text-xs">
+            {featured.map(({ project, index }) => (
+              <article key={project.title} className="r-box space-y-1.5 bg-card p-3">
+                <div className="font-mono text-[10px] font-bold text-primary">{t('projects.dossierLabel', { number: String(index + 1).padStart(2, '0') })}{project.frontPageKicker ? ` · ${project.frontPageKicker}` : ''}</div>
+                <h4 className="font-display text-base font-bold">{project.title}</h4>
+                <p className="leading-relaxed text-muted-foreground">{project.summary ?? project.description[0]}</p>
+                <button type="button" onClick={() => jumpToBroadsheetItem('projects', index)} className="font-mono text-[11px] font-semibold text-primary underline">{t('hero.readDossier')}</button>
+              </article>
+            ))}
+            <article className="r-box space-y-1.5 bg-card p-3">
+              <div className="font-mono text-[10px] font-bold">{t('education.certificationsSubtitle')}</div>
+              <h4 className="font-display text-base font-bold">{t('hero.continuingEducationTitle')}</h4>
+              <p className="leading-relaxed text-muted-foreground">{t('hero.continuingEducationSummary')}</p>
+              <a href="#education" onClick={event => { event.preventDefault(); navigateToSection('education'); }} className="inline-block font-mono text-[11px] font-semibold text-primary underline">{t('hero.inspectEducation')}</a>
+            </article>
+          </div>
+        </aside>
       </div>
     </section>
   );

@@ -1,72 +1,39 @@
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Mail, ExternalLink } from 'lucide-react';
+import { ExternalLink, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { SectionHeading } from '@/components/SectionHeading';
 import { useTranslation } from '@/i18n/i18n';
 import { siteConfig } from '@/config';
 import { brandIcons } from '@/components/icons/BrandIcons';
 
-
 export function Contact() {
-  const { ref, isVisible } = useScrollAnimation();
   const { t } = useTranslation();
   const platform = siteConfig.contact.secondaryButton.platform;
-  const Icon = brandIcons[platform]?.icon ?? ExternalLink;
-
+  const SecondaryIcon = brandIcons[platform]?.icon ?? ExternalLink;
   return (
-    <section id="contact" className="py-24 md:py-32 relative overflow-hidden" aria-label={t('contact.ariaLabel')}>
-      {/* GEO: Contact summary for AI engines */}
-      <div data-geo-summary="contact" className="sr-only" aria-hidden="false">
-        {t('contact.geoSummary')}
-      </div>
-      {/* Background decoration */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
-
-      <div className="container mx-auto px-6 relative">
-        <div ref={ref} className="text-center">
-          <h2
-            className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            {t('contact.titleBefore')} <span className="gradient-text">{t('contact.titleHighlight')}</span>
-          </h2>
-
-          <p
-            className={`text-lg text-muted-foreground mb-10 max-w-2xl mx-auto transition-all duration-700 delay-100 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            {t('contact.description')}
-          </p>
-
-          <div
-            className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 delay-200 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <Button
-              asChild
-              size="lg"
-              className="gradient-bg text-white px-8 py-6 text-lg font-semibold rounded-xl hover:opacity-90 transition-all duration-300 hover:scale-[1.02] glow"
-            >
-              <a href={`mailto:${siteConfig.person.email}`}>
-                <Mail className="mr-2 w-5 h-5" />
-                {t('contact.getInTouch')}
-              </a>
-            </Button>
-
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-2 border-primary text-primary px-8 py-6 text-lg font-semibold rounded-xl hover:bg-primary/10 transition-all duration-300 hover:scale-[1.02]"
-            >
-              <a href={siteConfig.contact.secondaryButton.url} target="_blank" rel="noopener noreferrer">
-                <Icon className="mr-2 w-5 h-5" />
-                {platform === 'linkedin' ? t('contact.linkedin') : t(`footer.social.${platform}`)}
-              </a>
-            </Button>
+    <section id="contact" className="pt-8" aria-label={t('contact.ariaLabel')}>
+      <div data-geo-summary="contact" className="sr-only">{t('contact.geoSummary')}</div>
+      <SectionHeading kicker={t('contact.kicker')} title={`${t('contact.titleBefore')} ${t('contact.titleHighlight')}`} />
+      <div className="grid min-w-0 grid-cols-1 items-stretch gap-6 lg:grid-cols-12">
+        <div className="r-box min-w-0 flex flex-col justify-between space-y-4 bg-secondary p-5 lg:col-span-5">
+          <div className="space-y-2 text-xs leading-relaxed">
+            <div className="font-mono font-bold uppercase text-primary">{t('contact.directChannels')}</div>
+            <p className="text-muted-foreground">{t('contact.availability')}</p>
+          </div>
+          <div className="flex flex-wrap gap-x-4 gap-y-3 pt-2 r-t font-mono text-xs">
+            {siteConfig.social.map(link => {
+              const brand = brandIcons[link.platform];
+              const label = t(`footer.social.${link.platform}`);
+              const Icon = brand?.icon ?? ExternalLink;
+              return <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer me" aria-label={t('footer.socialAria', { label })} className="inline-flex items-center gap-1.5 underline"><Icon aria-hidden="true" className="h-3.5 w-3.5" />{label}</a>;
+            })}
+          </div>
+        </div>
+        <div className="scissor-coupon min-w-0 flex flex-col justify-between space-y-4 p-6 lg:col-span-7">
+          <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs"><span className="font-bold text-primary">{t('contact.couponLabel')}</span><span>{t('contact.couponReference')}</span></div>
+          <div><h3 className="font-display text-2xl font-black sm:text-3xl">{t('contact.couponTitle')}</h3><p className="mt-1 text-xs text-muted-foreground sm:text-sm">{t('contact.description')}</p></div>
+          <div className="flex flex-wrap items-center gap-3 pt-1 font-mono text-xs">
+            <Button asChild className="h-auto whitespace-normal break-all rounded-none px-5 py-3 text-left font-mono text-xs font-bold uppercase"><a href={`mailto:${siteConfig.person.email}`}><Mail aria-hidden="true" className="mr-2 h-4 w-4" />{t('contact.getInTouch')} ({siteConfig.person.email}) <ExternalLink aria-hidden="true" className="ml-1 h-3.5 w-3.5" /></a></Button>
+            <Button asChild variant="outline" className="h-auto rounded-none px-4 py-3 font-mono text-xs font-semibold uppercase"><a href={siteConfig.contact.secondaryButton.url} target="_blank" rel="noopener noreferrer"><SecondaryIcon aria-hidden="true" className="mr-2 h-4 w-4" />{platform === 'linkedin' ? t('contact.linkedin') : t(`footer.social.${platform}`)} <ExternalLink aria-hidden="true" className="ml-1 h-3.5 w-3.5" /></a></Button>
           </div>
         </div>
       </div>
