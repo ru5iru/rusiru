@@ -126,7 +126,7 @@ Define reusable component classes in [src/index.css](src/index.css):
      - Summarizes the roles from `experience.items` (`role`, `period`, first sentence/summary) with interactive **"Read full dispatch in Sec A2 →"** jump buttons that scroll smoothly to `#experience` and open that role's collapsible row.
      - **No stat counter boxes (`2+`, `24`, `100%`).**
   2. **Center Column (`lg:col-span-6`) — Portrait Plate & Verbatim About Copy**:
-     - Framed press portrait (`siteConfig.person.profileImage` with `.engraving-photo` filter), caption block (`person.name`, `person.jobTitle`), and primary CTAs (`View Work ↓` scrolling to `#projects`, and `Resume (PDF) ↗` linking to `siteConfig.person.resumeUrl`).
+     - Framed 1:1 press portrait (`siteConfig.person.profileImage` with `.engraving-photo` filter), centered and capped at `15rem` below the `sm` breakpoint; wider layouts use the portrait column width. Caption block (`person.name`, `person.jobTitle`) and primary CTAs (`View Work ↓` scrolling to `#projects`, and `Resume (PDF) ↗` linking to `siteConfig.person.resumeUrl`).
      - Below the portrait: renders `about.paragraphs` in a **2-column print layout** (`sm:grid-cols-2 text-justify`), with `.lead-dropcap` on the first paragraph and `RichText` (`**bold**` and `==crimson highlight==`) preserved.
   3. **Right Column (`lg:col-span-3`) — Featured Dispatches Index**:
      - Highlights key featured items from `projects.items` and a summary card for `Continuing Education`, each with an interactive **"Unfold full dossier in Sec B2 →"** / **"Inspect CE Registry in Sec B1 →"** jump action.

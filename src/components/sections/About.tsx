@@ -45,7 +45,7 @@ export function About() {
           <figure className="r-box bg-secondary p-3.5">
             <div className="grid items-center gap-4 sm:grid-cols-12">
               <div className="sm:col-span-5">
-                <img src={siteConfig.person.profileImage} alt={t('hero.profileAlt')} loading="eager" {...{ fetchpriority: 'high' }} width={448} height={448} className="engraving-photo r-box aspect-square w-full object-cover" />
+                <img src={siteConfig.person.profileImage} alt={t('hero.profileAlt')} loading="eager" {...{ fetchpriority: 'high' }} width={448} height={448} className="engraving-photo r-box mx-auto aspect-square h-auto w-full max-w-60 object-cover sm:mx-0 sm:max-w-none" />
               </div>
               <figcaption className="space-y-2.5 text-xs sm:col-span-7">
                 <div className="font-mono font-semibold uppercase text-primary">{t('hero.profileKicker')}</div>
