@@ -6,7 +6,7 @@
     "jobTitle": "Associate Software Engineer",
     "email": "r.rathmina@gmail.com",
     "location": { "city": "Colombo", "country": "Sri Lanka", "countryCode": "LK", "lat": 6.9271, "lng": 79.8612 },
-    "profileImage": "/media/profile/profile-photo.webp",
+    "profileImage": "/media/profile/illustrated-portrait.jpg",
     "resumeUrl": "https://drive.google.com/file/d/1tUyCB3WXgbWiAI3igodwczXYXYnpMpwM/view?usp=sharing"
   },
   "seo": {
@@ -14,7 +14,7 @@
     "description": "Rusiru Rathmina is a Software Engineer focused on full-stack development and cloud solutions, delivering scalable applications with attention to quality.",
     "ogDescription": "Portfolio of Rusiru Rathmina — Full-Stack Software Engineer in Colombo, Sri Lanka, building scalable apps with Java, Spring Boot, React, and AWS.",
     "dateCreated": "2024-01-01",
-    "themeColor": "#0f172a"
+    "themeColor": "#efe8d8"
   },
   "theme": { "default": "system" },
   "sections": ["about", "experience", "education", "projects", "skills", "blog", "contact"],
@@ -22,6 +22,7 @@
     "secondaryButton": { "platform": "linkedin", "url": "https://www.linkedin.com/in/ru5iru" }
   },
   "blogUrl": "https://iamrusiru.lovable.app/",
+  "continuingEducationUrl": "https://www.linkedin.com/in/ru5iru/details/certifications/",
   "social": [
     { "platform": "linkedin", "url": "https://www.linkedin.com/in/ru5iru" },
     { "platform": "github", "url": "https://github.com/ru5iru" },

@@ -47,14 +47,15 @@ describe('interactions', () => {
   it('switches system-dark appearance to light on first click', () => { render(<I18nProvider><ThemeToggle /></I18nProvider>); fireEvent.click(screen.getByRole('button', { name: en.nav.toggleTheme })); expect(setTheme).toHaveBeenCalledWith('light'); });
   it('reveals additional projects and expands Jira independently', () => {
     render(<I18nProvider><Projects /></I18nProvider>);
-    expect(screen.queryByRole('button', { name: 'Roamly' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Roamly/ })).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: en.projects.viewMore }));
-    expect(screen.getByRole('button', { name: 'Roamly' })).toBeInTheDocument();
-    const jira = screen.getByRole('button', { name: 'Jira Worklog Manager' }); fireEvent.click(jira);
+    expect(screen.getByRole('button', { name: /Roamly/ })).toBeInTheDocument();
+    const jira = screen.getByRole('button', { name: /Jira Worklog Manager/ });
     expect(jira).toHaveAttribute('aria-expanded', 'true');
     fireEvent.click(jira); expect(jira).toHaveAttribute('aria-expanded', 'false');
+    fireEvent.click(jira); expect(jira).toHaveAttribute('aria-expanded', 'true');
     fireEvent.click(screen.getByRole('button', { name: en.projects.showLess }));
-    expect(screen.queryByRole('button', { name: 'Roamly' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Roamly/ })).not.toBeInTheDocument();
   });
   it('shows content when IntersectionObserver is unavailable', () => {
     function Probe() { const { ref, isVisible } = useScrollAnimation(); return <div ref={ref}>{String(isVisible)}</div>; }

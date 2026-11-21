@@ -9,3 +9,12 @@
 - [ ] R7: Confirm career/statistical/date wording — blocked on content-owner confirmation.
 - [ ] R16/R18: Establish hosting/security/release/monitoring ownership — blocked on owner's operating decisions and access.
 - [ ] R17: Decide remaining historical template/contact/language scope — blocked on product-owner decision/content.
+
+# Broadsheet newspaper redesign
+
+- [x] Finalize and commit the interactive Broadsheet HTML prototype (`docs/prototype/broadsheet-prototype.html`).
+- [x] Author `DESIGN.md`, `SKILL.md`, `AGENTS.md`, and `docs/11-broadsheet-redesign-spec.md` preserving full config/locale driven architecture.
+- [x] Extend `src/config/site.json`, `src/config/theme.json`, `src/config/schema.ts`, `src/locales/en.json`, and `src/i18n/schema.ts` with Broadsheet tokens, Continuing Education records, and adaptability-first skill domain notes.
+- [x] Update typography (`Fraunces`, `Newsreader`, `IBM Plex Mono`), print rules, and surfaces in `index.html`, `tailwind.config.ts`, and `src/index.css`.
+- [x] Implement the Broadsheet layout across `Index.tsx`, `Navbar.tsx`, `DisclosureRow.tsx`, `Hero.tsx`, `About.tsx`, `Experience.tsx`, `Education.tsx`, `Projects.tsx`, `Skills.tsx`, `Blog.tsx`, `Contact.tsx`, and `Footer.tsx`.
+- [x] Update `scripts/search-content.ts` and behavioral tests (`src/test/`), and verify tests, lint, production build, and desktop/mobile interactions.

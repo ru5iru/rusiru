@@ -14,16 +14,22 @@ export function siteFilesPlugin(): Plugin {
     const en = load('src/locales/en.json');
     localeSchema.parse(en);
     for (const item of en.education.items) if (!site.educationLogos[item.id]) throw new Error(`Missing education logo for ${item.id}`);
-    for (const category of site.skills) if (!en.skills.categories[category.id]) throw new Error(`Missing skill category wording for ${category.id}`);
+    for (const category of site.skills) {
+      if (!en.skills.categories[category.id]) throw new Error(`Missing skill category wording for ${category.id}`);
+      if (!en.skills.notes[category.id]) throw new Error(`Missing skill domain note for ${category.id}`);
+    }
     return { site: site as SearchSite, en: en as SearchLocale, ...createSearchContent(site, en) };
   };
   const generate = () => {
-    const { site, llms } = content();
+    const { site, en, llms } = content();
+    const theme = themeSchema.parse(load('src/config/theme.json'));
     const url = site.siteUrl.replace(/\/$/, '');
     const write = (file: string, value: string) => {
       const target = path.join(root, 'public', file);
       if (!fs.existsSync(target) || fs.readFileSync(target, 'utf8') !== value) fs.writeFileSync(target, value);
     };
+    const monogram = en.footer.brand.replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' }[character] ?? character));
+    write('favicon.svg', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="hsl(${theme.light.primary})"/><text x="32" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="38" font-weight="700" textLength="52" lengthAdjust="spacingAndGlyphs" fill="hsl(${theme.light.background})">${monogram}</text></svg>\n`);
     write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${url}/</loc></url></urlset>\n`);
     write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${url}/sitemap.xml\n`);
     write('llms.txt', llms);
