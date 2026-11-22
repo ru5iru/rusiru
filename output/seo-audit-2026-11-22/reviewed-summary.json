@@ -1,0 +1,133 @@
+{
+  "site": "https://rusiru.cc/",
+  "date": "2026-11-22",
+  "mode": "advanced, reviewed public/source evidence",
+  "canonical_documents_crawled": 1,
+  "crawl_cap": 200,
+  "http_probes": 10,
+  "browser_states": 3,
+  "source_files_scanned": 78,
+  "status_counts": {
+    "Not tested": 20,
+    "Needs review": 18,
+    "Pass": 12,
+    "Fail": 2,
+    "Not applicable": 2
+  },
+  "issues": [
+    {
+      "id": "SEO-01",
+      "priority": "High",
+      "title": "Missing pages return HTTP 200 and homepage HTML",
+      "items": [
+        7,
+        16,
+        47
+      ],
+      "evidence": "evidence/http-evidence.json (missing/home hashes); evidence/missing-rendered.jpg; netlify.toml:5-8; src/pages/NotFound.tsx:20-33",
+      "impact": "Wrong success responses create a soft-404 risk. A genuine Google soft-404 classification is not confirmed without Search Console.",
+      "proposal": "Generate a localized static 404.html through the existing generator and remove or narrow the blanket 200 SPA rewrite. There is only one intended public document; fragments do not require a catch-all rewrite. Use Netlify custom-404 handling or an explicitly verified 404 rule.",
+      "validation": "After a preview deployment, / must return 200; a random path must return 404 before JavaScript and show an appropriate error document; /#projects, real assets, robots and sitemap must still work.",
+      "reference": "https://developers.google.com/search/docs/crawling-indexing/troubleshoot-crawling-errors"
+    },
+    {
+      "id": "SEO-02",
+      "priority": "Medium",
+      "title": "Server metadata and React Helmet create duplicate/conflicting head tags",
+      "items": [
+        3,
+        7,
+        27
+      ],
+      "evidence": "evidence/browser-evidence.json: homepage has two descriptions and two canonicals; missing-rendered has homepage/error canonicals and index/noindex. scripts/search-content.ts:39-50; src/pages/Index.tsx:32-38; src/pages/NotFound.tsx:20-33",
+      "impact": "Duplicates on the homepage currently agree; on the error route they disagree. This complicates canonicalization and metadata maintenance; no ranking penalty is claimed.",
+      "proposal": "Use one metadata owner per rendered field. For Helmet-managed tags, serialize the expected ownership markers in static output or avoid re-inserting identical homepage tags. Ensure error responses have route-appropriate metadata from the server.",
+      "validation": "Count tags before and after rendering: one canonical, one description, and one appropriate robots directive on each tested route.",
+      "reference": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics"
+    },
+    {
+      "id": "SEO-03",
+      "priority": "Medium",
+      "title": "Education logos are much larger than their displayed size",
+      "items": [
+        17,
+        46
+      ],
+      "evidence": "evidence/browser-evidence.json: ucsc 500x500/92,158 bytes, mcg 337x337/79,370 bytes; both render at 44x44. src/components/sections/Education.tsx:30",
+      "impact": "About 167.5 KiB of source PNG logo data for two small graphics, although lazy loading defers their initial mobile requests.",
+      "proposal": "Create optimized high-density logo variants and reference them through siteConfig.educationLogos. Add a repeatable asset optimization command; preserve transparency and visual quality.",
+      "validation": "Inspect final dimensions/bytes, verify logos at 1x/2x/3x display density and confirm no layout shift or broken paths.",
+      "reference": "https://web.dev/learn/images/performance"
+    },
+    {
+      "id": "SEO-04",
+      "priority": "Medium",
+      "title": "Structured job title differs from the current visible role",
+      "items": [
+        22,
+        30,
+        35
+      ],
+      "evidence": "Live JSON-LD and src/config/site.json:6 say Associate Software Engineer; rendered current experience and biography say Software Engineer. scripts/search-content.ts:21",
+      "impact": "Search engines receive inconsistent professional identity information.",
+      "proposal": "Confirm the current title, then update the configuration so microdata, JSON-LD and visible facts agree. Also verify that dateCreated is a real publication/profile-creation date.",
+      "validation": "Compare the confirmed title with Person.jobTitle, ProfilePage microdata and visible experience after generation and deployment.",
+      "reference": "https://developers.google.com/search/docs/appearance/structured-data/profile-page"
+    },
+    {
+      "id": "SEO-05",
+      "priority": "Medium",
+      "title": "Cold-load performance needs diagnosis, not a field-CWV verdict",
+      "items": [
+        17,
+        44
+      ],
+      "evidence": "evidence/browser-evidence.json: desktop LCP 4.636 s (hero H2), CLS 0.0123; initial script 403,158 bytes decoded / 122,786 compressed. Main CSS about 65.5 KB. Mobile 2.008 s was warm-cache.",
+      "impact": "One desktop lab observation suggests loading improvements may help, but location, network and cache strongly affect this result. No INP or field percentile was measured.",
+      "proposal": "Run repeated cold-cache mobile/desktop Lighthouse tests and inspect Search Console/CrUX. Profile main-bundle work, font delivery, and the deliberate clearing/replacement of static root content before React mounts.",
+      "validation": "Compare repeated controlled runs and inspect field p75 LCP/INP/CLS when data exists. Do not compare these cold desktop and warm mobile samples as device scores.",
+      "reference": "https://web.dev/articles/vitals"
+    },
+    {
+      "id": "SEO-06",
+      "priority": "Low",
+      "title": "Large social preview card has no configured image",
+      "items": [
+        3,
+        52
+      ],
+      "evidence": "evidence/home.html has twitter:card=summary_large_image but no og:image or twitter:image. scripts/search-content.ts:44-50",
+      "impact": "Social link previews may lack the intended image. This is a sharing improvement, not a demonstrated Google ranking defect.",
+      "proposal": "Add a share-image path to site.json, validate it in the schema and emit absolute og:image/twitter:image URLs from the generator, with relevant image text in locale data if needed.",
+      "validation": "Check the deployed image returns an image MIME type and renders in actual social preview tooling.",
+      "reference": "https://ogp.me/"
+    },
+    {
+      "id": "SEO-07",
+      "priority": "Low",
+      "title": "HTTP www requires two permanent redirects",
+      "items": [
+        15,
+        25
+      ],
+      "evidence": "evidence/http-evidence.json: http://www.rusiru.cc/ -> https://www.rusiru.cc/ -> https://rusiru.cc/ (301 + 301). Other tested variants take one hop.",
+      "impact": "A small extra request for that variant; canonical consolidation already works.",
+      "proposal": "If Netlify domain configuration permits, point the HTTP www variant directly at the HTTPS apex.",
+      "validation": "Recheck all four scheme/host variants with certificate validation enabled; preserve one preferred origin and avoid loops.",
+      "reference": "https://docs.netlify.com/manage/routing/redirects/redirect-options/"
+    }
+  ],
+  "limitations": [
+    "One canonical portfolio HTML document was discovered using an advanced crawler cap of 200. A cap is not a statement that 200 pages exist or were audited.",
+    "Supplemental evidence covers ten requested URL/host variants and three browser states: desktop, mobile and one intentional missing URL.",
+    "No GSC, Bing, GA4, rankings, backlink, competitor, outreach or AI-visibility account evidence was supplied. Actual index status, selected canonical, clicks, CTR and manual actions remain unknown.",
+    "The blog subdomain and outbound destinations were not crawled. The main-host sitemap is correctly limited to its one canonical page; fragments and external blog URLs were not added.",
+    "Desktop and mobile browser samples were unthrottled and shared a browser cache. The first desktop sample was cold; mobile was warm. No Lighthouse score, INP measurement or field-CWV pass/fail is reported.",
+    "Mobile screenshots show no overflow at 390px; a complete accessibility/device matrix was not performed. Lazy mobile logos were not yet requested at the initial viewport, not broken.",
+    "The packaged source scanner reported four heuristic warnings: three in unprocessed index.html and one in the design prototype. Live generated metadata/H1 are present, so those warnings are not promoted to production failures.",
+    "The raw packaged checklist labeled all 54 tasks Not tested because its comparisons use integer item numbers while CSV IDs are strings. Raw outputs are retained; this reviewed report and reviewed-audit.csv incorporate independently verified evidence instead.",
+    "Codebase proposed_fixes.patch is empty; no safe same-host HTTP upgrades were identified. Application source, configuration and deployment were not changed by this audit."
+  ],
+  "changes_applied": false,
+  "rollback": "No application change to roll back; delete only this audit output directory if the report is no longer wanted."
+}
