@@ -1,0 +1,70 @@
+{
+  "target": "https://rusiru.lovable.app/",
+  "date": "2026-11-22",
+  "observed_at_utc": "2026-11-22T18:00:48.253713+00:00",
+  "preview_commit": "f258fab50190cc3e2a7240209c3c616d56eeea98",
+  "previous_preview_commit": "720795a3764bb2012d5d1dab5f5a0540685b14aa",
+  "checks": [
+    {
+      "check": "Homepage metadata",
+      "status": "Pass",
+      "observation": "Desktop and mobile each have one description, one production canonical and one robots directive; no missing fragment targets or horizontal overflow."
+    },
+    {
+      "check": "404 social descriptions",
+      "status": "Pass",
+      "observation": "Now corrected for both direct loading and client-side navigation. Each error state has one localized description, no canonical and one noindex directive."
+    },
+    {
+      "check": "Unknown-path HTTP response",
+      "status": "Fail",
+      "observation": "Fresh missing URL returned HTTP 200. It still receives homepage server HTML before JavaScript shows the 404 UI. This is a preview-host observation; production hosting was not requested or retested."
+    },
+    {
+      "check": "Homepage social-description punctuation",
+      "status": "Needs review",
+      "observation": "The garbled Unicode separator U+00E2 U+20AC U+201D remains in homepage OG/Twitter descriptions."
+    },
+    {
+      "check": "Structured job title",
+      "status": "Pass",
+      "observation": "Person.jobTitle remains Software Engineer, consistent with the current visible role. Historical Associate roles are not treated as a mismatch."
+    },
+    {
+      "check": "Education logos",
+      "status": "Pass",
+      "observation": "Both logos remain 132x132 and load at 44x44; combined source bytes remain 26,184 (84.73% below the original 171,528). Automation provenance is still unverified."
+    },
+    {
+      "check": "Social card asset",
+      "status": "Pass",
+      "observation": "Preview PNG remains available: HTTP 200, image/png, 1200x630, 220,012 bytes. The advertised production URL is not revalidated here."
+    },
+    {
+      "check": "Robots/sitemap",
+      "status": "Pass",
+      "observation": "Preview endpoints return 200 and retain intentional rusiru.cc production references. Production sitemap submission/indexing is not revalidated."
+    },
+    {
+      "check": "Performance",
+      "status": "Needs review",
+      "observation": "One cache-disabled unthrottled preview sample: desktop LCP 3.904 s; mobile LCP 0.460 s. Single-run timing varied from the previous test; no INP or field-CWV verdict is supplied."
+    }
+  ],
+  "reviewed_54_status_counts": {
+    "Not tested": 22,
+    "Pass": 13,
+    "Needs review": 16,
+    "Fail": 1,
+    "Not applicable": 2
+  },
+  "limitations": [
+    "Only rusiru.lovable.app was requested and checked; production rusiru.cc and its redirect variants were not retested.",
+    "One discovered document under an advanced 200-page cap, nine HTTP probes, four browser states, and one preview card asset were checked.",
+    "No source edits, application fixes, commits, publishing, or account changes were performed. No rollback is required.",
+    "No Search Console, analytics, keyword, backlink or AI-visibility account evidence was supplied. Their 54-check dispositions remain untested or scope-limited.",
+    "Raw packaged checklist statuses are not authoritative because the installed script has string/integer item-ID comparison defects; the reviewed CSV retains original task identities and separately records verified observations.",
+    "Lab timing is a single unthrottled sample per viewport with browser cache disabled; network/server conditions still vary and INP/field percentiles were not measured."
+  ],
+  "changes_applied": false
+}
