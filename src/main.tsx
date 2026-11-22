@@ -7,10 +7,9 @@ import { applyTheme } from "./config";
 
 applyTheme();
 
-// Clear pre-rendered SEO content inside #root before React hydrates
+// React replaces the static search fallback only when the application commits.
 const root = document.getElementById("root");
 if (!root) throw new Error('Missing application root');
-root.innerHTML = "";
 
 createRoot(root).render(
   <HelmetProvider>

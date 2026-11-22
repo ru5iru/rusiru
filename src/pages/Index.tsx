@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Seo } from '@/components/Seo';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/sections/Hero';
 import { Footer } from '@/components/Footer';
@@ -18,8 +18,7 @@ const Blog = lazy(() => import('@/components/sections/Blog').then(m => ({ defaul
 const Contact = lazy(() => import('@/components/sections/Contact').then(m => ({ default: m.Contact })));
 
 const sectionMap: Record<string, React.ComponentType> = { about: About, experience: Experience, education: Education, projects: Projects, skills: Skills, blog: Blog, contact: Contact };
-const { seo, siteUrl, person } = siteConfig;
-const url = `${siteUrl}/`;
+const { siteUrl, person } = siteConfig;
 
 const Index = () => {
   const { t } = useTranslation();
@@ -29,19 +28,11 @@ const Index = () => {
   }, []);
   return (
     <>
-      <Helmet>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
-        <link rel="canonical" href={url} />
-        <meta property="og:title" content={seo.title} />
-        <meta property="og:description" content={seo.ogDescription} />
-        <meta property="og:url" content={url} />
-      </Helmet>
+      <Seo />
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:bg-primary focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:font-semibold focus:text-primary-foreground">
         {t('common.skipToContent')}
       </a>
       <div itemScope itemType="https://schema.org/ProfilePage">
-        <meta itemProp="dateCreated" content={seo.dateCreated} />
         <div itemProp="mainEntity" itemScope itemType="https://schema.org/Person">
           <meta itemProp="name" content={person.name} />
           <meta itemProp="jobTitle" content={person.jobTitle} />

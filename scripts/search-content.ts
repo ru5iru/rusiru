@@ -1,16 +1,21 @@
 import type siteDefaults from '../src/config/site.json';
+import type themeDefaults from '../src/config/theme.json';
 import type english from '../src/locales/en.json';
 
 export type SearchSite = typeof siteDefaults;
+export type SearchTheme = typeof themeDefaults;
 export type SearchLocale = typeof english;
 const escape = (value: unknown) => String(value ?? '').replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character] ?? character));
 const plain = (value: string) => value.replace(/\*\*|==/g, '');
 const list = (values: string[]) => `<ul>${values.map(value => `<li>${escape(plain(value))}</li>`).join('')}</ul>`;
+const absolute = (base: string, reference: string) => new URL(reference, base).href;
 
 export function createSearchContent(site: SearchSite, en: SearchLocale) {
   const url = `${site.siteUrl.replace(/\/$/, '')}/`;
   const projects = en.projects.items;
   const personId = `${url}#person`;
+  const shareImage = absolute(url, site.seo.shareImage);
+  const shareImageAlt = en.seo.shareImageAlt.replace('{name}', site.person.name);
   const credentials = en.education.certifications.map(certification => ({
     '@type': 'EducationalOccupationalCredential',
     name: certification.title,
@@ -19,7 +24,7 @@ export function createSearchContent(site: SearchSite, en: SearchLocale) {
   }));
   const person = {
     '@type': 'Person', '@id': personId, name: site.person.name, jobTitle: site.person.jobTitle, url,
-    image: new URL(site.person.profileImage, url).href, email: site.person.email,
+    image: absolute(url, site.person.profileImage), email: site.person.email,
     sameAs: site.social.map(social => social.url),
     address: { '@type': 'PostalAddress', addressLocality: site.person.location.city, addressCountry: site.person.location.countryCode },
     knowsAbout: site.skills.flatMap(category => category.items.map(item => item.name)),
@@ -30,24 +35,31 @@ export function createSearchContent(site: SearchSite, en: SearchLocale) {
   };
   const graph: unknown[] = [
     person,
-    { '@type': 'ProfilePage', '@id': url, url, name: site.seo.title, description: site.seo.description, dateCreated: site.seo.dateCreated, inLanguage: en.language.code.toLowerCase(), mainEntity: { '@id': personId } },
+    { '@type': 'ProfilePage', '@id': url, url, name: site.seo.title, description: site.seo.description, inLanguage: en.language.code.toLowerCase(), mainEntity: { '@id': personId } },
     { '@type': 'WebSite', url, name: site.seo.title, author: { '@id': personId } },
   ];
   if (site.sections.includes('projects')) graph.push({ '@type': 'ItemList', numberOfItems: projects.length, itemListElement: projects.map((project, index) => ({ '@type': 'ListItem', position: index + 1, item: { '@type': 'CreativeWork', name: project.title, description: project.description.join(' '), url: project.link ?? project.github, author: { '@id': personId } } })) });
   if (site.sections.includes('blog')) graph.push({ '@type': 'Blog', url: site.blogUrl, author: { '@id': personId }, blogPost: en.blog.posts.map(post => ({ '@type': 'BlogPosting', headline: post.title, description: post.excerpt, datePublished: post.date, url: post.link, author: { '@id': personId } })) });
 
-  const metadata = `<title>${escape(site.seo.title)}</title>
-<meta name="description" content="${escape(site.seo.description)}" />
-<link rel="canonical" href="${escape(url)}" />
+  const metadata = `<title data-rh="true">${escape(site.seo.title)}</title>
+<meta name="description" content="${escape(site.seo.description)}" data-rh="true" />
+<link rel="canonical" href="${escape(url)}" data-rh="true" />
 <meta name="author" content="${escape(site.person.name)}" />
-<meta name="robots" content="index, follow" />
-<meta property="og:title" content="${escape(site.seo.title)}" />
-<meta property="og:description" content="${escape(site.seo.ogDescription)}" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="${escape(url)}" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="${escape(site.seo.title)}" />
-<meta name="twitter:description" content="${escape(site.seo.ogDescription)}" />
+<meta name="robots" content="index, follow" data-rh="true" />
+<meta property="og:title" content="${escape(site.seo.title)}" data-rh="true" />
+<meta property="og:description" content="${escape(site.seo.ogDescription)}" data-rh="true" />
+<meta property="og:type" content="website" data-rh="true" />
+<meta property="og:url" content="${escape(url)}" data-rh="true" />
+<meta property="og:image" content="${escape(shareImage)}" data-rh="true" />
+<meta property="og:image:width" content="1200" data-rh="true" />
+<meta property="og:image:height" content="630" data-rh="true" />
+<meta property="og:image:type" content="image/png" data-rh="true" />
+<meta property="og:image:alt" content="${escape(shareImageAlt)}" data-rh="true" />
+<meta name="twitter:card" content="summary_large_image" data-rh="true" />
+<meta name="twitter:title" content="${escape(site.seo.title)}" data-rh="true" />
+<meta name="twitter:description" content="${escape(site.seo.ogDescription)}" data-rh="true" />
+<meta name="twitter:image" content="${escape(shareImage)}" data-rh="true" />
+<meta name="twitter:image:alt" content="${escape(shareImageAlt)}" data-rh="true" />
 <meta name="theme-color" content="${escape(site.seo.themeColor)}" />
 <meta name="geo.region" content="${escape(site.person.location.countryCode)}" />
 <meta name="geo.placename" content="${escape(site.person.location.city)}, ${escape(site.person.location.country)}" />
@@ -86,4 +98,51 @@ export function createSearchContent(site: SearchSite, en: SearchLocale) {
   };
   const llms = `# ${site.person.name}\n\n> ${site.seo.description}\n\n${site.sections.map(id => `## ${labels[id]}\n\n${sectionText(id)}\n`).join('\n')}\n## ${en.common.linksLabel}\n\n${site.social.map(social => `- [${social.platform}](${social.url})`).join('\n')}\n- [${en.common.sitemapLabel}](${url}sitemap.xml)\n`;
   return { metadata, fallback, llms };
+}
+
+export function createNotFoundDocument(site: SearchSite, en: SearchLocale, theme: SearchTheme) {
+  const url = `${site.siteUrl.replace(/\/$/, '')}/`;
+  const title = `${en.notFound.title} | ${site.person.name}`;
+  const shareImage = absolute(url, site.seo.shareImage);
+  const shareImageAlt = en.seo.shareImageAlt.replace('{name}', site.person.name);
+  const color = (name: string) => {
+    const [hue, saturation, lightness] = theme.light[name as keyof typeof theme.light].split(/\s+/);
+    return `hsl(${hue}, ${saturation}, ${lightness})`;
+  };
+  return `<!doctype html>
+<html lang="${escape(en.language.code.toLowerCase())}" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>${escape(title)}</title>
+<meta name="description" content="${escape(en.notFound.description)}" />
+<meta name="robots" content="noindex, follow" />
+<meta property="og:title" content="${escape(title)}" />
+<meta property="og:description" content="${escape(en.notFound.description)}" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="${escape(shareImage)}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:alt" content="${escape(shareImageAlt)}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="${escape(title)}" />
+<meta name="twitter:description" content="${escape(en.notFound.description)}" />
+<meta name="twitter:image" content="${escape(shareImage)}" />
+<meta name="twitter:image:alt" content="${escape(shareImageAlt)}" />
+<meta name="theme-color" content="${escape(site.seo.themeColor)}" />
+<link rel="icon" href="/favicon.ico?v=broadsheet" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=broadsheet" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=broadsheet" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=IBM+Plex+Mono:wght@400;600&family=Newsreader:wght@400;600&display=swap" />
+<style>
+:root{--paper:${color('background')};--ink:${color('foreground')};--desk:${color('desk')};--rule:${color('border')};--red:${color('primary')};--on-red:${color('primary-foreground')}}
+*{box-sizing:border-box}body{margin:0;background:var(--desk);color:var(--ink);font-family:Newsreader,Georgia,serif}.page{width:min(52rem,calc(100% - 2rem));margin:8vh auto;background:var(--paper);border:1px solid var(--ink);padding:clamp(1.5rem,5vw,4rem)}.kicker,.meta,a{font-family:'IBM Plex Mono',monospace}.kicker{color:var(--red);font-size:.75rem;font-weight:600;letter-spacing:.12em}.number{margin:.5rem 0 0;font-family:Fraunces,Georgia,serif;font-size:clamp(5rem,20vw,10rem);line-height:.9}h1{margin:1rem 0;font-family:Fraunces,Georgia,serif;font-size:clamp(1.8rem,5vw,3rem);line-height:1.05}.message{font-size:1.25rem}.description{padding-top:1rem;border-top:1px solid var(--rule);line-height:1.6}a{display:inline-block;margin-top:1rem;background:var(--red);color:var(--on-red);padding:.85rem 1.1rem;text-decoration:none;font-size:.8rem;font-weight:600}a:focus-visible{outline:3px solid var(--red);outline-offset:4px}@media print{body{background:var(--paper)}.page{margin:0 auto}}
+</style>
+</head>
+<body><main class="page" id="main"><div class="kicker">${escape(en.nav.editionBadge)}</div><div class="number" aria-hidden="true">404</div><h1>${escape(en.notFound.title)}</h1><p class="message">${escape(en.notFound.message)}</p><p class="description">${escape(en.notFound.description)}</p><a href="/">${escape(en.notFound.backHome)}</a></main></body>
+</html>`;
 }

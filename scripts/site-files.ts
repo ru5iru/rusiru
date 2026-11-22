@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import type { Plugin } from 'vite';
 import { siteSchema, themeSchema } from '../src/config/schema';
-import { createSearchContent, type SearchSite, type SearchLocale } from './search-content';
+import { createNotFoundDocument, createSearchContent, type SearchSite, type SearchLocale, type SearchTheme } from './search-content';
 import { localeSchema } from '../src/i18n/schema';
 
 export function siteFilesPlugin(): Plugin {
@@ -10,7 +10,8 @@ export function siteFilesPlugin(): Plugin {
   const load = (file: string) => JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'));
   const content = () => {
     const site = load('src/config/site.json');
-    siteSchema.parse(site); themeSchema.parse(load('src/config/theme.json'));
+    const theme = load('src/config/theme.json');
+    siteSchema.parse(site); themeSchema.parse(theme);
     const en = load('src/locales/en.json');
     localeSchema.parse(en);
     for (const item of en.education.items) if (!site.educationLogos[item.id]) throw new Error(`Missing education logo for ${item.id}`);
@@ -18,10 +19,11 @@ export function siteFilesPlugin(): Plugin {
       if (!en.skills.categories[category.id]) throw new Error(`Missing skill category wording for ${category.id}`);
       if (!en.skills.notes[category.id]) throw new Error(`Missing skill domain note for ${category.id}`);
     }
-    return { site: site as SearchSite, en: en as SearchLocale, ...createSearchContent(site, en) };
+    const search = createSearchContent(site, en);
+    return { site: site as SearchSite, en: en as SearchLocale, theme: theme as SearchTheme, ...search, notFound: createNotFoundDocument(site, en, theme) };
   };
   const generate = () => {
-    const { site, llms } = content();
+    const { site, llms, notFound } = content();
     const url = site.siteUrl.replace(/\/$/, '');
     const write = (file: string, value: string) => {
       const target = path.join(root, 'public', file);
@@ -30,6 +32,7 @@ export function siteFilesPlugin(): Plugin {
     write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${url}/</loc></url></urlset>\n`);
     write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${url}/sitemap.xml\n`);
     write('llms.txt', llms);
+    write('404.html', notFound);
     write('site.webmanifest', JSON.stringify({ name: site.seo.title, short_name: site.person.name, icons: [{ src: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' }, { src: '/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' }], theme_color: site.seo.themeColor, background_color: site.seo.themeColor, display: 'standalone' }, null, 2) + '\n');
   };
   return {
