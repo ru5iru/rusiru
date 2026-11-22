@@ -89,9 +89,9 @@ Systems & Quality Tooling — Static analysis, security gates, Linux ops & API t
 
 ## Latest Blog Posts
 
-- [OWASP Top 10: A Developer's Practical Guide](https://iamrusiru.lovable.app/post/owasp-top-ten): Security isn't just for the infosec team. Every developer should understand these ten vulnerabilities and how to prevent them in their own code.
-- [Clean Code Principles Every Developer Should Know](https://iamrusiru.lovable.app/post/clean-code-principles): Writing code that works is easy. Writing code that others can read, maintain, and extend is the real challenge. Here are the principles I follow.
-- [Code Review Etiquette: Being Kind and Thorough](https://iamrusiru.lovable.app/post/code-review-etiquette): Good code reviews build trust. Bad ones build resentment. Here are the habits I've adopted to make reviews productive for everyone.
+- [OWASP Top 10: A Developer's Practical Guide](https://blog.rusiru.cc/post/owasp-top-ten): Security isn't just for the infosec team. Every developer should understand these ten vulnerabilities and how to prevent them in their own code.
+- [Clean Code Principles Every Developer Should Know](https://blog.rusiru.cc/post/clean-code-principles): Writing code that works is easy. Writing code that others can read, maintain, and extend is the real challenge. Here are the principles I follow.
+- [Code Review Etiquette: Being Kind and Thorough](https://blog.rusiru.cc/post/code-review-etiquette): Good code reviews build trust. Bad ones build resentment. Here are the habits I've adopted to make reviews productive for everyone.
 
 ## Let's build something together
 
@@ -107,6 +107,6 @@ Email: r.rathmina@gmail.com
 - [facebook](https://web.facebook.com/ru5iru)
 - [x](https://twitter.com/ru5iru)
 - [reddit](https://www.reddit.com/u/ru5iru/)
-- [blog](https://iamrusiru.lovable.app/)
+- [blog](https://blog.rusiru.cc/)
 - [spotify](https://open.spotify.com/user/31ihlph5wpwcdblzhklpoc3evmy4)
-- [Sitemap](https://rusiru.lovable.app/sitemap.xml)
+- [Sitemap](https://rusiru.cc/sitemap.xml)

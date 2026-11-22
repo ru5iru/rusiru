@@ -105,7 +105,7 @@ Added `docs/README.md`, `01-overview.md` through `10-glossary.md`, and this chan
 | Plan: experience vertical timeline/animated markers | [Experience](../src/components/sections/Experience.tsx) renders accordion rows | Describe actual row interaction; keep plan as design history |
 | Plan: parallax and smooth scroll indicator | [Hero](../src/components/sections/Hero.tsx) renders CSS animations/marquee without a scroll indicator or parallax handler | Do not present them as delivered features |
 | Plan: project technology icons and skill tooltips | [Projects](../src/components/sections/Projects.tsx) renders text badges; [Skills](../src/components/sections/Skills.tsx) renders labeled chips without tooltip primitives | Describe actual badges/chips; Hero images separately have native title text |
-| Plan/older copy: Blogger destination | [Blog](../src/components/sections/Blog.tsx) uses locale URLs on `iamrusiru.lovable.app` | Describe external blog without asserting a Blogger backend |
+| Plan/older copy: Blogger destination | [Blog](../src/components/sections/Blog.tsx) uses locale URLs on `blog.rusiru.cc` | Describe external blog without asserting a Blogger backend |
 | Source comments imply hydration | [main.tsx:8](../src/main.tsx#L8) clears root and calls `createRoot`, not `hydrateRoot` | Explain replacement of static HTML |
 | Locale/metadata summaries represent the live project list | `projects.geoSummary` and [index.html:251](../index.html#L251) still say six | Flag stale copies; documentation does not silently treat them as canonical |
 
