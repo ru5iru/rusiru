@@ -3,6 +3,9 @@
     "name": "English",
     "code": "EN"
   },
+  "seo": {
+    "shareImageAlt": "Engineering Broadsheet portrait and RR monogram for {name}"
+  },
   "nav": {
     "brand": "RR.",
     "links": {
@@ -291,7 +294,7 @@
       },
       {
         "title": "Jira Worklog Manager",
-        "github": "https://github.com/ru5iru/jira-time-tracker",
+        "github": "https://github.com/ru5iru/jira-time-tracker-pages",
         "link": "https://timelogs.lovable.app",
         "isExternal": true,
         "description": [
@@ -320,7 +323,6 @@
       },
       {
         "title": "Project-X",
-        "github": "https://github.com/ru5iru/Project-X",
         "description": [
           "Produce collection and production automation system designed for farmers.",
           "Implemented storage, customer, and supplier management modules using an MVC-based architecture.",
@@ -368,7 +370,6 @@
       },
       {
         "title": "ToDo",
-        "github": "https://github.com/ru5iru/ToDo",
         "description": [
           "Task manager app built with Flutter.",
           "Capable of managing tasks, adding reminders, and setting priorities."
@@ -431,7 +432,7 @@
         "date": "2026-03-22",
         "dateLabel": "Mar 2026",
         "readTime": "10 min read",
-        "link": "https://blog.rusiru.cc/post/owasp-top-ten"
+        "link": "https://blog.rusiru.cc/2026/03/owasp-top-ten.html"
       },
       {
         "title": "Clean Code Principles Every Developer Should Know",
@@ -439,7 +440,7 @@
         "date": "2026-03-20",
         "dateLabel": "Mar 2026",
         "readTime": "8 min read",
-        "link": "https://blog.rusiru.cc/post/clean-code-principles"
+        "link": "https://blog.rusiru.cc/2026/03/clean-code-principles.html"
       },
       {
         "title": "Code Review Etiquette: Being Kind and Thorough",
@@ -447,7 +448,7 @@
         "date": "2025-12-08",
         "dateLabel": "Dec 2025",
         "readTime": "6 min read",
-        "link": "https://blog.rusiru.cc/post/code-review-etiquette"
+        "link": "https://blog.rusiru.cc/2025/12/code-review-etiquette.html"
       }
     ],
     "kicker": "SECTION C2 · SYNDICATED COLUMNS & ESSAYS",

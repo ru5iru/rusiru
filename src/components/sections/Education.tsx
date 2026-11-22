@@ -12,7 +12,7 @@ export function Education() {
   const { t, tr } = useTranslation();
   const items = tr<Item[]>('education.items') ?? [];
   const certifications = tr<Certification[]>('education.certifications') ?? [];
-  const ledgerLink = <Button asChild variant="link" className="h-auto whitespace-normal p-0 text-left font-mono text-xs font-semibold text-primary"><a href={siteConfig.continuingEducationUrl} target="_blank" rel="noopener noreferrer">{t('education.viewAllCertifications')} <ExternalLink aria-hidden="true" className="ml-1 h-3.5 w-3.5" /></a></Button>;
+  const ledgerLink = <Button asChild variant="link" className="h-auto min-h-6 whitespace-normal p-0 text-left font-mono text-xs font-semibold text-primary"><a href={siteConfig.continuingEducationUrl} target="_blank" rel="noopener noreferrer">{t('education.viewAllCertifications')} <ExternalLink aria-hidden="true" className="ml-1 h-3.5 w-3.5" /></a></Button>;
 
   return (
     <section id="education" aria-label={t('education.ariaLabel')} className="py-8 r-double-b">
@@ -66,7 +66,7 @@ export function Education() {
           </div>
           <div className="r-box flex flex-wrap items-center justify-between gap-2 bg-secondary p-3.5 font-mono text-xs">
             <span>{t('education.moreCertificationsNote')}</span>
-            <a href={siteConfig.continuingEducationUrl} target="_blank" rel="noopener noreferrer" className="font-bold text-primary underline">{t('education.seeAllCertifications')}</a>
+            <a href={siteConfig.continuingEducationUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-6 items-center font-bold text-primary underline">{t('education.seeAllCertifications')}</a>
           </div>
         </div>
       </div>

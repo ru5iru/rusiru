@@ -1,45 +1,23 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
-import { siteConfig } from "@/config";
-import { useTranslation } from "@/i18n/i18n";
+import { Seo } from '@/components/Seo';
+import { useTranslation } from '@/i18n/i18n';
+import { siteConfig } from '@/config';
 
 const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
-
   const { t } = useTranslation();
-  const url = `${siteConfig.siteUrl}${location.pathname}`;
-  const title = `${t("notFound.title")} | ${siteConfig.person.name}`;
+  const title = `${t('notFound.title')} | ${siteConfig.person.name}`;
 
   return (
     <>
-      <Helmet>
-        <title>{title}</title>
-        <meta
-          name="description"
-          content={t("notFound.description")}
-        />
-        <meta name="robots" content="noindex, follow" />
-        <link rel="canonical" href={url} />
-        <meta property="og:title" content={title} />
-        <meta
-          property="og:description"
-          content={t("notFound.description")}
-        />
-        <meta property="og:url" content={url} />
-      </Helmet>
-      <div className="flex min-h-screen items-center justify-center bg-muted">
-        <div className="text-center">
-          <h1 className="mb-4 text-4xl font-bold">404</h1>
-          <p className="mb-4 text-xl text-muted-foreground">{t("notFound.message")}</p>
-          <a href="/" className="text-primary underline hover:text-primary/90">
-            {t("notFound.backHome")}
-          </a>
-        </div>
+      <Seo title={title} description={t('notFound.description')} url="" robots="noindex, follow" />
+      <div className="min-h-screen bg-desk p-4 text-desk-foreground sm:p-8">
+        <main className="broadsheet-page mx-auto max-w-3xl p-8 text-foreground sm:p-12">
+          <div className="font-mono text-xs font-semibold uppercase tracking-widest text-primary">{t('nav.editionBadge')}</div>
+          <div aria-hidden="true" className="mt-4 font-display text-8xl font-black leading-none sm:text-9xl">404</div>
+          <h1 className="mt-6 font-display text-3xl font-black sm:text-4xl">{t('notFound.title')}</h1>
+          <p className="mt-3 text-xl text-muted-foreground">{t('notFound.message')}</p>
+          <p className="mt-5 pt-5 r-t">{t('notFound.description')}</p>
+          <a href="/" className="mt-6 inline-block bg-primary px-5 py-3 font-mono text-xs font-semibold text-primary-foreground hover:underline">{t('notFound.backHome')}</a>
+        </main>
       </div>
     </>
   );

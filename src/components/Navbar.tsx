@@ -55,7 +55,7 @@ export function Navbar({ children }: { children: ReactNode }) {
       href={link.href}
       onClick={event => click(event, link.key)}
       aria-current={activeSection === link.key ? 'location' : undefined}
-      className={`r-box px-2.5 py-0.5 font-semibold hover:underline ${activeSection === link.key ? 'bg-foreground text-background' : link.key === 'contact' ? 'text-primary' : ''}`}
+      className={`r-box inline-flex min-h-6 items-center px-2.5 py-0.5 font-semibold hover:underline ${activeSection === link.key ? 'bg-foreground text-background' : link.key === 'contact' ? 'text-primary' : ''}`}
     >
       {t(`nav.links.${link.key}`)}
     </a>
