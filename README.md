@@ -12,7 +12,7 @@ Make it yours by editing config files only — no code changes needed.
 | Brand colors (HSL) for light/dark | `src/config/theme.json` |
 | All wording: hero, about, experience, education, projects, blog posts, contact, footer, 404 | `src/locales/en.json` |
 | Images (profile photo, logos, icons) | `public/media/` |
-| Favicons | `public/favicon.svg` is generated from theme colors and `footer.brand`; `public/*.png` and `public/favicon.ico` provide raster fallbacks |
+| Favicons | `public/favicon.svg` is the custom vector icon; `public/*.png` and `public/favicon.ico` provide raster fallbacks |
 
 ## Add a language
 Copy `src/locales/en.json` to e.g. `si.json`, translate the values, and set `language.name`/`language.code`. It appears in the language menu automatically. In About paragraphs, `**text**` is bold and `==text==` is highlighted.
