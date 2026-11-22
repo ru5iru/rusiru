@@ -5,11 +5,12 @@ import { useTranslation } from '@/i18n/i18n';
 interface SeoProps {
   title?: string;
   description?: string;
+  socialDescription?: string;
   url?: string;
   robots?: string;
 }
 
-export function Seo({ title = siteConfig.seo.title, description = siteConfig.seo.description, url = `${siteConfig.siteUrl}/`, robots = 'index, follow' }: SeoProps) {
+export function Seo({ title = siteConfig.seo.title, description = siteConfig.seo.description, socialDescription = siteConfig.seo.ogDescription, url = `${siteConfig.siteUrl}/`, robots = 'index, follow' }: SeoProps) {
   const { t } = useTranslation();
   const { seo, person, siteUrl } = siteConfig;
   const image = new URL(seo.shareImage, `${siteUrl}/`).href;
@@ -22,7 +23,7 @@ export function Seo({ title = siteConfig.seo.title, description = siteConfig.seo
       {url && <link rel="canonical" href={url} />}
       <meta name="robots" content={robots} />
       <meta property="og:title" content={title} />
-      <meta property="og:description" content={seo.ogDescription} />
+      <meta property="og:description" content={socialDescription} />
       <meta property="og:type" content="website" />
       {url && <meta property="og:url" content={url} />}
       <meta property="og:image" content={image} />
@@ -32,7 +33,7 @@ export function Seo({ title = siteConfig.seo.title, description = siteConfig.seo
       <meta property="og:image:alt" content={imageAlt} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={seo.ogDescription} />
+      <meta name="twitter:description" content={socialDescription} />
       <meta name="twitter:image" content={image} />
       <meta name="twitter:image:alt" content={imageAlt} />
     </Helmet>

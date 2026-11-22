@@ -5,10 +5,11 @@ import { siteConfig } from '@/config';
 const NotFound = () => {
   const { t } = useTranslation();
   const title = `${t('notFound.title')} | ${siteConfig.person.name}`;
+  const description = t('notFound.description');
 
   return (
     <>
-      <Seo title={title} description={t('notFound.description')} url="" robots="noindex, follow" />
+      <Seo title={title} description={description} socialDescription={description} url="" robots="noindex, follow" />
       <div className="min-h-screen bg-desk p-4 text-desk-foreground sm:p-8">
         <main className="broadsheet-page mx-auto max-w-3xl p-8 text-foreground sm:p-12">
           <div className="font-mono text-xs font-semibold uppercase tracking-widest text-primary">{t('nav.editionBadge')}</div>

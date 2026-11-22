@@ -31,3 +31,12 @@
 - [x] Pass 35 tests, lint, production build, Chromium desktop/mobile checks, corrected outbound links, and Netlify-equivalent HTTP checks.
 - [ ] Verify the deployed rusiru.cc responses, social crawlers, and comparative cold-load performance after publication; field Core Web Vitals require real-user production data.
 - [ ] Complete account/hosting-owner items: Search Console and Bing inspections, sitemap submission, domain/redirect configuration, backlink and AI-visibility research. No analytics was added.
+
+# SEO verification recheck — 2026-11-22 preview
+
+- [x] Triage the new reviewed findings against current source and distinguish confirmed defects from external or advisory items.
+- [x] Use the localized error description for rendered Open Graph and Twitter metadata without changing the Broadsheet design.
+- [x] Confirm the reported em-dash mojibake is absent from all six captured social descriptions and current source; leave valid UTF-8 copy unchanged.
+- [x] Pass 36 tests, lint, automatic production builds, and Chromium homepage/error-page metadata checks with no browser errors.
+- [x] Commit the verified corrections with the requested ru5iru co-author trailer.
+- [ ] Recheck unknown-path HTTP status and `/index.html` redirection on rusiru.cc after deployment; the Lovable preview host still uses its own SPA fallback.
