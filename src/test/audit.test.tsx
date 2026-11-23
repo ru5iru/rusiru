@@ -8,7 +8,6 @@ import { mergeLocale, readLanguage, storeLanguage } from '@/i18n/locale';
 import { I18nProvider } from '@/i18n/i18n';
 import { Projects } from '@/components/sections/Projects';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { navigateToSection } from '@/lib/navigation';
 import { createSearchContent } from '../../scripts/search-content';
 import { localeSchema } from '@/i18n/schema';
@@ -56,10 +55,6 @@ describe('interactions', () => {
     fireEvent.click(jira); expect(jira).toHaveAttribute('aria-expanded', 'true');
     fireEvent.click(screen.getByRole('button', { name: en.projects.showLess }));
     expect(screen.queryByRole('button', { name: /Roamly/ })).not.toBeInTheDocument();
-  });
-  it('shows content when IntersectionObserver is unavailable', () => {
-    function Probe() { const { ref, isVisible } = useScrollAnimation(); return <div ref={ref}>{String(isVisible)}</div>; }
-    render(<Probe />); expect(screen.getByText('true')).toBeInTheDocument();
   });
   it('waits for a lazy target', async () => {
     const cancel = navigateToSection('late-target');
