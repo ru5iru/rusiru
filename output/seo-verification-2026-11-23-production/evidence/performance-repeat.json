@@ -1,0 +1,28 @@
+[
+  {
+    "run": 1,
+    "observedAt": "2026-11-23T07:25:12.691Z",
+    "conditions": "1440x900, browser cache cleared/disabled; no CPU/network throttle",
+    "lcpMs": 2440,
+    "cls": 0.01380584113980517,
+    "navigation": [
+      {
+        "ttfb": 47.299999952316284,
+        "load": 2453.100000023842
+      }
+    ]
+  },
+  {
+    "run": 2,
+    "observedAt": "2026-11-23T07:25:16.469Z",
+    "conditions": "1440x900, browser cache cleared/disabled; no CPU/network throttle",
+    "lcpMs": 1100,
+    "cls": 0.017901618612155994,
+    "navigation": [
+      {
+        "ttfb": 275.90000009536743,
+        "load": 1542.8000000715256
+      }
+    ]
+  }
+]
