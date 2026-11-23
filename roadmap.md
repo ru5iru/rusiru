@@ -46,5 +46,13 @@
 - [x] Confirm the f258fab preview retains deduplicated metadata, corrected direct/client 404 social descriptions, the confirmed job title, optimized logos, social card, robots.txt, and sitemap.
 - [x] Disprove the repeated punctuation finding: source, raw HTML, and every captured homepage social description contain the correct em dash (U+2014), with no mojibake; the audit detector is a false positive.
 - [x] Confirm the remaining preview unknown-path 200 response is Lovable host fallback behavior, not a regression in the Netlify rules already verified locally.
-- [ ] Deploy the current build to rusiru.cc: production still serves the older `index-B-di4xkf.js` bundle; `/index.html` and a fresh unknown path return 200, and the advertised social-card URL returns HTML rather than the PNG.
-- [ ] Repeat controlled production performance, social-crawler, structured-data, redirect, Search Console, and Bing checks after deployment; the single preview LCP sample is not a field-Core-Web-Vitals verdict.
+- [x] Deploy the current build to rusiru.cc: production now serves `index-0pHDVQ0C.js`, real static 404 responses, the `/index.html` permanent redirect, and the advertised PNG social card.
+- [ ] Repeat controlled production performance, social-crawler, structured-data, Search Console, and Bing checks; laboratory LCP samples are not field-Core-Web-Vitals verdicts.
+
+# Production SEO verification — 2026-11-23
+
+- [x] Verify production 404s, canonical/index.html redirects, deduplicated metadata, error-page social descriptions, structured identity, optimized logos, social image, robots.txt, and sitemap.
+- [x] Disprove the repeated homepage punctuation finding: source, raw UTF-8 HTML, and all captured homepage OG/Twitter descriptions contain the correct em dash (U+2014), not mojibake.
+- [x] Check all 19 configured external destinations: 16 return HTTP 200; LinkedIn returns 999 and Reddit returns 403 to automated requests, so those three require manual browser review rather than destructive link changes.
+- [ ] If the DNS/hosting provider permits it, redirect HTTP www directly to HTTPS apex instead of through HTTPS www; canonicalization already works and no loop exists.
+- [ ] Obtain Search Console/Bing indexing evidence and field LCP/INP/CLS data; current unthrottled desktop LCP samples vary from 1.100s to 6.036s and cannot establish a code regression or field-CWV failure.
