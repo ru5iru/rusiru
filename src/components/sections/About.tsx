@@ -33,7 +33,7 @@ export function About() {
                 <time className={`font-mono font-semibold ${index === 0 ? 'text-primary' : 'text-faint'}`}>{item.period}</time>
                 <h4 className="mt-0.5 font-display text-base font-bold">{item.role}</h4>
                 <p className="mt-1 leading-relaxed text-muted-foreground">{item.summary ?? item.description[0]}</p>
-                <button type="button" onClick={() => jumpToBroadsheetItem('experience', index)} className={`mt-1.5 text-left font-mono text-[11px] underline ${index === 0 ? 'font-semibold text-primary' : ''}`}>
+                <button type="button" onClick={() => jumpToBroadsheetItem('experience', index)} className={`mt-1.5 inline-flex min-h-6 items-center text-left font-mono text-[11px] underline ${index === 0 ? 'font-semibold text-primary' : ''}`}>
                   {t('hero.readDispatch')}
                 </button>
               </article>
@@ -87,14 +87,14 @@ export function About() {
                 <div className="font-mono text-[10px] font-bold text-primary">{t('projects.dossierLabel', { number: String(index + 1).padStart(2, '0') })}{project.frontPageKicker ? ` · ${project.frontPageKicker}` : ''}</div>
                 <h4 className="font-display text-base font-bold">{project.title}</h4>
                 <p className="leading-relaxed text-muted-foreground">{project.summary ?? project.description[0]}</p>
-                <button type="button" onClick={() => jumpToBroadsheetItem('projects', index)} className="font-mono text-[11px] font-semibold text-primary underline">{t('hero.readDossier')}</button>
+                <button type="button" onClick={() => jumpToBroadsheetItem('projects', index)} className="inline-flex min-h-6 items-center font-mono text-[11px] font-semibold text-primary underline">{t('hero.readDossier')}</button>
               </article>
             ))}
             <article className="r-box space-y-1.5 bg-card p-3">
               <div className="font-mono text-[10px] font-bold">{t('education.certificationsSubtitle')}</div>
               <h4 className="font-display text-base font-bold">{t('hero.continuingEducationTitle')}</h4>
               <p className="leading-relaxed text-muted-foreground">{t('hero.continuingEducationSummary')}</p>
-              <a href="#education" onClick={event => { event.preventDefault(); navigateToSection('education'); }} className="inline-block font-mono text-[11px] font-semibold text-primary underline">{t('hero.inspectEducation')}</a>
+              <a href="#education" onClick={event => { event.preventDefault(); navigateToSection('education'); }} className="inline-flex min-h-6 items-center font-mono text-[11px] font-semibold text-primary underline">{t('hero.inspectEducation')}</a>
             </article>
           </div>
         </aside>

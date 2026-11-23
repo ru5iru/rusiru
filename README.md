@@ -11,14 +11,15 @@ Make it yours by editing config files only — no code changes needed.
 | Education logos (keyed by education item `id`) | `site.json` → `educationLogos` |
 | Brand colors (HSL) for light/dark | `src/config/theme.json` |
 | All wording: hero, about, experience, education, projects, blog posts, contact, footer, 404 | `src/locales/en.json` |
-| Images (profile photo, logos, icons) | `public/media/` |
+| Images (profile photo, logos, icons) and social card path | `public/media/` and `site.json` → `seo.shareImage` |
+| Social image alternative text | `src/locales/en.json` → `seo.shareImageAlt` |
 | Favicons | `public/favicon.svg` is the custom vector icon; `public/*.png` and `public/favicon.ico` provide raster fallbacks |
 
 ## Add a language
 Copy `src/locales/en.json` to e.g. `si.json`, translate the values, and set `language.name`/`language.code`. It appears in the language menu automatically. In About paragraphs, `**text**` is bold and `==text==` is highlighted.
 
 ## Generated files
-`sitemap.xml`, `robots.txt`, `site.webmanifest`, and `llms.txt` are regenerated from settings and English copy. Vite injects matching metadata, JSON-LD and full readable no-JavaScript section content into the served HTML; do not hand-edit generated content. This is static content generation, not React server rendering or hydration. Settings and English edits also regenerate files during development. Sitemap lastmod is omitted because a reliable publication timestamp is not configured.
+`sitemap.xml`, `robots.txt`, `site.webmanifest`, `llms.txt`, and the localized `404.html` are regenerated from settings and English copy. Vite injects matching metadata, JSON-LD, social image tags, and full readable no-JavaScript section content into the served HTML; do not hand-edit generated content. This is static content generation, not React server rendering or hydration. Settings and English edits also regenerate files during development. Sitemap lastmod and ProfilePage dateCreated are omitted because reliable publication timestamps are not configured. Netlify serves `404.html` with an actual HTTP 404 for unknown paths and permanently redirects `/index.html` to the canonical root.
 
 ## Development
 
@@ -34,7 +35,7 @@ bun run build
 
 Settings reject invalid required fields, unsafe URLs, duplicate/unsupported section IDs and malformed HSL values. Use supported IDs from the current section list. An empty section list is supported. Incomplete translations fall back to English, including malformed values and missing placeholders; keep arrays in the same order and length as English.
 
-The profile photo is optimized at 448px. Keep the eager hero image small when replacing it. Fonts and adding new section types still require code changes; project/blog links currently remain in the English locale. Those broader historical template promises are not implemented.
+The profile photo is optimized at 448px. Keep the eager hero image small when replacing it. Put original education logos at `media-src/logos/` using the same filenames configured under `site.json` → `educationLogos`; `bun run optimize:images` resizes them to at most 132px for high-density 44px display and regenerates the 1200×630 social card from the configured portrait, theme, and custom monogram. This command also runs automatically before production builds. Fonts and adding new section types still require code changes; project/blog links currently remain in the English locale. Those broader historical template promises are not implemented.
 
 ## Release and maintenance
 

@@ -11,7 +11,7 @@ export const siteSchema = z.object({
     name: text, jobTitle: text, email: text.email(), profileImage: media, resumeUrl: webUrl,
     location: z.object({ city: text, country: text, countryCode: z.string().length(2), lat: z.number().min(-90).max(90), lng: z.number().min(-180).max(180) }),
   }),
-  seo: z.object({ title: text, description: text, ogDescription: text, dateCreated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), themeColor: z.string().regex(/^#[\da-f]{6}$/i) }),
+  seo: z.object({ title: text, description: text, ogDescription: text, shareImage: media, themeColor: z.string().regex(/^#[\da-f]{6}$/i) }),
   theme: z.object({ default: z.enum(['system', 'light', 'dark']) }),
   sections: z.array(z.enum(sectionIds)).refine((items) => new Set(items).size === items.length, 'Section IDs must be unique'),
   contact: z.object({ secondaryButton: z.object({ platform: z.enum(['linkedin', 'github', 'discord', 'facebook', 'x', 'twitter', 'reddit', 'blog', 'spotify']), url: webUrl }) }),

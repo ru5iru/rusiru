@@ -18,3 +18,33 @@
 - [x] Update typography (`Fraunces`, `Newsreader`, `IBM Plex Mono`), print rules, and surfaces in `index.html`, `tailwind.config.ts`, and `src/index.css`.
 - [x] Implement the Broadsheet layout across `Index.tsx`, `Navbar.tsx`, `DisclosureRow.tsx`, `Hero.tsx`, `About.tsx`, `Experience.tsx`, `Education.tsx`, `Projects.tsx`, `Skills.tsx`, `Blog.tsx`, `Contact.tsx`, and `Footer.tsx`.
 - [x] Update `scripts/search-content.ts` and behavioral tests (`src/test/`), and verify tests, lint, production build, and desktop/mobile interactions.
+
+# SEO audit remediation — 2026-11-22
+
+- [x] Serve a generated, localized static 404 with an actual HTTP 404 for unknown paths; force `/index.html` to redirect permanently to `/`.
+- [x] Establish one owner for homepage and error-page metadata; browser checks confirm one canonical, description, and robots directive per page.
+- [x] Add repeatable education-logo optimization and serve 132px high-density variants.
+- [x] Add a configured 1200×630 social preview image through the asset/metadata generators.
+- [x] Remove unnecessary startup work and enlarge undersized text-action targets without changing the Broadsheet design; only the intentionally hidden skip link remains below 24px.
+- [x] Align the confirmed current job title and remove the unverified profile creation date; retain 2023-11-27 only as the professional journey start.
+- [x] Correct three verified blog article URLs and the renamed Jira repository; remove two unavailable repository links rather than invent replacements.
+- [x] Pass 35 tests, lint, production build, Chromium desktop/mobile checks, corrected outbound links, and Netlify-equivalent HTTP checks.
+- [ ] Verify the deployed rusiru.cc responses, social crawlers, and comparative cold-load performance after publication; field Core Web Vitals require real-user production data.
+- [ ] Complete account/hosting-owner items: Search Console and Bing inspections, sitemap submission, domain/redirect configuration, backlink and AI-visibility research. No analytics was added.
+
+# SEO verification recheck — 2026-11-22 preview
+
+- [x] Triage the new reviewed findings against current source and distinguish confirmed defects from external or advisory items.
+- [x] Use the localized error description for rendered Open Graph and Twitter metadata without changing the Broadsheet design.
+- [x] Confirm the reported em-dash mojibake is absent from all six captured social descriptions and current source; leave valid UTF-8 copy unchanged.
+- [x] Pass 36 tests, lint, automatic production builds, and Chromium homepage/error-page metadata checks with no browser errors.
+- [x] Commit the verified corrections with the requested ru5iru co-author trailer.
+- [ ] Recheck unknown-path HTTP status and `/index.html` redirection on rusiru.cc after deployment; the Lovable preview host still uses its own SPA fallback.
+
+# Second preview SEO verification — 2026-11-22
+
+- [x] Confirm the f258fab preview retains deduplicated metadata, corrected direct/client 404 social descriptions, the confirmed job title, optimized logos, social card, robots.txt, and sitemap.
+- [x] Disprove the repeated punctuation finding: source, raw HTML, and every captured homepage social description contain the correct em dash (U+2014), with no mojibake; the audit detector is a false positive.
+- [x] Confirm the remaining preview unknown-path 200 response is Lovable host fallback behavior, not a regression in the Netlify rules already verified locally.
+- [ ] Deploy the current build to rusiru.cc: production still serves the older `index-B-di4xkf.js` bundle; `/index.html` and a fresh unknown path return 200, and the advertised social-card URL returns HTML rather than the PNG.
+- [ ] Repeat controlled production performance, social-crawler, structured-data, redirect, Search Console, and Bing checks after deployment; the single preview LCP sample is not a field-Core-Web-Vitals verdict.

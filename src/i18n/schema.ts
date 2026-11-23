@@ -8,6 +8,7 @@ const labeledCopy = sectionCopy.extend({ titleBefore: text, titleHighlight: text
 
 export const localeSchema = z.object({
   language: z.object({ name: text, code: text }),
+  seo: z.object({ shareImageAlt: text }),
   nav: z.object({
     brand: text,
     links: z.record(text),

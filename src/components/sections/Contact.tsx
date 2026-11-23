@@ -24,7 +24,7 @@ export function Contact() {
               const brand = brandIcons[link.platform];
               const label = t(`footer.social.${link.platform}`);
               const Icon = brand?.icon ?? ExternalLink;
-              return <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer me" aria-label={t('footer.socialAria', { label })} className="inline-flex items-center gap-1.5 underline"><Icon aria-hidden="true" className="h-3.5 w-3.5" />{label}</a>;
+              return <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer me" aria-label={t('footer.socialAria', { label })} className="inline-flex min-h-6 items-center gap-1.5 underline"><Icon aria-hidden="true" className="h-3.5 w-3.5" />{label}</a>;
             })}
           </div>
         </div>

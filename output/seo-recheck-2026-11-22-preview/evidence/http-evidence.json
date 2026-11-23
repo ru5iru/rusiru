@@ -1,0 +1,1237 @@
+[
+  {
+    "name": "robots",
+    "requested_url": "https://rusiru.lovable.app/robots.txt",
+    "observed_at_utc": "2026-11-22T16:21:27.252227+00:00",
+    "status": 200,
+    "final_url": "https://rusiru.lovable.app/robots.txt",
+    "headers": {
+      "Date": "Sun, 22 Nov 2026 16:21:29 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "63",
+      "Connection": "close",
+      "ETag": "\"d92f67a6a916570a67a8f0e4a80159e2\"",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Content-Security-Policy": "frame-ancestors 'self'",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "x-deployment-id": "psr2.204ac7e3-87d2-45b8-bf58-c04a6f9c554a.1795969289.P99tT_AOlfZQwzsOsq9JOEsAO8kPdk6VWcJxfYbeYbA",
+      "set-cookie": "__cf_bm=CnliRRhBSk8K1R8WYQyx.0xtkrps6dIi1uAVKE_2j1g-1795364488.5416768-1.0.1.1-9c1r2.aOzvN7eAcdit7OyBY8SZ6QIJt5ZtMj5u9GJ_o7.EdTKEgTCSCGonP9ym_QDKviAej0RhYT2LCg9ys_3DI8wuhdEN9JsNzufjb3cleC6bE3Y3NxajDrT.xavbEQ; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=lovable.app; Expires=Sun, 22 Nov 2026 16:51:29 GMT",
+      "Server": "cloudflare",
+      "CF-RAY": "a5e944756d13b2fa-CMB"
+    },
+    "bytes": 63,
+    "sha256": "c3ecf33b7933661ef11948d0d9d72e05f244e77283e0cdd1d7b2c4faa993f115",
+    "redirects": [],
+    "body_file": "robots.txt",
+    "elapsed_seconds": 0.64
+  },
+  {
+    "name": "home",
+    "requested_url": "https://rusiru.lovable.app/",
+    "observed_at_utc": "2026-11-22T16:21:29.495860+00:00",
+    "status": 200,
+    "final_url": "https://rusiru.lovable.app/",
+    "headers": {
+      "Date": "Sun, 22 Nov 2026 16:21:31 GMT",
+      "Content-Type": "text/html; charset=utf-8",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Cache-Control": "no-cache, must-revalidate, max-age=0",
+      "set-cookie": "__cf_bm=AfU1C6OWlXKCjFgk6r0qb39SGzry7umnn6rdaSxs8aY-1795364491.1019733-1.0.1.1-2LQOoyyU0BIYelXD8q5bzimu67GRnvBFwAKmEHvoM9haYQGrQSBB5GJ1EHihuUJNa7r_lgrc0.NXi6rrmCnQBPs4AtOJh4lVHGwY2Bjb6An8FVFooS63MdPt3O6edXDv; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=lovable.app; Expires=Sun, 22 Nov 2026 16:51:31 GMT",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Content-Security-Policy": "frame-ancestors 'self'",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "x-deployment-id": "psr2.204ac7e3-87d2-45b8-bf58-c04a6f9c554a.1795969291.iOEH2_TbM-_jqyqRBPkeN6OdOsYNLjZO8zgxBGwlfco",
+      "Server": "cloudflare",
+      "CF-RAY": "a5e94485692db2fa-CMB"
+    },
+    "bytes": 42012,
+    "sha256": "302802cd76eb6fafedace2895f0f658df6f3798db086c5603a43d4dac5902325",
+    "redirects": [],
+    "body_file": "home.html",
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      },
+      {
+        "name": "google-site-verification",
+        "content": "Q55ptGxRdR_OYnyaQL28T_XmyE7hy6D4cdP9Gp1KGJw"
+      },
+      {
+        "name": "description",
+        "content": "Rusiru Rathmina is a Software Engineer focused on full-stack development and cloud solutions, delivering scalable applications with attention to quality.",
+        "data-rh": "true"
+      },
+      {
+        "name": "author",
+        "content": "Rusiru Rathmina"
+      },
+      {
+        "name": "robots",
+        "content": "index, follow",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:title",
+        "content": "Rusiru Rathmina | Full-Stack Software Engineer",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:description",
+        "content": "Portfolio of Rusiru Rathmina \u2014 Full-Stack Software Engineer in Colombo, Sri Lanka, building scalable apps with Java, Spring Boot, React, and AWS.",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:type",
+        "content": "website",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:url",
+        "content": "https://rusiru.cc/",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image",
+        "content": "https://rusiru.cc/media/social/engineering-broadsheet-card.png",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image:width",
+        "content": "1200",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image:height",
+        "content": "630",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image:type",
+        "content": "image/png",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image:alt",
+        "content": "Engineering Broadsheet portrait and RR monogram for Rusiru Rathmina",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:card",
+        "content": "summary_large_image",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:title",
+        "content": "Rusiru Rathmina | Full-Stack Software Engineer",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:description",
+        "content": "Portfolio of Rusiru Rathmina \u2014 Full-Stack Software Engineer in Colombo, Sri Lanka, building scalable apps with Java, Spring Boot, React, and AWS.",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:image",
+        "content": "https://rusiru.cc/media/social/engineering-broadsheet-card.png",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:image:alt",
+        "content": "Engineering Broadsheet portrait and RR monogram for Rusiru Rathmina",
+        "data-rh": "true"
+      },
+      {
+        "name": "theme-color",
+        "content": "#efe8d8"
+      },
+      {
+        "name": "geo.region",
+        "content": "LK"
+      },
+      {
+        "name": "geo.placename",
+        "content": "Colombo, Sri Lanka"
+      }
+    ],
+    "links": [
+      {
+        "rel": "preconnect",
+        "href": "https://fonts.googleapis.com"
+      },
+      {
+        "rel": "preconnect",
+        "href": "https://fonts.gstatic.com",
+        "crossorigin": null
+      },
+      {
+        "rel": "stylesheet",
+        "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap",
+        "media": "print",
+        "onload": "this.media='all'"
+      },
+      {
+        "rel": "stylesheet",
+        "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap"
+      },
+      {
+        "rel": "icon",
+        "href": "/favicon.ico?v=broadsheet",
+        "sizes": "any"
+      },
+      {
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "href": "/favicon-32x32.png?v=broadsheet"
+      },
+      {
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "16x16",
+        "href": "/favicon-16x16.png?v=broadsheet"
+      },
+      {
+        "rel": "icon",
+        "type": "image/svg+xml",
+        "href": "/favicon.svg"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "sizes": "180x180",
+        "href": "/apple-touch-icon.png?v=broadsheet"
+      },
+      {
+        "rel": "manifest",
+        "href": "/site.webmanifest"
+      },
+      {
+        "rel": "canonical",
+        "href": "https://rusiru.cc/",
+        "data-rh": "true"
+      },
+      {
+        "rel": "stylesheet",
+        "crossorigin": null,
+        "href": "/assets/index-C1q7YNeN.css"
+      }
+    ],
+    "scripts": [
+      {
+        "type": "application/ld+json"
+      },
+      {
+        "type": "module",
+        "crossorigin": null,
+        "src": "/assets/index-Cd2XSznc.js"
+      },
+      {
+        "defer": null,
+        "src": "/__l5e/events.b979ee024b15adfd.js",
+        "data-artifact-kind": "dwl_content_hash",
+        "data-artifact-id": "d65a434df9f742f9cc0fcbc479199cdd76621c70069c0ca4abc2d77243439147",
+        "data-commit-sha": "720795a3764bb2012d5d1dab5f5a0540685b14aa",
+        "data-context-token": "v1.eyJwcm9qZWN0X2lkIjoibG92cF81cDMyeXpqYzY1OXFjYnNueTQ0MWQ0aHNlZSIsImFydGlmYWN0X2tpbmQiOiJkd2xfY29udGVudF9oYXNoIiwiYXJ0aWZhY3RfaWQiOiJkNjVhNDM0ZGY5Zjc0MmY5Y2MwZmNiYzQ3OTE5OWNkZDc2NjIxYzcwMDY5YzBjYTRhYmMyZDc3MjQzNDM5MTQ3IiwiY29tbWl0X3NoYSI6IjcyMDc5NWEzNzY0YmIyMDEyZDVkMWRhYjVmNWEwNTQwNjg1YjE0YWEiLCJleHAiOjE3OTc5NTY0OTF9.bWKBc0vUMyp8PmP_w4SyT7Gn1pDl8TKtoW7kcdCne38",
+        "data-autocapture": "1",
+        "data-consent": "1"
+      },
+      {}
+    ],
+    "images": [],
+    "ids": [
+      "root",
+      "main",
+      "about",
+      "experience",
+      "education",
+      "projects",
+      "skills",
+      "blog",
+      "contact",
+      "lovable-badge",
+      "lovable-badge-cta",
+      "lovable-badge-text",
+      "lovable-badge-logo",
+      "a",
+      "lovable-badge-divider",
+      "lovable-badge-close"
+    ],
+    "elapsed_seconds": 0.594
+  },
+  {
+    "name": "sitemap",
+    "requested_url": "https://rusiru.lovable.app/sitemap.xml",
+    "observed_at_utc": "2026-11-22T16:21:30.672235+00:00",
+    "status": 200,
+    "final_url": "https://rusiru.lovable.app/sitemap.xml",
+    "headers": {
+      "Date": "Sun, 22 Nov 2026 16:21:31 GMT",
+      "Content-Type": "application/xml",
+      "Content-Length": "149",
+      "Connection": "close",
+      "ETag": "\"a1675514bcdfd67894ff869646efe0fd\"",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Content-Security-Policy": "frame-ancestors 'self'",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "x-deployment-id": "psr2.204ac7e3-87d2-45b8-bf58-c04a6f9c554a.1795969291.iOEH2_TbM-_jqyqRBPkeN6OdOsYNLjZO8zgxBGwlfco",
+      "set-cookie": "__cf_bm=17EPdZ94u_fF1QJfdk.7WiZMwaeb5phPLw3nX8OY6tY-1795364491.9449022-1.0.1.1-Z9omBw.Z8TU9LB45JtdJZUkUM5YFX1krdOkTk032jhGuc2evzA.IdYf08af6LS9V_yUyHeVJIunyQ3BEcvBzWIksUsJ6idOzHxObIV6xV7HHgd0uk0j4Be.AVCGv._wG; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=lovable.app; Expires=Sun, 22 Nov 2026 16:51:31 GMT",
+      "Server": "cloudflare",
+      "CF-RAY": "a5e9448aafdd2664-CMB"
+    },
+    "bytes": 149,
+    "sha256": "a5032519d4c71e9ef2916c361390d09b9f77ac25a89d9e9e3ca0315943da498a",
+    "redirects": [],
+    "body_file": "sitemap.txt",
+    "elapsed_seconds": 0.14
+  },
+  {
+    "name": "llms",
+    "requested_url": "https://rusiru.lovable.app/llms.txt",
+    "observed_at_utc": "2026-11-22T16:21:31.804016+00:00",
+    "status": 200,
+    "final_url": "https://rusiru.lovable.app/llms.txt",
+    "headers": {
+      "Date": "Sun, 22 Nov 2026 16:21:34 GMT",
+      "Content-Type": "text/plain; charset=utf-8",
+      "Content-Length": "13132",
+      "Connection": "close",
+      "ETag": "\"48d9822854416dc1cfbce42cad59d75c\"",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Content-Security-Policy": "frame-ancestors 'self'",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "x-deployment-id": "psr2.204ac7e3-87d2-45b8-bf58-c04a6f9c554a.1795969293.wuFsktfs5cr2rIxxVP0jYZVQVgPiox-23uVrzDIHo6s",
+      "set-cookie": "__cf_bm=EDU34Vt3zt_kAgYrGTbUwXg0SRlzsoV0W8dWFgSij1g-1795364493.1412184-1.0.1.1-hd1yj4xVdQ1v.8p1YqVdPnBpCZb7snvQMY.SFF8k9XDgBzP8N_2BpH3GspXbmnIk2OB1iFMHSpxGAqYj73_zz_HkuQ83q_IavwfnzVYhNDkHH5C7nSDhpYMyk0LPwea7; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=lovable.app; Expires=Sun, 22 Nov 2026 16:51:34 GMT",
+      "Server": "cloudflare",
+      "CF-RAY": "a5e944921a33b2f9-CMB"
+    },
+    "bytes": 13132,
+    "sha256": "e6b6d5313cda67f02e46066ee828d591219f0d471c1b80319fd30dfe6af7666d",
+    "redirects": [],
+    "body_file": "llms.txt",
+    "elapsed_seconds": 1.365
+  },
+  {
+    "name": "manifest",
+    "requested_url": "https://rusiru.lovable.app/site.webmanifest",
+    "observed_at_utc": "2026-11-22T16:21:33.769695+00:00",
+    "status": 200,
+    "final_url": "https://rusiru.lovable.app/site.webmanifest",
+    "headers": {
+      "Date": "Sun, 22 Nov 2026 16:21:35 GMT",
+      "Content-Type": "application/manifest+json",
+      "Content-Length": "421",
+      "Connection": "close",
+      "ETag": "\"c3259b4cb3bccc6ccd1adf0012fccc69\"",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Content-Security-Policy": "frame-ancestors 'self'",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "x-deployment-id": "psr2.204ac7e3-87d2-45b8-bf58-c04a6f9c554a.1795969295.uQFbP5TLR6BGrWb-Ou4jWixW-DpqC54ObHOwg-fPDUs",
+      "set-cookie": "__cf_bm=2WwPMniUKXrHmKF0NjGYXKV9wMZo.K4_f5l8r9iE6Dc-1795364495.037133-1.0.1.1-qFJt78Bm3p3Je95gP0xLt_UeMznglYBmTrp_zjsOm5LZUib7hK2S.PGQ5Y347LONeZrl3bO2MCHpJGb5HXEK5dMjin3eOle1wxbd.jh7PGbfVs8xCHFp4LY6hfOqMjaJ; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=lovable.app; Expires=Sun, 22 Nov 2026 16:51:35 GMT",
+      "Server": "cloudflare",
+      "CF-RAY": "a5e9449dfcef867f-CMB"
+    },
+    "bytes": 421,
+    "sha256": "f14c8cd74d524556c74e7016117c79ab5fed4654579e063bcf2213a54b8514d6",
+    "redirects": [],
+    "body_file": "manifest.txt",
+    "elapsed_seconds": 0.15
+  },
+  {
+    "name": "missing",
+    "requested_url": "https://rusiru.lovable.app/__seo-audit-not-found-20261122",
+    "observed_at_utc": "2026-11-22T16:21:34.698370+00:00",
+    "status": 200,
+    "final_url": "https://rusiru.lovable.app/__seo-audit-not-found-20261122",
+    "headers": {
+      "Date": "Sun, 22 Nov 2026 16:21:36 GMT",
+      "Content-Type": "text/html; charset=utf-8",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Cache-Control": "no-cache, must-revalidate, max-age=0",
+      "set-cookie": "__cf_bm=TUpbMjZKA3hbL3IV3e_JXlakTVYhX3pi1WexpGY4Vmo-1795364496.0697217-1.0.1.1-N8maEMZXcP.jRc0l0lJxLiU84utbem3KWH8nHuajIlPBn_1GLnIbfrbNVkCl.H1IGdoFB3DcAxw5EGv9jlxb7ZKGwNn3WwZ4aTOUBiO4HI5srT9KP330oQ1FK0Uodnx4; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=lovable.app; Expires=Sun, 22 Nov 2026 16:51:36 GMT",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Content-Security-Policy": "frame-ancestors 'self'",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "x-deployment-id": "psr2.204ac7e3-87d2-45b8-bf58-c04a6f9c554a.1795969296.dVxa0QJxFqezX5nLMgpfdW5rA7cUZfASw3rWQZ0cokk",
+      "Server": "cloudflare",
+      "CF-RAY": "a5e944a46d8298f8-CMB"
+    },
+    "bytes": 42012,
+    "sha256": "114dc23cf4e63ea45097525bfabc5462988fcc47de19e3e6cbf2d59a4d839501",
+    "redirects": [],
+    "body_file": "missing.html",
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      },
+      {
+        "name": "google-site-verification",
+        "content": "Q55ptGxRdR_OYnyaQL28T_XmyE7hy6D4cdP9Gp1KGJw"
+      },
+      {
+        "name": "description",
+        "content": "Rusiru Rathmina is a Software Engineer focused on full-stack development and cloud solutions, delivering scalable applications with attention to quality.",
+        "data-rh": "true"
+      },
+      {
+        "name": "author",
+        "content": "Rusiru Rathmina"
+      },
+      {
+        "name": "robots",
+        "content": "index, follow",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:title",
+        "content": "Rusiru Rathmina | Full-Stack Software Engineer",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:description",
+        "content": "Portfolio of Rusiru Rathmina \u2014 Full-Stack Software Engineer in Colombo, Sri Lanka, building scalable apps with Java, Spring Boot, React, and AWS.",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:type",
+        "content": "website",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:url",
+        "content": "https://rusiru.cc/",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image",
+        "content": "https://rusiru.cc/media/social/engineering-broadsheet-card.png",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image:width",
+        "content": "1200",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image:height",
+        "content": "630",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image:type",
+        "content": "image/png",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image:alt",
+        "content": "Engineering Broadsheet portrait and RR monogram for Rusiru Rathmina",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:card",
+        "content": "summary_large_image",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:title",
+        "content": "Rusiru Rathmina | Full-Stack Software Engineer",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:description",
+        "content": "Portfolio of Rusiru Rathmina \u2014 Full-Stack Software Engineer in Colombo, Sri Lanka, building scalable apps with Java, Spring Boot, React, and AWS.",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:image",
+        "content": "https://rusiru.cc/media/social/engineering-broadsheet-card.png",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:image:alt",
+        "content": "Engineering Broadsheet portrait and RR monogram for Rusiru Rathmina",
+        "data-rh": "true"
+      },
+      {
+        "name": "theme-color",
+        "content": "#efe8d8"
+      },
+      {
+        "name": "geo.region",
+        "content": "LK"
+      },
+      {
+        "name": "geo.placename",
+        "content": "Colombo, Sri Lanka"
+      }
+    ],
+    "links": [
+      {
+        "rel": "preconnect",
+        "href": "https://fonts.googleapis.com"
+      },
+      {
+        "rel": "preconnect",
+        "href": "https://fonts.gstatic.com",
+        "crossorigin": null
+      },
+      {
+        "rel": "stylesheet",
+        "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap",
+        "media": "print",
+        "onload": "this.media='all'"
+      },
+      {
+        "rel": "stylesheet",
+        "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap"
+      },
+      {
+        "rel": "icon",
+        "href": "/favicon.ico?v=broadsheet",
+        "sizes": "any"
+      },
+      {
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "href": "/favicon-32x32.png?v=broadsheet"
+      },
+      {
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "16x16",
+        "href": "/favicon-16x16.png?v=broadsheet"
+      },
+      {
+        "rel": "icon",
+        "type": "image/svg+xml",
+        "href": "/favicon.svg"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "sizes": "180x180",
+        "href": "/apple-touch-icon.png?v=broadsheet"
+      },
+      {
+        "rel": "manifest",
+        "href": "/site.webmanifest"
+      },
+      {
+        "rel": "canonical",
+        "href": "https://rusiru.cc/",
+        "data-rh": "true"
+      },
+      {
+        "rel": "stylesheet",
+        "crossorigin": null,
+        "href": "/assets/index-C1q7YNeN.css"
+      }
+    ],
+    "scripts": [
+      {
+        "type": "application/ld+json"
+      },
+      {
+        "type": "module",
+        "crossorigin": null,
+        "src": "/assets/index-Cd2XSznc.js"
+      },
+      {
+        "defer": null,
+        "src": "/__l5e/events.b979ee024b15adfd.js",
+        "data-artifact-kind": "dwl_content_hash",
+        "data-artifact-id": "d65a434df9f742f9cc0fcbc479199cdd76621c70069c0ca4abc2d77243439147",
+        "data-commit-sha": "720795a3764bb2012d5d1dab5f5a0540685b14aa",
+        "data-context-token": "v1.eyJwcm9qZWN0X2lkIjoibG92cF81cDMyeXpqYzY1OXFjYnNueTQ0MWQ0aHNlZSIsImFydGlmYWN0X2tpbmQiOiJkd2xfY29udGVudF9oYXNoIiwiYXJ0aWZhY3RfaWQiOiJkNjVhNDM0ZGY5Zjc0MmY5Y2MwZmNiYzQ3OTE5OWNkZDc2NjIxYzcwMDY5YzBjYTRhYmMyZDc3MjQzNDM5MTQ3IiwiY29tbWl0X3NoYSI6IjcyMDc5NWEzNzY0YmIyMDEyZDVkMWRhYjVmNWEwNTQwNjg1YjE0YWEiLCJleHAiOjE3OTc5NTY0OTZ9.woRofma3DAYG-8LnItgr7JIKJgTyhvHq1lOHFTdXDwg",
+        "data-autocapture": "1",
+        "data-consent": "1"
+      },
+      {}
+    ],
+    "images": [],
+    "ids": [
+      "root",
+      "main",
+      "about",
+      "experience",
+      "education",
+      "projects",
+      "skills",
+      "blog",
+      "contact",
+      "lovable-badge",
+      "lovable-badge-cta",
+      "lovable-badge-text",
+      "lovable-badge-logo",
+      "a",
+      "lovable-badge-divider",
+      "lovable-badge-close"
+    ],
+    "elapsed_seconds": 0.344
+  },
+  {
+    "name": "index-html",
+    "requested_url": "https://rusiru.lovable.app/index.html",
+    "observed_at_utc": "2026-11-22T16:21:35.879200+00:00",
+    "status": 200,
+    "final_url": "https://rusiru.lovable.app/index.html",
+    "headers": {
+      "Date": "Sun, 22 Nov 2026 16:21:37 GMT",
+      "Content-Type": "text/html; charset=utf-8",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Cache-Control": "no-cache, must-revalidate, max-age=0",
+      "set-cookie": "__cf_bm=aZSO2MUhoHu7VJiUXeQerUx8BUuTDL.9p_NeWJNPKgc-1795364497.2192402-1.0.1.1-JANKvLHZ9PmTIqOQnEHM8rcxr8MSdmKO_oGV8jnaekbD6RERBmGYFLYLWtgiSc1ojKTlp.xIx.806vdWyrApXNw8JfKDbXgRqN.V5u6VHBG0Vkpy40dKG6SUceZtQwHV; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=lovable.app; Expires=Sun, 22 Nov 2026 16:51:37 GMT",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Content-Security-Policy": "frame-ancestors 'self'",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "x-deployment-id": "psr2.204ac7e3-87d2-45b8-bf58-c04a6f9c554a.1795969297.Eebs0Jn4pOLud2r8SU3HpXfWED8FULhgd56gN5TeuEI",
+      "Server": "cloudflare",
+      "CF-RAY": "a5e944ab99292664-CMB"
+    },
+    "bytes": 42012,
+    "sha256": "eb3fc9f604cc1e1869a9db892235438f1362b945e05755dc36c6753970ca34bc",
+    "redirects": [],
+    "body_file": "index-html.html",
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      },
+      {
+        "name": "google-site-verification",
+        "content": "Q55ptGxRdR_OYnyaQL28T_XmyE7hy6D4cdP9Gp1KGJw"
+      },
+      {
+        "name": "description",
+        "content": "Rusiru Rathmina is a Software Engineer focused on full-stack development and cloud solutions, delivering scalable applications with attention to quality.",
+        "data-rh": "true"
+      },
+      {
+        "name": "author",
+        "content": "Rusiru Rathmina"
+      },
+      {
+        "name": "robots",
+        "content": "index, follow",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:title",
+        "content": "Rusiru Rathmina | Full-Stack Software Engineer",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:description",
+        "content": "Portfolio of Rusiru Rathmina \u2014 Full-Stack Software Engineer in Colombo, Sri Lanka, building scalable apps with Java, Spring Boot, React, and AWS.",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:type",
+        "content": "website",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:url",
+        "content": "https://rusiru.cc/",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image",
+        "content": "https://rusiru.cc/media/social/engineering-broadsheet-card.png",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image:width",
+        "content": "1200",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image:height",
+        "content": "630",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image:type",
+        "content": "image/png",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image:alt",
+        "content": "Engineering Broadsheet portrait and RR monogram for Rusiru Rathmina",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:card",
+        "content": "summary_large_image",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:title",
+        "content": "Rusiru Rathmina | Full-Stack Software Engineer",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:description",
+        "content": "Portfolio of Rusiru Rathmina \u2014 Full-Stack Software Engineer in Colombo, Sri Lanka, building scalable apps with Java, Spring Boot, React, and AWS.",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:image",
+        "content": "https://rusiru.cc/media/social/engineering-broadsheet-card.png",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:image:alt",
+        "content": "Engineering Broadsheet portrait and RR monogram for Rusiru Rathmina",
+        "data-rh": "true"
+      },
+      {
+        "name": "theme-color",
+        "content": "#efe8d8"
+      },
+      {
+        "name": "geo.region",
+        "content": "LK"
+      },
+      {
+        "name": "geo.placename",
+        "content": "Colombo, Sri Lanka"
+      }
+    ],
+    "links": [
+      {
+        "rel": "preconnect",
+        "href": "https://fonts.googleapis.com"
+      },
+      {
+        "rel": "preconnect",
+        "href": "https://fonts.gstatic.com",
+        "crossorigin": null
+      },
+      {
+        "rel": "stylesheet",
+        "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap",
+        "media": "print",
+        "onload": "this.media='all'"
+      },
+      {
+        "rel": "stylesheet",
+        "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap"
+      },
+      {
+        "rel": "icon",
+        "href": "/favicon.ico?v=broadsheet",
+        "sizes": "any"
+      },
+      {
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "href": "/favicon-32x32.png?v=broadsheet"
+      },
+      {
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "16x16",
+        "href": "/favicon-16x16.png?v=broadsheet"
+      },
+      {
+        "rel": "icon",
+        "type": "image/svg+xml",
+        "href": "/favicon.svg"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "sizes": "180x180",
+        "href": "/apple-touch-icon.png?v=broadsheet"
+      },
+      {
+        "rel": "manifest",
+        "href": "/site.webmanifest"
+      },
+      {
+        "rel": "canonical",
+        "href": "https://rusiru.cc/",
+        "data-rh": "true"
+      },
+      {
+        "rel": "stylesheet",
+        "crossorigin": null,
+        "href": "/assets/index-C1q7YNeN.css"
+      }
+    ],
+    "scripts": [
+      {
+        "type": "application/ld+json"
+      },
+      {
+        "type": "module",
+        "crossorigin": null,
+        "src": "/assets/index-Cd2XSznc.js"
+      },
+      {
+        "defer": null,
+        "src": "/__l5e/events.b979ee024b15adfd.js",
+        "data-artifact-kind": "dwl_content_hash",
+        "data-artifact-id": "d65a434df9f742f9cc0fcbc479199cdd76621c70069c0ca4abc2d77243439147",
+        "data-commit-sha": "720795a3764bb2012d5d1dab5f5a0540685b14aa",
+        "data-context-token": "v1.eyJwcm9qZWN0X2lkIjoibG92cF81cDMyeXpqYzY1OXFjYnNueTQ0MWQ0aHNlZSIsImFydGlmYWN0X2tpbmQiOiJkd2xfY29udGVudF9oYXNoIiwiYXJ0aWZhY3RfaWQiOiJkNjVhNDM0ZGY5Zjc0MmY5Y2MwZmNiYzQ3OTE5OWNkZDc2NjIxYzcwMDY5YzBjYTRhYmMyZDc3MjQzNDM5MTQ3IiwiY29tbWl0X3NoYSI6IjcyMDc5NWEzNzY0YmIyMDEyZDVkMWRhYjVmNWEwNTQwNjg1YjE0YWEiLCJleHAiOjE3OTc5NTY0OTd9.BGcnM6x_fufgRZ16CXD2z0PBNH2JjHkS0HWRq5qWesM",
+        "data-autocapture": "1",
+        "data-consent": "1"
+      },
+      {}
+    ],
+    "images": [],
+    "ids": [
+      "root",
+      "main",
+      "about",
+      "experience",
+      "education",
+      "projects",
+      "skills",
+      "blog",
+      "contact",
+      "lovable-badge",
+      "lovable-badge-cta",
+      "lovable-badge-text",
+      "lovable-badge-logo",
+      "a",
+      "lovable-badge-divider",
+      "lovable-badge-close"
+    ],
+    "elapsed_seconds": 0.292
+  },
+  {
+    "name": "error-document",
+    "requested_url": "https://rusiru.lovable.app/404.html",
+    "observed_at_utc": "2026-11-22T16:21:36.742039+00:00",
+    "status": 200,
+    "final_url": "https://rusiru.lovable.app/404.html",
+    "headers": {
+      "Date": "Sun, 22 Nov 2026 16:21:39 GMT",
+      "Content-Type": "text/html; charset=utf-8",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "set-cookie": "__cf_bm=xl8H4p8W8fISk3U.FhqOnckkjazLmL8hswiy1G5cy4E-1795364497.9968324-1.0.1.1-TlTHGg.29siq2zPFkPRrw_HMwSk0JBqD5VoEgdUMvE8EEiB49jcUqaZOSanKdBoghICUpSthJaXcv2ZulA3Ds0syeG08fqES1sclHXk1yAl.8xGu5j.lKWMx.wT4Nt5h; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=lovable.app; Expires=Sun, 22 Nov 2026 16:51:39 GMT",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Content-Security-Policy": "frame-ancestors 'self'",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "x-deployment-id": "psr2.204ac7e3-87d2-45b8-bf58-c04a6f9c554a.1795969298.FqKgi2NU8B3Ld04ksSfzwyNSCTdr1u0xxUif1sf6xyI",
+      "Server": "cloudflare",
+      "CF-RAY": "a5e944b07b893fde-CMB"
+    },
+    "bytes": 14120,
+    "sha256": "ce60895da05f53d3af50a6f23b5b0cc4fb56a9dd4add01d405da4f89492b07be",
+    "redirects": [],
+    "body_file": "error-document.html",
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      },
+      {
+        "name": "description",
+        "content": "The page you're looking for doesn't exist. Return to the homepage to explore projects, experience, and contact details."
+      },
+      {
+        "name": "robots",
+        "content": "noindex, follow"
+      },
+      {
+        "property": "og:title",
+        "content": "Page Not Found (404) | Rusiru Rathmina"
+      },
+      {
+        "property": "og:description",
+        "content": "The page you're looking for doesn't exist. Return to the homepage to explore projects, experience, and contact details."
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "property": "og:image",
+        "content": "https://rusiru.cc/media/social/engineering-broadsheet-card.png"
+      },
+      {
+        "property": "og:image:width",
+        "content": "1200"
+      },
+      {
+        "property": "og:image:height",
+        "content": "630"
+      },
+      {
+        "property": "og:image:type",
+        "content": "image/png"
+      },
+      {
+        "property": "og:image:alt",
+        "content": "Engineering Broadsheet portrait and RR monogram for Rusiru Rathmina"
+      },
+      {
+        "name": "twitter:card",
+        "content": "summary_large_image"
+      },
+      {
+        "name": "twitter:title",
+        "content": "Page Not Found (404) | Rusiru Rathmina"
+      },
+      {
+        "name": "twitter:description",
+        "content": "The page you're looking for doesn't exist. Return to the homepage to explore projects, experience, and contact details."
+      },
+      {
+        "name": "twitter:image",
+        "content": "https://rusiru.cc/media/social/engineering-broadsheet-card.png"
+      },
+      {
+        "name": "twitter:image:alt",
+        "content": "Engineering Broadsheet portrait and RR monogram for Rusiru Rathmina"
+      },
+      {
+        "name": "theme-color",
+        "content": "#efe8d8"
+      }
+    ],
+    "links": [
+      {
+        "rel": "icon",
+        "href": "/favicon.ico?v=broadsheet",
+        "sizes": "any"
+      },
+      {
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "href": "/favicon-32x32.png?v=broadsheet"
+      },
+      {
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "16x16",
+        "href": "/favicon-16x16.png?v=broadsheet"
+      },
+      {
+        "rel": "icon",
+        "type": "image/svg+xml",
+        "href": "/favicon.svg"
+      },
+      {
+        "rel": "preconnect",
+        "href": "https://fonts.googleapis.com"
+      },
+      {
+        "rel": "preconnect",
+        "href": "https://fonts.gstatic.com",
+        "crossorigin": null
+      },
+      {
+        "rel": "stylesheet",
+        "href": "https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=IBM+Plex+Mono:wght@400;600&family=Newsreader:wght@400;600&display=swap"
+      }
+    ],
+    "scripts": [
+      {
+        "defer": null,
+        "src": "/__l5e/events.b979ee024b15adfd.js",
+        "data-artifact-kind": "dwl_content_hash",
+        "data-artifact-id": "d65a434df9f742f9cc0fcbc479199cdd76621c70069c0ca4abc2d77243439147",
+        "data-commit-sha": "720795a3764bb2012d5d1dab5f5a0540685b14aa",
+        "data-context-token": "v1.eyJwcm9qZWN0X2lkIjoibG92cF81cDMyeXpqYzY1OXFjYnNueTQ0MWQ0aHNlZSIsImFydGlmYWN0X2tpbmQiOiJkd2xfY29udGVudF9oYXNoIiwiYXJ0aWZhY3RfaWQiOiJkNjVhNDM0ZGY5Zjc0MmY5Y2MwZmNiYzQ3OTE5OWNkZDc2NjIxYzcwMDY5YzBjYTRhYmMyZDc3MjQzNDM5MTQ3IiwiY29tbWl0X3NoYSI6IjcyMDc5NWEzNzY0YmIyMDEyZDVkMWRhYjVmNWEwNTQwNjg1YjE0YWEiLCJleHAiOjE3OTc5NTY0OTl9.nKKxh33ngmZmXf15AnZb6JUOKIE7ds0s08FuEa-tHEs",
+        "data-autocapture": "1",
+        "data-consent": "1"
+      },
+      {}
+    ],
+    "images": [],
+    "ids": [
+      "main",
+      "lovable-badge",
+      "lovable-badge-cta",
+      "lovable-badge-text",
+      "lovable-badge-logo",
+      "a",
+      "lovable-badge-divider",
+      "lovable-badge-close"
+    ],
+    "elapsed_seconds": 1.226
+  },
+  {
+    "name": "http",
+    "requested_url": "http://rusiru.lovable.app/",
+    "observed_at_utc": "2026-11-22T16:21:38.525791+00:00",
+    "status": 200,
+    "final_url": "https://rusiru.lovable.app/",
+    "headers": {
+      "Date": "Sun, 22 Nov 2026 16:21:39 GMT",
+      "Content-Type": "text/html; charset=utf-8",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Cache-Control": "no-cache, must-revalidate, max-age=0",
+      "set-cookie": "__cf_bm=YQVGbjIfhWOrUSuFsWxPa7OQzoqjENz.g2q9AoPpRJo-1795364499.9177654-1.0.1.1-_O4BjNcO0N9uS8Rq7o7_50xxXmEooE.dxkzx_LBO8VBpELfwe8Ng4JsQsYMmENJZGpIGmVl4rkORYsfsGqZexC9m98OxUO3ocf0clO1qrGFJ4b1TzrAS7KBa.SO.cCUB; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=lovable.app; Expires=Sun, 22 Nov 2026 16:51:39 GMT",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Content-Security-Policy": "frame-ancestors 'self'",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "x-deployment-id": "psr2.204ac7e3-87d2-45b8-bf58-c04a6f9c554a.1795969299.RfainNgEMRyYHpt6JbTzxOvjaA4OVjidYuqVHHW12W0",
+      "Server": "cloudflare",
+      "CF-RAY": "a5e944bc7ba8e569-CMB"
+    },
+    "bytes": 42012,
+    "sha256": "9c0fe759dbee6aa16954ef88584a7e5cb5d3bd7a0ed4f58e832bf3d193731f6f",
+    "redirects": [
+      {
+        "from": "http://rusiru.lovable.app/",
+        "status": 301,
+        "to": "https://rusiru.lovable.app/"
+      }
+    ],
+    "body_file": "http.html",
+    "meta": [
+      {
+        "charset": "UTF-8"
+      },
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1.0"
+      },
+      {
+        "name": "google-site-verification",
+        "content": "Q55ptGxRdR_OYnyaQL28T_XmyE7hy6D4cdP9Gp1KGJw"
+      },
+      {
+        "name": "description",
+        "content": "Rusiru Rathmina is a Software Engineer focused on full-stack development and cloud solutions, delivering scalable applications with attention to quality.",
+        "data-rh": "true"
+      },
+      {
+        "name": "author",
+        "content": "Rusiru Rathmina"
+      },
+      {
+        "name": "robots",
+        "content": "index, follow",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:title",
+        "content": "Rusiru Rathmina | Full-Stack Software Engineer",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:description",
+        "content": "Portfolio of Rusiru Rathmina \u2014 Full-Stack Software Engineer in Colombo, Sri Lanka, building scalable apps with Java, Spring Boot, React, and AWS.",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:type",
+        "content": "website",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:url",
+        "content": "https://rusiru.cc/",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image",
+        "content": "https://rusiru.cc/media/social/engineering-broadsheet-card.png",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image:width",
+        "content": "1200",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image:height",
+        "content": "630",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image:type",
+        "content": "image/png",
+        "data-rh": "true"
+      },
+      {
+        "property": "og:image:alt",
+        "content": "Engineering Broadsheet portrait and RR monogram for Rusiru Rathmina",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:card",
+        "content": "summary_large_image",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:title",
+        "content": "Rusiru Rathmina | Full-Stack Software Engineer",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:description",
+        "content": "Portfolio of Rusiru Rathmina \u2014 Full-Stack Software Engineer in Colombo, Sri Lanka, building scalable apps with Java, Spring Boot, React, and AWS.",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:image",
+        "content": "https://rusiru.cc/media/social/engineering-broadsheet-card.png",
+        "data-rh": "true"
+      },
+      {
+        "name": "twitter:image:alt",
+        "content": "Engineering Broadsheet portrait and RR monogram for Rusiru Rathmina",
+        "data-rh": "true"
+      },
+      {
+        "name": "theme-color",
+        "content": "#efe8d8"
+      },
+      {
+        "name": "geo.region",
+        "content": "LK"
+      },
+      {
+        "name": "geo.placename",
+        "content": "Colombo, Sri Lanka"
+      }
+    ],
+    "links": [
+      {
+        "rel": "preconnect",
+        "href": "https://fonts.googleapis.com"
+      },
+      {
+        "rel": "preconnect",
+        "href": "https://fonts.gstatic.com",
+        "crossorigin": null
+      },
+      {
+        "rel": "stylesheet",
+        "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap",
+        "media": "print",
+        "onload": "this.media='all'"
+      },
+      {
+        "rel": "stylesheet",
+        "href": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap"
+      },
+      {
+        "rel": "icon",
+        "href": "/favicon.ico?v=broadsheet",
+        "sizes": "any"
+      },
+      {
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "href": "/favicon-32x32.png?v=broadsheet"
+      },
+      {
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "16x16",
+        "href": "/favicon-16x16.png?v=broadsheet"
+      },
+      {
+        "rel": "icon",
+        "type": "image/svg+xml",
+        "href": "/favicon.svg"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "sizes": "180x180",
+        "href": "/apple-touch-icon.png?v=broadsheet"
+      },
+      {
+        "rel": "manifest",
+        "href": "/site.webmanifest"
+      },
+      {
+        "rel": "canonical",
+        "href": "https://rusiru.cc/",
+        "data-rh": "true"
+      },
+      {
+        "rel": "stylesheet",
+        "crossorigin": null,
+        "href": "/assets/index-C1q7YNeN.css"
+      }
+    ],
+    "scripts": [
+      {
+        "type": "application/ld+json"
+      },
+      {
+        "type": "module",
+        "crossorigin": null,
+        "src": "/assets/index-Cd2XSznc.js"
+      },
+      {
+        "defer": null,
+        "src": "/__l5e/events.b979ee024b15adfd.js",
+        "data-artifact-kind": "dwl_content_hash",
+        "data-artifact-id": "d65a434df9f742f9cc0fcbc479199cdd76621c70069c0ca4abc2d77243439147",
+        "data-commit-sha": "720795a3764bb2012d5d1dab5f5a0540685b14aa",
+        "data-context-token": "v1.eyJwcm9qZWN0X2lkIjoibG92cF81cDMyeXpqYzY1OXFjYnNueTQ0MWQ0aHNlZSIsImFydGlmYWN0X2tpbmQiOiJkd2xfY29udGVudF9oYXNoIiwiYXJ0aWZhY3RfaWQiOiJkNjVhNDM0ZGY5Zjc0MmY5Y2MwZmNiYzQ3OTE5OWNkZDc2NjIxYzcwMDY5YzBjYTRhYmMyZDc3MjQzNDM5MTQ3IiwiY29tbWl0X3NoYSI6IjcyMDc5NWEzNzY0YmIyMDEyZDVkMWRhYjVmNWEwNTQwNjg1YjE0YWEiLCJleHAiOjE3OTc5NTY0OTl9.nKKxh33ngmZmXf15AnZb6JUOKIE7ds0s08FuEa-tHEs",
+        "data-autocapture": "1",
+        "data-consent": "1"
+      },
+      {}
+    ],
+    "images": [],
+    "ids": [
+      "root",
+      "main",
+      "about",
+      "experience",
+      "education",
+      "projects",
+      "skills",
+      "blog",
+      "contact",
+      "lovable-badge",
+      "lovable-badge-cta",
+      "lovable-badge-text",
+      "lovable-badge-logo",
+      "a",
+      "lovable-badge-divider",
+      "lovable-badge-close"
+    ],
+    "elapsed_seconds": 0.372
+  }
+]

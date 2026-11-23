@@ -1,0 +1,10 @@
+{
+  "repo": "C:\\Users\\rusiru.r\\Desktop\\Projects\\rusiru",
+  "files_scanned": 85,
+  "findings": 5,
+  "candidate_files_for_http_upgrade": 0,
+  "candidate_files": [],
+  "applied": false,
+  "backup_directory": null,
+  "note": "The auto-fix changes only same-host HTTP href/src attributes in static HTML. Verify that HTTPS resource URLs work; all other issues require review."
+}
