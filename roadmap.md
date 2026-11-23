@@ -56,3 +56,8 @@
 - [x] Check all 19 configured external destinations: 16 return HTTP 200; LinkedIn returns 999 and Reddit returns 403 to automated requests, so those three require manual browser review rather than destructive link changes.
 - [ ] If the DNS/hosting provider permits it, redirect HTTP www directly to HTTPS apex instead of through HTTPS www; canonicalization already works and no loop exists.
 - [ ] Obtain Search Console/Bing indexing evidence and field LCP/INP/CLS data; current unthrottled desktop LCP samples vary from 1.100s to 6.036s and cannot establish a code regression or field-CWV failure.
+
+# Codebase cleanup — 2026-11-23
+
+- [x] Remove generated audit output, local caches, unused source/UI/hooks, dead styles, and orphaned packages without behavior changes.
+- [x] Update documentation, verify tests/lint/build/browser flows, and commit with the ru5iru co-author trailer.

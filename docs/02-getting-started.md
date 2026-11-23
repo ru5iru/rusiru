@@ -52,7 +52,7 @@ npm run dev
 | `npx --no-install tsc -p tsconfig.app.json` | Check browser source types with installed TypeScript |
 | `npx --no-install tsc -p tsconfig.node.json` | Check Vite tooling types |
 
-**[Verified]** `tsconfig.node.json` explicitly includes only `vite.config.ts`; its imported `scripts/site-files.ts` is also checked through that dependency. `vitest.config.ts` is not included. Browser source has `strict: false`; tooling has `strict: true`. The root uses project references ([root](../tsconfig.json), [app](../tsconfig.app.json), [tooling](../tsconfig.node.json)). No coverage, end-to-end, or deployment script is declared. The only checked-in test asserts `true` ([example test](../src/test/example.test.ts)).
+**[Verified]** `tsconfig.node.json` explicitly includes only `vite.config.ts`; its imported `scripts/site-files.ts` is also checked through that dependency. `vitest.config.ts` is not included. Browser source has `strict: false`; tooling has `strict: true`. The root uses project references ([root](../tsconfig.json), [app](../tsconfig.app.json), [tooling](../tsconfig.node.json)). No coverage, end-to-end, or deployment script is declared. Behavioral and SEO regression tests live in [src/test](../src/test/).
 
 ## Debug and smoke-check
 
@@ -83,6 +83,6 @@ Recommended manual procedure, derived from the [page](../src/pages/Index.tsx) an
 | Removed section still has a navigation/skip target | Invalid/empty section config, or Hero's fixed projects target | Use supported section IDs; check all anchors after changing the list |
 | Manual sitemap/manifest change disappears | Dev/build generator owns these files | Edit `site.json` or generator behavior instead |
 
-Sources: [i18n](../src/i18n/i18n.tsx), [Education](../src/components/sections/Education.tsx), [scroll hook](../src/hooks/useScrollAnimation.ts), [App](../src/App.tsx).
+Sources: [i18n](../src/i18n/i18n.tsx), [Education](../src/components/sections/Education.tsx), [App](../src/App.tsx).
 
 Next: [Architecture](03-architecture.md).

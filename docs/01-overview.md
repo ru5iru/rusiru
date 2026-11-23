@@ -52,26 +52,23 @@ rusiru/
 │   ├── pages/                  Index and NotFound
 │   ├── components/
 │   │   ├── sections/           Eight portfolio sections
-│   │   ├── ui/                 Reusable shadcn/Radix-oriented primitives
+│   │   ├── ui/                 Button and dropdown-menu primitives in use
 │   │   ├── icons/              Config-keyed brand SVG map
 │   │   └── *.tsx               Navigation, theme, language, footer, helpers
 │   ├── i18n/i18n.tsx           Locale discovery, lookup, persistence
 │   ├── locales/en.json         English content and content arrays
-│   ├── hooks/                  Scroll reveal, mobile detection, toast state
 │   ├── config/                 site.json, theme.json, helpers and exported types
 │   ├── lib/utils.ts            cn: merge conditional Tailwind classes
-│   ├── test/                  jsdom setup and placeholder test
-│   ├── index.css               Imported theme and animation stylesheet
-│   └── App.css                 Starter stylesheet; not imported by entry graph
+│   ├── test/                  jsdom setup and behavioral/SEO tests
+│   └── index.css               Imported theme and Broadsheet stylesheet
 ├── docs/                       This onboarding/reference set
 ├── index.html                  Metadata, JSON-LD, static fallback portfolio
 ├── package.json                Scripts and dependency ranges
-├── package-lock.json           npm dependency resolutions
-├── bun.lock / bun.lockb         Additional Bun lock artifacts
+├── bun.lock                    Authoritative Bun dependency lock
 ├── vite.config.ts              Dev host/port, SWC, alias, development tagging
 ├── vitest.config.ts            jsdom tests and alias
 ├── tsconfig*.json              Root references, browser and tooling TS options
-└── tailwind.config.ts          Design tokens, typography, animations
+└── tailwind.config.ts          Design tokens and typography
 ```
 
 ## History that affects onboarding

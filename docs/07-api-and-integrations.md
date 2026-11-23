@@ -38,7 +38,7 @@ const items = tr<ProjectItem[]>('projects.items') ?? [];
 
 This is an illustrative usage excerpt; `ProjectItem` must be in scope. `t()` resolves dot-separated paths, returns the key if the value is not a string, and replaces all `{variable}` occurrences provided by the caller. `tr<T>()` returns a cast raw value with no runtime validation. `setLang` accepts only discovered codes. `useTranslation` throws when used outside `I18nProvider`. See `i18n.tsx:37`, `:58`, `:70`, and `:93`.
 
-**[Verified]** `useScrollAnimation(threshold=0.1)` returns `{ref,isVisible}` and reveals once; attach its ref to a div. `RichText({text})` renders only the two custom emphasis markers. These are local component APIs, not network contracts ([hooks](../src/hooks/useScrollAnimation.ts), [RichText](../src/components/RichText.tsx)).
+**[Verified]** `RichText({text})` renders only the two custom emphasis markers. These are local component APIs, not network contracts ([RichText](../src/components/RichText.tsx)).
 
 ## External dependencies and failure behavior
 

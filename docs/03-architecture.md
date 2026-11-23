@@ -45,9 +45,9 @@ flowchart TD
     UI -->|presentation| Sections
 ```
 
-Caption: provider, routing, content, and presentation responsibilities are separate files. How to read: arrows label runtime composition/data dependencies; `App` also wraps theme, query, tooltip, and two lazy toast providers.
+Caption: provider, routing, content, and presentation responsibilities are separate files. How to read: arrows label runtime composition/data dependencies; `App` wraps the theme provider and routes.
 
-**[Verified]** Section components depend on i18n, UI primitives, scroll hooks, and (where needed) config. Config imports JSON without importing components; Footer resolves platform IDs through [BrandIcons](../src/components/icons/BrandIcons.tsx). Hero and Skills share `siteConfig.skills` via `allSkills()`/`resolveIcon()`. i18n remains independent of section components. No circular import was found in the inspected runtime path; this was not a formal whole-repository cycle analysis. [Config](../src/config/index.ts), [i18n](../src/i18n/i18n.tsx), [utils](../src/lib/utils.ts).
+**[Verified]** Section components depend on i18n, UI primitives and (where needed) config. Config imports JSON without importing components; Footer resolves platform IDs through [BrandIcons](../src/components/icons/BrandIcons.tsx). Hero and Skills share `siteConfig.skills` via `allSkills()`/`resolveIcon()`. i18n remains independent of section components. No circular import was found in the inspected runtime path; this was not a formal whole-repository cycle analysis. [Config](../src/config/index.ts), [i18n](../src/i18n/i18n.tsx), [utils](../src/lib/utils.ts).
 
 ## Flow 1: initial visit to rendered content
 
@@ -162,7 +162,7 @@ Caption: language is the app-owned persistent preference flow. How to read: stor
 
 ## State, async behavior, reliability, and security
 
-**[Verified]** UI state is local React state; language uses context/localStorage. Theme behavior is delegated to next-themes with `siteConfig.theme.default`; `applyTheme()` adds authored token overrides. The query client has no portfolio `useQuery`/`useMutation` consumers. There are no queues, database transactions, or N+1 queries. Lazy imports, observers, animations, and toast timers are the relevant asynchronous mechanisms ([App](../src/App.tsx), [config](../src/config/index.ts), [scroll hook](../src/hooks/useScrollAnimation.ts), [toast hook](../src/hooks/use-toast.ts)).
+**[Verified]** UI state is local React state; language uses context/localStorage. Theme behavior is delegated to next-themes with `siteConfig.theme.default`; `applyTheme()` adds authored token overrides. There are no queues, database transactions, or N+1 queries. Lazy imports, observers, and animations are the relevant asynchronous mechanisms ([App](../src/App.tsx), [config](../src/config/index.ts)).
 
 **[Inferred]** Static assets can be distributed through a cache/CDN without per-user server computation because all content is bundled. Main reliability concerns are failed JavaScript/chunk loads, missing third-party resources, and content drift across JSON/HTML. All locales are eagerly bundled, so adding large dictionaries increases client payload. No explicit asset caching policy, service worker, runtime error reporting, or custom React error boundary is checked in.
 
@@ -203,7 +203,7 @@ Caption: the generator runs in Node during dev/build, separately from browser re
 | [Verified] Custom i18n context and eager glob | [Inferred] Adding files is simple; schema validation and per-key fallback must be supplied separately |
 | [Verified] Static root plus React replacement | [Inferred] Provides initial machine-readable content; duplicates maintenance and is not SSR hydration |
 | [Verified] Lazy lower sections with null fallback | [Inferred] Reduces initial module work; offers no loading feedback and can delay navigation targets |
-| [Verified] Broad UI kit, Query provider, two toaster systems | [Unknown] Intended future consumers; assess usage before removing |
+| [Verified] Unused UI kit, query, and toast scaffolding removed in the 2026-11-23 cleanup | Add primitives back only when a feature needs them |
 
 Evidence: [i18n](../src/i18n/i18n.tsx), [config](../src/config/index.ts), [generator](../scripts/site-files.ts), [Index](../src/pages/Index.tsx). **[Verified]** No ADR directory was found. [AGENTS.md](../AGENTS.md) records architecture rules and the [template plan](../.lovable/plan/make-the-portfolio-a-fully-configurable-template-2026-10-02.md) records goals; neither establishes that every planned feature shipped. The [original portfolio plan](_archive/original-portfolio-plan.md) remains historical intent.
 

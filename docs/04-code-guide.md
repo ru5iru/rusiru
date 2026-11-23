@@ -11,7 +11,7 @@ Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-
 | Module | Responsibility and interface | Dependencies / gotchas |
 | --- | --- | --- |
 | [main.tsx](../src/main.tsx) | Entry; applies theme overrides, then creates root inside HelmetProvider and I18nProvider | Clears fallback HTML before mounting |
-| [App.tsx](../src/App.tsx) | Query/theme/tooltip/toast providers; routes | Query infrastructure is not evidence of network fetching |
+| [App.tsx](../src/App.tsx) | Theme provider; routes | No network fetching |
 | [Index](../src/pages/Index.tsx) | Config-backed metadata, skip link, section composition | Hero/shell eager; known configured sections lazy under one null fallback |
 | [NotFound](../src/pages/NotFound.tsx) | Unmatched routes, noindex, home link | Origin/name from config, 404 copy from locale; console error on path change |
 | [i18n](../src/i18n/i18n.tsx) | `I18nProvider`, `useTranslation`, `LanguageOption` | Eager locale discovery; unchecked generic `tr<T>()` |
@@ -29,11 +29,7 @@ Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-
 | [ThemeToggle](../src/components/ThemeToggle.tsx), [ThemeProvider](../src/components/ThemeProvider.tsx) | next-themes adapter and explicit dark/light action | Default from config; toggle compares `theme`, not resolved system appearance |
 | [BackToTop](../src/components/BackToTop.tsx) | Show control after 400px scroll | Hidden with CSS rather than unmounted |
 | [RichText](../src/components/RichText.tsx) | `{text: string}` → React fragments/spans | Only `**emphasis**` and `==gradient==`; not Markdown or HTML |
-| [scroll hooks](../src/hooks/useScrollAnimation.ts) | `useScrollAnimation(threshold?)` and multiple/staggered variant | Observer reveals once; multi variant schedules timeouts |
-| [mobile hook](../src/hooks/use-mobile.tsx) | `useIsMobile()` | 768px breakpoint; used by reusable UI, not navbar CSS logic |
-| [toast hook](../src/hooks/use-toast.ts), [UI toast bridge](../src/components/ui/use-toast.ts) | In-memory toast API and re-export | Separate from Sonner; one visible toast in hook store |
-| [UI directory](../src/components/ui/button.tsx) | Reusable button/dialog/form/menu/chart/etc. primitives | Not every primitive is used by the portfolio |
-| [NavLink](../src/components/NavLink.tsx) | Router link adapter with active/pending class props | Navbar uses ordinary anchors instead |
+| [UI directory](../src/components/ui/button.tsx) | Button and dropdown-menu primitives | Only primitives the portfolio uses are kept |
 | [utils](../src/lib/utils.ts) | `cn(...ClassValue[])` | `clsx` plus Tailwind conflict merging |
 | [config](../src/config/index.ts) | `siteConfig`, `themeConfig`, `resolveIcon`, `allSkills`, `applyTheme`; skill/social types | JSON casts and four logging checks; no runtime schema enforcement |
 | [site JSON](../src/config/site.json) | Identity/URLs, sections, skills, logos, social configuration | Data-only; not all personal facts in locale/HTML are replaced automatically |
@@ -91,7 +87,7 @@ For template customization, first read [AGENTS.md](../AGENTS.md). Recommended co
 
 ## Tests and maintainability
 
-**[Verified]** [Vitest config](../vitest.config.ts) runs `src/**/*.{test,spec}.{ts,tsx}` with jsdom and [setup](../src/test/setup.ts), which installs jest-dom assertions and a `matchMedia` mock. Only [example.test.ts](../src/test/example.test.ts) exists; it does not render components or exercise user behavior. No coverage threshold or browser test suite is configured.
+**[Verified]** [Vitest config](../vitest.config.ts) runs `src/**/*.{test,spec}.{ts,tsx}` with jsdom and [setup](../src/test/setup.ts), which installs jest-dom assertions and a `matchMedia` mock. Tests cover settings/locale validation, section interactions, disclosures, navigation, and generated SEO output. No coverage threshold or browser test suite is configured.
 
 **[Recommendation]** Add behavior tests beside the feature, such as `src/components/sections/Projects.test.tsx`, wrapping consumers in `I18nProvider`. Stub `IntersectionObserver` and `scrollIntoView` when a render needs them; the current setup does not provide either. Test user-visible changes: additional projects reveal, current row closes, absent links do not render, and language persists or rejects invalid codes. Run `npm test` or `npm run test:watch`; do not mistake a passing placeholder test for feature coverage.
 

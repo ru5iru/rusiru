@@ -22,7 +22,7 @@ Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-
 | Canonical origin | `siteConfig.siteUrl` supplies runtime/generator URLs; authored HTML/llms copies remain | [site config](../src/config/site.json), [generator](../scripts/site-files.ts) |
 | Static fallback / pre-rendered content | Hand-maintained portfolio HTML in `#root`, cleared by React startup; not evidence of server rendering or hydration | [main](../src/main.tsx), [HTML](../index.html) |
 | Suspense | React boundary showing a fallback while lazy components load; current fallbacks are null | [Index](../src/pages/Index.tsx) |
-| IntersectionObserver | Browser API used for one-time reveals and active-section detection | [scroll hook](../src/hooks/useScrollAnimation.ts), [Navbar](../src/components/Navbar.tsx) |
+| IntersectionObserver | Browser API used for active-section detection | [Navbar](../src/components/Navbar.tsx) |
 | HMR | Hot module replacement in development; error overlay disabled here | [Vite](../vite.config.ts) |
 | SWC | React source transform provided by Vite's React SWC plugin | [Vite](../vite.config.ts) |
 | shadcn / Radix | Local UI wrappers and underlying accessible interaction primitives; usage still requires correct composition | [components config](../components.json), [button](../src/components/ui/button.tsx) |

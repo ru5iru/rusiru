@@ -112,9 +112,8 @@ Caption: these are JSON containment and lookup relationships, not SQL tables or 
 | Experience/education open row | Each section's state | Initially index zero; current click can set null |
 | Menu, active section, scrolled header | Navbar state | Browser session/component lifetime only |
 | Revealed sections | Scroll-hook state | First intersection sets visible and stops observing that element |
-| Toasts | Module memory and timers | Not durable; hook limits visible store to one toast |
 
-**[Verified]** Sources: [i18n:50](../src/i18n/i18n.tsx#L50), [App](../src/App.tsx), [Projects](../src/components/sections/Projects.tsx), [Navbar](../src/components/Navbar.tsx), [scroll hook](../src/hooks/useScrollAnimation.ts), [toast hook](../src/hooks/use-toast.ts). Theme storage key/synchronization is delegated rather than configured in local source. The checked-in app adds no language `storage` listener; cross-tab language synchronization is not implemented.
+**[Verified]** Sources: [i18n:50](../src/i18n/i18n.tsx#L50), [App](../src/App.tsx), [Projects](../src/components/sections/Projects.tsx), [Navbar](../src/components/Navbar.tsx). Theme storage key/synchronization is delegated rather than configured in local source. The checked-in app adds no language `storage` listener; cross-tab language synchronization is not implemented.
 
 ## Lifecycle and edits
 
