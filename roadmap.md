@@ -40,3 +40,11 @@
 - [x] Pass 36 tests, lint, automatic production builds, and Chromium homepage/error-page metadata checks with no browser errors.
 - [x] Commit the verified corrections with the requested ru5iru co-author trailer.
 - [ ] Recheck unknown-path HTTP status and `/index.html` redirection on rusiru.cc after deployment; the Lovable preview host still uses its own SPA fallback.
+
+# Second preview SEO verification — 2026-11-22
+
+- [x] Confirm the f258fab preview retains deduplicated metadata, corrected direct/client 404 social descriptions, the confirmed job title, optimized logos, social card, robots.txt, and sitemap.
+- [x] Disprove the repeated punctuation finding: source, raw HTML, and every captured homepage social description contain the correct em dash (U+2014), with no mojibake; the audit detector is a false positive.
+- [x] Confirm the remaining preview unknown-path 200 response is Lovable host fallback behavior, not a regression in the Netlify rules already verified locally.
+- [ ] Deploy the current build to rusiru.cc: production still serves the older `index-B-di4xkf.js` bundle; `/index.html` and a fresh unknown path return 200, and the advertised social-card URL returns HTML rather than the PNG.
+- [ ] Repeat controlled production performance, social-crawler, structured-data, redirect, Search Console, and Bing checks after deployment; the single preview LCP sample is not a field-Core-Web-Vitals verdict.
