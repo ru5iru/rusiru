@@ -24,11 +24,11 @@
     "mainNavigation": "Main navigation",
     "selectLanguage": "Select language",
     "editionBadge": "ENGINEERING BROADSHEET",
-    "editionSubtitle": "Systems Chronicle · Architecture · Cloud & DevOps",
+    "editionSubtitle": "Systems Chronicle \u00b7 Architecture \u00b7 Cloud & DevOps",
     "unfoldAll": "Unfold All Dispatches & Logs",
     "foldAll": "Fold Dispatches to Summary View",
-    "registrationEdition": "PORTFOLIO EDITION · EST. 2024",
-    "registrationDisciplines": "SOFTWARE ENGINEERING · ARCHITECTURE · CLOUD & DEVOPS",
+    "registrationEdition": "PORTFOLIO EDITION \u00b7 EST. 2024",
+    "registrationDisciplines": "SOFTWARE ENGINEERING \u00b7 ARCHITECTURE \u00b7 CLOUD & DEVOPS",
     "registrationIssue": "ISSUE NO. III",
     "mastheadKicker": "The Engineering Portfolio & Systems Chronicle of",
     "indexTitle": "INDEX OF SECTIONS",
@@ -38,7 +38,7 @@
   },
   "hero": {
     "ariaLabel": "Introduction to Rusiru Rathmina, Full-Stack Software Engineer",
-    "srHeading": "Rusiru Rathmina — Full-Stack Software Engineer",
+    "srHeading": "Rusiru Rathmina \u2014 Full-Stack Software Engineer",
     "geoSummary": "Rusiru Rathmina is a Full-Stack Software Engineer based in Colombo, Sri Lanka, building robust full-stack solutions for modern web applications. He specializes in developing high-performance web applications, RESTful APIs, and enterprise solutions using Java, Spring Boot, React, AWS, Docker, and Kubernetes.",
     "headlineBefore": "Full-Stack S",
     "headlineAfter": "lutions",
@@ -50,21 +50,21 @@
     "scrollPrev": "Previous technologies",
     "scrollNext": "Next technologies",
     "techStackLabel": "Technologies",
-    "mastheadSubtitle": "Full-Stack Software Engineer — Building Robust, Scalable, and User-Centric Applications",
-    "bannerKicker": "LEAD FEATURE · FULL-STACK SOLUTIONS FOR MODERN WEB",
+    "mastheadSubtitle": "Full-Stack Software Engineer \u2014 Building Robust, Scalable, and User-Centric Applications",
+    "bannerKicker": "LEAD FEATURE \u00b7 FULL-STACK SOLUTIONS FOR MODERN WEB",
     "bannerTitle": "Building Robust, Scalable, and User-Centric Applications as a Full-Stack Software Engineer & Problem Solver.",
-    "profileKicker": "PROFILE DOSSIER · ABOUT ME",
-    "profileTitle": "Rusiru Rathmina — Full-Stack, Cloud & DevOps Engineer",
-    "profileSummary": "B.Sc. in Computer Science (UCSC) · Software Engineer at Omobio (Pvt) Ltd.",
+    "profileKicker": "PROFILE DOSSIER \u00b7 ABOUT ME",
+    "profileTitle": "Rusiru Rathmina \u2014 Full-Stack, Cloud & DevOps Engineer",
+    "profileSummary": "B.Sc. in Computer Science (UCSC) \u00b7 Software Engineer at Omobio (Pvt) Ltd.",
     "careerTitle": "Career Progression",
     "careerSubtitle": "Omobio (Pvt) Ltd",
     "featuredTitle": "Featured Dispatches",
     "featuredSubtitle": "Index of Key Works",
     "continuingEducationTitle": "Licenses & Certifications",
     "continuingEducationSummary": "Kong Microservices, NIST CSF 2.0, PCI DSS 4.0, GDPR Compliance & ANI Negotiation certificates.",
-    "readDispatch": "Read full dispatch in Sec A2 →",
-    "readDossier": "Unfold full dossier in Sec B2 →",
-    "inspectEducation": "Inspect CE Registry in Sec B1 →"
+    "readDispatch": "Read full dispatch in Sec A2 \u2192",
+    "readDossier": "Unfold full dossier in Sec B2 \u2192",
+    "inspectEducation": "Inspect CE Registry in Sec B1 \u2192"
   },
   "about": {
     "ariaLabel": "About Rusiru Rathmina",
@@ -75,7 +75,7 @@
     "paragraphs": [
       "Hello! I'm **Rusiru Rathmina**, a **Software Engineer** at ==Omobio (Pvt) Ltd==, specializing in **Full-Stack Development**, **Cloud Computing**, and **DevOps**.",
       "My journey began as a trainee, and I have since grown into designing scalable solutions using **Java, Spring Boot, React, and AWS**. I have extensive hands-on experience refactoring legacy systems and building secure, reliable applications.",
-      "My expertise covers the full lifecycle—from frontend design with **React.js** to backend logic in **PHP/Drupal** and infrastructure management using **Docker** and **Kubernetes**.",
+      "My expertise covers the full lifecycle\u2014from frontend design with **React.js** to backend logic in **PHP/Drupal** and infrastructure management using **Docker** and **Kubernetes**.",
       "I am always open to collaborating on ==Full-Stack== or ==DevOps== projects. Let's connect and shape the future of technology together!"
     ]
   },
@@ -97,7 +97,8 @@
           "Represented the development team in ISO 27001 compliance activities, security audits, and related processes, supporting adherence to organizational security standards.",
           "Conducted peer code reviews and mentored new team members, promoting engineering best practices, code quality, and team productivity."
         ],
-        "summary": "Cloud infrastructure, container modernization, application security (OWASP & ISO 27001), and team mentoring."
+        "summary": "Cloud infrastructure, container modernization, application security (OWASP & ISO 27001), and team mentoring.",
+        "id": "software-engineer"
       },
       {
         "company": "Omobio (Pvt) Ltd",
@@ -110,7 +111,8 @@
           "Collaborated with cross-functional teams in Agile environments to develop, maintain, and deliver scalable, high-quality, enterprise-grade software solutions.",
           "Contributed to CI/CD pipeline management, release coordination, and DevOps initiatives, streamlining development workflows and improving deployment efficiency."
         ],
-        "summary": "Enterprise platform engineering, independent Level 3 (L3) production support, root-cause analysis, and CI/CD workflows."
+        "summary": "Enterprise platform engineering, independent Level 3 (L3) production support, root-cause analysis, and CI/CD workflows.",
+        "id": "associate-engineer"
       },
       {
         "company": "Omobio (Pvt) Ltd",
@@ -124,21 +126,22 @@
           "Analyzed application and system issues through server log analysis, service debugging, and collaboration with cross-functional teams to identify root causes and implement effective solutions.",
           "Participated in requirements gathering, solution planning, and system design for a tea factory production automation system, contributing to the development of solutions aimed at improving operational efficiency."
         ],
-        "summary": "Full-stack feature delivery, L3 production troubleshooting, and industrial automation system design."
+        "summary": "Full-stack feature delivery, L3 production troubleshooting, and industrial automation system design.",
+        "id": "trainee"
       }
     ],
-    "kicker": "SECTION A2 · CAREER CHRONICLE",
+    "kicker": "SECTION A2 \u00b7 CAREER CHRONICLE",
     "hint": "CLICK ANY ROLE TO UNFOLD COMPLETE DELIVERABLES",
     "unfoldAll": "Unfold All {count} Roles",
     "foldAll": "Fold Roles",
     "dispatchLabel": "DISPATCH {number}",
     "unfoldItem": "+ Unfold ({count} Points)",
-    "foldItem": "− Fold Dispatch",
+    "foldItem": "\u2212 Fold Dispatch",
     "leadSummary": "Lead Summary"
   },
   "education": {
     "ariaLabel": "Education of Rusiru Rathmina",
-    "geoSummary": "Rusiru Rathmina holds a Bachelor of Science in Computer Science from the University of Colombo School of Computing (UCSC), graduating with a GPA of 3.01 (May 2021 – October 2024). He completed his GCE Advanced Level in Physical Science at Mahinda College, Galle, achieving results of A B C with a Z-Score of 1.3084, and GCE Ordinary Level results of 8A 1B.",
+    "geoSummary": "Rusiru Rathmina holds a Bachelor of Science in Computer Science from the University of Colombo School of Computing (UCSC), graduating with a GPA of 3.01 (May 2021 \u2013 October 2024). He completed his GCE Advanced Level in Physical Science at Mahinda College, Galle, achieving results of A B C with a Z-Score of 1.3084, and GCE Ordinary Level results of 8A 1B.",
     "title": "Education & Continuing Education (CE)",
     "items": [
       {
@@ -161,52 +164,57 @@
         ]
       }
     ],
-    "kicker": "SECTION B1 · ACADEMIC & PROFESSIONAL CREDENTIALS",
+    "kicker": "SECTION B1 \u00b7 ACADEMIC & PROFESSIONAL CREDENTIALS",
     "formalTitle": "I. Academic Degrees & Schooling",
     "formalSubtitle": "FORMAL RECORD",
     "academicStanding": "ACADEMIC STANDING",
-    "certificationsTitle": "II. Continuing Education — Licenses & Certifications",
+    "certificationsTitle": "II. Continuing Education \u2014 Licenses & Certifications",
     "certificationsSubtitle": "PROFESSIONAL DEVELOPMENT",
     "showCredential": "Show Credential",
     "viewAllCertifications": "View Full License & Certification Ledger on LinkedIn",
     "moreCertificationsNote": "ADDITIONAL CERTIFICATES (CYBERSECURITY RISK MANAGEMENT & MORE) ON FILE",
-    "seeAllCertifications": "See All Certifications on LinkedIn →",
+    "seeAllCertifications": "See All Certifications on LinkedIn \u2192",
     "skillsLabel": "Skills",
     "certifications": [
       {
         "issuer": "KONG",
         "date": "Issued Oct 2026",
         "title": "Microservices Foundations Professional Certificate by Kong",
-        "skills": "Software Design Patterns · Software Architecture",
-        "url": "https://www.linkedin.com/in/ru5iru/details/certifications/"
+        "skills": "Software Design Patterns \u00b7 Software Architecture",
+        "url": "https://www.linkedin.com/in/ru5iru/details/certifications/",
+        "id": "kong"
       },
       {
         "issuer": "PEARSON / LINKEDIN",
         "date": "Issued Oct 2026",
         "title": "NIST Cybersecurity Framework (CSF) 2.0 Primer: From Fundamentals to Implementation",
         "skills": "IT Security Best Practices",
-        "url": "https://www.linkedin.com/in/ru5iru/details/certifications/"
+        "url": "https://www.linkedin.com/in/ru5iru/details/certifications/",
+        "id": "nist-csf"
       },
       {
         "issuer": "LINKEDIN",
         "date": "Issued Oct 2026",
         "title": "Working with the PCI DSS 4.0 Compliance Requirements",
-        "skills": "Payment Card Industry Data Security Standard (PCI DSS) · Standards Compliance",
-        "url": "https://www.linkedin.com/in/ru5iru/details/certifications/"
+        "skills": "Payment Card Industry Data Security Standard (PCI DSS) \u00b7 Standards Compliance",
+        "url": "https://www.linkedin.com/in/ru5iru/details/certifications/",
+        "id": "pci-dss"
       },
       {
         "issuer": "LINKEDIN",
         "date": "Issued Nov 2026",
         "title": "GDPR Compliance: Essential Training",
-        "skills": "Legal Compliance · General Data Protection Regulation (GDPR)",
-        "url": "https://www.linkedin.com/in/ru5iru/details/certifications/"
+        "skills": "Legal Compliance \u00b7 General Data Protection Regulation (GDPR)",
+        "url": "https://www.linkedin.com/in/ru5iru/details/certifications/",
+        "id": "gdpr"
       },
       {
         "issuer": "AMERICAN NEGOTIATION INSTITUTE",
         "date": "Issued Nov 2026",
         "title": "Negotiation Professional Certificate by American Negotiation Institute",
-        "skills": "Strategic Negotiations · Interpersonal Skills",
-        "url": "https://www.linkedin.com/in/ru5iru/details/certifications/"
+        "skills": "Strategic Negotiations \u00b7 Interpersonal Skills",
+        "url": "https://www.linkedin.com/in/ru5iru/details/certifications/",
+        "id": "negotiation"
       }
     ]
   },
@@ -227,7 +235,7 @@
         "description": [
           "Played a key role in the development, maintenance, and production support of the Dialog.lk platform, handling complex L3 incidents, root cause analysis, and performance optimization while ensuring SLA compliance and meeting critical deadlines.",
           "Led efforts to refactor the legacy codebase in alignment with OWASP Top 10 security best practices, integrating SonarQube to improve code quality, identify vulnerabilities, and strengthen secure development practices.",
-          "Developed custom Drupal modules integrating Amazon SES to replace SMTP-based email delivery, improving security and deliverability, and implemented user consent management capabilities to support compliance with Sri Lanka’s Personal Data Protection Act (PDPA).",
+          "Developed custom Drupal modules integrating Amazon SES to replace SMTP-based email delivery, improving security and deliverability, and implemented user consent management capabilities to support compliance with Sri Lanka\u2019s Personal Data Protection Act (PDPA).",
           "Identified and remediated security hotspots, code vulnerabilities, and CVE-related issues across the application and container images, strengthening the overall security posture and supporting ISO 27001 compliance activities.",
           "Migrated Dialog.lk application container images from end-of-life Debian to Alpine Linux, achieving a 60% reduction in image size and a 75% improvement in deployment time. Modernized legacy image build processes using multi-stage builds to improve efficiency and security.",
           "Optimized application performance and scalability using AWS services, including S3, SES, and CloudWatch, alongside caching mechanisms to improve operational efficiency and reliability.",
@@ -246,7 +254,7 @@
           "SonarQube",
           "Amazon SES"
         ],
-        "featured": true
+        "id": "dialog"
       },
       {
         "title": "Dialog BizCare",
@@ -260,10 +268,10 @@
           "Yii",
           "Keycloak"
         ],
-        "featured": true
+        "id": "bizcare"
       },
       {
-        "title": "MockDeck — API Mocking & Integration Testing Platform",
+        "title": "MockDeck \u2014 API Mocking & Integration Testing Platform",
         "period": "September 2026 - Present",
         "description": [
           "Designed and developed MockDeck, an API mocking platform that helps developers and QA teams simulate API behavior, test integrations, and reproduce failure scenarios without depending on live backend services.",
@@ -287,10 +295,9 @@
           "GitHub Actions",
           "MCP"
         ],
-        "featured": true,
-        "frontPage": true,
         "frontPageKicker": "API & MCP PLATFORM",
-        "summary": "API mocking & integration testing platform with configurable matching, fault simulation, and MCP tools."
+        "summary": "API mocking & integration testing platform with configurable matching, fault simulation, and MCP tools.",
+        "id": "mockdeck"
       },
       {
         "title": "Jira Worklog Manager",
@@ -299,7 +306,7 @@
         "isExternal": true,
         "description": [
           "Built a browser-based personal productivity tool for logging and managing Jira Cloud worklogs, eliminating the friction of Jira's native time-tracking UI with a fast, keyboard-first single-page experience.",
-          "Designed and implemented a proxy-free React + Vite architecture with a custom month-bucket worklog cache, enabling on-demand data fetching per view instead of a single upfront bulk load — reducing initial API calls significantly.",
+          "Designed and implemented a proxy-free React + Vite architecture with a custom month-bucket worklog cache, enabling on-demand data fetching per view instead of a single upfront bulk load \u2014 reducing initial API calls significantly.",
           "Engineered a real-time work timer that persists across page reloads and browser restarts using localStorage, with a floating chip that survives client-side navigation and pre-fills the log work modal on stop.",
           "Implemented advanced worklog operations including bulk logging across multiple issues, worklog splitting with live sum validation, duplicate entry, and a 5-second undo-delete flow with optimistic UI updates.",
           "Built a multi-tab summary dashboard featuring a Clockwork-style weekly timesheet grid, GitHub-style heatmap calendar, per-project breakdown chart, logged vs. estimated variance report, and CSV export.",
@@ -316,10 +323,9 @@
           "dayjs",
           "localStorage"
         ],
-        "featured": true,
-        "frontPage": true,
         "frontPageKicker": "PRODUCTIVITY SPA",
-        "summary": "Proxy-free React + Vite SPA with month-bucket worklog cache, persistent timer, heatmaps & local disk notes."
+        "summary": "Proxy-free React + Vite SPA with month-bucket worklog cache, persistent timer, heatmaps & local disk notes.",
+        "id": "jira"
       },
       {
         "title": "Project-X",
@@ -334,7 +340,7 @@
           "PostgreSQL",
           "Docker"
         ],
-        "featured": true
+        "id": "project-x"
       },
       {
         "title": "Roamly",
@@ -351,7 +357,7 @@
           "PostgreSQL",
           "Sass"
         ],
-        "featured": false
+        "id": "roamly"
       },
       {
         "title": "Micro CAPS",
@@ -366,7 +372,7 @@
           "MySQL",
           "JavaScript"
         ],
-        "featured": false
+        "id": "micro-caps"
       },
       {
         "title": "ToDo",
@@ -377,22 +383,27 @@
         "tech": [
           "Flutter"
         ],
-        "featured": false
+        "id": "todo"
       }
     ],
-    "kicker": "SECTION B2 · ARCHITECTURAL & PROJECT DOSSIERS",
+    "kicker": "SECTION B2 \u00b7 ARCHITECTURAL & PROJECT DOSSIERS",
     "featuredFilter": "Featured ({count})",
     "allWorksFilter": "All Works ({count})",
     "unfoldAll": "Unfold All Project Logs",
     "foldAll": "Fold Project Logs",
     "dossierLabel": "DOSSIER {number}",
     "unfoldItem": "+ Read Full Log ({count})",
-    "foldItem": "− Fold Log",
+    "foldItem": "\u2212 Fold Log",
     "featuredBadge": "Featured",
     "archiveBadge": "Archive",
-    "morePoints": "+{count} more points →",
+    "morePoints": "+{count} more points \u2192",
     "visitLabel": "Visit",
-    "githubLabel": "GitHub"
+    "githubLabel": "GitHub",
+    "affiliations": {
+      "omobio": "Omobio",
+      "personal": "Personal Project",
+      "ucsc": "UCSC"
+    }
   },
   "skills": {
     "ariaLabel": "Technical Skills of Rusiru Rathmina",
@@ -406,8 +417,8 @@
       "devops": "DevOps & Cloud",
       "tools": "Systems & Quality Tooling"
     },
-    "kicker": "SECTION C1 · TECHNICAL FOUNDATION",
-    "philosophy": "Tools and frameworks change; engineering fundamentals endure. Grounded in computer science principles, distributed architecture, and application security, I treat languages and frameworks as interchangeable instruments—adapting rapidly to whatever stack a system requires.",
+    "kicker": "SECTION C1 \u00b7 TECHNICAL FOUNDATION",
+    "philosophy": "Tools and frameworks change; engineering fundamentals endure. Grounded in computer science principles, distributed architecture, and application security, I treat languages and frameworks as interchangeable instruments\u2014adapting rapidly to whatever stack a system requires.",
     "noteLabel": "NOTE:",
     "note": "Representative production tools listed opposite; accustomed to ramping up on new ecosystems and legacy codebases alike.",
     "relatedEcosystem": "& related ecosystem",
@@ -432,7 +443,8 @@
         "date": "2026-03-22",
         "dateLabel": "Mar 2026",
         "readTime": "10 min read",
-        "link": "https://blog.rusiru.cc/2026/03/owasp-top-ten.html"
+        "link": "https://blog.rusiru.cc/2026/03/owasp-top-ten.html",
+        "id": "owasp"
       },
       {
         "title": "Clean Code Principles Every Developer Should Know",
@@ -440,7 +452,8 @@
         "date": "2026-03-20",
         "dateLabel": "Mar 2026",
         "readTime": "8 min read",
-        "link": "https://blog.rusiru.cc/2026/03/clean-code-principles.html"
+        "link": "https://blog.rusiru.cc/2026/03/clean-code-principles.html",
+        "id": "clean-code"
       },
       {
         "title": "Code Review Etiquette: Being Kind and Thorough",
@@ -448,10 +461,11 @@
         "date": "2025-12-08",
         "dateLabel": "Dec 2025",
         "readTime": "6 min read",
-        "link": "https://blog.rusiru.cc/2025/12/code-review-etiquette.html"
+        "link": "https://blog.rusiru.cc/2025/12/code-review-etiquette.html",
+        "id": "code-review"
       }
     ],
-    "kicker": "SECTION C2 · SYNDICATED COLUMNS & ESSAYS",
+    "kicker": "SECTION C2 \u00b7 SYNDICATED COLUMNS & ESSAYS",
     "geoSummary": "Rusiru Rathmina writes practical engineering essays about OWASP application security, clean code principles, and constructive code review etiquette."
   },
   "contact": {
@@ -462,16 +476,16 @@
     "description": "I'm always excited to collaborate on innovative projects. Reach out directly via email or LinkedIn:",
     "getInTouch": "Get in Touch",
     "linkedin": "Connect on LinkedIn",
-    "kicker": "SECTION C3 · CORRESPONDENCE & DISPATCH",
+    "kicker": "SECTION C3 \u00b7 CORRESPONDENCE & DISPATCH",
     "directChannels": "DIRECT CHANNELS & PROFILES",
     "availability": "Open to onsite or hybrid roles in Sri Lanka as well as remote engineering opportunities and project collaborations worldwide.",
-    "couponLabel": "✂ DIRECT DISPATCH COUPON",
+    "couponLabel": "\u2702 DIRECT DISPATCH COUPON",
     "couponReference": "REF: RR-PORTFOLIO",
     "couponTitle": "Ready to create amazing developer experiences?"
   },
   "footer": {
     "brand": "RR.",
-    "copyright": "© {year} Rusiru Rathmina. All rights reserved.",
+    "copyright": "\u00a9 {year} Rusiru Rathmina. All rights reserved.",
     "socialAria": "Visit Rusiru's {label} profile",
     "social": {
       "linkedin": "LinkedIn",
@@ -487,12 +501,14 @@
   "common": {
     "skipToContent": "Skip to main content",
     "backToTop": "Back to top",
-    "loading": "Loading…",
+    "loading": "Loading\u2026",
     "loadError": "This content could not be loaded.",
     "reload": "Reload page",
     "emailLabel": "Email",
     "linksLabel": "Links",
-    "sitemapLabel": "Sitemap"
+    "sitemapLabel": "Sitemap",
+    "viewMore": "View More",
+    "showLess": "Show Less"
   },
   "notFound": {
     "title": "Page Not Found (404)",

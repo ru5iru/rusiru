@@ -1,76 +1,439 @@
 {
-  "$comment": "Language-neutral settings. Wording lives in src/locales/<lang>.json. Images live in public/media and are referenced by path.",
+  "$comment": "Facts and publication controls live here; wording lives in src/locales/<lang>.json. display.items keys match locale record IDs. Empty affiliation shows no affiliation badge.",
   "siteUrl": "https://rusiru.cc",
   "person": {
     "name": "Rusiru Rathmina",
     "jobTitle": "Software Engineer",
     "email": "r.rathmina@gmail.com",
-    "location": { "city": "Colombo", "country": "Sri Lanka", "countryCode": "LK", "lat": 6.9271, "lng": 79.8612 },
+    "location": {
+      "city": "Colombo",
+      "country": "Sri Lanka",
+      "countryCode": "LK",
+      "lat": 6.9271,
+      "lng": 79.8612
+    },
     "profileImage": "/media/profile/illustrated-portrait.jpg",
     "resumeUrl": "https://drive.google.com/file/d/1tUyCB3WXgbWiAI3igodwczXYXYnpMpwM/view?usp=sharing"
   },
   "seo": {
     "title": "Rusiru Rathmina | Full-Stack Software Engineer",
     "description": "Rusiru Rathmina is a Software Engineer focused on full-stack development and cloud solutions, delivering scalable applications with attention to quality.",
-    "ogDescription": "Portfolio of Rusiru Rathmina — Full-Stack Software Engineer in Colombo, Sri Lanka, building scalable apps with Java, Spring Boot, React, and AWS.",
+    "ogDescription": "Portfolio of Rusiru Rathmina \u2014 Full-Stack Software Engineer in Colombo, Sri Lanka, building scalable apps with Java, Spring Boot, React, and AWS.",
     "shareImage": "/media/social/engineering-broadsheet-card.png",
     "themeColor": "#efe8d8"
   },
-  "theme": { "default": "system" },
-  "sections": ["about", "experience", "education", "projects", "skills", "blog", "contact"],
+  "theme": {
+    "default": "system"
+  },
+  "sections": [
+    "about",
+    "experience",
+    "education",
+    "projects",
+    "skills",
+    "blog",
+    "contact"
+  ],
   "contact": {
-    "secondaryButton": { "platform": "linkedin", "url": "https://www.linkedin.com/in/ru5iru" }
+    "secondaryButton": {
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/in/ru5iru"
+    }
   },
   "blogUrl": "https://blog.rusiru.cc/",
   "continuingEducationUrl": "https://www.linkedin.com/in/ru5iru/details/certifications/",
   "social": [
-    { "platform": "linkedin", "url": "https://www.linkedin.com/in/ru5iru" },
-    { "platform": "github", "url": "https://github.com/ru5iru" },
-    { "platform": "discord", "url": "https://www.discordapp.com/users/Rusiru#4036" },
-    { "platform": "facebook", "url": "https://web.facebook.com/ru5iru" },
-    { "platform": "x", "url": "https://twitter.com/ru5iru" },
-    { "platform": "reddit", "url": "https://www.reddit.com/u/ru5iru/" },
-    { "platform": "blog", "url": "https://blog.rusiru.cc/" },
-    { "platform": "spotify", "url": "https://open.spotify.com/user/31ihlph5wpwcdblzhklpoc3evmy4" }
+    {
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/in/ru5iru",
+      "visible": true
+    },
+    {
+      "platform": "github",
+      "url": "https://github.com/ru5iru",
+      "visible": true
+    },
+    {
+      "platform": "discord",
+      "url": "https://www.discordapp.com/users/Rusiru#4036",
+      "visible": true
+    },
+    {
+      "platform": "facebook",
+      "url": "https://web.facebook.com/ru5iru",
+      "visible": true
+    },
+    {
+      "platform": "x",
+      "url": "https://twitter.com/ru5iru",
+      "visible": true
+    },
+    {
+      "platform": "reddit",
+      "url": "https://www.reddit.com/u/ru5iru/",
+      "visible": true
+    },
+    {
+      "platform": "blog",
+      "url": "https://blog.rusiru.cc/",
+      "visible": true
+    },
+    {
+      "platform": "spotify",
+      "url": "https://open.spotify.com/user/31ihlph5wpwcdblzhklpoc3evmy4",
+      "visible": true
+    }
   ],
   "educationLogos": {
     "ucsc": "/media/logos/ucsc-logo.png",
     "mcg": "/media/logos/mcg-logo.png"
   },
   "skills": [
-    { "id": "languages", "items": [
-      { "name": "Java", "icon": "devicon:java/java-original.svg" },
-      { "name": "JavaScript", "icon": "devicon:javascript/javascript-original.svg" },
-      { "name": "PHP", "icon": "devicon:php/php-original.svg" },
-      { "name": "C++", "icon": "devicon:cplusplus/cplusplus-original.svg" }
-    ]},
-    { "id": "frameworks", "items": [
-      { "name": "React", "icon": "devicon:react/react-original.svg" },
-      { "name": "Node.js", "icon": "devicon:nodejs/nodejs-original.svg" },
-      { "name": "Spring Boot", "icon": "devicon:spring/spring-original.svg" },
-      { "name": "Drupal", "icon": "/media/icons/drupal.svg" },
-      { "name": "Yii", "icon": "/media/icons/yii.svg", "invertInDark": true },
-      { "name": "Laravel", "icon": "/media/icons/laravel.svg" },
-      { "name": "Symfony", "icon": "/media/icons/symfony.svg", "invertInDark": true }
-    ]},
-    { "id": "databases", "items": [
-      { "name": "MySQL", "icon": "devicon:mysql/mysql-original.svg" },
-      { "name": "PostgreSQL", "icon": "devicon:postgresql/postgresql-original.svg" },
-      { "name": "MongoDB", "icon": "devicon:mongodb/mongodb-original.svg" },
-      { "name": "Redis", "icon": "devicon:redis/redis-original.svg" }
-    ]},
-    { "id": "devops", "items": [
-      { "name": "AWS", "icon": "/media/icons/aws.svg" },
-      { "name": "Docker", "icon": "devicon:docker/docker-original.svg" },
-      { "name": "Kubernetes", "icon": "devicon:kubernetes/kubernetes-plain.svg" },
-      { "name": "Jenkins", "icon": "devicon:jenkins/jenkins-original.svg" },
-      { "name": "Kafka", "icon": "devicon:apachekafka/apachekafka-original.svg", "invertInDark": true }
-    ]},
-    { "id": "tools", "items": [
-      { "name": "Git", "icon": "devicon:git/git-original.svg" },
-      { "name": "Linux", "icon": "devicon:linux/linux-original.svg" },
-      { "name": "SonarQube", "icon": "/media/icons/sonarqube.svg" },
-      { "name": "Postman", "icon": "/media/icons/postman.svg" }
-    ]}
-  ]
+    {
+      "id": "languages",
+      "items": [
+        {
+          "name": "Java",
+          "icon": "devicon:java/java-original.svg",
+          "visible": true
+        },
+        {
+          "name": "JavaScript",
+          "icon": "devicon:javascript/javascript-original.svg",
+          "visible": true
+        },
+        {
+          "name": "PHP",
+          "icon": "devicon:php/php-original.svg",
+          "visible": true
+        },
+        {
+          "name": "C++",
+          "icon": "devicon:cplusplus/cplusplus-original.svg",
+          "visible": true
+        }
+      ],
+      "visible": true
+    },
+    {
+      "id": "frameworks",
+      "items": [
+        {
+          "name": "React",
+          "icon": "devicon:react/react-original.svg",
+          "visible": true
+        },
+        {
+          "name": "Node.js",
+          "icon": "devicon:nodejs/nodejs-original.svg",
+          "visible": true
+        },
+        {
+          "name": "Spring Boot",
+          "icon": "devicon:spring/spring-original.svg",
+          "visible": true
+        },
+        {
+          "name": "Drupal",
+          "icon": "/media/icons/drupal.svg",
+          "visible": true
+        },
+        {
+          "name": "Yii",
+          "icon": "/media/icons/yii.svg",
+          "invertInDark": true,
+          "visible": true
+        },
+        {
+          "name": "Laravel",
+          "icon": "/media/icons/laravel.svg",
+          "visible": true
+        },
+        {
+          "name": "Symfony",
+          "icon": "/media/icons/symfony.svg",
+          "invertInDark": true,
+          "visible": true
+        }
+      ],
+      "visible": true
+    },
+    {
+      "id": "databases",
+      "items": [
+        {
+          "name": "MySQL",
+          "icon": "devicon:mysql/mysql-original.svg",
+          "visible": true
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": "devicon:postgresql/postgresql-original.svg",
+          "visible": true
+        },
+        {
+          "name": "MongoDB",
+          "icon": "devicon:mongodb/mongodb-original.svg",
+          "visible": true
+        },
+        {
+          "name": "Redis",
+          "icon": "devicon:redis/redis-original.svg",
+          "visible": true
+        }
+      ],
+      "visible": true
+    },
+    {
+      "id": "devops",
+      "items": [
+        {
+          "name": "AWS",
+          "icon": "/media/icons/aws.svg",
+          "visible": true
+        },
+        {
+          "name": "Docker",
+          "icon": "devicon:docker/docker-original.svg",
+          "visible": true
+        },
+        {
+          "name": "Kubernetes",
+          "icon": "devicon:kubernetes/kubernetes-plain.svg",
+          "visible": true
+        },
+        {
+          "name": "Jenkins",
+          "icon": "devicon:jenkins/jenkins-original.svg",
+          "visible": true
+        },
+        {
+          "name": "Kafka",
+          "icon": "devicon:apachekafka/apachekafka-original.svg",
+          "invertInDark": true,
+          "visible": true
+        }
+      ],
+      "visible": true
+    },
+    {
+      "id": "tools",
+      "items": [
+        {
+          "name": "Git",
+          "icon": "devicon:git/git-original.svg",
+          "visible": true
+        },
+        {
+          "name": "Linux",
+          "icon": "devicon:linux/linux-original.svg",
+          "visible": true
+        },
+        {
+          "name": "SonarQube",
+          "icon": "/media/icons/sonarqube.svg",
+          "visible": true
+        },
+        {
+          "name": "Postman",
+          "icon": "/media/icons/postman.svg",
+          "visible": true
+        }
+      ],
+      "visible": true
+    }
+  ],
+  "display": {
+    "sections": {
+      "about": true,
+      "experience": true,
+      "education": true,
+      "projects": true,
+      "skills": true,
+      "blog": true,
+      "contact": true
+    },
+    "groups": {
+      "formalEducation": true,
+      "continuingEducation": true
+    },
+    "frontPage": {
+      "career": true,
+      "projects": true,
+      "education": true,
+      "continuingEducation": true,
+      "portrait": true,
+      "biography": true,
+      "viewWork": true,
+      "resume": true,
+      "blog": false
+    },
+    "chrome": {
+      "banner": true,
+      "footer": true,
+      "backToTop": true,
+      "themeToggle": true,
+      "languageSelector": true,
+      "unfoldAll": true
+    },
+    "items": {
+      "experience": {
+        "software-engineer": {
+          "visible": true,
+          "featured": true,
+          "frontPage": true,
+          "expanded": true,
+          "affiliation": ""
+        },
+        "associate-engineer": {
+          "visible": true,
+          "featured": true,
+          "frontPage": true,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "trainee": {
+          "visible": true,
+          "featured": true,
+          "frontPage": true,
+          "expanded": false,
+          "affiliation": ""
+        }
+      },
+      "education": {
+        "ucsc": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "mcg": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        }
+      },
+      "certifications": {
+        "kong": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "nist-csf": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "pci-dss": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "gdpr": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "negotiation": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        }
+      },
+      "projects": {
+        "dialog": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": true,
+          "affiliation": ""
+        },
+        "bizcare": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "mockdeck": {
+          "visible": true,
+          "featured": true,
+          "frontPage": true,
+          "expanded": true,
+          "affiliation": ""
+        },
+        "jira": {
+          "visible": true,
+          "featured": true,
+          "frontPage": true,
+          "expanded": true,
+          "affiliation": ""
+        },
+        "project-x": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "roamly": {
+          "visible": true,
+          "featured": false,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "micro-caps": {
+          "visible": true,
+          "featured": false,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "todo": {
+          "visible": true,
+          "featured": false,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        }
+      },
+      "blog": {
+        "owasp": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "clean-code": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "code-review": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        }
+      }
+    }
+  }
 }

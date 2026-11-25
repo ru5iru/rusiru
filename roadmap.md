@@ -61,3 +61,9 @@
 
 - [x] Remove generated audit output, local caches, unused source/UI/hooks, dead styles, and orphaned packages without behavior changes.
 - [x] Update documentation, verify tests/lint/build/browser flows, and commit with the ru5iru co-author trailer.
+
+# Configurable publication controls — 2026-11-25
+
+- [x] Add validated section, record, front-page, archive, initial expansion, and affiliation settings with stable record IDs.
+- [x] Apply shared selection to pages, navigation, front-page links, and generated search content; preserve current defaults.
+- [x] Document editing settings and verify hidden/archive/jump behavior, 53 tests, clean lint/automatic builds, and desktop/mobile views with real settings changes restored afterward.
