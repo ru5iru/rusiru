@@ -16,6 +16,3 @@
 - Shared shadcn variant/helper exports and the brand icon registry are intentional lint Fast Refresh exemptions; keep other feature modules component-only.
 - Each lazy section has its own loading state/error boundary; unused query/toast providers are not mounted on this static portfolio.
 - Always use Conventional Commit messages (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`) when committing changes.
-- Publication controls (including skill/social visibility) live only in `en.json` → `display`; a shared validated resolver derives runtime settings, keyed by stable locale record IDs; shared selectors preserve source indices for jumps and exclude unpublished entries from pages and search generation to prevent selection drift.
-- Locale fallback never translates record IDs or English publication flags, because publication settings and jump targets require stable content identity across languages.
-- Project affiliations use configurable locale label keys; never infer an employer or institution from project descriptions, because affiliation is owner-authored data.

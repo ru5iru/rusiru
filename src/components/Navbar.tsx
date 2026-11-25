@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { Menu, Minus, Plus, X } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { ThemeToggle } from './ThemeToggle';
@@ -6,12 +6,12 @@ import { LanguageSelector } from './LanguageSelector';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/i18n/i18n';
 import { siteConfig } from '@/config';
-import { enabledSections } from '@/config/publication';
 import { isBroadsheetAllExpanded, navigateToSection, setBroadsheetAllExpanded } from '@/lib/navigation';
+
+const navItems = siteConfig.sections.map(key => ({ href: `#${key}`, key }));
 
 export function Navbar({ children }: { children: ReactNode }) {
   const { t } = useTranslation();
-  const navItems = useMemo(() => enabledSections(siteConfig).map(key => ({ href: `#${key}`, key })), []);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [allExpanded, setAllExpanded] = useState(isBroadsheetAllExpanded());
@@ -30,7 +30,7 @@ export function Navbar({ children }: { children: ReactNode }) {
     const mutations = new MutationObserver(register);
     mutations.observe(document.body, { childList: true, subtree: true });
     return () => { mutations.disconnect(); observer.disconnect(); };
-  }, [navItems]);
+  }, []);
 
   useEffect(() => {
     const media = window.matchMedia('(min-width: 1024px)');
@@ -70,12 +70,12 @@ export function Navbar({ children }: { children: ReactNode }) {
             <span className="hidden sm:inline">{t('nav.editionSubtitle')}</span>
           </div>
           <div className="flex flex-wrap items-center gap-2">
-            {siteConfig.display.chrome.unfoldAll && enabledSections(siteConfig).some(id => id === 'experience' || id === 'projects') && <Button variant="ghost" onClick={toggleAll} aria-pressed={allExpanded} className="h-auto rounded-none border border-desk-foreground/25 px-2.5 py-1 font-mono text-xs text-desk-foreground hover:bg-desk-foreground/10 hover:text-desk-foreground">
+            <Button variant="ghost" onClick={toggleAll} aria-pressed={allExpanded} className="h-auto rounded-none border border-desk-foreground/25 px-2.5 py-1 font-mono text-xs text-desk-foreground hover:bg-desk-foreground/10 hover:text-desk-foreground">
               {allExpanded ? <Minus aria-hidden="true" className="mr-1.5 h-3.5 w-3.5" /> : <Plus aria-hidden="true" className="mr-1.5 h-3.5 w-3.5" />}
               {t(allExpanded ? 'nav.foldAll' : 'nav.unfoldAll')}
-            </Button>}
-            {siteConfig.display.chrome.themeToggle && <ThemeToggle />}
-            {siteConfig.display.chrome.languageSelector && <LanguageSelector />}
+            </Button>
+            <ThemeToggle />
+            <LanguageSelector />
           </div>
         </div>
 

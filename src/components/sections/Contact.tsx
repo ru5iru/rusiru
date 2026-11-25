@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/SectionHeading';
 import { useTranslation } from '@/i18n/i18n';
 import { siteConfig } from '@/config';
-import { visibleSocial } from '@/config/publication';
 import { brandIcons } from '@/components/icons/BrandIcons';
 
 export function Contact() {
@@ -21,7 +20,7 @@ export function Contact() {
             <p className="text-muted-foreground">{t('contact.availability')}</p>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-3 pt-2 r-t font-mono text-xs">
-            {visibleSocial(siteConfig).map(link => {
+            {siteConfig.social.map(link => {
               const brand = brandIcons[link.platform];
               const label = t(`footer.social.${link.platform}`);
               const Icon = brand?.icon ?? ExternalLink;

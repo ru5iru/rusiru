@@ -18,7 +18,7 @@ export function navigateToSection(id: string): () => void {
   return () => { observer.disconnect(); window.clearTimeout(timeout); };
 }
 
-export type BroadsheetSection = 'experience' | 'projects' | 'education' | 'certifications' | 'blog';
+export type BroadsheetSection = 'experience' | 'projects';
 export interface BroadsheetJump { section: BroadsheetSection; index: number }
 
 const JUMP_EVENT = 'broadsheet:jump';
@@ -29,7 +29,7 @@ let allExpanded = false;
 export function jumpToBroadsheetItem(section: BroadsheetSection, index: number): () => void {
   pendingJump = { section, index };
   window.dispatchEvent(new CustomEvent<BroadsheetJump>(JUMP_EVENT, { detail: { section, index } }));
-  return navigateToSection(section === 'certifications' ? 'education' : section);
+  return navigateToSection(section);
 }
 
 export function subscribeToBroadsheetJump(section: BroadsheetSection, callback: (detail: BroadsheetJump) => void): () => void {

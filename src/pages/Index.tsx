@@ -6,7 +6,6 @@ import { Footer } from '@/components/Footer';
 import { BackToTop } from '@/components/BackToTop';
 import { useTranslation } from '@/i18n/i18n';
 import { siteConfig } from '@/config';
-import { enabledSections } from '@/config/publication';
 import { LoadingState, LoadBoundary } from '@/components/LoadState';
 import { navigateToSection } from '@/lib/navigation';
 
@@ -25,7 +24,7 @@ const Index = () => {
   const { t } = useTranslation();
   useEffect(() => {
     const id = window.location.hash.slice(1);
-    if (id && enabledSections(siteConfig).includes(id)) return navigateToSection(id);
+    if (id && siteConfig.sections.includes(id)) return navigateToSection(id);
   }, []);
   return (
     <>
@@ -41,13 +40,13 @@ const Index = () => {
         </div>
         <Navbar>
           <main id="main" tabIndex={-1}>
-            {siteConfig.display.chrome.banner && <Hero />}
-            {enabledSections(siteConfig).map(key => { const S = sectionMap[key]; return S ? <LoadBoundary key={key}><Suspense fallback={<LoadingState />}><S /></Suspense></LoadBoundary> : null; })}
+            <Hero />
+            {siteConfig.sections.map(key => { const S = sectionMap[key]; return S ? <LoadBoundary key={key}><Suspense fallback={<LoadingState />}><S /></Suspense></LoadBoundary> : null; })}
           </main>
-          {siteConfig.display.chrome.footer && <Footer />}
+          <Footer />
         </Navbar>
       </div>
-      {siteConfig.display.chrome.backToTop && <BackToTop />}
+      <BackToTop />
     </>
   );
 };

@@ -1,12 +1,11 @@
 import { useTranslation } from '@/i18n/i18n';
 import { siteConfig } from '@/config';
-import { visibleSkills } from '@/config/publication';
 
 export function Skills() {
   const { t } = useTranslation();
   return (
     <section id="skills" className="py-8 r-double-b" aria-label={t('skills.ariaLabel')}>
-      <div data-geo-summary="skills" className="sr-only">{visibleSkills(siteConfig).flatMap(category => category.items.map(item => item.name)).join(', ')}</div>
+      <div data-geo-summary="skills" className="sr-only">{t('skills.geoSummary')}</div>
       <div className="grid items-start gap-8 lg:grid-cols-12">
         <div className="space-y-3 lg:col-span-4">
           <div className="font-mono text-xs uppercase tracking-widest text-primary">{t('skills.kicker')}</div>
@@ -16,7 +15,7 @@ export function Skills() {
         </div>
         <div className="lg:col-span-8">
           <div className="r-t r-b divide-y divide-border">
-            {visibleSkills(siteConfig).map(category => (
+            {siteConfig.skills.map(category => (
               <div key={category.id} className="grid items-baseline gap-2 py-3.5 sm:grid-cols-12 sm:gap-4">
                 <div className="sm:col-span-4">
                   <h3 className="font-display text-base font-bold">{t(`skills.categories.${category.id}`)}</h3>
