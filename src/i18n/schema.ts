@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { webUrl } from '../config/schema';
+import { displaySchema, webUrl } from '../config/schema';
 
 const text = z.string().trim().min(1);
 const identified = z.object({ id: text });
@@ -8,6 +8,7 @@ const sectionCopy = copy.extend({ kicker: text });
 const labeledCopy = sectionCopy.extend({ titleBefore: text, titleHighlight: text });
 
 export const localeSchema = z.object({
+  display: displaySchema,
   language: z.object({ name: text, code: text }),
   seo: z.object({ shareImageAlt: text }),
   nav: z.object({

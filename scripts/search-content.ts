@@ -1,9 +1,11 @@
-import type { SiteConfig } from '../src/config/schema';
+import type { SiteConfig, SiteSettings } from '../src/config/schema';
+import { resolveSiteConfig } from '../src/config/settings';
 import { enabledSections, publishedItems, visibleSkills, visibleSocial, validatePublication } from '../src/config/publication';
 import type themeDefaults from '../src/config/theme.json';
 import type english from '../src/locales/en.json';
+import type siteDefaults from '../src/config/site.json';
 
-export type SearchSite = SiteConfig;
+export type SearchSite = SiteConfig | SiteSettings | typeof siteDefaults;
 export type SearchTheme = typeof themeDefaults;
 export type SearchLocale = typeof english;
 const escape = (value: unknown) => String(value ?? '').replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character] ?? character));
@@ -11,7 +13,8 @@ const plain = (value: string) => value.replace(/\*\*|==/g, '');
 const list = (values: string[]) => `<ul>${values.map(value => `<li>${escape(plain(value))}</li>`).join('')}</ul>`;
 const absolute = (base: string, reference: string) => new URL(reference, base).href;
 
-export function createSearchContent(site: SearchSite, en: SearchLocale) {
+export function createSearchContent(settings: SearchSite, en: SearchLocale) {
+  const site = 'display' in settings ? settings : resolveSiteConfig(settings, en);
   const url = `${site.siteUrl.replace(/\/$/, '')}/`;
   validatePublication(site, { experience: en.experience.items, education: en.education.items, certifications: en.education.certifications, projects: en.projects.items, blog: en.blog.posts }, en.projects.affiliations);
   const sections = enabledSections(site);

@@ -1,7 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import type { Plugin } from 'vite';
-import { siteSchema, themeSchema } from '../src/config/schema';
+import { themeSchema } from '../src/config/schema';
+import { resolveSiteConfig } from '../src/config/settings';
 import { createNotFoundDocument, createSearchContent, type SearchSite, type SearchLocale, type SearchTheme } from './search-content';
 import { localeSchema } from '../src/i18n/schema';
 
@@ -9,11 +10,11 @@ export function siteFilesPlugin(): Plugin {
   const root = process.cwd();
   const load = (file: string) => JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'));
   const content = () => {
-    const site = load('src/config/site.json');
     const theme = load('src/config/theme.json');
-    siteSchema.parse(site); themeSchema.parse(theme);
+    themeSchema.parse(theme);
     const en = load('src/locales/en.json');
     localeSchema.parse(en);
+    const site = resolveSiteConfig(load('src/config/site.json'), en);
     for (const item of en.education.items) if (!site.educationLogos[item.id]) throw new Error(`Missing education logo for ${item.id}`);
     for (const category of site.skills) {
       if (!en.skills.categories[category.id]) throw new Error(`Missing skill category wording for ${category.id}`);

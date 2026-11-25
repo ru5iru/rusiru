@@ -515,5 +515,259 @@
     "description": "The page you're looking for doesn't exist. Return to the homepage to explore projects, experience, and contact details.",
     "message": "Oops! Page not found",
     "backHome": "Return to Home"
+  },
+  "display": {
+    "sections": {
+      "about": true,
+      "experience": true,
+      "education": true,
+      "projects": true,
+      "skills": true,
+      "blog": true,
+      "contact": true
+    },
+    "groups": {
+      "formalEducation": true,
+      "continuingEducation": true
+    },
+    "frontPage": {
+      "career": true,
+      "projects": true,
+      "education": true,
+      "continuingEducation": true,
+      "portrait": true,
+      "biography": true,
+      "viewWork": true,
+      "resume": true,
+      "blog": false
+    },
+    "chrome": {
+      "banner": true,
+      "footer": true,
+      "backToTop": true,
+      "themeToggle": true,
+      "languageSelector": true,
+      "unfoldAll": true
+    },
+    "items": {
+      "experience": {
+        "software-engineer": {
+          "visible": true,
+          "featured": true,
+          "frontPage": true,
+          "expanded": true,
+          "affiliation": ""
+        },
+        "associate-engineer": {
+          "visible": true,
+          "featured": true,
+          "frontPage": true,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "trainee": {
+          "visible": true,
+          "featured": true,
+          "frontPage": true,
+          "expanded": false,
+          "affiliation": ""
+        }
+      },
+      "education": {
+        "ucsc": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "mcg": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        }
+      },
+      "certifications": {
+        "kong": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "nist-csf": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "pci-dss": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "gdpr": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "negotiation": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        }
+      },
+      "projects": {
+        "dialog": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": true,
+          "affiliation": ""
+        },
+        "bizcare": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "mockdeck": {
+          "visible": true,
+          "featured": true,
+          "frontPage": true,
+          "expanded": true,
+          "affiliation": ""
+        },
+        "jira": {
+          "visible": true,
+          "featured": true,
+          "frontPage": true,
+          "expanded": true,
+          "affiliation": ""
+        },
+        "project-x": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "roamly": {
+          "visible": true,
+          "featured": false,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "micro-caps": {
+          "visible": true,
+          "featured": false,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "todo": {
+          "visible": true,
+          "featured": false,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        }
+      },
+      "blog": {
+        "owasp": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "clean-code": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        },
+        "code-review": {
+          "visible": true,
+          "featured": true,
+          "frontPage": false,
+          "expanded": false,
+          "affiliation": ""
+        }
+      }
+    },
+    "social": {
+      "linkedin": true,
+      "github": true,
+      "discord": true,
+      "facebook": true,
+      "x": true,
+      "reddit": true,
+      "blog": true,
+      "spotify": true
+    },
+    "skills": {
+      "languages": {
+        "visible": true,
+        "items": {
+          "Java": true,
+          "JavaScript": true,
+          "PHP": true,
+          "C++": true
+        }
+      },
+      "frameworks": {
+        "visible": true,
+        "items": {
+          "React": true,
+          "Node.js": true,
+          "Spring Boot": true,
+          "Drupal": true,
+          "Yii": true,
+          "Laravel": true,
+          "Symfony": true
+        }
+      },
+      "databases": {
+        "visible": true,
+        "items": {
+          "MySQL": true,
+          "PostgreSQL": true,
+          "MongoDB": true,
+          "Redis": true
+        }
+      },
+      "devops": {
+        "visible": true,
+        "items": {
+          "AWS": true,
+          "Docker": true,
+          "Kubernetes": true,
+          "Jenkins": true,
+          "Kafka": true
+        }
+      },
+      "tools": {
+        "visible": true,
+        "items": {
+          "Git": true,
+          "Linux": true,
+          "SonarQube": true,
+          "Postman": true
+        }
+      }
+    }
   }
 }

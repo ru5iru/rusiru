@@ -8,7 +8,7 @@ export function mergeLocale(base: unknown, translated: unknown): unknown {
   }
   if (record(base)) {
     const source = record(translated) ? translated : {};
-    return Object.fromEntries(Object.entries(base).map(([key, value]) => [key, key === 'id' ? value : mergeLocale(value, source[key])]));
+    return Object.fromEntries(Object.entries(base).map(([key, value]) => [key, key === 'id' || key === 'display' ? value : mergeLocale(value, source[key])]));
   }
   if (typeof base !== typeof translated) return base;
   if (typeof base === 'string' && typeof translated === 'string') {

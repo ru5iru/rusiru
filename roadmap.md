@@ -67,3 +67,8 @@
 - [x] Add validated section, record, front-page, archive, initial expansion, and affiliation settings with stable record IDs.
 - [x] Apply shared selection to pages, navigation, front-page links, and generated search content; preserve current defaults.
 - [x] Document editing settings and verify hidden/archive/jump behavior, 53 tests, clean lint/automatic builds, and desktop/mobile views with real settings changes restored afterward.
+
+# English-owned publication flags — 2026-11-25
+
+- [x] Move all publication flags to en.json and share validated settings between pages and search generation.
+- [x] Preserve defaults and language-independent publication; verify 58 tests, clean lint/automatic builds, and desktop/mobile interactions with temporary English flag changes restored.

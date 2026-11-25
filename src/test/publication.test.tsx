@@ -2,7 +2,9 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { HelmetProvider } from 'react-helmet-async';
 import { siteConfig } from '@/config';
-import { siteSchema } from '@/config/schema';
+import { localeSchema } from '@/i18n/schema';
+import { resolveSiteConfig } from '@/config/settings';
+import siteSettings from '@/config/site.json';
 import { enabledSections, publishedItems, validatePublication, visibleSkills } from '@/config/publication';
 import en from '@/locales/en.json';
 import { I18nProvider } from '@/i18n/i18n';
@@ -23,6 +25,47 @@ afterEach(() => { cleanup(); setBroadsheetAllExpanded(false); Object.assign(site
 const wrap = (children: React.ReactNode) => render(<I18nProvider>{children}</I18nProvider>);
 
 describe('publication settings', () => {
+  it('loads section flags exclusively from en.json', () => {
+    const english = structuredClone(en);
+    english.display.sections.projects = false;
+    const config = resolveSiteConfig(siteSettings, english);
+    expect(siteSettings).not.toHaveProperty('display');
+    expect(enabledSections(config)).not.toContain('projects');
+    expect(createSearchContent(siteSettings, english).metadata).not.toContain('ItemList');
+  });
+
+  it('loads item placement, expansion, and affiliations from en.json', () => {
+    const english = structuredClone(en);
+    english.display.items.projects.jira = { visible: true, featured: false, frontPage: true, expanded: false, affiliation: 'personal' };
+    const config = resolveSiteConfig(siteSettings, english);
+    expect(publishedItems(config, 'projects', english.projects.items).find(entry => entry.item.id === 'jira')?.settings).toEqual({ visible: true, featured: false, frontPage: true, expanded: false, affiliation: 'personal' });
+  });
+
+  it('loads skill and social visibility from en.json', () => {
+    const english = structuredClone(en);
+    english.display.skills.languages.items.Java = false;
+    english.display.social.linkedin = false;
+    const config = resolveSiteConfig(siteSettings, english);
+    expect(visibleSkills(config).flatMap(category => category.items.map(item => item.name))).not.toContain('Java');
+    expect(config.social.find(item => item.platform === 'linkedin')?.visible).toBe(false);
+    expect(siteSettings.skills[0].items[0]).not.toHaveProperty('visible');
+    expect(siteSettings.social[0]).not.toHaveProperty('visible');
+  });
+
+  it('keeps English publication flags unchanged across translations', () => {
+    const english = structuredClone(en);
+    english.display.sections.projects = false;
+    const merged = mergeLocale(english, { display: en.display }) as typeof en;
+    expect(merged.display.sections.projects).toBe(false);
+  });
+
+  it('rejects missing or unknown skill and social flags', () => {
+    const english = structuredClone(en);
+    expect(() => resolveSiteConfig(siteSettings, { ...english, display: { ...english.display, social: {} } })).toThrow('Missing display.social.linkedin');
+    expect(() => resolveSiteConfig(siteSettings, { ...english, display: { ...english.display, social: { ...english.display.social, typo: true } } })).toThrow('Unknown display.social ID: typo');
+    english.display.skills.languages.items = { ...english.display.skills.languages.items, typo: true } as typeof english.display.skills.languages.items;
+    expect(() => resolveSiteConfig(siteSettings, english)).toThrow('Unknown display.skills.languages.items ID: typo');
+  });
   it('keeps record IDs stable when changing languages', () => {
     expect(mergeLocale({ id: 'jira', title: 'Jira Worklog Manager' }, { id: 'translated-id', title: 'Translated title' })).toEqual({ id: 'jira', title: 'Translated title' });
   });
@@ -164,7 +207,7 @@ describe('publication settings', () => {
     expect(() => validatePublication(siteConfig, records, en.projects.affiliations)).toThrow('Unknown projects record ID');
     delete siteConfig.display.items.projects.typo;
     expect(() => validatePublication(siteConfig, { ...records, projects: [en.projects.items[0], en.projects.items[0]] }, en.projects.affiliations)).toThrow('Duplicate');
-    expect(siteSchema.safeParse({ ...siteConfig, display: { ...siteConfig.display, groups: { formalEducation: 'false', continuingEducation: true } } }).success).toBe(false);
+    expect(localeSchema.safeParse({ ...en, display: { ...en.display, groups: { formalEducation: 'false', continuingEducation: true } } }).success).toBe(false);
   });
 
   it('ignores attempts to jump to unpublished records', () => {

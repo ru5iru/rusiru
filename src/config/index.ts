@@ -1,13 +1,12 @@
 import site from './site.json';
 import theme from './theme.json';
-import { siteSchema, themeSchema, type SiteConfig, type SkillItem } from './schema';
+import { themeSchema, type SkillItem } from './schema';
 import en from '../locales/en.json';
-import { validatePublication } from './publication';
+import { resolveSiteConfig } from './settings';
 
 export type { SkillItem, SkillCategory, SocialLink } from './schema';
 
-export const siteConfig = siteSchema.parse(site) as SiteConfig;
-validatePublication(siteConfig, { experience: en.experience.items, education: en.education.items, certifications: en.education.certifications, projects: en.projects.items, blog: en.blog.posts }, en.projects.affiliations);
+export const siteConfig = resolveSiteConfig(site, en);
 export const themeConfig = themeSchema.parse(theme);
 
 /** Resolve icon refs: "devicon:<path>" uses the Devicon CDN; anything else is used as-is. */

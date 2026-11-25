@@ -6,9 +6,9 @@ Make it yours by editing config files only — no code changes needed.
 |------|-------|
 | Name, email, site URL, location, resume link, page title/description | `src/config/site.json` |
 | Social links (`platform`: linkedin, github, discord, facebook, x, reddit, blog, spotify — or add `icon` path for others) | `site.json` → `social` |
-| Which sections show and in what order | `site.json` → `sections` |
-| Section visibility, entry visibility/placement/expansion, page controls | `site.json` → `display` |
-| Project association labels | `en.json` → `projects.affiliations`; assigned in `site.json` → `display.items.projects.<id>.affiliation` |
+| Section order | `site.json` → `sections` |
+| Section visibility, entry visibility/placement/expansion, page controls, skill/social visibility | `en.json` → `display` |
+| Project association labels | `en.json` → `projects.affiliations`; assigned in `en.json` → `display.items.projects.<id>.affiliation` |
 | Skills + icons (`devicon:<path>` or `/media/...` or any URL; `invertInDark` for dark logos) | `site.json` → `skills` |
 | Education logos (keyed by education item `id`) | `site.json` → `educationLogos` |
 | Brand colors (HSL) for light/dark | `src/config/theme.json` |
@@ -22,7 +22,7 @@ Copy `src/locales/en.json` to e.g. `si.json`, translate the values, and set `lan
 
 ## Publication controls
 
-Keep `sections` as the ordered list of sections. Set `display.sections.projects` (or another section ID) to `false` to hide that section, its navigation link, and any front-page references. Removing an ID from `sections` also hides it. Formal Education and CE can be switched independently under `display.groups`.
+All publication flags live in **`src/locales/en.json` → `display`**, not `site.json`. Keep `site.json.sections` as the ordered list of sections. Set `display.sections.projects` (or another section ID) to `false` to hide that section, its navigation link, and any front-page references. Removing an ID from `sections` also hides it. Formal Education and CE can be switched independently under `display.groups`. English flags apply across every language; translations cannot override publication.
 
 Every experience, education, CE, project, and blog record has a stable `id` in the locale. Matching settings live in `display.items.experience`, `.education`, `.certifications`, `.projects`, or `.blog`:
 
@@ -44,7 +44,7 @@ Every experience, education, CE, project, and blog record has a stable `id` in t
 
 `display.frontPage` controls career/projects/education/CE/blog briefs, portrait, biography, View Work, and Resume independently. Blog briefs are disabled by default. A parent section/group switch always wins over item switches. CE retains its summary card and can also show individually selected credentials. Columns expand when sidebars are hidden.
 
-`display.chrome` controls the banner, footer, Back to Top, theme/language selectors, and global unfolding. Individual skill domains, skill entries, and social profiles each have a `visible` switch in their existing config arrays. Wording, links, dates, images, colours, and section/record order remain editable in the existing config/locale files.
+`display.chrome` controls the banner, footer, Back to Top, theme/language selectors, and global unfolding. Skill domain visibility lives at `display.skills.<domain>.visible`, individual skill visibility at `display.skills.<domain>.items.<name>`, and social visibility at `display.social.<platform>` (boolean). Skill names/icons and social URLs remain in `site.json`; matching flag keys are validated. Wording, links, dates, images, colours, and section/record order remain editable in the existing config/locale files.
 
 To add a record, add its locale entry with a unique `id` and matching publication settings. Remove both when deleting it. Missing/unknown/duplicate IDs, unknown affiliation keys, unsafe URLs, and malformed switches fail validation. Preserve IDs and array order in translations. Visibility is publication control, **not secrecy**: bundled locale data can still be inspected, and manually authored biography/summary prose must be edited separately if it mentions a hidden item.
 
