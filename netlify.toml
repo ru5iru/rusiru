@@ -1,0 +1,11 @@
+[build]
+  command = "bun run build"
+  publish = "dist"
+
+# Keep the canonical root URL and let Netlify serve the generated 404.html
+# with an actual 404 response for every otherwise-unmatched path.
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true

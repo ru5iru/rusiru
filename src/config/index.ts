@@ -21,7 +21,7 @@ export const allSkills = (): SkillItem[] => siteConfig.skills.flatMap((c) => c.i
 /** Inject theme overrides as CSS variables. */
 export function applyTheme() {
   const css = (vars: Record<string, string>) =>
-    Object.entries(vars).filter(([k]) => !k.startsWith('$')).map(([k, v]) => `--${k}:${v};`).join('');
+    Object.entries(vars).map(([k, v]) => `--${k}:${v};`).join('');
   const style = document.getElementById('theme-config') ?? document.createElement('style');
   style.id = 'theme-config';
   style.textContent = `:root{${css(themeConfig.light)}}.dark{${css(themeConfig.dark)}}`;

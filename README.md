@@ -1,45 +1,48 @@
-# Portfolio template
+# Engineering Broadsheet portfolio
 
-Make it yours by editing config files only — no code changes needed.
+A configurable portfolio template with a newspaper-inspired layout, light/dark editions, expandable work logs, and per-language content controls. Built with React, TypeScript, Vite, and Tailwind CSS.
 
-| What | Where |
-|------|-------|
-| Name, email, site URL, location, resume link, page title/description | `src/config/site.json` |
-| Social links (`platform`: linkedin, github, discord, facebook, x, reddit, blog, spotify — or add `icon` path for others) | `site.json` → `social` |
-| Which sections show and in what order | `site.json` → `sections` |
-| Skills + icons (`devicon:<path>` or `/media/...` or any URL; `invertInDark` for dark logos) | `site.json` → `skills` |
-| Education logos (keyed by education item `id`) | `site.json` → `educationLogos` |
-| Brand colors (HSL) for light/dark | `src/config/theme.json` |
-| All wording: hero, about, experience, education, projects, blog posts, contact, footer, 404 | `src/locales/en.json` |
-| Images (profile photo, logos, icons) | `public/media/` |
-| Favicons | `public/*.png`, `public/favicon.ico` |
+## Quick start
 
-## Add a language
-Copy `src/locales/en.json` to e.g. `si.json`, translate the values, and set `language.name`/`language.code`. It appears in the language menu automatically. In About paragraphs, `**text**` is bold and `==text==` is highlighted.
-
-## Generated files
-`sitemap.xml`, `robots.txt`, `site.webmanifest`, and `llms.txt` are regenerated from settings and English copy. Vite injects matching metadata, JSON-LD and full readable no-JavaScript section content into the served HTML; do not hand-edit generated content. This is static content generation, not React server rendering or hydration. Settings and English edits also regenerate files during development. Sitemap lastmod is omitted because a reliable publication timestamp is not configured.
-
-## Development
-
-Bun 1.3.3 is the authoritative package manager; commit `bun.lock`. Node 22 is supported for tooling. Do not reintroduce competing npm/binary Bun lockfiles.
+Use **Bun 1.3.3** and **Node 22**.
 
 ```sh
 bun install --frozen-lockfile
 bun run dev
+```
+
+Open `http://localhost:8080` (or the URL printed by Vite). No API keys or database are required.
+
+## Make it yours
+
+| Change | Edit |
+| --- | --- |
+| Identity, shared links, section order, skills, and image paths | `src/config/site.json` |
+| Light/dark colors | `src/config/theme.json` |
+| Wording, work history, education, projects, and blog entries | `src/locales/en/<section>.json` |
+| Hide content or change item placement | Flags beside the content in each locale file |
+| Portrait, logos, social image, and favicons | `public/media/`, `media-src/`, and `public/favicon*` |
+
+Set `"published": false` to hide a section, record, or point without deleting it. Use `"archived": true` for optional View More in Experience, Education, and Continuing Education; projects use `"featured": false`. Each language can make its own choices.
+
+See **[Customization](docs/customization.md)** for examples, languages, front-page placement, and image replacement.
+
+## Check your changes
+
+```sh
 bun run lint
 bun run test
 bun run build
 ```
 
-Settings reject invalid required fields, unsafe URLs, duplicate/unsupported section IDs and malformed HSL values. Use supported IDs from the current section list. An empty section list is supported. Incomplete translations fall back to English, including malformed values and missing placeholders; keep arrays in the same order and length as English.
+Search files and readable HTML fallback content are generated from settings and English content; do not edit generated outputs manually.
 
-The profile photo is optimized at 448px. Keep the eager hero image small when replacing it. Fonts and adding new section types still require code changes; project/blog links currently remain in the English locale. Those broader historical template promises are not implemented.
+## Guides and contribution
 
-## Release and maintenance
+- [Documentation](docs/README.md) — customization, development, and deployment.
+- [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md)
+- [Architecture rules](AGENTS.md) · [Design system](DESIGN.md) · [Maintenance workflow](SKILL.md)
 
-Publish from this project's Lovable Publish dialog. Public site URL comes from `site.json`. This change does not publish automatically. After publishing, verify the homepage, an unknown URL, resume/blog links and generated search files on the public origin. Use Lovable version history to review a previous version before republishing a rollback; a production rollback has not been exercised.
+## Licence
 
-CI runs a frozen installation, lint, behavioral tests and production compilation. Ownership, DNS/TLS access, response contacts, cache/security-header policy and production monitoring require the project owner's decisions. No analytics or contact form is added without a product decision.
-
-Repository documentation: [setup, architecture, code guide, and operations](docs/README.md). The audit's remediation section supersedes older baseline findings.
+[MIT](LICENCE). Replace the included biography, images, links, and site-verification material when reusing the template. The licence does not grant rights to third-party images, logos, or trademarks; check permissions and retain applicable notices. Dependencies keep their own licences.

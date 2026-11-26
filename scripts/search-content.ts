@@ -1,45 +1,154 @@
 import type siteDefaults from '../src/config/site.json';
-import type english from '../src/locales/en.json';
+import type themeDefaults from '../src/config/theme.json';
+import type { Locale } from '../src/i18n/schema';
+import { publishedSections } from '../src/i18n/publish';
+
 export type SearchSite = typeof siteDefaults;
-export type SearchLocale = typeof english;
-const escape = (value: unknown) => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] ?? c));
+export type SearchTheme = typeof themeDefaults;
+export type SearchLocale = Locale;
+const escape = (value: unknown) => String(value ?? '').replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character] ?? character));
 const plain = (value: string) => value.replace(/\*\*|==/g, '');
 const list = (values: string[]) => `<ul>${values.map(value => `<li>${escape(plain(value))}</li>`).join('')}</ul>`;
+const absolute = (base: string, reference: string) => new URL(reference, base).href;
+
 export function createSearchContent(site: SearchSite, en: SearchLocale) {
   const url = `${site.siteUrl.replace(/\/$/, '')}/`;
   const projects = en.projects.items;
+  const sections = publishedSections(en, site.sections);
+  const certifications = en.education.continuingEducation.published ? en.education.certifications : [];
+  const schools = en.education.formalEducation.published ? en.education.items : [];
+  const skills = site.skills.filter(category => en.skills.categories[category.id]);
+  const social = site.social.filter(link => en.footer.social[link.platform]);
   const personId = `${url}#person`;
-  const person = { '@type': 'Person', '@id': personId, name: site.person.name, jobTitle: site.person.jobTitle, url, image: new URL(site.person.profileImage, url).href, email: site.person.email, sameAs: site.social.map(s => s.url), address: { '@type': 'PostalAddress', addressLocality: site.person.location.city, addressCountry: site.person.location.countryCode }, knowsAbout: site.skills.flatMap(s => s.items.map(i => i.name)), ...(site.sections.includes('education') ? { alumniOf: en.education.items.map(i => ({ '@type': 'EducationalOrganization', name: i.institution })) } : {}) };
-  const graph: unknown[] = [person, { '@type': 'ProfilePage', '@id': url, url, name: site.seo.title, description: site.seo.description, dateCreated: site.seo.dateCreated, inLanguage: en.language.code.toLowerCase(), mainEntity: { '@id': personId } }, { '@type': 'WebSite', url, name: site.seo.title, author: { '@id': personId } }];
-  if (site.sections.includes('projects')) graph.push({ '@type': 'ItemList', numberOfItems: projects.length, itemListElement: projects.map((p, index) => ({ '@type': 'ListItem', position: index + 1, item: { '@type': 'CreativeWork', name: p.title, description: p.description.join(' '), url: ('link' in p ? p.link : undefined) ?? ('github' in p ? p.github : undefined), author: { '@id': personId } } })) });
-  if (site.sections.includes('blog')) graph.push({ '@type': 'Blog', url: site.blogUrl, author: { '@id': personId }, blogPost: en.blog.posts.map(p => ({ '@type': 'BlogPosting', headline: p.title, description: p.excerpt, datePublished: p.date, url: p.link, author: { '@id': personId } })) });
-  const metadata = `<title>${escape(site.seo.title)}</title>
-<meta name="description" content="${escape(site.seo.description)}" />
-<link rel="canonical" href="${escape(url)}" />
+  const shareImage = absolute(url, site.seo.shareImage);
+  const shareImageAlt = en.seo.shareImageAlt.replace('{name}', site.person.name);
+  const credentials = certifications.map(certification => ({
+    '@type': 'EducationalOccupationalCredential',
+    name: certification.title,
+    url: certification.url,
+    recognizedBy: { '@type': 'Organization', name: certification.issuer },
+  }));
+  const person = {
+    '@type': 'Person', '@id': personId, name: site.person.name, jobTitle: site.person.jobTitle, url,
+    image: absolute(url, site.person.profileImage), email: site.person.email,
+    sameAs: social.map(social => social.url),
+    address: { '@type': 'PostalAddress', addressLocality: site.person.location.city, addressCountry: site.person.location.countryCode },
+    knowsAbout: skills.flatMap(category => category.items.map(item => item.name)),
+    ...(sections.includes('education') ? {
+      alumniOf: schools.map(item => ({ '@type': 'EducationalOrganization', name: item.institution })),
+      hasCredential: credentials,
+    } : {}),
+  };
+  const graph: unknown[] = [
+    person,
+    { '@type': 'ProfilePage', '@id': url, url, name: site.seo.title, description: site.seo.description, inLanguage: en.language.code.toLowerCase(), mainEntity: { '@id': personId } },
+    { '@type': 'WebSite', url, name: site.seo.title, author: { '@id': personId } },
+  ];
+  if (sections.includes('projects')) graph.push({ '@type': 'ItemList', numberOfItems: projects.length, itemListElement: projects.map((project, index) => ({ '@type': 'ListItem', position: index + 1, item: { '@type': 'CreativeWork', name: project.title, description: project.description.join(' '), url: project.link ?? project.github, author: { '@id': personId } } })) });
+  if (sections.includes('blog')) graph.push({ '@type': 'Blog', url: site.blogUrl, author: { '@id': personId }, blogPost: en.blog.posts.map(post => ({ '@type': 'BlogPosting', headline: post.title, description: post.excerpt, datePublished: post.date, url: post.link, author: { '@id': personId } })) });
+
+  const metadata = `<title data-rh="true">${escape(site.seo.title)}</title>
+<meta name="description" content="${escape(site.seo.description)}" data-rh="true" />
+<link rel="canonical" href="${escape(url)}" data-rh="true" />
 <meta name="author" content="${escape(site.person.name)}" />
-<meta name="robots" content="index, follow" />
-<meta property="og:title" content="${escape(site.seo.title)}" />
-<meta property="og:description" content="${escape(site.seo.ogDescription)}" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="${escape(url)}" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="${escape(site.seo.title)}" />
-<meta name="twitter:description" content="${escape(site.seo.ogDescription)}" />
+<meta name="robots" content="index, follow" data-rh="true" />
+<meta property="og:title" content="${escape(site.seo.title)}" data-rh="true" />
+<meta property="og:description" content="${escape(site.seo.ogDescription)}" data-rh="true" />
+<meta property="og:type" content="website" data-rh="true" />
+<meta property="og:url" content="${escape(url)}" data-rh="true" />
+<meta property="og:image" content="${escape(shareImage)}" data-rh="true" />
+<meta property="og:image:width" content="1200" data-rh="true" />
+<meta property="og:image:height" content="630" data-rh="true" />
+<meta property="og:image:type" content="image/png" data-rh="true" />
+<meta property="og:image:alt" content="${escape(shareImageAlt)}" data-rh="true" />
+<meta name="twitter:card" content="summary_large_image" data-rh="true" />
+<meta name="twitter:title" content="${escape(site.seo.title)}" data-rh="true" />
+<meta name="twitter:description" content="${escape(site.seo.ogDescription)}" data-rh="true" />
+<meta name="twitter:image" content="${escape(shareImage)}" data-rh="true" />
+<meta name="twitter:image:alt" content="${escape(shareImageAlt)}" data-rh="true" />
 <meta name="theme-color" content="${escape(site.seo.themeColor)}" />
 <meta name="geo.region" content="${escape(site.person.location.countryCode)}" />
 <meta name="geo.placename" content="${escape(site.person.location.city)}, ${escape(site.person.location.country)}" />
 <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')}</script>`;
+
+  const formalEducation = schools.map(item => `<article><h3>${escape(item.degree)}</h3><p>${escape(item.institution)} · ${escape(item.period)}</p>${list(item.details)}</article>`).join('');
+  const continuingEducation = certifications.map(certification => `<article><h3>${escape(certification.title)}</h3><p>${escape(certification.issuer)} · ${escape(certification.date)}</p><p>${escape(en.education.skillsLabel)}: ${escape(certification.skills)}</p><a href="${escape(certification.url)}">${escape(en.education.showCredential)}</a></article>`).join('');
   const contents: Record<string, string> = {
-    about: en.about.paragraphs.map(p => `<p>${escape(plain(p))}</p>`).join('') + list(en.about.stats.map(s => `${s.value} ${s.label}`)),
-    experience: en.experience.items.map(i => `<article><h3>${escape(i.role)} — ${escape(i.company)}</h3><p>${escape(i.period)}</p>${list(i.description)}</article>`).join(''),
-    education: en.education.items.map(i => `<article><h3>${escape(i.degree)}</h3><p>${escape(i.institution)} · ${escape(i.period)}</p>${list(i.details)}</article>`).join(''),
-    projects: projects.map(p => `<article><h3>${escape(p.title)}</h3>${list(p.description)}<p>${escape(p.tech.join(' · '))}</p>${'link' in p ? `<a href="${escape(p.link)}">${escape(en.projects.visit.replace('{title}', p.title))}</a>` : ''} ${'github' in p ? `<a href="${escape(p.github)}">${escape(en.projects.viewOnGithub.replace('{title}', p.title))}</a>` : ''}</article>`).join(''),
-    skills: site.skills.map(c => `<h3>${escape(en.skills.categories[c.id as keyof typeof en.skills.categories] ?? c.id)}</h3>${list(c.items.map(i => i.name))}`).join(''),
-    blog: en.blog.posts.map(p => `<article><h3><a href="${escape(p.link)}">${escape(p.title)}</a></h3><p>${escape(p.excerpt)}</p><time datetime="${escape(p.date)}">${escape(p.dateLabel)}</time></article>`).join(''),
-    contact: `<p>${escape(en.contact.description)}</p><a href="mailto:${escape(site.person.email)}">${escape(en.contact.getInTouch)}</a>`,
+    about: en.about.paragraphs.map(paragraph => `<p>${escape(plain(paragraph))}</p>`).join(''),
+    experience: en.experience.items.map(item => `<article><h3>${escape(item.role)} — ${escape(item.company)}</h3><p>${escape(item.period)}</p>${list(item.description)}</article>`).join(''),
+    education: formalEducation + continuingEducation + `<a href="${escape(site.continuingEducationUrl)}">${escape(en.education.viewAllCertifications)}</a>`,
+    projects: projects.map(project => `<article><h3>${escape(project.title)}</h3>${list(project.description)}<p>${escape(project.tech.join(' · '))}</p>${project.link ? `<a href="${escape(project.link)}">${escape(en.projects.visit.replace('{title}', project.title))}</a>` : ''} ${project.github ? `<a href="${escape(project.github)}">${escape(en.projects.viewOnGithub.replace('{title}', project.title))}</a>` : ''}</article>`).join(''),
+    skills: `<p>${escape(en.skills.philosophy)}</p>` + skills.map(category => `<h3>${escape(en.skills.categories[category.id])}</h3><p>${escape(en.skills.notes[category.id] ?? '')}</p>${list(category.items.map(item => item.name))}`).join(''),
+    blog: en.blog.posts.map(post => `<article><h3><a href="${escape(post.link)}">${escape(post.title)}</a></h3><p>${escape(post.excerpt)}</p><time datetime="${escape(post.date)}">${escape(post.dateLabel)}</time></article>`).join(''),
+    contact: `<p>${escape(en.contact.availability)}</p><p>${escape(en.contact.description)}</p><a href="mailto:${escape(site.person.email)}">${escape(en.contact.getInTouch)}</a>`,
   };
-  const labels: Record<string, string> = { about: `${en.about.titleBefore} ${en.about.titleHighlight}`, experience: en.experience.title, education: en.education.title, projects: en.projects.title, skills: `${en.skills.titleBefore} ${en.skills.titleHighlight}`, blog: `${en.blog.titleBefore} ${en.blog.titleHighlight}`, contact: `${en.contact.titleBefore} ${en.contact.titleHighlight}` };
-  const fallback = `<header><nav aria-label="${escape(en.nav.mainNavigation)}">${site.sections.map(id => `<a href="#${id}">${escape(en.nav.links[id as keyof typeof en.nav.links])}</a>`).join(' · ')}</nav></header><main id="main"><h1>${escape(en.hero.srHeading)}</h1><p>${escape(en.hero.description)}</p><a href="${escape(site.person.resumeUrl)}">${escape(en.hero.resume)}</a>${site.sections.map(id => `<section id="${id}"><h2>${escape(labels[id])}</h2>${contents[id] ?? ''}</section>`).join('')}</main><footer>${site.social.map(s => `<a href="${escape(s.url)}">${escape(en.footer.social[s.platform as keyof typeof en.footer.social] ?? s.platform)}</a>`).join(' · ')}</footer>`;
-  const llms = `# ${site.person.name}\n\n> ${site.seo.description}\n\n${site.sections.map(id => `## ${labels[id]}\n\n${id === 'projects' ? projects.map(p => `- ${p.title}: ${p.description.join(' ')}`).join('\n') : id === 'skills' ? site.skills.flatMap(c => c.items.map(i => i.name)).join(', ') : id === 'blog' ? en.blog.posts.map(p => `- [${p.title}](${p.link}): ${p.excerpt}`).join('\n') : id === 'about' ? en.about.paragraphs.map(plain).join('\n\n') : id === 'experience' ? en.experience.items.map(i => `${i.role}, ${i.company}, ${i.period}\n${i.description.join('\n')}`).join('\n\n') : id === 'education' ? en.education.items.map(i => `${i.degree}, ${i.institution}, ${i.period}\n${i.details.join('\n')}`).join('\n\n') : `${en.contact.description}\nEmail: ${site.person.email}`}\n`).join('\n')}\n## Links\n\n${site.social.map(s => `- [${s.platform}](${s.url})`).join('\n')}\n- [Sitemap](${url}sitemap.xml)\n`;
+  const labels: Record<string, string> = {
+    about: `${en.about.titleBefore} ${en.about.titleHighlight}`,
+    experience: en.experience.title,
+    education: en.education.title,
+    projects: en.projects.title,
+    skills: `${en.skills.titleBefore} ${en.skills.titleHighlight}`,
+    blog: `${en.blog.titleBefore} ${en.blog.titleHighlight}`,
+    contact: `${en.contact.titleBefore} ${en.contact.titleHighlight}`,
+  };
+  const fallback = `<header><nav aria-label="${escape(en.nav.mainNavigation)}">${sections.map(id => `<a href="#${id}">${escape(en.nav.links[id as keyof typeof en.nav.links])}</a>`).join(' · ')}</nav></header><main id="main"><h1>${escape(en.hero.srHeading)}</h1><p>${escape(en.hero.bannerTitle)}</p><p>${escape(en.hero.description)}</p><a href="${escape(site.person.resumeUrl)}">${escape(en.hero.resume)}</a>${sections.map(id => `<section id="${id}"><h2>${escape(labels[id])}</h2>${contents[id] ?? ''}</section>`).join('')}</main><footer>${social.map(link => `<a href="${escape(link.url)}">${escape(en.footer.social[link.platform])}</a>`).join(' · ')}</footer>`;
+
+  const sectionText = (id: string): string => {
+    if (id === 'projects') return projects.map(project => `- ${project.title}: ${project.description.join(' ')}`).join('\n');
+    if (id === 'skills') return `${en.skills.philosophy}\n\n${skills.map(category => `${en.skills.categories[category.id]}${en.skills.notes[category.id] ? ` — ${en.skills.notes[category.id]}` : ''}: ${category.items.map(item => item.name).join(', ')}`).join('\n')}`;
+    if (id === 'blog') return en.blog.posts.map(post => `- [${post.title}](${post.link}): ${post.excerpt}`).join('\n');
+    if (id === 'about') return en.about.paragraphs.map(plain).join('\n\n');
+    if (id === 'experience') return en.experience.items.map(item => `${item.role}, ${item.company}, ${item.period}\n${item.description.join('\n')}`).join('\n\n');
+    if (id === 'education') return [...schools.map(item => `${item.degree}, ${item.institution}, ${item.period}\n${item.details.join('\n')}`), ...certifications.map(certification => `${certification.title}, ${certification.issuer}, ${certification.date}\n${en.education.skillsLabel}: ${certification.skills}\n${certification.url}`), en.education.viewAllCertifications + ': ' + site.continuingEducationUrl].join('\n\n');
+    return `${en.contact.availability}\n${en.contact.description}\n${en.common.emailLabel}: ${site.person.email}`;
+  };
+  const llms = `# ${site.person.name}\n\n> ${site.seo.description}\n\n${sections.map(id => `## ${labels[id]}\n\n${sectionText(id)}\n`).join('\n')}\n## ${en.common.linksLabel}\n\n${social.map(link => `- [${link.platform}](${link.url})`).join('\n')}\n- [${en.common.sitemapLabel}](${url}sitemap.xml)\n`;
   return { metadata, fallback, llms };
+}
+
+export function createNotFoundDocument(site: SearchSite, en: SearchLocale, theme: SearchTheme) {
+  const url = `${site.siteUrl.replace(/\/$/, '')}/`;
+  const title = `${en.notFound.title} | ${site.person.name}`;
+  const shareImage = absolute(url, site.seo.shareImage);
+  const shareImageAlt = en.seo.shareImageAlt.replace('{name}', site.person.name);
+  const color = (name: string) => {
+    const [hue, saturation, lightness] = theme.light[name as keyof typeof theme.light].split(/\s+/);
+    return `hsl(${hue}, ${saturation}, ${lightness})`;
+  };
+  return `<!doctype html>
+<html lang="${escape(en.language.code.toLowerCase())}" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>${escape(title)}</title>
+<meta name="description" content="${escape(en.notFound.description)}" />
+<meta name="robots" content="noindex, follow" />
+<meta property="og:title" content="${escape(title)}" />
+<meta property="og:description" content="${escape(en.notFound.description)}" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="${escape(shareImage)}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:alt" content="${escape(shareImageAlt)}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="${escape(title)}" />
+<meta name="twitter:description" content="${escape(en.notFound.description)}" />
+<meta name="twitter:image" content="${escape(shareImage)}" />
+<meta name="twitter:image:alt" content="${escape(shareImageAlt)}" />
+<meta name="theme-color" content="${escape(site.seo.themeColor)}" />
+<link rel="icon" href="/favicon.ico?v=broadsheet" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=broadsheet" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=broadsheet" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=IBM+Plex+Mono:wght@400;600&family=Newsreader:wght@400;600&display=swap" />
+<style>
+:root{--paper:${color('background')};--ink:${color('foreground')};--desk:${color('desk')};--rule:${color('border')};--red:${color('primary')};--on-red:${color('primary-foreground')}}
+*{box-sizing:border-box}body{margin:0;background:var(--desk);color:var(--ink);font-family:Newsreader,Georgia,serif}.page{width:min(52rem,calc(100% - 2rem));margin:8vh auto;background:var(--paper);border:1px solid var(--ink);padding:clamp(1.5rem,5vw,4rem)}.kicker,a{font-family:'IBM Plex Mono',monospace}.kicker{color:var(--red);font-size:.75rem;font-weight:600;letter-spacing:.12em}.number{margin:.5rem 0 0;font-family:Fraunces,Georgia,serif;font-size:clamp(5rem,20vw,10rem);line-height:.9}h1{margin:1rem 0;font-family:Fraunces,Georgia,serif;font-size:clamp(1.8rem,5vw,3rem);line-height:1.05}.message{font-size:1.25rem}.description{padding-top:1rem;border-top:1px solid var(--rule);line-height:1.6}a{display:inline-block;margin-top:1rem;background:var(--red);color:var(--on-red);padding:.85rem 1.1rem;text-decoration:none;font-size:.8rem;font-weight:600}a:focus-visible{outline:3px solid var(--red);outline-offset:4px}@media print{body{background:var(--paper)}.page{margin:0 auto}}
+</style>
+</head>
+<body><main class="page" id="main"><div class="kicker">${escape(en.nav.editionBadge)}</div><div class="number" aria-hidden="true">404</div><h1>${escape(en.notFound.title)}</h1><p class="message">${escape(en.notFound.message)}</p><p class="description">${escape(en.notFound.description)}</p><a href="/">${escape(en.notFound.backHome)}</a></main></body>
+</html>`;
 }

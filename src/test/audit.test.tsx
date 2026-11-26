@@ -2,13 +2,14 @@ import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import site from '@/config/site.json';
 import theme from '@/config/theme.json';
-import en from '@/locales/en.json';
+import { english as en } from '@/i18n/locales';
 import { siteSchema, themeSchema } from '@/config/schema';
 import { mergeLocale, readLanguage, storeLanguage } from '@/i18n/locale';
 import { I18nProvider } from '@/i18n/i18n';
 import { Projects } from '@/components/sections/Projects';
+import { Experience } from '@/components/sections/Experience';
+import { Education } from '@/components/sections/Education';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { navigateToSection } from '@/lib/navigation';
 import { createSearchContent } from '../../scripts/search-content';
 import { localeSchema } from '@/i18n/schema';
@@ -37,6 +38,50 @@ describe('locales', () => {
   it('survives denied storage writes', () => { vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('Denied'); }); expect(() => storeLanguage('en')).not.toThrow(); });
 });
 describe('interactions', () => {
+  it('reveals and hides an archived experience role without deleting it', () => {
+    const role = en.experience.items[2];
+    const archived = role.archived;
+    role.archived = true;
+    try {
+      render(<I18nProvider><Experience /></I18nProvider>);
+      expect(screen.queryByRole('heading', { name: role.role })).not.toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: en.experience.viewMore }));
+      expect(screen.getByRole('heading', { name: role.role })).toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: en.experience.showLess }));
+      expect(screen.queryByRole('heading', { name: role.role })).not.toBeInTheDocument();
+      expect(en.experience.items).toHaveLength(3);
+    } finally { role.archived = archived; }
+  });
+  it('reveals an archived school independently of continuing education', () => {
+    const school = en.education.items[0];
+    const archived = school.archived;
+    school.archived = true;
+    try {
+      render(<I18nProvider><Education /></I18nProvider>);
+      expect(screen.queryByRole('heading', { name: school.institution })).not.toBeInTheDocument();
+      expect(screen.getAllByRole('link', { name: /^Show Credential:/ })).toHaveLength(5);
+      fireEvent.click(screen.getByRole('button', { name: en.education.viewMoreEducation }));
+      expect(screen.getByRole('heading', { name: school.institution })).toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: en.education.showLess }));
+      expect(screen.queryByRole('heading', { name: school.institution })).not.toBeInTheDocument();
+      expect(en.education.items).toHaveLength(2);
+    } finally { school.archived = archived; }
+  });
+  it('reveals an archived credential independently of formal education', () => {
+    const credential = en.education.certifications[0];
+    const archived = credential.archived;
+    credential.archived = true;
+    try {
+      render(<I18nProvider><Education /></I18nProvider>);
+      expect(screen.queryByRole('heading', { name: credential.title })).not.toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: en.education.items[0].institution })).toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: en.education.viewMoreCertifications }));
+      expect(screen.getByRole('heading', { name: credential.title })).toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: en.education.showLess }));
+      expect(screen.queryByRole('heading', { name: credential.title })).not.toBeInTheDocument();
+      expect(en.education.certifications).toHaveLength(5);
+    } finally { credential.archived = archived; }
+  });
   it('recovers a failed section without removing surrounding content', () => {
     vi.spyOn(console, 'error').mockImplementation(() => {});
     function Broken(): JSX.Element { throw new Error('Chunk unavailable'); }
@@ -47,18 +92,15 @@ describe('interactions', () => {
   it('switches system-dark appearance to light on first click', () => { render(<I18nProvider><ThemeToggle /></I18nProvider>); fireEvent.click(screen.getByRole('button', { name: en.nav.toggleTheme })); expect(setTheme).toHaveBeenCalledWith('light'); });
   it('reveals additional projects and expands Jira independently', () => {
     render(<I18nProvider><Projects /></I18nProvider>);
-    expect(screen.queryByRole('button', { name: 'Roamly' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Roamly/ })).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: en.projects.viewMore }));
-    expect(screen.getByRole('button', { name: 'Roamly' })).toBeInTheDocument();
-    const jira = screen.getByRole('button', { name: 'Jira Worklog Manager' }); fireEvent.click(jira);
+    expect(screen.getByRole('button', { name: /Roamly/ })).toBeInTheDocument();
+    const jira = screen.getByRole('button', { name: /Jira Worklog Manager/ });
     expect(jira).toHaveAttribute('aria-expanded', 'true');
     fireEvent.click(jira); expect(jira).toHaveAttribute('aria-expanded', 'false');
+    fireEvent.click(jira); expect(jira).toHaveAttribute('aria-expanded', 'true');
     fireEvent.click(screen.getByRole('button', { name: en.projects.showLess }));
-    expect(screen.queryByRole('button', { name: 'Roamly' })).not.toBeInTheDocument();
-  });
-  it('shows content when IntersectionObserver is unavailable', () => {
-    function Probe() { const { ref, isVisible } = useScrollAnimation(); return <div ref={ref}>{String(isVisible)}</div>; }
-    render(<Probe />); expect(screen.getByText('true')).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Roamly/ })).not.toBeInTheDocument();
   });
   it('waits for a lazy target', async () => {
     const cancel = navigateToSection('late-target');
@@ -68,7 +110,15 @@ describe('interactions', () => {
   });
 });
 describe('search data', () => {
-  it('includes all seven projects including Jira from current data', () => { const content = createSearchContent(site, en); const schema = JSON.parse(content.metadata.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1] ?? '{}'); const projects = schema['@graph'].find((item: Record<string, unknown>) => item['@type'] === 'ItemList'); expect(projects.numberOfItems).toBe(7); expect(projects.itemListElement.map((item: { item: { name: string } }) => item.item.name)).toContain('Jira Worklog Manager'); expect(content.llms).toContain('Jira Worklog Manager'); });
+  it('includes the configured projects in search content', () => {
+    const content = createSearchContent(site, en);
+    const schema = JSON.parse(content.metadata.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1] ?? '{}');
+    const projects = schema['@graph'].find((item: Record<string, unknown>) => item['@type'] === 'ItemList');
+    expect(projects.itemListElement.map((item: { item: { name: string } }) => item.item.name)).toEqual(en.projects.items.map(project => project.title));
+    for (const project of en.projects.items) {
+      expect(content.llms).toContain(project.title);
+    }
+  });
   it('uses configured section order and disabled sections in search data', () => { const content = createSearchContent({ ...site, sections: ['contact', 'about'] }, en); expect(content.fallback.indexOf('<section id="contact"')).toBeLessThan(content.fallback.indexOf('<section id="about"')); expect(content.fallback).not.toContain('<section id="projects"'); expect(content.metadata).not.toContain('ItemList'); });
   it('escapes injected metadata and structured data', () => { const content = createSearchContent({ ...site, seo: { ...site.seo, title: '</title><script>bad</script>' } }, en); expect(content.metadata).toContain('&lt;/title&gt;'); expect(content.metadata).not.toContain('<script>bad</script>'); });
   it('generates deterministic search content', () => { expect(createSearchContent(site, en)).toEqual(createSearchContent(site, en)); });

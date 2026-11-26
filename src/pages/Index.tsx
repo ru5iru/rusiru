@@ -1,14 +1,13 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Seo } from '@/components/Seo';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/sections/Hero';
 import { Footer } from '@/components/Footer';
 import { BackToTop } from '@/components/BackToTop';
 import { useTranslation } from '@/i18n/i18n';
-import { siteConfig, resolveIcon, allSkills } from '@/config';
+import { siteConfig } from '@/config';
 import { LoadingState, LoadBoundary } from '@/components/LoadState';
 import { navigateToSection } from '@/lib/navigation';
-
 
 const About = lazy(() => import('@/components/sections/About').then(m => ({ default: m.About })));
 const Experience = lazy(() => import('@/components/sections/Experience').then(m => ({ default: m.Experience })));
@@ -19,49 +18,37 @@ const Blog = lazy(() => import('@/components/sections/Blog').then(m => ({ defaul
 const Contact = lazy(() => import('@/components/sections/Contact').then(m => ({ default: m.Contact })));
 
 const sectionMap: Record<string, React.ComponentType> = { about: About, experience: Experience, education: Education, projects: Projects, skills: Skills, blog: Blog, contact: Contact };
-const { seo, siteUrl, person } = siteConfig;
-const url = `${siteUrl}/`;
+const { siteUrl, person } = siteConfig;
 
 const Index = () => {
-  const { t } = useTranslation();
+  const { t, sections } = useTranslation();
   useEffect(() => {
     const id = window.location.hash.slice(1);
-    if (id && siteConfig.sections.includes(id)) return navigateToSection(id);
+    if (id && sections.includes(id)) return navigateToSection(id);
+    // Only the initial hash matters; later language changes must not scroll the page.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
-      <Helmet>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
-        <link rel="canonical" href={url} />
-        <meta property="og:title" content={seo.title} />
-        <meta property="og:description" content={seo.ogDescription} />
-        <meta property="og:url" content={url} />
-      </Helmet>
-    <div className="min-h-screen bg-background" itemScope itemType="https://schema.org/ProfilePage">
-      <meta itemProp="dateCreated" content={seo.dateCreated} />
-      <div itemProp="mainEntity" itemScope itemType="https://schema.org/Person">
-        <meta itemProp="name" content={person.name} />
-        <meta itemProp="jobTitle" content={person.jobTitle} />
-        <meta itemProp="url" content={siteUrl} />
-      </div>
-
-      {/* Skip to content link */}
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg focus:text-sm focus:font-semibold"
-      >
+      <Seo />
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:bg-primary focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:font-semibold focus:text-primary-foreground">
         {t('common.skipToContent')}
       </a>
-
-      <Navbar />
-      <main id="main" tabIndex={-1}>
-        <Hero />
-        {siteConfig.sections.map(key => { const S = sectionMap[key]; return S ? <LoadBoundary key={key}><Suspense fallback={<LoadingState />}><S /></Suspense></LoadBoundary> : null; })}
-      </main>
-      <Footer />
+      <div itemScope itemType="https://schema.org/ProfilePage">
+        <div itemProp="mainEntity" itemScope itemType="https://schema.org/Person">
+          <meta itemProp="name" content={person.name} />
+          <meta itemProp="jobTitle" content={person.jobTitle} />
+          <meta itemProp="url" content={siteUrl} />
+        </div>
+        <Navbar>
+          <main id="main" tabIndex={-1}>
+            <Hero />
+            {sections.map(key => { const S = sectionMap[key]; return S ? <LoadBoundary key={key}><Suspense fallback={<LoadingState />}><S /></Suspense></LoadBoundary> : null; })}
+          </main>
+          <Footer />
+        </Navbar>
+      </div>
       <BackToTop />
-    </div>
     </>
   );
 };

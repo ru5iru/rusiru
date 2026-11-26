@@ -1,0 +1,15 @@
+{
+  "brand": "RR.",
+  "copyright": "© {year} Rusiru Rathmina. All rights reserved.",
+  "socialAria": "Visit Rusiru's {label} profile",
+  "social": {
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "discord": "Discord",
+    "facebook": "Facebook",
+    "x": "X",
+    "reddit": "Reddit",
+    "blog": "Blog",
+    "spotify": "Spotify"
+  }
+}
