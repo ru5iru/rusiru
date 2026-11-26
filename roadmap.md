@@ -66,3 +66,7 @@
 - [x] Split each language into `src/locales/<lang>/<section>.json` files.
 - [x] `published` flags on sections, groups, items, points, and label maps, overridable per language.
 - [x] Item placement flags (`expanded`, `frontPage`, `featured`, `affiliation`) with validation and tests.
+
+## Repository community files
+- [x] Add MIT licence, project changelog, contribution/security guidance, and issue/pull-request templates.
+- [x] Link the new guidance and verify repository files without changing application behavior.

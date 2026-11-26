@@ -2,6 +2,18 @@
 
 Make it yours by editing config files only — no code changes needed.
 
+## Repository guidance
+
+- [MIT licence](LICENCE)
+- [Project changelog](CHANGELOG.md) — notable template changes; historical audits remain in [docs/CHANGELOG.md](docs/CHANGELOG.md).
+- [Contributing](CONTRIBUTING.md) — setup, conventions, validation, and pull requests.
+- [Security](SECURITY.md) — private vulnerability reporting guidance.
+
+When reusing the template, replace the included personal biography, portrait,
+logos, links, and verification files with your own. The MIT licence does not
+grant rights to third-party assets or trademarks; check their permissions and
+retain applicable notices separately. Dependencies retain their own licences.
+
 | What | Where |
 |------|-------|
 | Name, email, site URL, location, resume link, page title/description | `src/config/site.json` |
