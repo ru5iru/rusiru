@@ -4,6 +4,13 @@ Purpose: identify where to make changes and how to verify them. Intended reader:
 
 Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-10-18.
 
+**Current cleanup note (2026-11-26):** The module descriptions below preserve
+the earlier audit baseline. For current behavior use [README](../README.md),
+[AGENTS](../AGENTS.md), and the [deep cleanup audit](cleanup-audit.md). Hero is
+now the editorial banner; About owns the portrait and front-page briefs; Skills
+renders a horizontal name ledger, not icon chips. Icon configuration/helpers
+remain supported interfaces but are not used by the current Skills layout.
+
 ## Module map
 
 **[Verified]** Paths and interfaces below were inspected. Section exports are named exports; Index adapts them to lazy default imports.
@@ -51,7 +58,7 @@ Recommended procedure based on [Projects](../src/components/sections/Projects.ts
 
 1. Add a record to `projects.items` in [en.json](../src/locales/en/), using the shape below. `featured` determines its group, not an external service flag.
 2. Keep `title` unique within the list because React uses it as a key. Descriptions are arrays of plain strings; tech names are badge labels.
-3. Use `link` and/or `github` only when a real destination exists. Both are optional; a record without either still renders. `isExternal` exists in the interface/content but does not control rendering: every rendered project link opens a new tab.
+3. Use `link` and/or `github` only when a real destination exists. Both are optional; a record without either still renders. Every rendered project link opens a new tab; no external-service flag is needed.
 4. Update equivalent content in every shipped locale. Update `projects.geoSummary`, the project ItemList and fallback HTML in [index.html](../index.html), and [llms.txt](../public/llms.txt) so crawler summaries agree.
 5. Run build, lint, and tests; inspect long descriptions at mobile and desktop widths. Fixed `max-h` values can clip text. Follow the additional-group and accordion smoke checks in [setup](02-getting-started.md).
 

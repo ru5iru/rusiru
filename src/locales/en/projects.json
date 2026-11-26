@@ -14,7 +14,6 @@
       "expanded": true,
       "title": "Dialog.lk",
       "link": "https://dialog.lk/",
-      "isExternal": true,
       "period": "December 2024 - Present",
       "description": [
         "Played a key role in the development, maintenance, and production support of the Dialog.lk platform, handling complex L3 incidents, root cause analysis, and performance optimization while ensuring SLA compliance and meeting critical deadlines.",
@@ -97,7 +96,6 @@
       "title": "Jira Worklog Manager",
       "github": "https://github.com/ru5iru/jira-time-tracker-pages",
       "link": "https://timelogs.lovable.app",
-      "isExternal": true,
       "description": [
         "Built a browser-based personal productivity tool for logging and managing Jira Cloud worklogs, eliminating the friction of Jira's native time-tracking UI with a fast, keyboard-first single-page experience.",
         "Designed and implemented a proxy-free React + Vite architecture with a custom month-bucket worklog cache, enabling on-demand data fetching per view instead of a single upfront bulk load — reducing initial API calls significantly.",
@@ -203,7 +201,6 @@
   "foldItem": "− Fold Log",
   "featuredBadge": "Featured",
   "archiveBadge": "Archive",
-  "morePoints": "+{count} more points →",
   "visitLabel": "Visit",
   "githubLabel": "GitHub",
   "affiliations": {

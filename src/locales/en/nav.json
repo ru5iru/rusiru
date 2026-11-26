@@ -1,5 +1,4 @@
 {
-  "brand": "RR.",
   "links": {
     "about": "A1. About",
     "experience": "A2. Experience",
@@ -9,7 +8,6 @@
     "blog": "C2. Blog",
     "contact": "C3. Contact"
   },
-  "darkMode": "Dark Mode",
   "openMenu": "Open menu",
   "closeMenu": "Close menu",
   "toggleTheme": "Toggle theme",

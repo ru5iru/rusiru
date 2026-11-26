@@ -7,6 +7,8 @@ import { siteSchema, themeSchema } from '@/config/schema';
 import { mergeLocale, readLanguage, storeLanguage } from '@/i18n/locale';
 import { I18nProvider } from '@/i18n/i18n';
 import { Projects } from '@/components/sections/Projects';
+import { Experience } from '@/components/sections/Experience';
+import { Education } from '@/components/sections/Education';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { navigateToSection } from '@/lib/navigation';
 import { createSearchContent } from '../../scripts/search-content';
@@ -36,6 +38,50 @@ describe('locales', () => {
   it('survives denied storage writes', () => { vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('Denied'); }); expect(() => storeLanguage('en')).not.toThrow(); });
 });
 describe('interactions', () => {
+  it('reveals and hides an archived experience role without deleting it', () => {
+    const role = en.experience.items[2];
+    const archived = role.archived;
+    role.archived = true;
+    try {
+      render(<I18nProvider><Experience /></I18nProvider>);
+      expect(screen.queryByRole('heading', { name: role.role })).not.toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: en.experience.viewMore }));
+      expect(screen.getByRole('heading', { name: role.role })).toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: en.experience.showLess }));
+      expect(screen.queryByRole('heading', { name: role.role })).not.toBeInTheDocument();
+      expect(en.experience.items).toHaveLength(3);
+    } finally { role.archived = archived; }
+  });
+  it('reveals an archived school independently of continuing education', () => {
+    const school = en.education.items[0];
+    const archived = school.archived;
+    school.archived = true;
+    try {
+      render(<I18nProvider><Education /></I18nProvider>);
+      expect(screen.queryByRole('heading', { name: school.institution })).not.toBeInTheDocument();
+      expect(screen.getAllByRole('link', { name: /^Show Credential:/ })).toHaveLength(5);
+      fireEvent.click(screen.getByRole('button', { name: en.education.viewMoreEducation }));
+      expect(screen.getByRole('heading', { name: school.institution })).toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: en.education.showLess }));
+      expect(screen.queryByRole('heading', { name: school.institution })).not.toBeInTheDocument();
+      expect(en.education.items).toHaveLength(2);
+    } finally { school.archived = archived; }
+  });
+  it('reveals an archived credential independently of formal education', () => {
+    const credential = en.education.certifications[0];
+    const archived = credential.archived;
+    credential.archived = true;
+    try {
+      render(<I18nProvider><Education /></I18nProvider>);
+      expect(screen.queryByRole('heading', { name: credential.title })).not.toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: en.education.items[0].institution })).toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: en.education.viewMoreCertifications }));
+      expect(screen.getByRole('heading', { name: credential.title })).toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: en.education.showLess }));
+      expect(screen.queryByRole('heading', { name: credential.title })).not.toBeInTheDocument();
+      expect(en.education.certifications).toHaveLength(5);
+    } finally { credential.archived = archived; }
+  });
   it('recovers a failed section without removing surrounding content', () => {
     vi.spyOn(console, 'error').mockImplementation(() => {});
     function Broken(): JSX.Element { throw new Error('Chunk unavailable'); }

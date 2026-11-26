@@ -19,7 +19,7 @@ retain applicable notices separately. Dependencies retain their own licences.
 | Name, email, site URL, location, resume link, page title/description | `src/config/site.json` |
 | Social links (`platform`: linkedin, github, discord, facebook, x, reddit, blog, spotify — or add `icon` path for others) | `site.json` → `social` |
 | Which sections show and in what order | `site.json` → `sections` |
-| Skills + icons (`devicon:<path>` or `/media/...` or any URL; `invertInDark` for dark logos) | `site.json` → `skills` |
+| Skill names and optional-layout icon configuration (`devicon:<path>`, `/media/...`, or URL; current Skills displays names only) | `site.json` → `skills` |
 | Education logos (keyed by education item `id`) | `site.json` → `educationLogos` |
 | Brand colors (HSL) for light/dark | `src/config/theme.json` |
 | All wording: hero, about, experience, education, projects, blog posts, contact, footer, 404 | `src/locales/en/<section>.json` |

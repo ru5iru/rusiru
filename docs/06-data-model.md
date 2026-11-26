@@ -4,6 +4,12 @@ Purpose: describe authored records and browser state. Intended reader: content e
 
 Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-10-18.
 
+**Current cleanup note (2026-11-26):** The descriptions below retain the earlier
+audit baseline. Current schemas validate settings and split locale files;
+publication is per-language and records merge by stable ID. About no longer
+uses stat tiles. See [README](../README.md), [AGENTS](../AGENTS.md), and the
+[deep cleanup audit](cleanup-audit.md) for current behavior.
+
 ## Storage model
 
 **[Verified]** There is no database, ORM, migration framework, or application-server persistence. Identity/settings/skills live in site JSON, theme overrides in theme JSON, and section wording/record arrays in locale JSON. Static HTML and llms content remain separate. Config and locales are bundled into the browser; public media paths are served as files. Visitors cannot edit these records. Sources: [config](../src/config/index.ts), [site](../src/config/site.json), [theme](../src/config/theme.json), [i18n:6](../src/i18n/i18n.tsx#L6).
@@ -16,7 +22,7 @@ Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-
 | About paragraphs/stat | `paragraphs: string[]`; stats `{value, label}[]`; values remain strings | [About](../src/components/sections/About.tsx) |
 | Experience item | `company`, `role`, `period`, `dateTime`, `description: string[]` | [Experience](../src/components/sections/Experience.tsx) |
 | Education item | `id`, `institution`, `degree`, `period`, `details: string[]`; ID maps to local logo | [Education](../src/components/sections/Education.tsx) |
-| Project item | `title`, optional `link`, `github`, `isExternal`; `description: string[]`, `tech: string[]`, `featured: boolean` | [Projects](../src/components/sections/Projects.tsx) |
+| Project item | `id`, `title`, optional `link`, `github`; `description: string[]`, `tech: string[]`, `featured: boolean` | [Projects](../src/components/sections/Projects.tsx) |
 | Blog post | `title`, `excerpt`, `date`, `dateLabel`, `readTime`, `link`; date label is authored separately | [Blog](../src/components/sections/Blog.tsx) |
 | Contact | Site `person.email` and `contact.secondaryButton.{platform,url}`; locale button/heading text and summary | [Contact](../src/components/sections/Contact.tsx) |
 | Skill category | Site `skills[{id,items:[{name,icon,invertInDark?}]}]`; locale category labels | [Skills](../src/components/sections/Skills.tsx), [config types](../src/config/index.ts) |
@@ -24,7 +30,7 @@ Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-
 
 **[Verified]** Additional site config groups are `siteUrl`; `person` (name, job title, email, location, profile image, resume URL); `seo` (title, descriptions, creation date, theme color); `theme.default`; `sections`; `blogUrl`; and `educationLogos`. Theme JSON contains `light` and `dark` dictionaries of CSS variable names to values. `$`-prefixed keys are comments excluded from theme injection. `siteConfig`/`themeConfig` use TypeScript assertions, not schema validation. Only four missing site fields are logged: site URL, name, email, and SEO title ([config:31](../src/config/index.ts#L31)).
 
-**[Verified]** Interfaces are local TypeScript interfaces, not JSON validators. A cast through `tr<T>()` does not enforce field presence or element types. Some missing arrays default to empty, but a non-array value can still break `.map`/`.filter`. `isExternal` is currently unused by the project renderer. No uniqueness/index constraints are enforced; titles and company/role combinations serve as React keys.
+**[Historical baseline]** Interfaces were local TypeScript interfaces, not JSON validators. A cast through `tr<T>()` does not itself enforce field presence or element types. Current validation and stable-ID constraints supersede the earlier absence of uniqueness checks. Project outbound links open a new tab without an external-service flag.
 
 ## Conceptual entity relationships
 

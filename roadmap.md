@@ -73,7 +73,7 @@
 
 ## Deep behavior-preserving cleanup
 - [x] Establish baseline and record two-pass whole-repository audit.
-- [ ] Remove verified legacy locale/schema leftovers without removing active content.
+- [x] Remove verified legacy locale/schema leftovers without removing active content.
 - [ ] Prune proven dead internals/styles; preserve public interfaces and optional features.
 - [ ] Remove verified orphan assets and local generated clutter; retain required tooling.
 - [ ] Recheck tests, lint, automatic compilation, desktop/mobile and optional-feature flows; finalize documentation and commits.

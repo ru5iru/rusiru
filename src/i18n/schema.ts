@@ -32,14 +32,14 @@ export const localeSchema = z.object({
   language: z.object({ name: text, code: text }),
   seo: z.object({ shareImageAlt: text }),
   nav: z.object({
-    brand: text, links: z.record(text), editionBadge: text, editionSubtitle: text, unfoldAll: text, foldAll: text,
+    links: z.record(text), editionBadge: text, editionSubtitle: text, unfoldAll: text, foldAll: text,
     registrationEdition: text, registrationDisciplines: text, registrationIssue: text, mastheadKicker: text,
     indexTitle: text, indexSubtitle: text, openMenu: text, closeMenu: text, toggleTheme: text, nightEdition: text,
     dayEdition: text, mainNavigation: text, selectLanguage: text,
   }).passthrough(),
   hero: copy.extend({
-    srHeading: text, mastheadSubtitle: text, bannerKicker: text, bannerTitle: text, headlineBefore: text,
-    headlineAfter: text, headlineLine2: text, description: text, viewWork: text, resume: text, profileAlt: text,
+    srHeading: text, mastheadSubtitle: text, bannerKicker: text, bannerTitle: text,
+    description: text, viewWork: text, resume: text, profileAlt: text,
     profileKicker: text, profileTitle: text, profileSummary: text, careerTitle: text, careerSubtitle: text,
     featuredTitle: text, featuredSubtitle: text, continuingEducationTitle: text, continuingEducationSummary: text,
     readDispatch: text, readDossier: text, inspectEducation: text,
@@ -49,7 +49,6 @@ export const localeSchema = z.object({
     titleBefore: text,
     titleHighlight: text,
     paragraphs: points,
-    stats: z.array(z.object({ value: text, label: text })).optional(),
   }),
   experience: sectionCopy.extend({
     title: text, hint: text, unfoldAll: text, foldAll: text, dispatchLabel: text, unfoldItem: text, foldItem: text, leadSummary: text, viewMore: text.optional(), showLess: text.optional(),
@@ -68,13 +67,12 @@ export const localeSchema = z.object({
   projects: sectionCopy.extend({
     title: text, visit: text, viewOnGithub: text, visitLabel: text, githubLabel: text, showLess: text, viewMore: text,
     featuredFilter: text, allWorksFilter: text, unfoldAll: text, foldAll: text, dossierLabel: text, unfoldItem: text,
-    foldItem: text, featuredBadge: text, archiveBadge: text, morePoints: text,
+    foldItem: text, featuredBadge: text, archiveBadge: text,
     affiliations: z.record(text).default({}),
     items: records({
       title: text,
       link: webUrl.optional(),
       github: webUrl.optional(),
-      isExternal: z.boolean().optional(),
       period: text.optional(),
       frontPage: flag,
       frontPageKicker: text.optional(),
@@ -95,7 +93,7 @@ export const localeSchema = z.object({
     categories: labels,
     notes: labels,
   }),
-  blog: labeledCopy.extend({
+  blog: labeledCopy.omit({ geoSummary: true }).extend({
     readMore: text, visitBlog: text,
     posts: records({ title: text, excerpt: text, date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), dateLabel: text, readTime: text, link: webUrl }),
   }),
