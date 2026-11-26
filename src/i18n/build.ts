@@ -34,7 +34,7 @@ function checkAgainstEnglish(base: unknown, translated: unknown, path: string, e
   if (typeof base.text === 'string') return;
   for (const key of Object.keys(translated)) {
     if (key in base) checkAgainstEnglish(base[key], translated[key], path ? `${path}.${key}` : key, errors);
-    else if (!['published', 'expanded', 'frontPage', 'featured', 'affiliation'].includes(key)) errors.push(`${path || 'root'}: unknown key "${key}"`);
+    else if (!['published', 'expanded', 'frontPage', 'featured', 'archived', 'affiliation'].includes(key)) errors.push(`${path || 'root'}: unknown key "${key}"`);
   }
 }
 

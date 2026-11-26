@@ -64,3 +64,7 @@ Publish from this project's Lovable Publish dialog. Public site URL comes from `
 CI runs a frozen installation, lint, behavioral tests and production compilation. Ownership, DNS/TLS access, response contacts, cache/security-header policy and production monitoring require the project owner's decisions. No analytics or contact form is added without a product decision.
 
 Repository documentation: [setup, architecture, code guide, and operations](docs/README.md). The audit's remediation section supersedes older baseline findings.
+
+### View More (optional)
+
+Experience roles, formal education, and Continuing Education credentials support `"archived": true` on any item. Archived items stay published (and in search output) but sit behind a "View More" button; the button only appears when at least one item in that list is archived. Labels: `experience.viewMore`/`showLess`, `education.viewMoreEducation`/`viewMoreCertifications`/`showLess`. Projects keep using `featured`.

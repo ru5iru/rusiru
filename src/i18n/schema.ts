@@ -52,17 +52,18 @@ export const localeSchema = z.object({
     stats: z.array(z.object({ value: text, label: text })).optional(),
   }),
   experience: sectionCopy.extend({
-    title: text, hint: text, unfoldAll: text, foldAll: text, dispatchLabel: text, unfoldItem: text, foldItem: text, leadSummary: text,
-    items: records({ company: text, role: text, period: text, dateTime: text, summary: text.optional(), frontPage: flag, expanded: flag, description: points }),
+    title: text, hint: text, unfoldAll: text, foldAll: text, dispatchLabel: text, unfoldItem: text, foldItem: text, leadSummary: text, viewMore: text.optional(), showLess: text.optional(),
+    items: records({ company: text, role: text, period: text, dateTime: text, summary: text.optional(), frontPage: flag, expanded: flag, archived: flag, description: points }),
   }),
   education: sectionCopy.extend({
     title: text, formalTitle: text, formalSubtitle: text, academicStanding: text, certificationsTitle: text,
     certificationsSubtitle: text, showCredential: text, viewAllCertifications: text, moreCertificationsNote: text,
     seeAllCertifications: text, skillsLabel: text,
+    viewMoreEducation: text.optional(), viewMoreCertifications: text.optional(), showLess: text.optional(),
     formalEducation: group,
     continuingEducation: group,
-    items: records({ institution: text, degree: text, period: text, details: points }),
-    certifications: records({ issuer: text, date: text, title: text, skills: text, url: webUrl }),
+    items: records({ institution: text, degree: text, period: text, archived: flag, details: points }),
+    certifications: records({ issuer: text, date: text, title: text, skills: text, url: webUrl, archived: flag }),
   }),
   projects: sectionCopy.extend({
     title: text, visit: text, viewOnGithub: text, visitLabel: text, githubLabel: text, showLess: text, viewMore: text,

@@ -1,6 +1,6 @@
 export type Dict = Record<string, unknown>;
 export const record = (value: unknown): value is Dict => value !== null && typeof value === 'object' && !Array.isArray(value);
-const FLAGS: Record<string, string> = { published: 'boolean', expanded: 'boolean', frontPage: 'boolean', featured: 'boolean', affiliation: 'string' };
+const FLAGS: Record<string, string> = { published: 'boolean', expanded: 'boolean', frontPage: 'boolean', featured: 'boolean', archived: 'boolean', affiliation: 'string' };
 const identified = (list: unknown[]) => list.length > 0 && list.every(item => record(item) && typeof item.id === 'string');
 
 /**

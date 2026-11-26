@@ -3,6 +3,8 @@
   "ariaLabel": "Work Experience of Rusiru Rathmina",
   "geoSummary": "Rusiru Rathmina is a Software Engineer at Omobio (Pvt) Ltd in Colombo, Sri Lanka. Since January 2026, he has managed AWS, Docker, and Kubernetes infrastructure, migrated Dialog.lk container images from end-of-life Debian to Alpine Linux, reducing image sizes by 60% and deployment time by 75%, and contributed to ISO 27001 compliance and secure coding initiatives. Previously, he served as an Associate Software Engineer from May 2024 to December 2025 and a Trainee Full-Stack Developer from November 2023 to May 2024, supporting enterprise platforms including Dialog.lk and Dialog BizCare.",
   "title": "Work Experience",
+  "viewMore": "View More Roles",
+  "showLess": "Show Less",
   "items": [
     {
       "id": "software-engineer",

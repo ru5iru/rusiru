@@ -3,6 +3,9 @@
   "ariaLabel": "Education of Rusiru Rathmina",
   "geoSummary": "Rusiru Rathmina holds a Bachelor of Science in Computer Science from the University of Colombo School of Computing (UCSC), graduating with a GPA of 3.01 (May 2021 – October 2024). He completed his GCE Advanced Level in Physical Science at Mahinda College, Galle, achieving results of A B C with a Z-Score of 1.3084, and GCE Ordinary Level results of 8A 1B.",
   "title": "Education & Continuing Education (CE)",
+  "viewMoreEducation": "View More Education",
+  "viewMoreCertifications": "View More Credentials",
+  "showLess": "Show Less",
   "items": [
     {
       "id": "ucsc",

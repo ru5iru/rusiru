@@ -24,3 +24,13 @@ export function expandedIndices(items: { expanded?: boolean }[]): number[] {
   const flagged = items.flatMap((item, index) => item.expanded ? [index] : []);
   return flagged.length || !items.length ? flagged : [0];
 }
+
+/** True when any item is flagged `archived` and therefore sits behind a View More toggle. */
+export function hasArchived(items: { archived?: boolean }[]): boolean {
+  return items.some(item => item.archived === true);
+}
+
+/** Items shown for the current View More state, keeping each item's original index. */
+export function visibleRecords<T extends { archived?: boolean }>(items: T[], showAll: boolean): { item: T; index: number }[] {
+  return items.map((item, index) => ({ item, index })).filter(({ item }) => showAll || item.archived !== true);
+}
