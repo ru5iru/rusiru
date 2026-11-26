@@ -50,10 +50,7 @@
         "Collaborated directly with clients and end-users to identify, troubleshoot, and resolve issues efficiently.",
         "Worked closely with senior engineers while following Agile development methodologies, coding standards, and software engineering best practices."
       ],
-      "tech": [
-        "Yii",
-        "Keycloak"
-      ],
+      "tech": ["Yii", "Keycloak"],
       "featured": true
     },
     {
@@ -105,16 +102,7 @@
         "Developed a per-issue work notes system backed by the File System Access API for auto-save to a user-chosen file on disk, with graceful fallback to manual export/import on unsupported browsers.",
         "Implemented a global command palette with fuzzy issue search, keyboard navigation, and direct Jira key lookup, along with Jira workflow status transitions directly from the issue list."
       ],
-      "tech": [
-        "Lovable",
-        "React",
-        "Vite",
-        "TypeScript",
-        "Jira REST API",
-        "Node.js",
-        "dayjs",
-        "localStorage"
-      ],
+      "tech": ["Lovable", "React", "Vite", "TypeScript", "Jira REST API", "Node.js", "dayjs", "localStorage"],
       "featured": true,
       "frontPage": true,
       "frontPageKicker": "PRODUCTIVITY SPA",
@@ -130,12 +118,7 @@
         "Implemented storage, customer, and supplier management modules using an MVC-based architecture.",
         "Built a modern frontend using React and integrated a CMS-based backend."
       ],
-      "tech": [
-        "Directus",
-        "React",
-        "PostgreSQL",
-        "Docker"
-      ],
+      "tech": ["Directus", "React", "PostgreSQL", "Docker"],
       "featured": true
     },
     {
@@ -149,13 +132,7 @@
         "Recommends places, hotels, travel guides, taxi rides, and shops.",
         "Includes an experience-sharing platform where travelers can connect and share their stories."
       ],
-      "tech": [
-        "React",
-        "Node.js",
-        "Express",
-        "PostgreSQL",
-        "Sass"
-      ],
+      "tech": ["React", "Node.js", "Express", "PostgreSQL", "Sass"],
       "featured": false
     },
     {
@@ -168,12 +145,7 @@
         "Assembly process management system for Micro Car Limited.",
         "Manages vehicle assembly process from chassis delivery to dispatching."
       ],
-      "tech": [
-        "PHP",
-        "AJAX",
-        "MySQL",
-        "JavaScript"
-      ],
+      "tech": ["PHP", "AJAX", "MySQL", "JavaScript"],
       "featured": false
     },
     {
@@ -185,10 +157,9 @@
         "Task manager app built with Flutter.",
         "Capable of managing tasks, adding reminders, and setting priorities."
       ],
-      "tech": [
-        "Flutter"
-      ],
-      "featured": false
+      "tech": ["Flutter"],
+      "featured": false,
+      "affiliation": "ucsc"
     }
   ],
   "kicker": "SECTION B2 · ARCHITECTURAL & PROJECT DOSSIERS",
