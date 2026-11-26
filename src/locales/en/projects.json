@@ -59,7 +59,7 @@
       "id": "mockdeck",
       "published": true,
       "expanded": true,
-      "title": "MockDeck — API Mocking & Integration Testing Platform",
+      "title": "MockDeck - API Mocking & Integration Testing Platform",
       "github": "https://github.com/ru5iru/api-mock-service",
       "period": "September 2026 - Present",
       "description": [
@@ -72,18 +72,7 @@
         "Added Model Context Protocol (MCP) tools for automated mock management and Postman imports, including isolated test runs and safe retries.",
         "Created automated backend and frontend regression tests, CI checks, and technical documentation."
       ],
-      "tech": [
-        "Laravel",
-        "Livewire",
-        "PostgreSQL",
-        "JavaScript",
-        "HTML",
-        "CSS",
-        "Docker",
-        "PHPUnit",
-        "GitHub Actions",
-        "MCP"
-      ],
+      "tech": ["Laravel", "Livewire", "PostgreSQL", "Docker", "PHPUnit", "GitHub Actions", "MCP"],
       "featured": true,
       "frontPage": true,
       "frontPageKicker": "API & MCP PLATFORM",
@@ -99,7 +88,7 @@
       "link": "https://worklogs.rusiru.cc/",
       "description": [
         "Built a browser-based personal productivity tool for logging and managing Jira Cloud worklogs, eliminating the friction of Jira's native time-tracking UI with a fast, keyboard-first single-page experience.",
-        "Designed and implemented a proxy-free React + Vite architecture with a custom month-bucket worklog cache, enabling on-demand data fetching per view instead of a single upfront bulk load — reducing initial API calls significantly.",
+        "Designed and implemented a proxy-free React + Vite architecture with a custom month-bucket worklog cache, enabling on-demand data fetching per view instead of a single upfront bulk load - reducing initial API calls significantly.",
         "Engineered a real-time work timer that persists across page reloads and browser restarts using localStorage, with a floating chip that survives client-side navigation and pre-fills the log work modal on stop.",
         "Implemented advanced worklog operations including bulk logging across multiple issues, worklog splitting with live sum validation, duplicate entry, and a 5-second undo-delete flow with optimistic UI updates.",
         "Built a multi-tab summary dashboard featuring a Clockwork-style weekly timesheet grid, GitHub-style heatmap calendar, per-project breakdown chart, logged vs. estimated variance report, and CSV export.",
