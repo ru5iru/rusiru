@@ -1,83 +1,48 @@
-# Portfolio template
+# Engineering Broadsheet portfolio
 
-Make it yours by editing config files only — no code changes needed.
+A configurable portfolio template with a newspaper-inspired layout, light/dark editions, expandable work logs, and per-language content controls. Built with React, TypeScript, Vite, and Tailwind CSS.
 
-## Repository guidance
+## Quick start
 
-- [MIT licence](LICENCE)
-- [Project changelog](CHANGELOG.md) — notable template changes; historical audits remain in [docs/CHANGELOG.md](docs/CHANGELOG.md).
-- [Contributing](CONTRIBUTING.md) — setup, conventions, validation, and pull requests.
-- [Security](SECURITY.md) — private vulnerability reporting guidance.
-- [Deep cleanup audit](docs/cleanup-audit.md) — removal evidence, protected template features, and verification results.
-
-When reusing the template, replace the included personal biography, portrait,
-logos, links, and verification files with your own. The MIT licence does not
-grant rights to third-party assets or trademarks; check their permissions and
-retain applicable notices separately. Dependencies retain their own licences.
-
-| What | Where |
-|------|-------|
-| Name, email, site URL, location, resume link, page title/description | `src/config/site.json` |
-| Social links (`platform`: linkedin, github, discord, facebook, x, reddit, blog, spotify — or add `icon` path for others) | `site.json` → `social` |
-| Which sections show and in what order | `site.json` → `sections` |
-| Skill names and optional-layout icon configuration (`devicon:<path>`, `/media/...`, or URL; current Skills displays names only) | `site.json` → `skills` |
-| Education logos (keyed by education item `id`) | `site.json` → `educationLogos` |
-| Brand colors (HSL) for light/dark | `src/config/theme.json` |
-| All wording: hero, about, experience, education, projects, blog posts, contact, footer, 404 | `src/locales/en/<section>.json` |
-| Images (profile photo, logos, icons) and social card path | `public/media/` and `site.json` → `seo.shareImage` |
-| Social image alternative text | `src/locales/en/_meta.json` → `seo.shareImageAlt` |
-| Favicons | `public/favicon.svg` is the custom vector icon; `public/*.png` and `public/favicon.ico` provide raster fallbacks |
-
-## Add a language
-Create a folder next to `src/locales/en/` (e.g. `src/locales/si/`) with `_meta.json` setting `language.name`/`language.code`, plus only the section files you translate. Anything missing falls back to English, and records are matched by `id`. It appears in the language menu automatically. In About paragraphs, `**text**` is bold and `==text==` is highlighted.
-
-## Publishing content
-
-Hide anything without deleting it by adding `"published": false` (default is `true`, so leave it out otherwise). Flags live in each language's files, so English and another language can differ; a translation that does not set a flag inherits the English one.
-
-| Hide | Where | Example |
-| --- | --- | --- |
-| A section | top of the section file | `experience.json`: `"published": false` |
-| Formal / Continuing Education | `education.json` | `"continuingEducation": { "published": false }` |
-| A role, project, school, course, post | the item | `{ "id": "software-engineer", "published": false, ... }` |
-| One bullet point or tech tag | replace the sentence | `{ "text": "Led the migration…", "published": false }` |
-| A skill category or social link | label map | `"reddit": { "text": "Reddit", "published": false }` |
-
-Other item flags: `expanded` (open by default), `frontPage` (appears in the front-page briefs), `featured` (projects: main list vs "View More"), and `affiliation` (projects: a key of `projects.affiliations`, e.g. `"omobio"`, `"personal"`, `"ucsc"`, shown as a badge). A section whose items are all hidden disappears from the page and navigation. Misspelled flags, duplicate ids, unknown affiliations, and translation ids English lacks stop the build with a clear message. In development the browser console lists what each language currently hides.
-
-Hide a role only in Sinhala (`src/locales/si/experience.json`):
-
-```json
-{ "items": [{ "id": "software-engineer", "published": false }] }
-```
-
-## Generated files
-`sitemap.xml`, `robots.txt`, `site.webmanifest`, `llms.txt`, and the localized `404.html` are regenerated from settings and English copy. Vite injects matching metadata, JSON-LD, social image tags, and full readable no-JavaScript section content into the served HTML; do not hand-edit generated content. This is static content generation, not React server rendering or hydration. Settings and English edits also regenerate files during development. Sitemap lastmod and ProfilePage dateCreated are omitted because reliable publication timestamps are not configured. Netlify serves `404.html` with an actual HTTP 404 for unknown paths and permanently redirects `/index.html` to the canonical root.
-
-## Development
-
-Bun 1.3.3 is the authoritative package manager; commit `bun.lock`. Node 22 is supported for tooling. Do not reintroduce competing npm/binary Bun lockfiles.
+Use **Bun 1.3.3** and **Node 22**.
 
 ```sh
 bun install --frozen-lockfile
 bun run dev
+```
+
+Open `http://localhost:8080` (or the URL printed by Vite). No API keys or database are required.
+
+## Make it yours
+
+| Change | Edit |
+| --- | --- |
+| Identity, shared links, section order, skills, and image paths | `src/config/site.json` |
+| Light/dark colors | `src/config/theme.json` |
+| Wording, work history, education, projects, and blog entries | `src/locales/en/<section>.json` |
+| Hide content or change item placement | Flags beside the content in each locale file |
+| Portrait, logos, social image, and favicons | `public/media/`, `media-src/`, and `public/favicon*` |
+
+Set `"published": false` to hide a section, record, or point without deleting it. Use `"archived": true` for optional View More in Experience, Education, and Continuing Education; projects use `"featured": false`. Each language can make its own choices.
+
+See **[Customization](docs/customization.md)** for examples, languages, front-page placement, and image replacement.
+
+## Check your changes
+
+```sh
 bun run lint
 bun run test
 bun run build
 ```
 
-Settings reject invalid required fields, unsafe URLs, duplicate/unsupported section IDs and malformed HSL values. Use supported IDs from the current section list. An empty section list is supported. Incomplete translations fall back to English, including malformed values and missing placeholders; keep arrays in the same order and length as English.
+Search files and readable HTML fallback content are generated from settings and English content; do not edit generated outputs manually.
 
-The profile photo is optimized at 448px. Keep the eager hero image small when replacing it. Put original education logos at `media-src/logos/` using the same filenames configured under `site.json` → `educationLogos`; `bun run optimize:images` resizes them to at most 132px for high-density 44px display and regenerates the 1200×630 social card from the configured portrait, theme, and custom monogram. This command also runs automatically before production builds. Fonts and adding new section types still require code changes; project/blog links currently remain in the English locale. Those broader historical template promises are not implemented.
+## Guides and contribution
 
-## Release and maintenance
+- [Documentation](docs/README.md) — customization, development, and deployment.
+- [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md)
+- [Architecture rules](AGENTS.md) · [Design system](DESIGN.md) · [Maintenance workflow](SKILL.md)
 
-Publish from this project's Lovable Publish dialog. Public site URL comes from `site.json`. This change does not publish automatically. After publishing, verify the homepage, an unknown URL, resume/blog links and generated search files on the public origin. Use Lovable version history to review a previous version before republishing a rollback; a production rollback has not been exercised.
+## Licence
 
-CI runs a frozen installation, lint, behavioral tests and production compilation. Ownership, DNS/TLS access, response contacts, cache/security-header policy and production monitoring require the project owner's decisions. No analytics or contact form is added without a product decision.
-
-Repository documentation: [setup, architecture, code guide, and operations](docs/README.md). The audit's remediation section supersedes older baseline findings.
-
-### View More (optional)
-
-Experience roles, formal education, and Continuing Education credentials support `"archived": true` on any item. Archived items stay published (and in search output) but sit behind a "View More" button; the button only appears when at least one item in that list is archived. Labels: `experience.viewMore`/`showLess`, `education.viewMoreEducation`/`viewMoreCertifications`/`showLess`. Projects keep using `featured`.
+[MIT](LICENCE). Replace the included biography, images, links, and site-verification material when reusing the template. The licence does not grant rights to third-party images, logos, or trademarks; check permissions and retain applicable notices. Dependencies keep their own licences.

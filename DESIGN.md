@@ -92,7 +92,7 @@ Define reusable component classes in [src/index.css](src/index.css):
 - **`.broadsheet-page`**:
   - Max-width `72rem` (`max-w-6xl`), centered on the `--desk` outer background with subtle center-fold linear gradient, fine dot grain (`18px × 18px`), `1px solid hsl(var(--foreground))` outer border, and stacked-page offset shadow (`8px 8px 0 hsl(var(--secondary)), 9px 9px 0 hsl(var(--foreground))`).
 - **Print Rules**:
-  - `.r-t`, `.r-b`, `.r-l`, `.r-r`, `.r-box`: `1px solid hsl(var(--border))`
+  - `.r-t`, `.r-b`, `.r-r`, `.r-box`: `1px solid hsl(var(--border))`; use token-based border utilities for other edges.
   - `.r-heavy-t`, `.r-heavy-b`: `2.5px solid hsl(var(--foreground))`
   - `.r-double-t`, `.r-double-b`: `4px double hsl(var(--foreground))`
 - **`.lead-dropcap::first-letter`**:

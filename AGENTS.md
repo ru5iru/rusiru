@@ -8,7 +8,7 @@
 - Social icons resolve via `src/components/icons/BrandIcons.tsx` keyed by platform id — config stays data-only.
 - `scripts/site-files.ts` owns sitemap/robots/manifest/llms generation and HTML metadata/static fallback injection via `scripts/search-content.ts` — a shared input prevents visible/search content drift; never hand-edit outputs.
 - Validate settings with `src/config/schema.ts` and locale dictionaries with `src/i18n/schema.ts` before runtime and generation; invalid section IDs/URLs must fail early instead of yielding broken links.
-- Locale fallback merges each key and array position with English; translations retain English array order to keep content identities stable.
+- Locale fallback merges keys with English, records by stable `id`, and points by array position; English record order remains authoritative to keep content identities stable.
 - Optional View More for Experience, formal Education, and Continuing Education uses a per-item `archived` flag with `visibleRecords`/`hasArchived` (`src/i18n/publish.ts`) and `ViewMoreButton` — off unless an item is archived, so templates opt in via content only.
 - Expandable section rows (`Experience` dispatches and `Projects` dossiers) use the shared Radix Collapsible wrapper (`src/components/DisclosureRow.tsx`) with support for single-row toggle, "Unfold All", and front-page jump-and-unfold actions; measured content height and separate outbound links prevent clipping and nested controls.
 - Technical skills (`Skills.tsx`) present `siteConfig.skills` as an understated, adaptability-first horizontal domain ledger rather than a rigid tool-count grid.
@@ -18,3 +18,5 @@
 - Shared shadcn variant/helper exports and the brand icon registry are intentional lint Fast Refresh exemptions; keep other feature modules component-only.
 - Each lazy section has its own loading state/error boundary; unused query/toast providers are not mounted on this static portfolio.
 - Always use Conventional Commit messages (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`) when committing changes.
+- Commit trailers include `Co-Authored-By: ru5iru <92708089+ru5iru@users.noreply.github.com>` — retains the requested contributor attribution.
+- README holds quick-start essentials; `docs/customization.md`, `docs/development.md`, and `docs/deployment.md` own detailed user guidance — one guide per task avoids duplicated instructions.

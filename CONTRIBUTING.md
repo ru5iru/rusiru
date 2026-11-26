@@ -5,7 +5,7 @@ preserve existing behavior unless the change explicitly requires otherwise.
 
 ## Before starting
 
-- Read [README.md](README.md) for customization and setup, and
+- Read [README.md](README.md) and the relevant [guide](docs/README.md), and
   [AGENTS.md](AGENTS.md) for architecture rules.
 - For visual work, read [DESIGN.md](DESIGN.md), [SKILL.md](SKILL.md), and the
   [canonical prototype](docs/prototype/broadsheet-prototype.html).
@@ -56,6 +56,8 @@ CI runs a frozen install and these checks. For UI changes, also exercise the
 affected flow in a browser on desktop and mobile, with keyboard input and both
 themes. For publication changes, check that hidden content is absent from the
 page, navigation, and generated search content. Document anything not verified.
+In Lovable's managed workspace, review automatic compilation and type checks
+instead of manually running a build or typecheck.
 
 ## Pull requests
 
@@ -63,9 +65,14 @@ page, navigation, and generated search content. Document anything not verified.
 - Include test results and screenshots for visual changes. Redact personal or
   confidential information.
 - Update [CHANGELOG.md](CHANGELOG.md) under Unreleased for notable changes and
-  update relevant documentation. Record new structural rules in `AGENTS.md`.
+  update the relevant guide in `docs/`. Keep the README concise and describe
+  current use rather than retaining audit histories or verification reports.
+  Record new structural rules in `AGENTS.md`; update `SKILL.md` if the maintenance
+  workflow changes.
 - Use Conventional Commit subjects, for example `fix: preserve archived role
   navigation` or `docs: clarify template setup`.
+- Include `Co-Authored-By: ru5iru <92708089+ru5iru@users.noreply.github.com>`
+  in commit trailers.
 - Keep contributions respectful and constructive. Review is not a guarantee
   of acceptance or a release date.
 
