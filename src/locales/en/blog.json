@@ -1,0 +1,42 @@
+{
+  "published": true,
+  "ariaLabel": "Blog posts by Rusiru Rathmina",
+  "titleBefore": "Latest",
+  "titleHighlight": "Blog Posts",
+  "readMore": "Read full post",
+  "visitBlog": "Visit My Blog",
+  "posts": [
+    {
+      "id": "owasp-top-10",
+      "published": true,
+      "title": "OWASP Top 10: A Developer's Practical Guide",
+      "excerpt": "Security isn't just for the infosec team. Every developer should understand these ten vulnerabilities and how to prevent them in their own code.",
+      "date": "2026-03-22",
+      "dateLabel": "Mar 2026",
+      "readTime": "10 min read",
+      "link": "https://blog.rusiru.cc/2026/03/owasp-top-ten.html"
+    },
+    {
+      "id": "clean-code-principles",
+      "published": true,
+      "title": "Clean Code Principles Every Developer Should Know",
+      "excerpt": "Writing code that works is easy. Writing code that others can read, maintain, and extend is the real challenge. Here are the principles I follow.",
+      "date": "2026-03-20",
+      "dateLabel": "Mar 2026",
+      "readTime": "8 min read",
+      "link": "https://blog.rusiru.cc/2026/03/clean-code-principles.html"
+    },
+    {
+      "id": "code-review-etiquette",
+      "published": true,
+      "title": "Code Review Etiquette: Being Kind and Thorough",
+      "excerpt": "Good code reviews build trust. Bad ones build resentment. Here are the habits I've adopted to make reviews productive for everyone.",
+      "date": "2025-12-08",
+      "dateLabel": "Dec 2025",
+      "readTime": "6 min read",
+      "link": "https://blog.rusiru.cc/2025/12/code-review-etiquette.html"
+    }
+  ],
+  "kicker": "SECTION C2 · SYNDICATED COLUMNS & ESSAYS",
+  "geoSummary": "Rusiru Rathmina writes practical engineering essays about OWASP application security, clean code principles, and constructive code review etiquette."
+}

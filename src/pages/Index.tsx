@@ -21,10 +21,12 @@ const sectionMap: Record<string, React.ComponentType> = { about: About, experien
 const { siteUrl, person } = siteConfig;
 
 const Index = () => {
-  const { t } = useTranslation();
+  const { t, sections } = useTranslation();
   useEffect(() => {
     const id = window.location.hash.slice(1);
-    if (id && siteConfig.sections.includes(id)) return navigateToSection(id);
+    if (id && sections.includes(id)) return navigateToSection(id);
+    // Only the initial hash matters; later language changes must not scroll the page.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
@@ -41,7 +43,7 @@ const Index = () => {
         <Navbar>
           <main id="main" tabIndex={-1}>
             <Hero />
-            {siteConfig.sections.map(key => { const S = sectionMap[key]; return S ? <LoadBoundary key={key}><Suspense fallback={<LoadingState />}><S /></Suspense></LoadBoundary> : null; })}
+            {sections.map(key => { const S = sectionMap[key]; return S ? <LoadBoundary key={key}><Suspense fallback={<LoadingState />}><S /></Suspense></LoadBoundary> : null; })}
           </main>
           <Footer />
         </Navbar>

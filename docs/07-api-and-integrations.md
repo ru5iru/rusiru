@@ -56,7 +56,7 @@ This is an illustrative usage excerpt; `ProjectItem` must be in scope. `t()` res
 | Google-hosted social image | Metadata references external image | None | Preview consumers depend on external asset availability | [HTML](../index.html) |
 | Lovable tagging | Development build-time plugin | No app credential configured | Included only in development mode; deployment account unknown | [Vite](../vite.config.ts) |
 
-**[Verified]** "Jira REST API", Kafka, Amazon SES, Keycloak, and similar names inside project descriptions are claims about showcased work. They do not create integrations for this portfolio ([en.json](../src/locales/en.json)). The Google-hosted social-image URL is metadata, not an application data API.
+**[Verified]** "Jira REST API", Kafka, Amazon SES, Keycloak, and similar names inside project descriptions are claims about showcased work. They do not create integrations for this portfolio ([en.json](../src/locales/en/)). The Google-hosted social-image URL is metadata, not an application data API.
 
 ## Events, trust, and authentication
 

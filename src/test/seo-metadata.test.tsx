@@ -3,7 +3,7 @@ import { cleanup, render, waitFor } from '@testing-library/react';
 import { HelmetProvider } from 'react-helmet-async';
 import NotFound from '@/pages/NotFound';
 import { I18nProvider } from '@/i18n/i18n';
-import en from '@/locales/en.json';
+import { english as en } from '@/i18n/locales';
 
 afterEach(cleanup);
 

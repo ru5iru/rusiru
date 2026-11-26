@@ -1,0 +1,67 @@
+{
+  "published": true,
+  "ariaLabel": "Work Experience of Rusiru Rathmina",
+  "geoSummary": "Rusiru Rathmina is a Software Engineer at Omobio (Pvt) Ltd in Colombo, Sri Lanka. Since January 2026, he has managed AWS, Docker, and Kubernetes infrastructure, migrated Dialog.lk container images from end-of-life Debian to Alpine Linux, reducing image sizes by 60% and deployment time by 75%, and contributed to ISO 27001 compliance and secure coding initiatives. Previously, he served as an Associate Software Engineer from May 2024 to December 2025 and a Trainee Full-Stack Developer from November 2023 to May 2024, supporting enterprise platforms including Dialog.lk and Dialog BizCare.",
+  "title": "Work Experience",
+  "items": [
+    {
+      "id": "software-engineer",
+      "published": true,
+      "expanded": true,
+      "company": "Omobio (Pvt) Ltd",
+      "role": "Software Engineer",
+      "period": "January 2026 - Present",
+      "dateTime": "2026-01",
+      "description": [
+        "Managed and supported cloud infrastructure, containerized applications, and orchestration workflows using AWS, Docker, and Kubernetes (K8s).",
+        "Successfully migrated Dialog.lk application images from end-of-life (EOL) Debian to Alpine Linux, reducing container image sizes by 60% and deployment time by 75%. Modernized legacy image build processes by implementing multi-stage builds to improve build efficiency, reduce image footprint, and strengthen security.",
+        "Implemented secure coding practices and contributed to application security initiatives aligned with OWASP best practices and ISO 27001 requirements.",
+        "Strengthened container and base image security by identifying and remediating CVE vulnerabilities, improving the overall security posture of applications and infrastructure.",
+        "Represented the development team in ISO 27001 compliance activities, security audits, and related processes, supporting adherence to organizational security standards.",
+        "Conducted peer code reviews and mentored new team members, promoting engineering best practices, code quality, and team productivity."
+      ],
+      "summary": "Cloud infrastructure, container modernization, application security (OWASP & ISO 27001), and team mentoring."
+    },
+    {
+      "id": "associate-software-engineer",
+      "published": true,
+      "expanded": false,
+      "company": "Omobio (Pvt) Ltd",
+      "role": "Associate Software Engineer",
+      "period": "May 2024 - December 2025",
+      "dateTime": "2024-05",
+      "description": [
+        "Served as a key software engineer for the Dialog.lk platform, while independently managing Level 3 (L3) production support, ensuring application stability, service continuity, and timely incident resolution.",
+        "Investigated and resolved complex production issues, performed root cause analysis, and optimized application performance to improve system reliability and availability.",
+        "Collaborated with cross-functional teams in Agile environments to develop, maintain, and deliver scalable, high-quality, enterprise-grade software solutions.",
+        "Contributed to CI/CD pipeline management, release coordination, and DevOps initiatives, streamlining development workflows and improving deployment efficiency."
+      ],
+      "summary": "Enterprise platform engineering, independent Level 3 (L3) production support, root-cause analysis, and CI/CD workflows."
+    },
+    {
+      "id": "trainee-full-stack-developer",
+      "published": true,
+      "expanded": false,
+      "company": "Omobio (Pvt) Ltd",
+      "role": "Trainee Full-Stack Developer",
+      "period": "November 2023 - May 2024",
+      "dateTime": "2023-11",
+      "description": [
+        "Gained hands-on experience in full-stack development using React.js, Node.js, and PHP, contributing to the development and maintenance of enterprise-level applications.",
+        "Provided Level 3 (L3) production support for the Dialog.lk and Dialog BizCare platforms, troubleshooting technical issues and supporting application stability.",
+        "Investigated and resolved software defects and production incidents across Dialog.lk and Dialog BizCare, helping minimize service disruptions and maintain operational continuity.",
+        "Analyzed application and system issues through server log analysis, service debugging, and collaboration with cross-functional teams to identify root causes and implement effective solutions.",
+        "Participated in requirements gathering, solution planning, and system design for a tea factory production automation system, contributing to the development of solutions aimed at improving operational efficiency."
+      ],
+      "summary": "Full-stack feature delivery, L3 production troubleshooting, and industrial automation system design."
+    }
+  ],
+  "kicker": "SECTION A2 · CAREER CHRONICLE",
+  "hint": "CLICK ANY ROLE TO UNFOLD COMPLETE DELIVERABLES",
+  "unfoldAll": "Unfold All {count} Roles",
+  "foldAll": "Fold Roles",
+  "dispatchLabel": "DISPATCH {number}",
+  "unfoldItem": "+ Unfold ({count} Points)",
+  "foldItem": "− Fold Dispatch",
+  "leadSummary": "Lead Summary"
+}

@@ -3,14 +3,16 @@ import { useTranslation } from '@/i18n/i18n';
 import { DisclosureRow, DetailList } from '@/components/DisclosureRow';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Button } from '@/components/ui/button';
+import { expandedIndices } from '@/i18n/publish';
 import { focusBroadsheetCard, subscribeToBroadsheetJump, subscribeToBroadsheetToggleAll } from '@/lib/navigation';
 
-interface Item { company: string; role: string; period: string; dateTime: string; description: string[] }
+interface Item { id: string; company: string; role: string; period: string; dateTime: string; expanded?: boolean; description: string[] }
 
 export function Experience() {
   const { t, tr } = useTranslation();
   const items = tr<Item[]>('experience.items');
-  const [openIndices, setOpenIndices] = useState<Set<number>>(() => new Set([0]));
+  const [openIndices, setOpenIndices] = useState<Set<number>>(() => new Set(expandedIndices(items)));
+  const defaults = expandedIndices(items);
   const allOpen = items.length > 0 && openIndices.size === items.length;
 
   useEffect(() => subscribeToBroadsheetJump('experience', ({ index }) => {
@@ -20,7 +22,7 @@ export function Experience() {
   }), [items]);
 
   useEffect(() => subscribeToBroadsheetToggleAll(expanded => {
-    setOpenIndices(new Set(expanded ? items.map((_, index) => index) : [0]));
+    setOpenIndices(new Set(expanded ? items.map((_, index) => index) : expandedIndices(items)));
   }), [items]);
 
   const toggleItem = (index: number) => setOpenIndices(current => {
@@ -28,7 +30,7 @@ export function Experience() {
     if (next.has(index)) next.delete(index); else next.add(index);
     return next;
   });
-  const toggleAll = () => setOpenIndices(new Set(allOpen ? [0] : items.map((_, index) => index)));
+  const toggleAll = () => setOpenIndices(new Set(allOpen ? defaults : items.map((_, index) => index)));
 
   return (
     <section id="experience" aria-label={t('experience.ariaLabel')} className="py-8 r-double-b">
@@ -42,7 +44,7 @@ export function Experience() {
           const open = openIndices.has(index);
           return (
             <DisclosureRow
-              key={`${item.role}-${item.period}`}
+              key={item.id}
               id={`exp-card-${index}`}
               label={item.role}
               open={open}
@@ -54,7 +56,7 @@ export function Experience() {
               title={item.role}
               summary={<span className="font-medium">— {item.company}</span>}
               toggleLabel={t(open ? 'experience.foldItem' : 'experience.unfoldItem', { count: item.description.length })}
-              lead={`${t('experience.leadSummary')}: ${item.description[0]}`}
+              lead={item.description[0] ? `${t('experience.leadSummary')}: ${item.description[0]}` : item.company}
             >
               <DetailList items={item.description} section={index + 1} />
             </DisclosureRow>

@@ -61,3 +61,8 @@
 
 - [x] Remove generated audit output, local caches, unused source/UI/hooks, dead styles, and orphaned packages without behavior changes.
 - [x] Update documentation, verify tests/lint/build/browser flows, and commit with the ru5iru co-author trailer.
+
+## Per-locale publish flags
+- [x] Split each language into `src/locales/<lang>/<section>.json` files.
+- [x] `published` flags on sections, groups, items, points, and label maps, overridable per language.
+- [x] Item placement flags (`expanded`, `frontPage`, `featured`, `affiliation`) with validation and tests.

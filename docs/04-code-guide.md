@@ -45,11 +45,11 @@ Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-
 
 ## Worked change: add a project
 
-**[Verified]** Project records remain in locales; the proposed `content.json` from the template plan does not exist. Identity/media/skills go in site config instead ([site.json](../src/config/site.json), [locale](../src/locales/en.json)).
+**[Verified]** Project records remain in locales; the proposed `content.json` from the template plan does not exist. Identity/media/skills go in site config instead ([site.json](../src/config/site.json), [locale](../src/locales/en/)).
 
 Recommended procedure based on [Projects](../src/components/sections/Projects.tsx):
 
-1. Add a record to `projects.items` in [en.json](../src/locales/en.json), using the shape below. `featured` determines its group, not an external service flag.
+1. Add a record to `projects.items` in [en.json](../src/locales/en/), using the shape below. `featured` determines its group, not an external service flag.
 2. Keep `title` unique within the list because React uses it as a key. Descriptions are arrays of plain strings; tech names are badge labels.
 3. Use `link` and/or `github` only when a real destination exists. Both are optional; a record without either still renders. `isExternal` exists in the interface/content but does not control rendering: every rendered project link opens a new tab.
 4. Update equivalent content in every shipped locale. Update `projects.geoSummary`, the project ItemList and fallback HTML in [index.html](../index.html), and [llms.txt](../public/llms.txt) so crawler summaries agree.

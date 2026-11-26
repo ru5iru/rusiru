@@ -1,0 +1,14 @@
+{
+  "published": true,
+  "ariaLabel": "About Rusiru Rathmina",
+  "geoSummary": "Rusiru Rathmina is a Software Engineer with professional experience spanning full-stack development, cloud infrastructure, application security, and DevOps. He works at Omobio (Pvt) Ltd in Colombo, Sri Lanka, and has contributed to enterprise platforms including Dialog.lk and Dialog BizCare for Dialog Axiata PLC. His expertise includes Java, Spring Boot, React.js, PHP, AWS, Docker, and Kubernetes. He holds a Bachelor of Science in Computer Science from the University of Colombo School of Computing (UCSC) with a GPA of 3.01.",
+  "titleBefore": "About",
+  "titleHighlight": "Me",
+  "_formatHint": "Use **text** for bold and ==text== for gradient highlight",
+  "paragraphs": [
+    "Hello! I'm **Rusiru Rathmina**, a **Software Engineer** at ==Omobio (Pvt) Ltd==, specializing in **Full-Stack Development**, **Cloud Computing**, and **DevOps**.",
+    "My journey began as a trainee, and I have since grown into designing scalable solutions using **Java, Spring Boot, React, and AWS**. I have extensive hands-on experience refactoring legacy systems and building secure, reliable applications.",
+    "My expertise covers the full lifecycle—from frontend design with **React.js** to backend logic in **PHP/Drupal** and infrastructure management using **Docker** and **Kubernetes**.",
+    "I am always open to collaborating on ==Full-Stack== or ==DevOps== projects. Let's connect and shape the future of technology together!"
+  ]
+}

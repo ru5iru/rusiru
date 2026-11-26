@@ -1,27 +1,11 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
-import { mergeLocale, resolveRaw, readLanguage, storeLanguage, type Dict } from './locale';
-import { localeSchema } from './schema';
+import { resolveRaw, readLanguage, storeLanguage, type Dict } from './locale';
+import { locales } from './locales';
+import { publishedSections } from './publish';
+import { siteConfig } from '@/config';
 
-// Auto-discover every locale file in src/locales. To add a new language,
-// drop a JSON file named with its language prefix (e.g. si.json, ta.json)
-// next to en.json — it will be picked up automatically, no code changes needed.
-const modules = import.meta.glob('../locales/*.json', { eager: true }) as Record<
-  string,
-  { default: Record<string, unknown> }
->;
-
-const translations: Record<string, Dict> = {};
-for (const path in modules) {
-  const filename = path.split('/').pop();
-  if (!filename) continue;
-  const code = filename.replace('.json', '');
-  translations[code] = modules[path].default;
-}
-
+const translations = locales as unknown as Record<string, Dict>;
 const DEFAULT_LANG = 'en';
-if (!translations.en) throw new Error('The English fallback locale is required');
-localeSchema.parse(translations.en);
-for (const code of Object.keys(translations)) translations[code] = mergeLocale(translations.en, translations[code]) as Dict;
 
 export interface LanguageOption {
   code: string;
@@ -35,6 +19,8 @@ interface I18nContextValue {
   t: (key: string, vars?: Record<string, string | number>) => string;
   tr: <T = unknown>(key: string) => T;
   languages: LanguageOption[];
+  /** Configured sections this language publishes, in order. */
+  sections: string[];
 }
 
 const I18nContext = createContext<I18nContextValue | undefined>(undefined);
@@ -64,6 +50,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     if (vars) for (const k in vars) s = s.split(`{${k}}`).join(String(vars[k]));
     return s;
   };
+  const sections = publishedSections(locales[lang] ?? locales[DEFAULT_LANG], siteConfig.sections);
   const tr = <T,>(key: string) => resolveRaw(dict, key) as T;
 
   const languages: LanguageOption[] = Object.keys(translations).map((code) => {
@@ -76,7 +63,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   });
 
   return (
-    <I18nContext.Provider value={{ lang, setLang, t, tr, languages }}>
+    <I18nContext.Provider value={{ lang, setLang, t, tr, languages, sections }}>
       {children}
     </I18nContext.Provider>
   );

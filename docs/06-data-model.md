@@ -8,7 +8,7 @@ Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-
 
 **[Verified]** There is no database, ORM, migration framework, or application-server persistence. Identity/settings/skills live in site JSON, theme overrides in theme JSON, and section wording/record arrays in locale JSON. Static HTML and llms content remain separate. Config and locales are bundled into the browser; public media paths are served as files. Visitors cannot edit these records. Sources: [config](../src/config/index.ts), [site](../src/config/site.json), [theme](../src/config/theme.json), [i18n:6](../src/i18n/i18n.tsx#L6).
 
-**[Verified]** [en.json](../src/locales/en.json) has top-level `language`, `nav`, `hero`, `about`, `experience`, `education`, `projects`, `skills`, `blog`, `contact`, `footer`, `common`, and `notFound` objects. Nested field names are the lookup API. There is no `src/config/content.json`; experience/education/project/article arrays still live in locales, including factual fields and per-record links.
+**[Verified]** [en.json](../src/locales/en/) has top-level `language`, `nav`, `hero`, `about`, `experience`, `education`, `projects`, `skills`, `blog`, `contact`, `footer`, `common`, and `notFound` objects. Nested field names are the lookup API. There is no `src/config/content.json`; experience/education/project/article arrays still live in locales, including factual fields and per-record links.
 
 | Logical record | Fields / constraints in current code | Consumer |
 | --- | --- | --- |
@@ -100,7 +100,7 @@ erDiagram
     }
 ```
 
-Caption: these are JSON containment and lookup relationships, not SQL tables or foreign keys. How to read: locales own portfolio record arrays, config owns skill/social/logo records, and education IDs select configured public logo paths. Theme token dictionaries are described above, outside this diagram. Evidence: [locale](../src/locales/en.json), [site](../src/config/site.json), [Education:7](../src/components/sections/Education.tsx#L7).
+Caption: these are JSON containment and lookup relationships, not SQL tables or foreign keys. How to read: locales own portfolio record arrays, config owns skill/social/logo records, and education IDs select configured public logo paths. Theme token dictionaries are described above, outside this diagram. Evidence: [locale](../src/locales/en/), [site](../src/config/site.json), [Education:7](../src/components/sections/Education.tsx#L7).
 
 ## Runtime state and persistence
 

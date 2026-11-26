@@ -1,0 +1,30 @@
+{
+  "brand": "RR.",
+  "links": {
+    "about": "A1. About",
+    "experience": "A2. Experience",
+    "education": "B1. Education & CE",
+    "projects": "B2. Projects",
+    "skills": "C1. Capabilities",
+    "blog": "C2. Blog",
+    "contact": "C3. Contact"
+  },
+  "darkMode": "Dark Mode",
+  "openMenu": "Open menu",
+  "closeMenu": "Close menu",
+  "toggleTheme": "Toggle theme",
+  "mainNavigation": "Main navigation",
+  "selectLanguage": "Select language",
+  "editionBadge": "ENGINEERING BROADSHEET",
+  "editionSubtitle": "Systems Chronicle · Architecture · Cloud & DevOps",
+  "unfoldAll": "Unfold All Dispatches & Logs",
+  "foldAll": "Fold Dispatches to Summary View",
+  "registrationEdition": "PORTFOLIO EDITION · EST. 2024",
+  "registrationDisciplines": "SOFTWARE ENGINEERING · ARCHITECTURE · CLOUD & DEVOPS",
+  "registrationIssue": "ISSUE NO. III",
+  "mastheadKicker": "The Engineering Portfolio & Systems Chronicle of",
+  "indexTitle": "INDEX OF SECTIONS",
+  "indexSubtitle": "B.Sc. IN COMPUTER SCIENCE (UCSC)",
+  "nightEdition": "Night Press Edition",
+  "dayEdition": "Day Newsprint Edition"
+}

@@ -99,7 +99,7 @@ Added `docs/README.md`, `01-overview.md` through `10-glossary.md`, and this chan
 | README project URL identifies this Lovable project | `REPLACE_WITH_PROJECT_ID` remains in links | Mark unusable as project identity; ask maintainer; preserve original text |
 | README requires only Node/npm, then `npm i` | No required app env vars found, but no version pin and clean npm lock install fails | Provide observed runtime baseline and explicit install limitation/workaround |
 | README Git pushes synchronize to Lovable; Share → Publish / domain workflow | Account settings and deployment integration not checked in | Preserve as **[Unverified, from original doc]**; do not claim live automation |
-| Plan: all six named projects; published llms list has same six | [locale](../src/locales/en.json) has seven, including Jira Worklog Manager; four featured and three additional | Record seven current entries and SEO drift |
+| Plan: all six named projects; published llms list has same six | [locale](../src/locales/en/) has seven, including Jira Worklog Manager; four featured and three additional | Record seven current entries and SEO drift |
 | Plan: visual contact form with name/email/message | [Contact](../src/components/sections/Contact.tsx) has email and LinkedIn links only | Mark form planned/not implemented |
 | Plan: animated stats/counters | [About](../src/components/sections/About.tsx) renders literal strings with reveal/hover effects | Describe static values, not counting animation |
 | Plan: experience vertical timeline/animated markers | [Experience](../src/components/sections/Experience.tsx) renders accordion rows | Describe actual row interaction; keep plan as design history |

@@ -14,7 +14,7 @@ Use this skill whenever implementing, updating, or extending the **Engineering B
 1. **Zero Hardcoded Content or Personal Facts in Components**:
    - Every personal fact, URL, image path, skill list, certification URL, and section ordering lives in [src/config/site.json](src/config/site.json).
    - Every color override lives in [src/config/theme.json](src/config/theme.json).
-   - Every user-visible string, section kicker, button label, domain note, and record array (`experience.items`, `education.items`, `education.certifications`, `projects.items`, `blog.posts`) lives in [src/locales/en.json](src/locales/en.json) (and any additional `src/locales/<lang>.json` files).
+   - Every user-visible string, section kicker, button label, domain note, and record array (`experience.items`, `education.items`, `education.certifications`, `projects.items`, `blog.posts`) lives in [src/locales/en/](src/locales/en/) (and any additional `src/locales/<lang>/` files).
 2. **Schema-First Validation**:
    - Validate all new config fields in [src/config/schema.ts](src/config/schema.ts) and all new locale keys in [src/i18n/schema.ts](src/i18n/schema.ts) before runtime and build-time generation.
 3. **Shared Generator Pipeline**:
@@ -76,7 +76,7 @@ When implementing the Broadsheet prototype features, extend the configuration an
   }
   ```
 
-### 2.3 `src/locales/en.json` & `src/i18n/schema.ts`
+### 2.3 `src/locales/en/*.json` & `src/i18n/schema.ts`
 Preserve all existing required keys in `src/i18n/schema.ts` and extend the locale sections with the Broadsheet editorial copy:
 - **`education.certifications`**:
   Add a validated array of Continuing Education credentials:
@@ -134,5 +134,5 @@ When converting the React components to match [docs/prototype/broadsheet-prototy
 Before completing any implementation task:
 - [ ] Run `bun test` (or `vitest run`) and update/add behavioral tests in `src/test/` for any new interactions (e.g., Continuing Education rendering, Unfold All toggle, Front-Page jump links).
 - [ ] Run `bun run lint` and ensure zero ESLint or Fast Refresh violations.
-- [ ] Run `bun run build` so `siteFilesPlugin` validates `site.json`, `theme.json`, and `en.json` against their Zod schemas and regenerates `public/sitemap.xml`, `public/robots.txt`, `public/site.webmanifest`, `public/llms.txt`, and `index.html`.
+- [ ] Run `bun run build` so `siteFilesPlugin` validates `site.json`, `theme.json`, and the `src/locales/en/` files against their Zod schemas and regenerates `public/sitemap.xml`, `public/robots.txt`, `public/site.webmanifest`, `public/llms.txt`, and `index.html`.
 - [ ] Commit all changes using **Conventional Commit** messages (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`).

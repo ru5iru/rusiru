@@ -28,7 +28,7 @@ npm run dev
 | Required environment variables | None found | Static content needs no service credentials |
 | Dev port/host | [vite.config.ts](../vite.config.ts) | `8080`, `::` |
 | Identity, common URLs, media, skills, section order | [site.json](../src/config/site.json) | Language-neutral config, including resume, contact and blog home |
-| Wording and section arrays | [en.json](../src/locales/en.json) | Copy, experience, education, project records and article records/links |
+| Wording and section arrays | [en.json](../src/locales/en/) | Copy, experience, education, project records and article records/links |
 | Canonical origin | [site.json](../src/config/site.json), consumed by [Index](../src/pages/Index.tsx), [NotFound](../src/pages/NotFound.tsx) and [generator](../scripts/site-files.ts) | Runtime metadata and generated files; static HTML/llms text remain separate |
 | Color overrides | [theme.json](../src/config/theme.json) | Injected CSS variables for light and dark classes |
 | Language persistence | [i18n](../src/i18n/i18n.tsx):52 | Browser storage key `lang` |

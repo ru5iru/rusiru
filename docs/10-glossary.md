@@ -9,7 +9,7 @@ Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-
 | Term | Meaning here | Evidence |
 | --- | --- | --- |
 | SPA | Single-page application: React selects the page in the browser | [App](../src/App.tsx) |
-| Portfolio project | A record describing prior work, not an independently runnable package in this repo | [locale](../src/locales/en.json) |
+| Portfolio project | A record describing prior work, not an independently runnable package in this repo | [locale](../src/locales/en/) |
 | Featured | Boolean selecting the initially visible project group | [Projects](../src/components/sections/Projects.tsx) |
 | Additional projects | `featured: false` group revealed by View More | [Projects](../src/components/sections/Projects.tsx) |
 | Accordion | A list whose local `openIndex` determines one open row, or none | [Experience](../src/components/sections/Experience.tsx) |
@@ -36,8 +36,8 @@ Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-
 | Site-files plugin | Vite `buildStart` hook generating sitemap, robots and manifest from site config | [site-files.ts](../scripts/site-files.ts) |
 | `sections` | Ordered list of lower-section keys; Navbar maps all keys, Index skips unknown keys | [Index](../src/pages/Index.tsx), [Navbar](../src/components/Navbar.tsx) |
 | `content.json` | Proposed roadmap file, not present in this checkout; record arrays still live in locales | [template plan](../.lovable/plan/make-the-portfolio-a-fully-configurable-template-2026-10-02.md) |
-| UCSC / MCG | Education logo lookup IDs for University of Colombo School of Computing / Mahinda College | [Education](../src/components/sections/Education.tsx), [locale](../src/locales/en.json) |
-| OWASP, SonarQube, L3 | Terms in portfolio employment/project descriptions, not proof this repo has a security scanner or support service | [locale](../src/locales/en.json) |
+| UCSC / MCG | Education logo lookup IDs for University of Colombo School of Computing / Mahinda College | [Education](../src/components/sections/Education.tsx), [locale](../src/locales/en/) |
+| OWASP, SonarQube, L3 | Terms in portfolio employment/project descriptions, not proof this repo has a security scanner or support service | [locale](../src/locales/en/) |
 | ADR | Architecture decision record; none found in the tracked documentation | [audit](CHANGELOG.md) |
 
 Next: [Documentation audit and changelog](CHANGELOG.md).

@@ -133,7 +133,7 @@ Caption: group visibility and accordion selection are concurrent state dimension
 
 ## Flow 3: choose and restore a language
 
-**[Verified]** This path becomes user-accessible when a second locale file is added. Currently [en.json](../src/locales/en.json) is the only locale, and [LanguageSelector:16](../src/components/LanguageSelector.tsx#L16) renders a label instead of a menu. `setLang` rejects unknown codes, writes the `lang` preference, and triggers an HTML `lang` update. A valid locale missing an individual key does not fall back to English ([i18n:58](../src/i18n/i18n.tsx#L58)).
+**[Verified]** This path becomes user-accessible when a second locale file is added. Currently [en.json](../src/locales/en/) is the only locale, and [LanguageSelector:16](../src/components/LanguageSelector.tsx#L16) renders a label instead of a menu. `setLang` rejects unknown codes, writes the `lang` preference, and triggers an HTML `lang` update. A valid locale missing an individual key does not fall back to English ([i18n:58](../src/i18n/i18n.tsx#L58)).
 
 ```mermaid
 sequenceDiagram

@@ -1,7 +1,8 @@
 # Architecture rules
 
 - Personal facts, links, images, skills, certification URLs, and section order live in `src/config/site.json`; colors live in `src/config/theme.json` — keeps the site a reusable template.
-- All user-visible wording (including section kickers, newspaper labels, Continuing Education entries, and skill domain notes) lives in `src/locales/<lang>.json` (auto-discovered) — new languages need no code changes.
+- All user-visible wording (including section kickers, newspaper labels, Continuing Education entries, and skill domain notes) lives in `src/locales/<lang>/<section>.json` (one folder per language, auto-discovered; `_meta.json` holds root keys) — small per-section files stay reviewable and new languages need no code changes.
+- Publishing lives in locale files as `"published": false` on sections, groups, id-keyed records, points (`{ text, published }`), and label maps; `src/i18n/schema.ts` strips hidden entries and `src/i18n/build.ts` merges translations by record `id` — each language can hide content independently and components/generators only ever see published data.
 - Visual design, typography (`Fraunces`, `Newsreader`, `IBM Plex Mono`), print rules, and layout must match [DESIGN.md](DESIGN.md), [SKILL.md](SKILL.md), and the canonical prototype at [docs/prototype/broadsheet-prototype.html](docs/prototype/broadsheet-prototype.html) — never reintroduce neon gradients, floating blur blobs, hero availability ears, or stat counter boxes (`2+`, `24`, `100%`).
 - Media is served from `public/media/` and referenced by path in config — swapping images needs no imports.
 - Social icons resolve via `src/components/icons/BrandIcons.tsx` keyed by platform id — config stays data-only.

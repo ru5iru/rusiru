@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import site from '@/config/site.json';
 import theme from '@/config/theme.json';
-import en from '@/locales/en.json';
+import { english as en } from '@/i18n/locales';
 import { createNotFoundDocument, createSearchContent } from '../../scripts/search-content';
 
 const content = createSearchContent(site, en);

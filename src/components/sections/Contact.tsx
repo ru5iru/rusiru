@@ -6,7 +6,8 @@ import { siteConfig } from '@/config';
 import { brandIcons } from '@/components/icons/BrandIcons';
 
 export function Contact() {
-  const { t } = useTranslation();
+  const { t, tr } = useTranslation();
+  const socialLabels = tr<Record<string, string>>('footer.social') ?? {};
   const platform = siteConfig.contact.secondaryButton.platform;
   const SecondaryIcon = brandIcons[platform]?.icon ?? ExternalLink;
   return (
@@ -20,9 +21,9 @@ export function Contact() {
             <p className="text-muted-foreground">{t('contact.availability')}</p>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-3 pt-2 r-t font-mono text-xs">
-            {siteConfig.social.map(link => {
+            {siteConfig.social.filter(link => socialLabels[link.platform]).map(link => {
               const brand = brandIcons[link.platform];
-              const label = t(`footer.social.${link.platform}`);
+              const label = socialLabels[link.platform];
               const Icon = brand?.icon ?? ExternalLink;
               return <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer me" aria-label={t('footer.socialAria', { label })} className="inline-flex min-h-6 items-center gap-1.5 underline"><Icon aria-hidden="true" className="h-3.5 w-3.5" />{label}</a>;
             })}

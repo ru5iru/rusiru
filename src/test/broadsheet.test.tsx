@@ -9,7 +9,7 @@ import { Navbar } from '@/components/Navbar';
 import { setBroadsheetAllExpanded } from '@/lib/navigation';
 import { createSearchContent } from '../../scripts/search-content';
 import site from '@/config/site.json';
-import en from '@/locales/en.json';
+import { english as en } from '@/i18n/locales';
 
 beforeEach(() => setBroadsheetAllExpanded(false));
 afterEach(cleanup);

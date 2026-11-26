@@ -1,14 +1,31 @@
 export type Dict = Record<string, unknown>;
-const record = (value: unknown): value is Dict => value !== null && typeof value === 'object' && !Array.isArray(value);
+export const record = (value: unknown): value is Dict => value !== null && typeof value === 'object' && !Array.isArray(value);
+const FLAGS: Record<string, string> = { published: 'boolean', expanded: 'boolean', frontPage: 'boolean', featured: 'boolean', affiliation: 'string' };
+const identified = (list: unknown[]) => list.length > 0 && list.every(item => record(item) && typeof item.id === 'string');
 
-/** Missing or malformed entries fall back recursively; arrays merge by stable position. */
+/**
+ * Missing or malformed entries fall back to English recursively. Lists of records with an `id`
+ * merge by id; other lists merge by position. Flags a translation sets always win.
+ */
 export function mergeLocale(base: unknown, translated: unknown): unknown {
   if (Array.isArray(base)) {
-    return base.map((item, index) => mergeLocale(item, Array.isArray(translated) ? translated[index] : undefined));
+    const source = Array.isArray(translated) ? translated : [];
+    if (identified(base)) {
+      const byId = new Map(source.filter(record).map(item => [item.id, item]));
+      return base.map(item => mergeLocale(item, byId.get((item as Dict).id)));
+    }
+    return base.map((item, index) => mergeLocale(item, source[index]));
   }
+  // Points: a plain sentence on one side and `{ text, published }` on the other.
+  if (typeof base === 'string' && record(translated)) {
+    return { text: mergeLocale(base, translated.text), ...(typeof translated.published === 'boolean' ? { published: translated.published } : {}) };
+  }
+  if (record(base) && typeof base.text === 'string' && typeof translated === 'string') return { ...base, text: mergeLocale(base.text, translated) };
   if (record(base)) {
     const source = record(translated) ? translated : {};
-    return Object.fromEntries(Object.entries(base).map(([key, value]) => [key, mergeLocale(value, source[key])]));
+    const merged: Dict = Object.fromEntries(Object.entries(base).map(([key, value]) => [key, key === 'id' ? value : mergeLocale(value, source[key])]));
+    for (const [key, type] of Object.entries(FLAGS)) if (!(key in base) && typeof source[key] === type) merged[key] = source[key];
+    return merged;
   }
   if (typeof base !== typeof translated) return base;
   if (typeof base === 'string' && typeof translated === 'string') {

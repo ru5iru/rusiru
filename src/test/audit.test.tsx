@@ -2,7 +2,7 @@ import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import site from '@/config/site.json';
 import theme from '@/config/theme.json';
-import en from '@/locales/en.json';
+import { english as en } from '@/i18n/locales';
 import { siteSchema, themeSchema } from '@/config/schema';
 import { mergeLocale, readLanguage, storeLanguage } from '@/i18n/locale';
 import { I18nProvider } from '@/i18n/i18n';

@@ -28,7 +28,7 @@ Last verified against commit `e7f95698811156a1fa4a1807fdd6cc2c6e5a5e76` on 2026-
 | Tests | Vitest `^3.2.4`, jsdom, Testing Library | [test config](../vitest.config.ts) |
 | Query infrastructure | TanStack Query provider, no active query consumers found | [App](../src/App.tsx) |
 
-**[Verified]** Java, Drupal, Spring Boot, AWS, Jira APIs, and databases appear in portfolio descriptions and skill lists. This repository does not implement those showcased systems. Blog cards are static links, not an article feed or publishing backend ([locale content](../src/locales/en.json), [Blog](../src/components/sections/Blog.tsx)).
+**[Verified]** Java, Drupal, Spring Boot, AWS, Jira APIs, and databases appear in portfolio descriptions and skill lists. This repository does not implement those showcased systems. Blog cards are static links, not an article feed or publishing backend ([locale content](../src/locales/en/), [Blog](../src/components/sections/Blog.tsx)).
 
 ## Annotated repository map
 
@@ -56,7 +56,7 @@ rusiru/
 │   │   ├── icons/              Config-keyed brand SVG map
 │   │   └── *.tsx               Navigation, theme, language, footer, helpers
 │   ├── i18n/i18n.tsx           Locale discovery, lookup, persistence
-│   ├── locales/en.json         English content and content arrays
+│   ├── locales/en/              English content, one file per section
 │   ├── config/                 site.json, theme.json, helpers and exported types
 │   ├── lib/utils.ts            cn: merge conditional Tailwind classes
 │   ├── test/                  jsdom setup and behavioral/SEO tests

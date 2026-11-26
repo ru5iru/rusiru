@@ -2,7 +2,7 @@
 
 Canonical visual reference: [docs/prototype/broadsheet-prototype.html](docs/prototype/broadsheet-prototype.html)
 
-This document defines the visual language, typographic hierarchy, color tokens, print rules, and section-by-section layout specifications for the **Engineering Broadsheet** redesign of `rusiru.cc`. Every visual element is strictly driven by configuration ([src/config/site.json](src/config/site.json), [src/config/theme.json](src/config/theme.json)) and locale dictionaries ([src/locales/en.json](src/locales/en.json)) in accordance with [AGENTS.md](AGENTS.md).
+This document defines the visual language, typographic hierarchy, color tokens, print rules, and section-by-section layout specifications for the **Engineering Broadsheet** redesign of `rusiru.cc`. Every visual element is strictly driven by configuration ([src/config/site.json](src/config/site.json), [src/config/theme.json](src/config/theme.json)) and locale dictionaries ([src/locales/en/](src/locales/en/)) in accordance with [AGENTS.md](AGENTS.md).
 
 ---
 
