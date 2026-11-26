@@ -25,7 +25,7 @@ Open `http://localhost:8080` (or the URL printed by Vite). No API keys or databa
 
 Set `"published": false` to hide a section, record, or point without deleting it. Use `"archived": true` for optional View More in Experience, Education, and Continuing Education; projects use `"featured": false`. Each language can make its own choices.
 
-See **[Customization](docs/customization.md)** for examples, languages, front-page placement, and image replacement.
+See the **[full template guide](docs/customization.md)** for setup, configuration references, examples, languages, publishing controls, front-page placement, themes, and media.
 
 ## Check your changes
 

@@ -2,7 +2,7 @@
 
 Choose the guide for your task:
 
-- **[Customization](customization.md)** — identity, content, publication flags, item placement, languages, colors, and media.
+- **[Full template guide](customization.md)** — setup, configuration references, content examples, publication flags, item placement, languages, colors, media, and troubleshooting.
 - **[Development](development.md)** — setup, commands, code map, validation, and extending the template.
 - **[Deployment](deployment.md)** — generated search files, hosting, release checks, and troubleshooting.
 
