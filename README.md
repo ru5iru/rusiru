@@ -4,14 +4,16 @@ A configurable portfolio template with a newspaper-inspired layout, light/dark e
 
 ## Quick start
 
-Use **Bun 1.3.3** and **Node 22**.
+Fork the repository on GitHub, clone your fork, then run it with **Bun 1.3.3** and **Node 22**:
 
 ```sh
+git clone https://github.com/<your-name>/<repo>.git
+cd <repo>
 bun install --frozen-lockfile
 bun run dev
 ```
 
-Open `http://localhost:8080` (or the URL printed by Vite). No API keys or database are required.
+Open `http://localhost:8080` (or the URL printed by Vite). No API keys or database are required. Keep the original as `upstream` so you can pull later template changes; [forking and syncing](docs/customization.md#1-fork-the-repository-and-run-it) covers the details.
 
 ## Make it yours
 

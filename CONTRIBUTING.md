@@ -15,6 +15,14 @@ preserve existing behavior unless the change explicitly requires otherwise.
 
 ## Local setup
 
+Fork the repository, clone your fork, and keep the original as `upstream`:
+
+```sh
+git clone https://github.com/<your-name>/<repo>.git
+cd <repo>
+git remote add upstream https://github.com/<original-owner>/<repo>.git
+```
+
 Use Node 22 and Bun 1.3.3, matching the existing CI workflow.
 
 ```sh

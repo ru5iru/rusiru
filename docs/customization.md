@@ -6,7 +6,7 @@ For code structure and contributor commands, see [Development](development.md). 
 
 ## Contents
 
-1. [Run the template](#1-run-the-template)
+1. [Fork the repository and run it](#1-fork-the-repository-and-run-it)
 2. [Know where each setting belongs](#2-know-where-each-setting-belongs)
 3. [Configure identity, links, SEO, and section order](#3-configure-identity-links-seo-and-section-order)
 4. [Edit wording and portfolio records](#4-edit-wording-and-portfolio-records)
@@ -19,7 +19,49 @@ For code structure and contributor commands, see [Development](development.md). 
 11. [Check your changes](#11-check-your-changes)
 12. [Troubleshooting and release checklist](#12-troubleshooting-and-release-checklist)
 
-## 1. Run the template
+## 1. Fork the repository and run it
+
+Begin with your own copy of the template. A fork leaves the original untouched, gives you a place to push your edits, and lets you pull later template changes.
+
+### Fork it
+
+1. On the repository's GitHub page, select **Fork** (top right) and choose your own account as the owner. Keep the default option that copies only the main branch.
+2. Clone your fork, replacing `<your-name>` with your GitHub account and `<repo>` with the repository name:
+
+```sh
+git clone https://github.com/<your-name>/<repo>.git
+cd <repo>
+```
+
+Or fork and clone in one step with the GitHub CLI:
+
+```sh
+gh repo fork <original-owner>/<repo> --clone
+```
+
+3. Point `upstream` at the original repository so you can bring its later changes into your fork:
+
+```sh
+git remote add upstream https://github.com/<original-owner>/<repo>.git
+git remote -v
+```
+
+`origin` is your fork, which you push to. `upstream` is the original, which you pull from.
+
+4. Before each work session, sync your fork with the original:
+
+```sh
+git switch main
+git fetch upstream
+git merge --ff-only upstream/main
+git push origin main
+```
+
+If you are not using GitHub, download the repository archive or copy its folder instead. Everything below is the same, except you will not receive upstream updates automatically.
+
+Forking keeps the [MIT licence](../LICENCE) intact. It does not grant rights to the included biography, photographs, logos, or trademarks, so replace that material as you work; see [section 9](#9-replace-images-icons-and-verification-files).
+
+### Install and run
 
 Use **Node 22** and **Bun 1.3.3**. From the repository root:
 
@@ -42,7 +84,8 @@ Work through these changes in order:
 4. Choose section order and initial item placement.
 5. Replace the portrait, education logos, favicons, and inherited search-verification material.
 6. Review every external link and all wording, including summaries used by search engines.
-7. Run the checks in [section 11](#11-check-your-changes), then follow the [deployment guide](deployment.md).
+7. Commit your work to your fork (`git push origin main`) so it is recoverable before you deploy.
+8. Run the checks in [section 11](#11-check-your-changes), then follow the [deployment guide](deployment.md).
 
 ## 2. Know where each setting belongs
 
