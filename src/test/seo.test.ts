@@ -54,8 +54,9 @@ describe('SEO audit corrections', () => {
       'https://blog.rusiru.cc/2025/12/code-review-etiquette.html',
     ]);
     expect(en.projects.items.find(project => project.title === 'Jira Worklog Manager')?.github).toBe('https://github.com/ru5iru/jira-time-tracker-pages');
-    expect(en.projects.items.find(project => project.title === 'Project-X')).not.toHaveProperty('github');
-    expect(en.projects.items.find(project => project.title === 'ToDo')).not.toHaveProperty('github');
+    const raw = JSON.parse(fs.readFileSync('src/locales/en/projects.json', 'utf8')) as { items: { id: string; github?: string }[] };
+    expect(raw.items.find(item => item.id === 'project-x')?.github).toBeUndefined();
+    expect(raw.items.find(item => item.id === 'todo')?.github).toBeUndefined();
   });
 
   it('removes the soft-404 rewrite and canonicalizes the index.html alias', () => {

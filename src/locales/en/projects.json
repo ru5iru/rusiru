@@ -166,8 +166,6 @@
   "dossierLabel": "DOSSIER {number}",
   "unfoldItem": "+ Read Full Log ({count})",
   "foldItem": "− Fold Log",
-  "featuredBadge": "Featured",
-  "archiveBadge": "Archive",
   "visitLabel": "Visit",
   "githubLabel": "GitHub",
   "affiliations": {

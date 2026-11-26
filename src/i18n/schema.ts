@@ -67,7 +67,7 @@ export const localeSchema = z.object({
   projects: sectionCopy.extend({
     title: text, visit: text, viewOnGithub: text, visitLabel: text, githubLabel: text, showLess: text, viewMore: text,
     featuredFilter: text, allWorksFilter: text, unfoldAll: text, foldAll: text, dossierLabel: text, unfoldItem: text,
-    foldItem: text, featuredBadge: text, archiveBadge: text,
+    foldItem: text,
     affiliations: z.record(text).default({}),
     items: records({
       title: text,

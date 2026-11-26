@@ -70,9 +70,8 @@ export function Projects() {
               onToggle={() => toggleItem(index)}
               badge={<>
                 <span className="r-box bg-secondary px-2 py-0.5 font-bold text-primary">{t('projects.dossierLabel', { number: String(index + 1).padStart(2, '0') })}</span>
-                {project.period && <span className="text-faint">{project.period}</span>}
                 {project.affiliation && affiliations[project.affiliation] && <span className="r-box bg-accent px-1.5 py-0.5 text-[10px] font-bold uppercase text-accent-foreground">{affiliations[project.affiliation]}</span>}
-                <span className={`r-box px-1.5 py-0.5 text-[10px] uppercase ${project.featured ? '' : 'text-faint'}`}>{t(project.featured ? 'projects.featuredBadge' : 'projects.archiveBadge')}</span>
+                {project.period && <span className="text-faint">{project.period}</span>}
               </>}
               title={project.title}
               summary={<div className="flex flex-wrap gap-1.5 pt-1">{project.tech.map(tech => <span key={tech} className="r-box bg-background px-2 py-0.5 font-mono text-xs">{tech}</span>)}</div>}
