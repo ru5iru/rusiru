@@ -8,7 +8,7 @@ Hello! I'm Rusiru Rathmina, a Software Engineer at Omobio (Pvt) Ltd, specializin
 
 My journey began as a trainee, and I have since grown into designing scalable solutions using Java, Spring Boot, React, and AWS. I have extensive hands-on experience refactoring legacy systems and building secure, reliable applications.
 
-My expertise covers the full lifecycle—from frontend design with React.js to backend logic in PHP/Drupal and infrastructure management using Docker and Kubernetes.
+My expertise covers the full lifecycle-from frontend design with React.js to backend logic in PHP/Drupal and infrastructure management using Docker and Kubernetes.
 
 I am always open to collaborating on Full-Stack or DevOps projects. Let's connect and shape the future of technology together!
 
@@ -46,23 +46,23 @@ O/L Results: 8A 1B
 
 Microservices Foundations Professional Certificate by Kong, KONG, Issued Oct 2026
 Skills: Software Design Patterns · Software Architecture
-https://www.linkedin.com/in/ru5iru/details/certifications/
+https://www.linkedin.com/in/ru5iru/details/certifications/45c37acb6f485249511dddbea523784001acb2b9f61fa72a723aec6a718a20d6/
 
 NIST Cybersecurity Framework (CSF) 2.0 Primer: From Fundamentals to Implementation, PEARSON / LINKEDIN, Issued Oct 2026
 Skills: IT Security Best Practices
-https://www.linkedin.com/in/ru5iru/details/certifications/
+https://www.linkedin.com/in/ru5iru/details/certifications/b858fc6c9796573b58014dfddaeaf2e91a0e1c0a3cbec5ba0aabf21402c1b62a/
 
 Working with the PCI DSS 4.0 Compliance Requirements, LINKEDIN, Issued Oct 2026
 Skills: Payment Card Industry Data Security Standard (PCI DSS) · Standards Compliance
-https://www.linkedin.com/in/ru5iru/details/certifications/
+https://www.linkedin.com/learning/certificates/3bbcb335baad60e8bb9d944d4992308ff4e09794aeb1dd098a66698fa68021f1/
 
-GDPR Compliance: Essential Training, LINKEDIN, Issued Nov 2026
-Skills: Legal Compliance · General Data Protection Regulation (GDPR)
-https://www.linkedin.com/in/ru5iru/details/certifications/
+Penetration Testing Professional Certificate by Cybrary, CYBRARY, Issued Sep 2026
+Skills: Penetration Testing · Ethical Hacking
+https://www.linkedin.com/learning/certificates/de382ab83b1b15c452f03f290b36746802e616e56a11e0c89204e39e7d48be2a/
 
-Negotiation Professional Certificate by American Negotiation Institute, AMERICAN NEGOTIATION INSTITUTE, Issued Nov 2026
-Skills: Strategic Negotiations · Interpersonal Skills
-https://www.linkedin.com/in/ru5iru/details/certifications/
+Ubuntu Linux Professional Certificate by Canonical, CANONICAL, Issued Oct 2026
+Skills: Linux System Administration · Ubuntu
+https://www.linkedin.com/learning/certificates/d6a6e59704be79cfb6cdd15fb8b37011226680cccd60109e08b98978fcccbcbb/
 
 View Full License & Certification Ledger on LinkedIn: https://www.linkedin.com/in/ru5iru/details/certifications/
 
@@ -77,7 +77,7 @@ View Full License & Certification Ledger on LinkedIn: https://www.linkedin.com/i
 
 ## Core Domains & Representative Stack
 
-Tools and frameworks change; engineering fundamentals endure. Grounded in computer science principles, distributed architecture, and application security, I treat languages and frameworks as interchangeable instruments—adapting rapidly to whatever stack a system requires.
+Tools and frameworks change; engineering fundamentals endure. Grounded in computer science principles, distributed architecture, and application security, I treat languages and frameworks as interchangeable instruments-adapting rapidly to whatever stack a system requires.
 
 Languages — Object-oriented, functional & systems programming: Java, JavaScript, PHP, C++
 Frameworks & Runtimes — RESTful APIs, microservices, SPAs & enterprise CMS: React, Node.js, Spring Boot, Drupal, Yii, Laravel, Symfony

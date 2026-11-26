@@ -13,9 +13,7 @@
       "institution": "University of Colombo School of Computing",
       "degree": "Bachelor of Science in Computer Science",
       "period": "May 2021 - October 2024",
-      "details": [
-        "GPA: 3.01"
-      ]
+      "details": ["GPA: 3.01"]
     },
     {
       "id": "mcg",
@@ -23,17 +21,14 @@
       "institution": "Mahinda College, Galle",
       "degree": "GCE Advanced Level (Physical Science)",
       "period": "Feb 2010 - Aug 2019",
-      "details": [
-        "A/L Results: A B C | Z-Score: 1.3084",
-        "O/L Results: 8A 1B"
-      ]
+      "details": ["A/L Results: A B C | Z-Score: 1.3084", "O/L Results: 8A 1B"]
     }
   ],
   "kicker": "SECTION B1 · ACADEMIC & PROFESSIONAL CREDENTIALS",
   "formalTitle": "I. Academic Degrees & Schooling",
   "formalSubtitle": "FORMAL RECORD",
   "academicStanding": "ACADEMIC STANDING",
-  "certificationsTitle": "II. Continuing Education — Licenses & Certifications",
+  "certificationsTitle": "II. Continuing Education - Licenses & Certifications",
   "certificationsSubtitle": "PROFESSIONAL DEVELOPMENT",
   "showCredential": "Show Credential",
   "viewAllCertifications": "View Full License & Certification Ledger on LinkedIn",
@@ -48,7 +43,7 @@
       "date": "Issued Oct 2026",
       "title": "Microservices Foundations Professional Certificate by Kong",
       "skills": "Software Design Patterns · Software Architecture",
-      "url": "https://www.linkedin.com/in/ru5iru/details/certifications/"
+      "url": "https://www.linkedin.com/in/ru5iru/details/certifications/45c37acb6f485249511dddbea523784001acb2b9f61fa72a723aec6a718a20d6/"
     },
     {
       "id": "nist-csf-2",
@@ -57,7 +52,7 @@
       "date": "Issued Oct 2026",
       "title": "NIST Cybersecurity Framework (CSF) 2.0 Primer: From Fundamentals to Implementation",
       "skills": "IT Security Best Practices",
-      "url": "https://www.linkedin.com/in/ru5iru/details/certifications/"
+      "url": "https://www.linkedin.com/in/ru5iru/details/certifications/b858fc6c9796573b58014dfddaeaf2e91a0e1c0a3cbec5ba0aabf21402c1b62a/"
     },
     {
       "id": "pci-dss-4",
@@ -66,25 +61,25 @@
       "date": "Issued Oct 2026",
       "title": "Working with the PCI DSS 4.0 Compliance Requirements",
       "skills": "Payment Card Industry Data Security Standard (PCI DSS) · Standards Compliance",
-      "url": "https://www.linkedin.com/in/ru5iru/details/certifications/"
+      "url": "https://www.linkedin.com/learning/certificates/3bbcb335baad60e8bb9d944d4992308ff4e09794aeb1dd098a66698fa68021f1/"
     },
     {
-      "id": "gdpr-compliance",
+      "id": "pen-test",
       "published": true,
-      "issuer": "LINKEDIN",
-      "date": "Issued Nov 2026",
-      "title": "GDPR Compliance: Essential Training",
-      "skills": "Legal Compliance · General Data Protection Regulation (GDPR)",
-      "url": "https://www.linkedin.com/in/ru5iru/details/certifications/"
+      "issuer": "CYBRARY",
+      "date": "Issued Sep 2026",
+      "title": "Penetration Testing Professional Certificate by Cybrary",
+      "skills": "Penetration Testing · Ethical Hacking",
+      "url": "https://www.linkedin.com/learning/certificates/de382ab83b1b15c452f03f290b36746802e616e56a11e0c89204e39e7d48be2a/"
     },
     {
-      "id": "negotiation",
+      "id": "ubuntu",
       "published": true,
-      "issuer": "AMERICAN NEGOTIATION INSTITUTE",
-      "date": "Issued Nov 2026",
-      "title": "Negotiation Professional Certificate by American Negotiation Institute",
-      "skills": "Strategic Negotiations · Interpersonal Skills",
-      "url": "https://www.linkedin.com/in/ru5iru/details/certifications/"
+      "issuer": "CANONICAL",
+      "date": "Issued Oct 2026",
+      "title": "Ubuntu Linux Professional Certificate by Canonical",
+      "skills": "Linux System Administration · Ubuntu",
+      "url": "https://www.linkedin.com/learning/certificates/d6a6e59704be79cfb6cdd15fb8b37011226680cccd60109e08b98978fcccbcbb/"
     }
   ],
   "formalEducation": {

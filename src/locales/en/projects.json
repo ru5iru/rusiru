@@ -95,7 +95,7 @@
         "Developed a per-issue work notes system backed by the File System Access API for auto-save to a user-chosen file on disk, with graceful fallback to manual export/import on unsupported browsers.",
         "Implemented a global command palette with fuzzy issue search, keyboard navigation, and direct Jira key lookup, along with Jira workflow status transitions directly from the issue list."
       ],
-      "tech": ["Lovable", "React", "Vite", "TypeScript", "Jira REST API", "Node.js", "dayjs", "localStorage"],
+      "tech": ["Lovable", "React", "Vite", "TypeScript", "Jira REST API", "Node.js", "dayjs"],
       "featured": true,
       "frontPage": true,
       "frontPageKicker": "PRODUCTIVITY SPA",
