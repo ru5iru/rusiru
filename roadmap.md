@@ -76,4 +76,4 @@
 - [x] Remove verified legacy locale/schema leftovers without removing active content.
 - [x] Prune proven dead internals/styles; preserve public interfaces and optional features.
 - [x] Remove local TypeScript caches; no assets/dependencies qualify for safe removal; platform-managed ignore rules stay unchanged.
-- [ ] Recheck tests, lint, automatic compilation, desktop/mobile and optional-feature flows; finalize documentation and commits.
+- [x] Recheck 56 tests, lint, automatic compilation, desktop/mobile and optional-feature flows; finalize documentation and commits.

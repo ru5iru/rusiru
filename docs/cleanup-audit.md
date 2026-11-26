@@ -65,11 +65,48 @@ repository independently and reviews schemas, dynamic lookup, tests, and docs.
 - **Location coordinates and other personal facts:** preserve data and supported
   configuration rather than removing facts just because one renderer ignores them.
 
-## Verification after implementation
+## Completed verification
 
-Pending: complete test/lint rerun, automatic compilation, exact default-state
-and generated-content comparisons, archived Experience/Education/CE and
-multi-language browser checks, final reference scan, and clean commits.
+- Removed **13 obsolete persisted setting values** across five locale files,
+  their obsolete schema declarations (including unused optional About stats),
+  one unreachable theme-filter branch, and one unused 404 CSS selector.
+- No runtime component, supported exported interface, package, or asset met
+  both removal checks. Those categories were reviewed, not skipped.
+- Repeated tests after configuration cleanup and again after internal cleanup:
+  **56 tests pass**, including three new actual reveal/hide interaction tests
+  for archived roles, schools, and credentials. Lint passes; latest automatic
+  production compilation reports `build OK`.
+- Repeated Chromium baseline flows at desktop, user-size, and mobile widths;
+  visible text, section order, links, image sources/dimensions, and disclosure
+  states match the captured baseline in four interaction states per viewport.
+  Screenshots were reviewed. These are semantic comparisons, not a pixel-diff
+  guarantee: screenshot timing can capture theme transitions mid-frame.
+- Homepage raw served HTML and generated metadata/static fallback/llms match
+  baseline byte-for-byte. Generated 404 output differs only by removal of the
+  unused `.meta` selector; it was regenerated through `siteFilesPlugin`.
+- Exercised optional Experience, formal Education, and CE archives in desktop
+  and mobile browsers, including Show Less, archived-role front-page jumps,
+  global unfold, and independence between education lists.
+- Exercised the actual Radix language menu with a temporary second-language
+  browser fixture, independent role publication, English fallback, and switching
+  back. Fixtures were applied only to browser-delivered modules; no temporary
+  locale or archival flags were written to source.
+- Homepage/404 metadata, return-home flow, configured assets, search files,
+  verification key, favicons, and generated 404 file all pass local HTTP/browser
+  checks. Hosting-specific 404 status remains the host's responsibility.
+- Final source reachability and exact-identifier scans find no remaining legacy
+  candidates outside historical/audit documents. A syntax-tree scan reviewed
+  933 declarations across 53 source/tooling files: its single-reference binding
+  candidates are active cross-file exports or deliberately retained interfaces.
+- `package.json` and `bun.lock` are unchanged, so no dependency installation was
+  needed. No new structural module or architectural rule was introduced.
+- Deleted two untracked TypeScript build-cache files; automatic tooling recreated
+  them. They are not committed source. The platform refused an ignore-file edit;
+  its managed ignore policy was left unchanged. Platform/build caches remain
+  reproducible workspace artifacts, not a permanent removal claim.
+
+Commits are split into audit/baseline, legacy configuration, internal cleanup,
+and final documentation; all carry the requested ru5iru co-author trailer.
 
 This is an unused-code audit, not a dependency vulnerability audit or a
 production-hosting certification. Owner/account tasks on the roadmap remain

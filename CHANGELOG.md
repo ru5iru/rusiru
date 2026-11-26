@@ -16,6 +16,11 @@ audits remain in [docs/CHANGELOG.md](docs/CHANGELOG.md).
   labels, plus configurable expansion, front-page placement, and project affiliations.
 
 ### Changed
+- Removed verified legacy headline/carousel/navigation/project settings, unused
+  schema declarations, an unreachable theme filter, and an unused generated
+  error-page style selector. Supported template controls and public interfaces
+  are unchanged; the [two-pass audit](docs/cleanup-audit.md) records retained
+  items and verification.
 - Locales are split into `src/locales/<lang>/<section>.json`, with `_meta.json`
   for shared root wording. Translated records merge by stable `id` and inherit
   omitted English values.
