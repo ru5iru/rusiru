@@ -11,6 +11,7 @@ Notable template changes. Entries under Unreleased are not a published release.
 - MIT licence, contribution/security guidance, and GitHub issue/pull-request templates.
 
 ### Changed
+- Removed owner-specific test restrictions and isolated behavioral tests with synthetic sample data, so changing names, links, records, languages, or publication/placement flags does not require editing tests.
 - Locales use `src/locales/<lang>/<section>.json`, with `_meta.json` for root wording. Translated records merge by stable ID and inherit omitted English values.
 - Removed obsolete settings, unused schema declarations, unreachable theme logic, and unused error-page styling while retaining supported template features.
 - Simplified the README and consolidated practical guidance into customization, development, and deployment guides. Removed obsolete plans, audit reports, and duplicate documentation; refreshed agent and maintenance instructions.

@@ -64,6 +64,7 @@ Read [AGENTS.md](../AGENTS.md) before implementation. Visual work follows [DESIG
 - When adding a section type, update supported section IDs, locale schema and English file, lazy section map, navigation wording, and search generation together.
 - Keep generated-output markers in `index.html`. Change generator inputs or generators, never generated outputs by hand.
 - Add behavioral tests for changed rules and regressions. Exercise affected interactions on desktop/mobile and with keyboard input, both themes, and reduced motion where relevant.
+- Behavioral tests use independent sample data in `src/test/fixtures/portfolio.json`, loaded by the test setup. Do not assert personal facts, specific portfolio links, live record counts, or flag defaults from editable configuration. Keep checks for safe URLs, valid structures, publication, archives, translation, and navigation behavior.
 - Preserve original logos, custom favicons, prototype assets, and platform-managed files. Disabled template features are not dead code.
 - Update the relevant guide and Unreleased changelog for notable changes. Add or revise architecture rules in AGENTS only when the structure changes.
 

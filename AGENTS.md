@@ -20,3 +20,4 @@
 - Always use Conventional Commit messages (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`) when committing changes.
 - Commit trailers include `Co-Authored-By: ru5iru <92708089+ru5iru@users.noreply.github.com>` — retains the requested contributor attribution.
 - README holds quick-start essentials; `docs/customization.md`, `docs/development.md`, and `docs/deployment.md` own detailed user guidance — one guide per task avoids duplicated instructions.
+- Behavioral tests use independent synthetic portfolio fixtures, never editable owner content; assert configuration behavior and safety, not personal facts, specific destinations, live record counts, or publication/placement defaults — customization must not require rewriting tests.

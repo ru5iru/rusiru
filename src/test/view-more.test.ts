@@ -7,7 +7,7 @@ type Raw = Record<string, any>; // eslint-disable-line @typescript-eslint/no-exp
 const english = () => structuredClone(rawLocales.en) as Raw;
 
 describe('view more support', () => {
-  it('is off by default for experience, education and continuing education', () => {
+  it('needs no View More when sample records have no archived flags', () => {
     const en = buildLocales({ en: english() }).en;
     expect(hasArchived(en.experience.items)).toBe(false);
     expect(hasArchived(en.education.items)).toBe(false);

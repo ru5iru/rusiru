@@ -15,7 +15,7 @@ beforeEach(() => setBroadsheetAllExpanded(false));
 afterEach(cleanup);
 
 describe('broadsheet sections', () => {
-  it('renders formal education and all five Continuing Education credentials', () => {
+  it('renders the sample formal and continuing education records', () => {
     render(<I18nProvider><Education /></I18nProvider>);
     expect(screen.getByRole('heading', { name: en.education.items[0].institution })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: en.education.items[1].institution })).toBeInTheDocument();
@@ -23,7 +23,6 @@ describe('broadsheet sections', () => {
       expect(screen.getByRole('heading', { name: certification.title })).toBeInTheDocument();
       expect(screen.getByRole('link', { name: `${en.education.showCredential}: ${certification.title}` })).toHaveAttribute('href', certification.url);
     }
-    expect(en.education.certifications).toHaveLength(5);
   });
 
   it('unfolds and folds every experience dispatch from the section control', () => {
@@ -31,7 +30,7 @@ describe('broadsheet sections', () => {
     const triggers = () => en.experience.items.map(item => screen.getByRole('button', { name: new RegExp(`: ${item.role}$`) }));
     expect(triggers()[0]).toHaveAttribute('aria-expanded', 'true');
     expect(triggers()[1]).toHaveAttribute('aria-expanded', 'false');
-    fireEvent.click(screen.getByRole('button', { name: 'Unfold All 3 Roles' }));
+    fireEvent.click(screen.getByRole('button', { name: en.experience.unfoldAll.replace('{count}', String(en.experience.items.length)) }));
     for (const trigger of triggers()) expect(trigger).toHaveAttribute('aria-expanded', 'true');
     fireEvent.click(screen.getByRole('button', { name: en.experience.foldAll }));
     expect(triggers()[0]).toHaveAttribute('aria-expanded', 'true');
@@ -47,12 +46,12 @@ describe('broadsheet sections', () => {
 
   it('applies the global unfold control to experience and archived projects', () => {
     render(<I18nProvider><Navbar><Experience /><Projects /></Navbar></I18nProvider>);
-    expect(screen.queryByRole('button', { name: /Roamly/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Sample Project 3/ })).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: en.nav.unfoldAll }));
-    expect(screen.getByRole('button', { name: /Roamly/ })).toHaveAttribute('aria-expanded', 'true');
+    expect(screen.getByRole('button', { name: /Sample Project 3/ })).toHaveAttribute('aria-expanded', 'true');
     for (const item of en.experience.items) expect(screen.getByRole('button', { name: new RegExp(`: ${item.role}$`) })).toHaveAttribute('aria-expanded', 'true');
     fireEvent.click(screen.getByRole('button', { name: en.nav.foldAll }));
-    expect(screen.queryByRole('button', { name: /Roamly/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Sample Project 3/ })).not.toBeInTheDocument();
   });
 
   it('keeps generated education search content synchronized with the locale', () => {
@@ -62,7 +61,5 @@ describe('broadsheet sections', () => {
       expect(content.llms).toContain(certification.title);
     }
     expect(content.fallback).toContain(site.continuingEducationUrl);
-    expect(content.fallback).not.toContain('Years Experience');
-    expect(content.fallback).not.toContain('Code Quality');
   });
 });

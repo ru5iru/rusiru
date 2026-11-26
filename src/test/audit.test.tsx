@@ -21,7 +21,7 @@ beforeEach(() => { vi.clearAllMocks(); });
 afterEach(() => { cleanup(); vi.restoreAllMocks(); });
 
 describe('settings', () => {
-  it('accepts current settings', () => { expect(siteSchema.safeParse(site).success).toBe(true); expect(themeSchema.safeParse(theme).success).toBe(true); });
+  it('accepts valid sample settings', () => { expect(siteSchema.safeParse(site).success).toBe(true); expect(themeSchema.safeParse(theme).success).toBe(true); });
   it('rejects duplicate sections', () => { expect(siteSchema.safeParse({ ...site, sections: ['about', 'about'] }).success).toBe(false); });
   it('rejects unknown sections', () => { expect(siteSchema.safeParse({ ...site, sections: ['unknown'] }).success).toBe(false); });
   it('supports no optional sections', () => { expect(siteSchema.safeParse({ ...site, sections: [] }).success).toBe(true); });
@@ -59,7 +59,9 @@ describe('interactions', () => {
     try {
       render(<I18nProvider><Education /></I18nProvider>);
       expect(screen.queryByRole('heading', { name: school.institution })).not.toBeInTheDocument();
-      expect(screen.getAllByRole('link', { name: /^Show Credential:/ })).toHaveLength(5);
+      for (const credential of en.education.certifications) {
+        expect(screen.getByRole('link', { name: `${en.education.showCredential}: ${credential.title}` })).toBeInTheDocument();
+      }
       fireEvent.click(screen.getByRole('button', { name: en.education.viewMoreEducation }));
       expect(screen.getByRole('heading', { name: school.institution })).toBeInTheDocument();
       fireEvent.click(screen.getByRole('button', { name: en.education.showLess }));
@@ -79,7 +81,7 @@ describe('interactions', () => {
       expect(screen.getByRole('heading', { name: credential.title })).toBeInTheDocument();
       fireEvent.click(screen.getByRole('button', { name: en.education.showLess }));
       expect(screen.queryByRole('heading', { name: credential.title })).not.toBeInTheDocument();
-      expect(en.education.certifications).toHaveLength(5);
+      expect(en.education.certifications).toHaveLength(2);
     } finally { credential.archived = archived; }
   });
   it('recovers a failed section without removing surrounding content', () => {
@@ -90,17 +92,17 @@ describe('interactions', () => {
     expect(screen.getByRole('button', { name: en.common.reload })).toBeEnabled();
   });
   it('switches system-dark appearance to light on first click', () => { render(<I18nProvider><ThemeToggle /></I18nProvider>); fireEvent.click(screen.getByRole('button', { name: en.nav.toggleTheme })); expect(setTheme).toHaveBeenCalledWith('light'); });
-  it('reveals additional projects and expands Jira independently', () => {
+  it('reveals additional projects and toggles a featured project independently', () => {
     render(<I18nProvider><Projects /></I18nProvider>);
-    expect(screen.queryByRole('button', { name: /Roamly/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Sample Project 3/ })).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: en.projects.viewMore }));
-    expect(screen.getByRole('button', { name: /Roamly/ })).toBeInTheDocument();
-    const jira = screen.getByRole('button', { name: /Jira Worklog Manager/ });
-    expect(jira).toHaveAttribute('aria-expanded', 'true');
-    fireEvent.click(jira); expect(jira).toHaveAttribute('aria-expanded', 'false');
-    fireEvent.click(jira); expect(jira).toHaveAttribute('aria-expanded', 'true');
+    expect(screen.getByRole('button', { name: /Sample Project 3/ })).toBeInTheDocument();
+    const project = screen.getByRole('button', { name: /Sample Project 1/ });
+    expect(project).toHaveAttribute('aria-expanded', 'true');
+    fireEvent.click(project); expect(project).toHaveAttribute('aria-expanded', 'false');
+    fireEvent.click(project); expect(project).toHaveAttribute('aria-expanded', 'true');
     fireEvent.click(screen.getByRole('button', { name: en.projects.showLess }));
-    expect(screen.queryByRole('button', { name: /Roamly/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Sample Project 3/ })).not.toBeInTheDocument();
   });
   it('waits for a lazy target', async () => {
     const cancel = navigateToSection('late-target');
