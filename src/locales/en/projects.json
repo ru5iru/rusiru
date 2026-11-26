@@ -37,7 +37,8 @@
         "SonarQube",
         "Amazon SES"
       ],
-      "featured": true
+      "featured": true,
+      "affiliation": "omobio"
     },
     {
       "id": "dialog-bizcare",
@@ -51,13 +52,15 @@
         "Worked closely with senior engineers while following Agile development methodologies, coding standards, and software engineering best practices."
       ],
       "tech": ["Yii", "Keycloak"],
-      "featured": true
+      "featured": true,
+      "affiliation": "omobio"
     },
     {
       "id": "mockdeck",
       "published": true,
       "expanded": true,
       "title": "MockDeck — API Mocking & Integration Testing Platform",
+      "github": "https://github.com/ru5iru/api-mock-service",
       "period": "September 2026 - Present",
       "description": [
         "Designed and developed MockDeck, an API mocking platform that helps developers and QA teams simulate API behavior, test integrations, and reproduce failure scenarios without depending on live backend services.",
@@ -84,7 +87,8 @@
       "featured": true,
       "frontPage": true,
       "frontPageKicker": "API & MCP PLATFORM",
-      "summary": "API mocking & integration testing platform with configurable matching, fault simulation, and MCP tools."
+      "summary": "API mocking & integration testing platform with configurable matching, fault simulation, and MCP tools.",
+      "affiliation": "personal"
     },
     {
       "id": "jira-worklog-manager",
@@ -92,7 +96,7 @@
       "expanded": true,
       "title": "Jira Worklog Manager",
       "github": "https://github.com/ru5iru/jira-time-tracker-pages",
-      "link": "https://timelogs.lovable.app",
+      "link": "https://worklogs.rusiru.cc/",
       "description": [
         "Built a browser-based personal productivity tool for logging and managing Jira Cloud worklogs, eliminating the friction of Jira's native time-tracking UI with a fast, keyboard-first single-page experience.",
         "Designed and implemented a proxy-free React + Vite architecture with a custom month-bucket worklog cache, enabling on-demand data fetching per view instead of a single upfront bulk load — reducing initial API calls significantly.",
@@ -106,11 +110,12 @@
       "featured": true,
       "frontPage": true,
       "frontPageKicker": "PRODUCTIVITY SPA",
-      "summary": "Proxy-free React + Vite SPA with month-bucket worklog cache, persistent timer, heatmaps & local disk notes."
+      "summary": "Proxy-free React + Vite SPA with month-bucket worklog cache, persistent timer, heatmaps & local disk notes.",
+      "affiliation": "personal"
     },
     {
       "id": "project-x",
-      "published": true,
+      "published": false,
       "expanded": false,
       "title": "Project-X",
       "description": [
@@ -133,7 +138,8 @@
         "Includes an experience-sharing platform where travelers can connect and share their stories."
       ],
       "tech": ["React", "Node.js", "Express", "PostgreSQL", "Sass"],
-      "featured": false
+      "featured": false,
+      "affiliation": "ucsc"
     },
     {
       "id": "micro-caps",
@@ -146,11 +152,12 @@
         "Manages vehicle assembly process from chassis delivery to dispatching."
       ],
       "tech": ["PHP", "AJAX", "MySQL", "JavaScript"],
-      "featured": false
+      "featured": false,
+      "affiliation": "ucsc"
     },
     {
       "id": "todo",
-      "published": true,
+      "published": false,
       "expanded": false,
       "title": "ToDo",
       "description": [
