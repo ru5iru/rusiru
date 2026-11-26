@@ -46,11 +46,11 @@ O/L Results: 8A 1B
 
 Microservices Foundations Professional Certificate by Kong, KONG, Issued Oct 2026
 Skills: Software Design Patterns · Software Architecture
-https://www.linkedin.com/in/ru5iru/details/certifications/45c37acb6f485249511dddbea523784001acb2b9f61fa72a723aec6a718a20d6/
+https://www.linkedin.com/learning/certificates/45c37acb6f485249511dddbea523784001acb2b9f61fa72a723aec6a718a20d6/
 
 NIST Cybersecurity Framework (CSF) 2.0 Primer: From Fundamentals to Implementation, PEARSON / LINKEDIN, Issued Oct 2026
 Skills: IT Security Best Practices
-https://www.linkedin.com/in/ru5iru/details/certifications/b858fc6c9796573b58014dfddaeaf2e91a0e1c0a3cbec5ba0aabf21402c1b62a/
+https://www.linkedin.com/learning/certificates/b858fc6c9796573b58014dfddaeaf2e91a0e1c0a3cbec5ba0aabf21402c1b62a/
 
 Working with the PCI DSS 4.0 Compliance Requirements, LINKEDIN, Issued Oct 2026
 Skills: Payment Card Industry Data Security Standard (PCI DSS) · Standards Compliance
