@@ -1,0 +1,431 @@
+{
+  "site": {
+    "siteUrl": "https://example.org",
+    "person": {
+      "name": "Sample Person",
+      "jobTitle": "Sample Occupation",
+      "email": "person@example.org",
+      "profileImage": "/media/sample.jpg",
+      "resumeUrl": "https://example.org/resume",
+      "location": {
+        "city": "Sample City",
+        "country": "Sample Country",
+        "countryCode": "XX",
+        "lat": 0,
+        "lng": 0
+      }
+    },
+    "seo": {
+      "title": "Sample Portfolio",
+      "description": "Sample description",
+      "ogDescription": "Sample social description",
+      "shareImage": "/media/sample-card.png",
+      "themeColor": "#efe8d8"
+    },
+    "theme": {
+      "default": "system"
+    },
+    "sections": [
+      "about",
+      "experience",
+      "education",
+      "projects",
+      "skills",
+      "blog",
+      "contact"
+    ],
+    "contact": {
+      "secondaryButton": {
+        "platform": "linkedin",
+        "url": "https://example.org/contact"
+      }
+    },
+    "blogUrl": "https://example.org/blog",
+    "continuingEducationUrl": "https://example.org/credentials",
+    "social": [],
+    "educationLogos": {},
+    "skills": [
+      {
+        "id": "languages",
+        "items": [
+          {
+            "name": "Sample Language",
+            "icon": "/media/sample-icon.svg"
+          }
+        ]
+      }
+    ]
+  },
+  "theme": {
+    "light": {
+      "primary": "0 50% 40%",
+      "primary-foreground": "0 0% 100%",
+      "background": "0 0% 95%",
+      "foreground": "0 0% 10%",
+      "desk": "0 0% 20%",
+      "border": "0 0% 70%"
+    },
+    "dark": {
+      "primary": "0 50% 60%",
+      "primary-foreground": "0 0% 100%",
+      "background": "0 0% 10%",
+      "foreground": "0 0% 95%",
+      "desk": "0 0% 5%",
+      "border": "0 0% 30%"
+    }
+  },
+  "locale": {
+    "language": {
+      "name": "English",
+      "code": "EN"
+    },
+    "seo": {
+      "shareImageAlt": "seo shareImageAlt {name}"
+    },
+    "common": {
+      "skipToContent": "common skipToContent ",
+      "backToTop": "common backToTop ",
+      "loading": "common loading ",
+      "loadError": "common loadError ",
+      "reload": "common reload ",
+      "emailLabel": "common emailLabel ",
+      "linksLabel": "common linksLabel ",
+      "sitemapLabel": "common sitemapLabel "
+    },
+    "notFound": {
+      "title": "notFound title ",
+      "description": "notFound description ",
+      "message": "notFound message ",
+      "backHome": "notFound backHome "
+    },
+    "nav": {
+      "links": {
+        "about": "nav links about ",
+        "experience": "nav links experience ",
+        "education": "nav links education ",
+        "projects": "nav links projects ",
+        "skills": "nav links skills ",
+        "blog": "nav links blog ",
+        "contact": "nav links contact "
+      },
+      "openMenu": "nav openMenu ",
+      "closeMenu": "nav closeMenu ",
+      "toggleTheme": "nav toggleTheme ",
+      "mainNavigation": "nav mainNavigation ",
+      "selectLanguage": "nav selectLanguage ",
+      "editionBadge": "nav editionBadge ",
+      "editionSubtitle": "nav editionSubtitle ",
+      "unfoldAll": "nav unfoldAll ",
+      "foldAll": "nav foldAll ",
+      "registrationEdition": "nav registrationEdition ",
+      "registrationDisciplines": "nav registrationDisciplines ",
+      "registrationIssue": "nav registrationIssue ",
+      "mastheadKicker": "nav mastheadKicker ",
+      "indexTitle": "nav indexTitle ",
+      "indexSubtitle": "nav indexSubtitle ",
+      "nightEdition": "nav nightEdition ",
+      "dayEdition": "nav dayEdition "
+    },
+    "hero": {
+      "ariaLabel": "hero ariaLabel ",
+      "srHeading": "hero srHeading ",
+      "geoSummary": "hero geoSummary ",
+      "description": "hero description ",
+      "viewWork": "hero viewWork ",
+      "resume": "hero resume ",
+      "profileAlt": "hero profileAlt ",
+      "mastheadSubtitle": "hero mastheadSubtitle ",
+      "bannerKicker": "hero bannerKicker ",
+      "bannerTitle": "hero bannerTitle ",
+      "profileKicker": "hero profileKicker ",
+      "profileTitle": "hero profileTitle ",
+      "profileSummary": "hero profileSummary ",
+      "careerTitle": "hero careerTitle ",
+      "careerSubtitle": "hero careerSubtitle ",
+      "featuredTitle": "hero featuredTitle ",
+      "featuredSubtitle": "hero featuredSubtitle ",
+      "continuingEducationTitle": "hero continuingEducationTitle ",
+      "continuingEducationSummary": "hero continuingEducationSummary ",
+      "readDispatch": "hero readDispatch ",
+      "readDossier": "hero readDossier ",
+      "inspectEducation": "hero inspectEducation "
+    },
+    "about": {
+      "published": true,
+      "ariaLabel": "about ariaLabel ",
+      "geoSummary": "about geoSummary ",
+      "titleBefore": "about titleBefore ",
+      "titleHighlight": "about titleHighlight ",
+      "paragraphs": [
+        "about paragraphs 0 ",
+        "about paragraphs 1 ",
+        "about paragraphs 2 ",
+        "about paragraphs 3 "
+      ]
+    },
+    "experience": {
+      "published": true,
+      "ariaLabel": "experience ariaLabel ",
+      "geoSummary": "experience geoSummary ",
+      "title": "experience title ",
+      "viewMore": "experience viewMore ",
+      "showLess": "experience showLess ",
+      "items": [
+        {
+          "id": "role-1",
+          "company": "Sample Studio",
+          "role": "Sample Role 1",
+          "period": "2024 - Present",
+          "dateTime": "2024-01",
+          "frontPage": true,
+          "expanded": true,
+          "description": [
+            "Role 1 first point",
+            "Role 1 second point"
+          ]
+        },
+        {
+          "id": "role-2",
+          "company": "Sample Studio",
+          "role": "Sample Role 2",
+          "period": "2024 - Present",
+          "dateTime": "2024-01",
+          "frontPage": true,
+          "expanded": false,
+          "description": [
+            "Role 2 first point",
+            "Role 2 second point"
+          ]
+        },
+        {
+          "id": "role-3",
+          "company": "Sample Studio",
+          "role": "Sample Role 3",
+          "period": "2024 - Present",
+          "dateTime": "2024-01",
+          "frontPage": true,
+          "expanded": false,
+          "description": [
+            "Role 3 first point",
+            "Role 3 second point"
+          ]
+        }
+      ],
+      "kicker": "experience kicker ",
+      "hint": "experience hint ",
+      "unfoldAll": "experience unfoldAll {count}",
+      "foldAll": "experience foldAll ",
+      "dispatchLabel": "experience dispatchLabel {number}",
+      "unfoldItem": "experience unfoldItem {count}",
+      "foldItem": "experience foldItem ",
+      "leadSummary": "experience leadSummary "
+    },
+    "education": {
+      "published": true,
+      "ariaLabel": "education ariaLabel ",
+      "geoSummary": "education geoSummary ",
+      "title": "education title ",
+      "viewMoreEducation": "education viewMoreEducation ",
+      "viewMoreCertifications": "education viewMoreCertifications ",
+      "showLess": "education showLess ",
+      "items": [
+        {
+          "id": "school-1",
+          "institution": "Sample School 1",
+          "degree": "Sample Degree",
+          "period": "2020 - 2024",
+          "details": [
+            "School 1 detail"
+          ]
+        },
+        {
+          "id": "school-2",
+          "institution": "Sample School 2",
+          "degree": "Sample Degree",
+          "period": "2020 - 2024",
+          "details": [
+            "School 2 detail"
+          ]
+        }
+      ],
+      "kicker": "education kicker ",
+      "formalTitle": "education formalTitle ",
+      "formalSubtitle": "education formalSubtitle ",
+      "academicStanding": "education academicStanding ",
+      "certificationsTitle": "education certificationsTitle ",
+      "certificationsSubtitle": "education certificationsSubtitle ",
+      "showCredential": "education showCredential ",
+      "viewAllCertifications": "education viewAllCertifications ",
+      "moreCertificationsNote": "education moreCertificationsNote ",
+      "seeAllCertifications": "education seeAllCertifications ",
+      "skillsLabel": "education skillsLabel ",
+      "certifications": [
+        {
+          "id": "credential-1",
+          "issuer": "Sample Issuer",
+          "date": "2025",
+          "title": "Sample Credential 1",
+          "skills": "Sample Skills",
+          "url": "https://example.org/credential/1"
+        },
+        {
+          "id": "credential-2",
+          "issuer": "Sample Issuer",
+          "date": "2025",
+          "title": "Sample Credential 2",
+          "skills": "Sample Skills",
+          "url": "https://example.org/credential/2"
+        }
+      ],
+      "formalEducation": {
+        "published": true
+      },
+      "continuingEducation": {
+        "published": true
+      }
+    },
+    "projects": {
+      "published": true,
+      "ariaLabel": "projects ariaLabel ",
+      "geoSummary": "projects geoSummary ",
+      "title": "projects title ",
+      "visit": "projects visit {title}",
+      "viewOnGithub": "projects viewOnGithub {title}",
+      "showLess": "projects showLess ",
+      "viewMore": "projects viewMore ",
+      "items": [
+        {
+          "id": "project-1",
+          "title": "Sample Project 1",
+          "featured": true,
+          "expanded": true,
+          "frontPage": true,
+          "affiliation": "studio",
+          "period": "2025 - Present",
+          "description": [
+            "Project 1 detail"
+          ],
+          "tech": [
+            "Sample Tool"
+          ],
+          "link": "https://example.org/project",
+          "github": "https://example.org/repository"
+        },
+        {
+          "id": "project-2",
+          "title": "Sample Project 2",
+          "featured": true,
+          "expanded": false,
+          "frontPage": false,
+          "affiliation": "studio",
+          "period": "2025 - Present",
+          "description": [
+            "Project 2 detail"
+          ],
+          "tech": [
+            "Sample Tool"
+          ]
+        },
+        {
+          "id": "project-3",
+          "title": "Sample Project 3",
+          "featured": false,
+          "expanded": false,
+          "frontPage": false,
+          "affiliation": "studio",
+          "period": "2025 - Present",
+          "description": [
+            "Project 3 detail"
+          ],
+          "tech": [
+            "Sample Tool"
+          ]
+        }
+      ],
+      "kicker": "projects kicker ",
+      "featuredFilter": "projects featuredFilter {count}",
+      "allWorksFilter": "projects allWorksFilter {count}",
+      "unfoldAll": "projects unfoldAll ",
+      "foldAll": "projects foldAll ",
+      "dossierLabel": "projects dossierLabel {number}",
+      "unfoldItem": "projects unfoldItem {count}",
+      "foldItem": "projects foldItem ",
+      "visitLabel": "projects visitLabel ",
+      "githubLabel": "projects githubLabel ",
+      "affiliations": {
+        "studio": "Sample Studio"
+      }
+    },
+    "skills": {
+      "published": true,
+      "ariaLabel": "skills ariaLabel ",
+      "geoSummary": "skills geoSummary ",
+      "titleBefore": "skills titleBefore ",
+      "titleHighlight": "skills titleHighlight ",
+      "categories": {
+        "languages": "Languages"
+      },
+      "kicker": "skills kicker ",
+      "philosophy": "skills philosophy ",
+      "noteLabel": "skills noteLabel ",
+      "note": "skills note ",
+      "relatedEcosystem": "skills relatedEcosystem ",
+      "notes": {
+        "languages": "Sample domain note"
+      }
+    },
+    "blog": {
+      "published": true,
+      "ariaLabel": "blog ariaLabel ",
+      "titleBefore": "blog titleBefore ",
+      "titleHighlight": "blog titleHighlight ",
+      "readMore": "blog readMore ",
+      "visitBlog": "blog visitBlog ",
+      "posts": [
+        {
+          "id": "post-1",
+          "title": "Sample Post 1",
+          "excerpt": "Post 1 excerpt",
+          "date": "2025-01-01",
+          "dateLabel": "January 2025",
+          "readTime": "5 min",
+          "link": "https://example.org/post/1"
+        },
+        {
+          "id": "post-2",
+          "title": "Sample Post 2",
+          "excerpt": "Post 2 excerpt",
+          "date": "2025-01-01",
+          "dateLabel": "January 2025",
+          "readTime": "5 min",
+          "link": "https://example.org/post/2"
+        }
+      ],
+      "kicker": "blog kicker "
+    },
+    "contact": {
+      "published": true,
+      "ariaLabel": "contact ariaLabel ",
+      "geoSummary": "contact geoSummary ",
+      "titleBefore": "contact titleBefore ",
+      "titleHighlight": "contact titleHighlight ",
+      "description": "contact description ",
+      "getInTouch": "contact getInTouch ",
+      "linkedin": "contact linkedin ",
+      "kicker": "contact kicker ",
+      "directChannels": "contact directChannels ",
+      "availability": "contact availability ",
+      "couponLabel": "contact couponLabel ",
+      "couponReference": "contact couponReference ",
+      "couponTitle": "contact couponTitle "
+    },
+    "footer": {
+      "brand": "footer brand ",
+      "copyright": "footer copyright {year}",
+      "socialAria": "footer socialAria {label}",
+      "social": {
+        "reddit": "Sample Social"
+      }
+    }
+  }
+}

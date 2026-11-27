@@ -4,15 +4,17 @@ import { Button } from '@/components/ui/button';
 import { DisclosureRow, DetailList } from '@/components/DisclosureRow';
 import { SectionHeading } from '@/components/SectionHeading';
 import { useTranslation } from '@/i18n/i18n';
+import { expandedIndices } from '@/i18n/publish';
 import { focusBroadsheetCard, subscribeToBroadsheetJump, subscribeToBroadsheetToggleAll } from '@/lib/navigation';
 
-interface ProjectItem { title: string; link?: string; github?: string; period?: string; description: string[]; tech: string[]; featured: boolean }
+interface ProjectItem { id: string; expanded?: boolean; affiliation?: string; title: string; link?: string; github?: string; period?: string; description: string[]; tech: string[]; featured: boolean }
 
 export function Projects() {
   const { t, tr } = useTranslation();
   const projects = tr<ProjectItem[]>('projects.items');
   const [showAll, setShowAll] = useState(false);
-  const [openIndices, setOpenIndices] = useState<Set<number>>(() => new Set([0, 2, 3]));
+  const [openIndices, setOpenIndices] = useState<Set<number>>(() => new Set(expandedIndices(projects)));
+  const affiliations = tr<Record<string, string>>('projects.affiliations') ?? {};
   const visible = projects.map((project, index) => ({ project, index })).filter(({ project }) => showAll || project.featured);
   const featuredCount = projects.filter(project => project.featured).length;
   const allOpen = projects.length > 0 && openIndices.size === projects.length;
@@ -26,7 +28,7 @@ export function Projects() {
 
   useEffect(() => subscribeToBroadsheetToggleAll(expanded => {
     setShowAll(expanded);
-    setOpenIndices(new Set(expanded ? projects.map((_, index) => index) : [0, 2, 3]));
+    setOpenIndices(new Set(expanded ? projects.map((_, index) => index) : expandedIndices(projects)));
   }), [projects]);
 
   const toggleItem = (index: number) => setOpenIndices(current => {
@@ -61,21 +63,21 @@ export function Projects() {
           </>;
           return (
             <DisclosureRow
-              key={project.title}
+              key={project.id}
               id={`proj-card-${index}`}
               label={project.title}
               open={open}
               onToggle={() => toggleItem(index)}
               badge={<>
                 <span className="r-box bg-secondary px-2 py-0.5 font-bold text-primary">{t('projects.dossierLabel', { number: String(index + 1).padStart(2, '0') })}</span>
+                {project.affiliation && affiliations[project.affiliation] && <span className="r-box bg-accent px-1.5 py-0.5 text-[10px] font-bold uppercase text-accent-foreground">{affiliations[project.affiliation]}</span>}
                 {project.period && <span className="text-faint">{project.period}</span>}
-                <span className={`r-box px-1.5 py-0.5 text-[10px] uppercase ${project.featured ? '' : 'text-faint'}`}>{t(project.featured ? 'projects.featuredBadge' : 'projects.archiveBadge')}</span>
               </>}
               title={project.title}
               summary={<div className="flex flex-wrap gap-1.5 pt-1">{project.tech.map(tech => <span key={tech} className="r-box bg-background px-2 py-0.5 font-mono text-xs">{tech}</span>)}</div>}
               links={links}
               toggleLabel={t(open ? 'projects.foldItem' : 'projects.unfoldItem', { count: project.description.length })}
-              lead={project.description[0]}
+              lead={project.description[0] ?? project.title}
             >
               <DetailList items={project.description} marker="bracket" />
             </DisclosureRow>

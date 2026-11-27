@@ -8,10 +8,10 @@ import { useTranslation } from '@/i18n/i18n';
 import { siteConfig } from '@/config';
 import { isBroadsheetAllExpanded, navigateToSection, setBroadsheetAllExpanded } from '@/lib/navigation';
 
-const navItems = siteConfig.sections.map(key => ({ href: `#${key}`, key }));
-
 export function Navbar({ children }: { children: ReactNode }) {
-  const { t } = useTranslation();
+  const { t, sections } = useTranslation();
+  const navItems = sections.map(key => ({ href: `#${key}`, key }));
+  const sectionKey = sections.join(',');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [allExpanded, setAllExpanded] = useState(isBroadsheetAllExpanded());
@@ -22,7 +22,7 @@ export function Navbar({ children }: { children: ReactNode }) {
     const observer = new IntersectionObserver(entries => {
       for (const entry of entries) if (entry.isIntersecting) setActiveSection(entry.target.id);
     }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
-    const register = () => navItems.forEach(({ key }) => {
+    const register = () => sectionKey.split(',').forEach(key => {
       const target = document.getElementById(key);
       if (target && !observed.has(target)) { observer.observe(target); observed.add(target); }
     });
@@ -30,7 +30,7 @@ export function Navbar({ children }: { children: ReactNode }) {
     const mutations = new MutationObserver(register);
     mutations.observe(document.body, { childList: true, subtree: true });
     return () => { mutations.disconnect(); observer.disconnect(); };
-  }, []);
+  }, [sectionKey]);
 
   useEffect(() => {
     const media = window.matchMedia('(min-width: 1024px)');

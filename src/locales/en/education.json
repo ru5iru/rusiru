@@ -1,0 +1,91 @@
+{
+  "published": true,
+  "ariaLabel": "Education of Rusiru Rathmina",
+  "geoSummary": "Rusiru Rathmina holds a Bachelor of Science in Computer Science from the University of Colombo School of Computing (UCSC), graduating with a GPA of 3.01 (May 2021 – October 2024). He completed his GCE Advanced Level in Physical Science at Mahinda College, Galle, achieving results of A B C with a Z-Score of 1.3084, and GCE Ordinary Level results of 8A 1B.",
+  "title": "Education & Continuing Education (CE)",
+  "viewMoreEducation": "View More Education",
+  "viewMoreCertifications": "View More Credentials",
+  "showLess": "Show Less",
+  "items": [
+    {
+      "id": "ucsc",
+      "published": true,
+      "institution": "University of Colombo School of Computing",
+      "degree": "Bachelor of Science in Computer Science",
+      "period": "May 2021 - October 2024",
+      "details": ["GPA: 3.01"]
+    },
+    {
+      "id": "mcg",
+      "published": true,
+      "institution": "Mahinda College, Galle",
+      "degree": "GCE Advanced Level (Physical Science)",
+      "period": "Feb 2010 - Aug 2019",
+      "details": ["A/L Results: A B C | Z-Score: 1.3084", "O/L Results: 8A 1B"]
+    }
+  ],
+  "kicker": "SECTION B1 · ACADEMIC & PROFESSIONAL CREDENTIALS",
+  "formalTitle": "I. Academic Degrees & Schooling",
+  "formalSubtitle": "FORMAL RECORD",
+  "academicStanding": "ACADEMIC STANDING",
+  "certificationsTitle": "II. Continuing Education - Licenses & Certifications",
+  "certificationsSubtitle": "PROFESSIONAL DEVELOPMENT",
+  "showCredential": "Show Credential",
+  "viewAllCertifications": "View Full License & Certification Ledger on LinkedIn",
+  "moreCertificationsNote": "ADDITIONAL CERTIFICATES (CYBERSECURITY RISK MANAGEMENT & MORE) ON FILE",
+  "seeAllCertifications": "See All Certifications on LinkedIn →",
+  "skillsLabel": "Skills",
+  "certifications": [
+    {
+      "id": "microservices-foundations",
+      "published": true,
+      "issuer": "KONG",
+      "date": "Issued Oct 2026",
+      "title": "Microservices Foundations Professional Certificate by Kong",
+      "skills": "Software Design Patterns · Software Architecture",
+      "url": "https://www.linkedin.com/learning/certificates/45c37acb6f485249511dddbea523784001acb2b9f61fa72a723aec6a718a20d6/"
+    },
+    {
+      "id": "nist-csf-2",
+      "published": true,
+      "issuer": "PEARSON / LINKEDIN",
+      "date": "Issued Oct 2026",
+      "title": "NIST Cybersecurity Framework (CSF) 2.0 Primer: From Fundamentals to Implementation",
+      "skills": "IT Security Best Practices",
+      "url": "https://www.linkedin.com/learning/certificates/b858fc6c9796573b58014dfddaeaf2e91a0e1c0a3cbec5ba0aabf21402c1b62a/"
+    },
+    {
+      "id": "pci-dss-4",
+      "published": true,
+      "issuer": "LINKEDIN",
+      "date": "Issued Oct 2026",
+      "title": "Working with the PCI DSS 4.0 Compliance Requirements",
+      "skills": "Payment Card Industry Data Security Standard (PCI DSS) · Standards Compliance",
+      "url": "https://www.linkedin.com/learning/certificates/3bbcb335baad60e8bb9d944d4992308ff4e09794aeb1dd098a66698fa68021f1/"
+    },
+    {
+      "id": "pen-test",
+      "published": true,
+      "issuer": "CYBRARY",
+      "date": "Issued Sep 2026",
+      "title": "Penetration Testing Professional Certificate by Cybrary",
+      "skills": "Penetration Testing · Ethical Hacking",
+      "url": "https://www.linkedin.com/learning/certificates/de382ab83b1b15c452f03f290b36746802e616e56a11e0c89204e39e7d48be2a/"
+    },
+    {
+      "id": "ubuntu",
+      "published": true,
+      "issuer": "CANONICAL",
+      "date": "Issued Oct 2026",
+      "title": "Ubuntu Linux Professional Certificate by Canonical",
+      "skills": "Linux System Administration · Ubuntu",
+      "url": "https://www.linkedin.com/learning/certificates/d6a6e59704be79cfb6cdd15fb8b37011226680cccd60109e08b98978fcccbcbb/"
+    }
+  ],
+  "formalEducation": {
+    "published": true
+  },
+  "continuingEducation": {
+    "published": true
+  }
+}

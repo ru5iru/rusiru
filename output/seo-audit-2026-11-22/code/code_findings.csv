@@ -1,5 +1,0 @@
-﻿Item_Number,File,Line,Issue,Evidence,Auto_Fixable,Suggested_Fix
-26,index.html,1,missing-title,Not detected in this HTML file (may use server-side composition),False,Add a unique page-specific title
-27,index.html,1,missing-description,Not detected in this HTML file (may use server-side composition),False,Add a unique meta description
-28,index.html,1,missing-h1,Not detected in this HTML file (may use server-side composition),False,Add a meaningful primary H1
-27,docs\prototype\broadsheet-prototype.html,1,missing-description,Not detected in this HTML file (may use server-side composition),False,Add a unique meta description

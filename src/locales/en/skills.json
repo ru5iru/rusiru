@@ -1,0 +1,26 @@
+{
+  "published": true,
+  "ariaLabel": "Technical Skills of Rusiru Rathmina",
+  "geoSummary": "Rusiru Rathmina's technical foundation spans languages, frameworks, data, cloud, DevOps, and quality tooling. Representative tools include Java, JavaScript, PHP, C++, React, Node.js, Spring Boot, Drupal, Yii, Laravel, Symfony, MySQL, PostgreSQL, MongoDB, Redis, AWS, Docker, Kubernetes, Jenkins, Apache Kafka, Git, Linux, SonarQube, and Postman. He treats languages and frameworks as interchangeable instruments and adapts to new ecosystems and legacy codebases.",
+  "titleBefore": "Core Domains &",
+  "titleHighlight": "Representative Stack",
+  "categories": {
+    "languages": "Languages",
+    "frameworks": "Frameworks & Runtimes",
+    "databases": "Data & Caching",
+    "devops": "DevOps & Cloud",
+    "tools": "Systems & Quality Tooling"
+  },
+  "kicker": "SECTION C1 · TECHNICAL FOUNDATION",
+  "philosophy": "Tools and frameworks change; engineering fundamentals endure. Grounded in computer science principles, distributed architecture, and application security, I treat languages and frameworks as interchangeable instruments-adapting rapidly to whatever stack a system requires.",
+  "noteLabel": "NOTE:",
+  "note": "Representative production tools listed opposite; accustomed to ramping up on new ecosystems and legacy codebases alike.",
+  "relatedEcosystem": "& related ecosystem",
+  "notes": {
+    "languages": "Object-oriented, functional & systems programming",
+    "frameworks": "RESTful APIs, microservices, SPAs & enterprise CMS",
+    "databases": "Relational modeling, document stores & in-memory caching",
+    "devops": "Container orchestration, CI/CD pipelines & event streaming",
+    "tools": "Static analysis, security gates, Linux ops & API testing"
+  }
+}

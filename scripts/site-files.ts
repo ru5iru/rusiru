@@ -3,7 +3,9 @@ import path from 'path';
 import type { Plugin } from 'vite';
 import { siteSchema, themeSchema } from '../src/config/schema';
 import { createNotFoundDocument, createSearchContent, type SearchSite, type SearchLocale, type SearchTheme } from './search-content';
-import { localeSchema } from '../src/i18n/schema';
+import { assembleLocales, buildLocales } from '../src/i18n/build';
+
+const localeDir = 'src/locales';
 
 export function siteFilesPlugin(): Plugin {
   const root = process.cwd();
@@ -12,12 +14,16 @@ export function siteFilesPlugin(): Plugin {
     const site = load('src/config/site.json');
     const theme = load('src/config/theme.json');
     siteSchema.parse(site); themeSchema.parse(theme);
-    const en = load('src/locales/en.json');
-    localeSchema.parse(en);
-    for (const item of en.education.items) if (!site.educationLogos[item.id]) throw new Error(`Missing education logo for ${item.id}`);
+    const files = Object.fromEntries(fs.readdirSync(path.join(root, localeDir), { withFileTypes: true }).filter(entry => entry.isDirectory())
+      .flatMap(entry => fs.readdirSync(path.join(root, localeDir, entry.name)).filter(file => file.endsWith('.json')).map(file => `${localeDir}/${entry.name}/${file}`))
+      .map(file => [file, load(file)]));
+    const raw = assembleLocales(files);
+    const en = buildLocales(raw).en;
+    const rawEn = raw.en as { education: { items: { id: string }[] }; skills: { categories: Record<string, unknown>; notes: Record<string, unknown> } };
+    for (const item of rawEn.education.items) if (!site.educationLogos[item.id]) throw new Error(`Missing education logo for ${item.id}`);
     for (const category of site.skills) {
-      if (!en.skills.categories[category.id]) throw new Error(`Missing skill category wording for ${category.id}`);
-      if (!en.skills.notes[category.id]) throw new Error(`Missing skill domain note for ${category.id}`);
+      if (!rawEn.skills.categories[category.id]) throw new Error(`Missing skill category wording for ${category.id}`);
+      if (!rawEn.skills.notes[category.id]) throw new Error(`Missing skill domain note for ${category.id}`);
     }
     const search = createSearchContent(site, en);
     return { site: site as SearchSite, en: en as SearchLocale, theme: theme as SearchTheme, ...search, notFound: createNotFoundDocument(site, en, theme) };
@@ -42,9 +48,10 @@ export function siteFilesPlugin(): Plugin {
       return html.replace('<!-- generated:metadata -->', metadata).replace('<!-- generated:content -->', fallback);
     } },
     configureServer(server) {
-      const inputs = ['src/config/site.json', 'src/config/theme.json', 'src/locales/en.json'].map(file => path.join(root, file));
-      server.watcher.add(inputs);
-      const change = (file: string) => { if (inputs.includes(file)) { try { generate(); server.ws.send({ type: 'full-reload' }); } catch (error) { server.config.logger.error(String(error)); } } };
+      const inputs = ['src/config/site.json', 'src/config/theme.json'].map(file => path.join(root, file));
+      const locales = path.join(root, localeDir) + path.sep;
+      server.watcher.add([...inputs, locales]);
+      const change = (file: string) => { if (inputs.includes(file) || (file.startsWith(locales) && file.endsWith('.json'))) { try { generate(); server.ws.send({ type: 'full-reload' }); } catch (error) { server.config.logger.error(String(error)); } } };
       server.watcher.on('change', change);
       server.httpServer?.once('close', () => server.watcher.off('change', change));
     },

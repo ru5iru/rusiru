@@ -84,7 +84,6 @@
 
   .r-t { border-top: 1px solid hsl(var(--border)); }
   .r-b { border-bottom: 1px solid hsl(var(--border)); }
-  .r-l { border-left: 1px solid hsl(var(--border)); }
   .r-r { border-right: 1px solid hsl(var(--border)); }
   .r-box { border: 1px solid hsl(var(--border)); }
   .r-heavy-t { border-top: 2.5px solid hsl(var(--foreground)); }
@@ -123,12 +122,6 @@
     30% { background-color: hsl(var(--accent)); box-shadow: 0 0 0 2px hsl(var(--primary)); }
   }
   .dossier-flash { animation: flash-dossier 1.6s ease; }
-}
-
-@layer utilities {
-  .text-balance { text-wrap: balance; }
-  .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
-  .scrollbar-none::-webkit-scrollbar { display: none; }
 }
 
 html { scrollbar-width: none; -ms-overflow-style: none; }

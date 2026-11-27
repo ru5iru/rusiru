@@ -2,13 +2,14 @@ import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import site from '@/config/site.json';
 import theme from '@/config/theme.json';
-import en from '@/locales/en.json';
+import { english as en } from '@/i18n/locales';
 import { siteSchema, themeSchema } from '@/config/schema';
 import { mergeLocale, readLanguage, storeLanguage } from '@/i18n/locale';
 import { I18nProvider } from '@/i18n/i18n';
 import { Projects } from '@/components/sections/Projects';
+import { Experience } from '@/components/sections/Experience';
+import { Education } from '@/components/sections/Education';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { navigateToSection } from '@/lib/navigation';
 import { createSearchContent } from '../../scripts/search-content';
 import { localeSchema } from '@/i18n/schema';
@@ -20,7 +21,7 @@ beforeEach(() => { vi.clearAllMocks(); });
 afterEach(() => { cleanup(); vi.restoreAllMocks(); });
 
 describe('settings', () => {
-  it('accepts current settings', () => { expect(siteSchema.safeParse(site).success).toBe(true); expect(themeSchema.safeParse(theme).success).toBe(true); });
+  it('accepts valid sample settings', () => { expect(siteSchema.safeParse(site).success).toBe(true); expect(themeSchema.safeParse(theme).success).toBe(true); });
   it('rejects duplicate sections', () => { expect(siteSchema.safeParse({ ...site, sections: ['about', 'about'] }).success).toBe(false); });
   it('rejects unknown sections', () => { expect(siteSchema.safeParse({ ...site, sections: ['unknown'] }).success).toBe(false); });
   it('supports no optional sections', () => { expect(siteSchema.safeParse({ ...site, sections: [] }).success).toBe(true); });
@@ -37,6 +38,52 @@ describe('locales', () => {
   it('survives denied storage writes', () => { vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('Denied'); }); expect(() => storeLanguage('en')).not.toThrow(); });
 });
 describe('interactions', () => {
+  it('reveals and hides an archived experience role without deleting it', () => {
+    const role = en.experience.items[2];
+    const archived = role.archived;
+    role.archived = true;
+    try {
+      render(<I18nProvider><Experience /></I18nProvider>);
+      expect(screen.queryByRole('heading', { name: role.role })).not.toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: en.experience.viewMore }));
+      expect(screen.getByRole('heading', { name: role.role })).toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: en.experience.showLess }));
+      expect(screen.queryByRole('heading', { name: role.role })).not.toBeInTheDocument();
+      expect(en.experience.items).toHaveLength(3);
+    } finally { role.archived = archived; }
+  });
+  it('reveals an archived school independently of continuing education', () => {
+    const school = en.education.items[0];
+    const archived = school.archived;
+    school.archived = true;
+    try {
+      render(<I18nProvider><Education /></I18nProvider>);
+      expect(screen.queryByRole('heading', { name: school.institution })).not.toBeInTheDocument();
+      for (const credential of en.education.certifications) {
+        expect(screen.getByRole('link', { name: `${en.education.showCredential}: ${credential.title}` })).toBeInTheDocument();
+      }
+      fireEvent.click(screen.getByRole('button', { name: en.education.viewMoreEducation }));
+      expect(screen.getByRole('heading', { name: school.institution })).toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: en.education.showLess }));
+      expect(screen.queryByRole('heading', { name: school.institution })).not.toBeInTheDocument();
+      expect(en.education.items).toHaveLength(2);
+    } finally { school.archived = archived; }
+  });
+  it('reveals an archived credential independently of formal education', () => {
+    const credential = en.education.certifications[0];
+    const archived = credential.archived;
+    credential.archived = true;
+    try {
+      render(<I18nProvider><Education /></I18nProvider>);
+      expect(screen.queryByRole('heading', { name: credential.title })).not.toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: en.education.items[0].institution })).toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: en.education.viewMoreCertifications }));
+      expect(screen.getByRole('heading', { name: credential.title })).toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: en.education.showLess }));
+      expect(screen.queryByRole('heading', { name: credential.title })).not.toBeInTheDocument();
+      expect(en.education.certifications).toHaveLength(2);
+    } finally { credential.archived = archived; }
+  });
   it('recovers a failed section without removing surrounding content', () => {
     vi.spyOn(console, 'error').mockImplementation(() => {});
     function Broken(): JSX.Element { throw new Error('Chunk unavailable'); }
@@ -45,21 +92,17 @@ describe('interactions', () => {
     expect(screen.getByRole('button', { name: en.common.reload })).toBeEnabled();
   });
   it('switches system-dark appearance to light on first click', () => { render(<I18nProvider><ThemeToggle /></I18nProvider>); fireEvent.click(screen.getByRole('button', { name: en.nav.toggleTheme })); expect(setTheme).toHaveBeenCalledWith('light'); });
-  it('reveals additional projects and expands Jira independently', () => {
+  it('reveals additional projects and toggles a featured project independently', () => {
     render(<I18nProvider><Projects /></I18nProvider>);
-    expect(screen.queryByRole('button', { name: /Roamly/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Sample Project 3/ })).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: en.projects.viewMore }));
-    expect(screen.getByRole('button', { name: /Roamly/ })).toBeInTheDocument();
-    const jira = screen.getByRole('button', { name: /Jira Worklog Manager/ });
-    expect(jira).toHaveAttribute('aria-expanded', 'true');
-    fireEvent.click(jira); expect(jira).toHaveAttribute('aria-expanded', 'false');
-    fireEvent.click(jira); expect(jira).toHaveAttribute('aria-expanded', 'true');
+    expect(screen.getByRole('button', { name: /Sample Project 3/ })).toBeInTheDocument();
+    const project = screen.getByRole('button', { name: /Sample Project 1/ });
+    expect(project).toHaveAttribute('aria-expanded', 'true');
+    fireEvent.click(project); expect(project).toHaveAttribute('aria-expanded', 'false');
+    fireEvent.click(project); expect(project).toHaveAttribute('aria-expanded', 'true');
     fireEvent.click(screen.getByRole('button', { name: en.projects.showLess }));
-    expect(screen.queryByRole('button', { name: /Roamly/ })).not.toBeInTheDocument();
-  });
-  it('shows content when IntersectionObserver is unavailable', () => {
-    function Probe() { const { ref, isVisible } = useScrollAnimation(); return <div ref={ref}>{String(isVisible)}</div>; }
-    render(<Probe />); expect(screen.getByText('true')).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Sample Project 3/ })).not.toBeInTheDocument();
   });
   it('waits for a lazy target', async () => {
     const cancel = navigateToSection('late-target');

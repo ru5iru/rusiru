@@ -2,7 +2,7 @@
 
 Canonical visual reference: [docs/prototype/broadsheet-prototype.html](docs/prototype/broadsheet-prototype.html)
 
-This document defines the visual language, typographic hierarchy, color tokens, print rules, and section-by-section layout specifications for the **Engineering Broadsheet** redesign of `rusiru.cc`. Every visual element is strictly driven by configuration ([src/config/site.json](src/config/site.json), [src/config/theme.json](src/config/theme.json)) and locale dictionaries ([src/locales/en.json](src/locales/en.json)) in accordance with [AGENTS.md](AGENTS.md).
+This document defines the visual language, typographic hierarchy, color tokens, print rules, and section-by-section layout specifications for the **Engineering Broadsheet** redesign of `rusiru.cc`. Every visual element is strictly driven by configuration ([src/config/site.json](src/config/site.json), [src/config/theme.json](src/config/theme.json)) and locale dictionaries ([src/locales/en/](src/locales/en/)) in accordance with [AGENTS.md](AGENTS.md).
 
 ---
 
@@ -92,7 +92,7 @@ Define reusable component classes in [src/index.css](src/index.css):
 - **`.broadsheet-page`**:
   - Max-width `72rem` (`max-w-6xl`), centered on the `--desk` outer background with subtle center-fold linear gradient, fine dot grain (`18px × 18px`), `1px solid hsl(var(--foreground))` outer border, and stacked-page offset shadow (`8px 8px 0 hsl(var(--secondary)), 9px 9px 0 hsl(var(--foreground))`).
 - **Print Rules**:
-  - `.r-t`, `.r-b`, `.r-l`, `.r-r`, `.r-box`: `1px solid hsl(var(--border))`
+  - `.r-t`, `.r-b`, `.r-r`, `.r-box`: `1px solid hsl(var(--border))`; use token-based border utilities for other edges.
   - `.r-heavy-t`, `.r-heavy-b`: `2.5px solid hsl(var(--foreground))`
   - `.r-double-t`, `.r-double-b`: `4px double hsl(var(--foreground))`
 - **`.lead-dropcap::first-letter`**:
